@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: TD Ameritrade API w/ OAuth2
+  description: This is replication of the TD Ameritrade API.
+  version: 1.0.0-oas3
+servers:
+- url: https://api.tdameritrade.com/v1
+security:
+- application:
+  - read
+  - write
+paths:
+  /oauth2/token:
+    post:
+      tags:
+      - Authentication
+      summary: Post Access Token
+      description: The token endpoint returns an access token along with an optional
+        refresh token.
+      operationId: oauth2TokenPOST
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PostAccessBody'
+      responses:
+        "200":
+          description: OK
+      x-swagger-router-controller: Authentication
+  /accounts/{accountId}/orders/{orderId}:
+    delete:
+      tags:
+      - Accounts and Trading
+      - Orders
+      summary: Cancel Order
+      description: Cancel a specific order for a spcific account
+      operationId: accountsAccountIdOrdersOrderIdDELETE
+      parameters:
+      - name: Authorization
+        in: header
+        description: Supply an access token to make an authenticated request. The
+          formate is Bearer <access token>.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      - name: orderId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+      x-swagger-router-controller: AccountsAndTrading
+  /marketdata/{symbol}/pricehistory:
+    get:
+      tags:
+      - Price History
+      operationId: marketdataSymbolPricehistoryGET
+      parameters:
+      - name: symbol
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: apikey
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: periodType
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/PeriodType'
+      - name: period
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: frequencyType
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/FrequencyType'
+      - name: frequency
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: endDate
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: startDate
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: needExtendedHoursData
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: true
+      - name: Authorization
+        in: header
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      x-swagger-router-controller: PriceHistory
+  /ping:
+    get:
+      summary: Server heartbeat operation
+      description: This operation shows how to override the global security defined
+        above, as we want to open it up for all users.
+      operationId: pingGET
+      responses:
+        "200":
+          description: OK
+      security: []
+      x-swagger-router-controller: Default
+components:
+  schemas:
+    FrequencyType:
+      type: string
+      enum:
+      - minute
+      - daily
+      - weekly
+      - monthly
+    PeriodType:
+      type: string
+      enum:
+      - day
+      - month
+      - year
+      - ytd
+    PostAccessBody:
+      required:
+      - client_id
+      - grant_type
+      type: object
+      properties:
+        grant_type:
+          type: string
+          description: The grant type of the oAuth scheme. Possible values are authorization_code,
+            refresh_token
+        refresh_token:
+          type: string
+          description: Required if using refresh token grant
+        access_type:
+          type: string
+          description: Set to offline to receive a refresh token on an authorization_code
+            grant type request. Do not set to offline on a refresh_token grant type
+            request.
+        code:
+          type: string
+          description: Required if trying to use authorization code grant
+        client_id:
+          type: integer
+          description: OAuth User ID of your application
+        redirect_uri:
+          type: string
+          description: Required if trying to use authorization code grant
+      description: Body Parmeers for the Post Access Token Endpoint
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: http://example.com/oauth/token
+          scopes:
+            write: allows modifying resources
+            read: allows reading resources
