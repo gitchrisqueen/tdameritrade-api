@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var AccountsAndTrading = require('../service/AccountsAndTradingService');
 
-module.exports.accountsAccountIdOrdersOrderIdDELETE = function accountsAccountIdOrdersOrderIdDELETE (req, res, next, accountId, orderId, authorization) {
-  AccountsAndTrading.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId, authorization)
+module.exports.accountsAccountIdOrdersOrderIdDELETE = function accountsAccountIdOrdersOrderIdDELETE (req, res, next, accountId, orderId) {
+  AccountsAndTrading.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
