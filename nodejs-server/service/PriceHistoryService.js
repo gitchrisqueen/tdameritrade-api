@@ -2,6 +2,7 @@
 
 
 /**
+ * Get price history for a symbol
  *
  * symbol String 
  * periodType PeriodType 

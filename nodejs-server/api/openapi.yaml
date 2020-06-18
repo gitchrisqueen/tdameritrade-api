@@ -54,6 +54,10 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EASObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: AccountsAndTrading
@@ -61,6 +65,7 @@ paths:
     get:
       tags:
       - Price History
+      summary: Get price history for a symbol
       operationId: marketdataSymbolPricehistoryGET
       parameters:
       - name: symbol
@@ -143,6 +148,71 @@ paths:
       security:
       - bearerAuth: []
       x-swagger-router-controller: PriceHistory
+  /instruments:
+    get:
+      tags:
+      - Insntruments
+      summary: Searh or retrieve instument data, including fundamental data
+      operationId: instrumentsGET
+      parameters:
+      - name: apikey
+        in: query
+        description: Pass your OAuth User ID to make an unauthenticated request for
+          delayed data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: symbol
+        in: query
+        description: Value to pass to the search. See projection description for more
+          information.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: projection
+        in: query
+        description: 'The type of request: symbol-search: Retrieve instrument data
+          of a specific symbol or cusip symbol-regex: Retrieve instrument data for
+          all symbols matching regex. Example: symbol=XYZ.* will return all symbols
+          beginning with XYZ desc-search: Retrieve instrument data for instruments
+          whose description contains the word supplied. Example: symbol=FakeCompany
+          will return all instruments with FakeCompany in the description. desc-regex:
+          Search description with full regex support. Example: symbol=XYZ.[A-C] returns
+          all instruments whose descriptions contain a word beginning with XYZ followed
+          by a character A through C. fundamental: Returns fundamental data for a
+          single instrument specified by exact symbol.'
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: An error message indicating the caller must pass a non null
+            value in the parameter.
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: An error message indicating the instrument for the symbol/cusip
+            was not found.
+        "406":
+          description: An error message indicating an issue in the symbol regex, or
+            number of symbols searched is over the maximum.
+      security:
+      - bearerAuth: []
+      x-swagger-router-controller: Insntruments
   /ping:
     get:
       summary: Server heartbeat operation
@@ -227,6 +297,236 @@ components:
           close: 0.80082819046101150206595775671303272247314453125
           open: 5.63737665663332876420099637471139430999755859375
         empty: true
+    EASObject:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+          format: int32
+        scope:
+          type: string
+        refresh_token_expires_in:
+          type: integer
+          format: int32
+      example:
+        access_token: access_token
+        refresh_token_expires_in: 6
+        refresh_token: refresh_token
+        scope: scope
+        token_type: token_type
+        expires_in: 0
+    Bond:
+      type: object
+      properties:
+        bondPrice:
+          type: number
+          format: double
+        cusip:
+          type: string
+        symbol:
+          type: string
+        description:
+          type: string
+        exchange:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - BOND
+    FundamentalData:
+      type: object
+      properties:
+        symbol:
+          type: string
+        high52:
+          type: number
+          format: double
+        low52:
+          type: number
+          format: double
+        dividendAmount:
+          type: number
+          format: double
+        dividendYield:
+          type: number
+          format: double
+        dividendDate:
+          type: string
+        peRatio:
+          type: number
+          format: double
+        pegRatio:
+          type: number
+          format: double
+        pbRatio:
+          type: number
+          format: double
+        prRatio:
+          type: number
+          format: double
+        pcfRatio:
+          type: number
+          format: double
+        grossMarginTTM:
+          type: number
+          format: double
+        grossMarginMRQ:
+          type: number
+          format: double
+        netProfitMarginTTM:
+          type: number
+          format: double
+        netProfitMarginMRQ:
+          type: number
+          format: double
+        operatingMarginTTM:
+          type: number
+          format: double
+        operatingMarginMRQ:
+          type: number
+          format: double
+        returnOnEquity:
+          type: number
+          format: double
+        returnOnAssets:
+          type: number
+          format: double
+        returnOnInvestment:
+          type: number
+          format: double
+        quickRatio:
+          type: number
+          format: double
+        currentRatio:
+          type: number
+          format: double
+        interestCoverage:
+          type: number
+          format: double
+        totalDebtToCapital:
+          type: number
+          format: double
+        ltDebtToEquity:
+          type: number
+          format: double
+        totalDebtToEquity:
+          type: number
+          format: double
+        epsTTM:
+          type: number
+          format: double
+        epsChangePercentTTM:
+          type: number
+          format: double
+        epsChangeYear:
+          type: number
+          format: double
+        epsChange:
+          type: number
+          format: double
+        revChangeYear:
+          type: number
+          format: double
+        revChangeTTM:
+          type: number
+          format: double
+        revChangeIn:
+          type: number
+          format: double
+        sharesOutstanding:
+          type: number
+          format: double
+        marketCapFloat:
+          type: number
+          format: double
+        marketCap:
+          type: number
+          format: double
+        bookValuePerShare:
+          type: number
+          format: double
+        shortIntToFloat:
+          type: number
+          format: double
+        shortIntDayToCover:
+          type: number
+          format: double
+        divGrowthRate3Year:
+          type: number
+          format: double
+        dividendPayAmount:
+          type: number
+          format: double
+        dividendPayDate:
+          type: string
+        beta:
+          type: number
+          format: double
+        vol1DayAvg:
+          type: number
+          format: double
+        vol10DayAvg:
+          type: number
+          format: double
+        vol3MonthAvg:
+          type: number
+          format: double
+    Fundamental:
+      type: object
+      properties:
+        cusip:
+          type: string
+        symbol:
+          type: string
+        description:
+          type: string
+        exchange:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - EQUITY
+          - ETF
+          - MUTUAL_FUND
+          - UNKNOWN
+        fundamental:
+          $ref: '#/components/schemas/Fundamental_fundamental'
+    Instrument:
+      type: object
+      properties:
+        cusip:
+          type: string
+        symbol:
+          type: string
+        description:
+          type: string
+        exchange:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - EQUITY
+          - ETF
+          - FOREX
+          - FUTURE
+          - FUTURE_OPTION
+          - INDEX
+          - INDICATOR
+          - MUTUAL_FUND
+          - OPTION
+          - UNKNOWN
+    inline_response_200:
+      anyOf:
+      - $ref: '#/components/schemas/Bond'
+      - $ref: '#/components/schemas/Fundamental'
+      - $ref: '#/components/schemas/FundamentalData'
+      - $ref: '#/components/schemas/Instrument'
     CandleList_candles:
       type: object
       properties:
@@ -261,6 +561,10 @@ components:
         low: 5.962133916683182377482808078639209270477294921875
         close: 0.80082819046101150206595775671303272247314453125
         open: 5.63737665663332876420099637471139430999755859375
+    Fundamental_fundamental:
+      properties:
+        schema:
+          $ref: '#/components/schemas/FundamentalData'
   securitySchemes:
     application:
       type: oauth2
