@@ -5,12 +5,6 @@ on:
   push:
     # Use `swaggerhub` branch to create nodejs client and publish to npm
     branches: [ swaggerhub ]
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
-    # Run tests for any PRs.
-    pull_request:
-
 env:
   #This is only needed for act emulation ???
   ACTIONS_RUNTIME_TOKEN: sadfjdksalfjdsalfjdasklfjask
