@@ -213,17 +213,6 @@ paths:
       security:
       - bearerAuth: []
       x-swagger-router-controller: Inntruments
-  /ping:
-    get:
-      summary: Server heartbeat operation
-      description: This operation shows how to override the global security defined
-        above, as we want to open it up for all users.
-      operationId: pingGET
-      responses:
-        "200":
-          description: OK
-      security: []
-      x-swagger-router-controller: Default
 components:
   schemas:
     FrequencyType:
