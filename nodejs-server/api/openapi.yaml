@@ -151,7 +151,7 @@ paths:
   /instruments:
     get:
       tags:
-      - Insntruments
+      - Inntruments
       summary: Searh or retrieve instument data, including fundamental data
       operationId: instrumentsGET
       parameters:
@@ -212,7 +212,7 @@ paths:
             number of symbols searched is over the maximum.
       security:
       - bearerAuth: []
-      x-swagger-router-controller: Insntruments
+      x-swagger-router-controller: Inntruments
   /ping:
     get:
       summary: Server heartbeat operation
