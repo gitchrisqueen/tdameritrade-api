@@ -1,0 +1,45 @@
+# This workflow will build the client api files using the swager codegen url and push the output into its own folder. Then copy both server and client api files into the master. Finally pushing the master package to npm
+
+name: TD Ameritrade API Workflow CI
+on:
+  push:
+    # Use `swaggerhub` branch to create nodejs client and publish to npm
+    branches: [ swaggerhub ]
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+    # Run tests for any PRs.
+    pull_request:
+
+env:
+  #This is only needed for act emulation ???
+  ACTIONS_RUNTIME_TOKEN: sadfjdksalfjdsalfjdasklfjask
+  #ACTIONS_RUNTIME_URL: https://0.0.0.0/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/
+  ACTIONS_RUNTIME_URL: localhost
+
+jobs:
+  codegen:
+    name: Swagger Code Gen
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p ./swagger-gen
+      - name: curl
+        uses: enflo/curl-action@master
+        with:
+          curl: |
+            -X POST https://generator3.swagger.io/api/generate -H "content-type:application/json" -d '{"specURL":"https://raw.githubusercontent.com/gitchrisqueen/tdameritrade-api/swaggerhub/nodejs-server/api/openapi.yaml","lang":"javascript","type":"CLIENT","codegenVersion":"V3","options":{"additionalProperties":{"sortParamsByRequiredFlag":true,"projectName":"js-client","usePromises":"true","modelPropertyNaming":"PascalCase"}}}' -o ./swagger-gen/swagger.zip
+      #- run: mv ./swagger.zip ./swagger-gen/swagger.zip
+      - name: unzip
+        #runs-on: linux-latest
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: unzip -qq ./swagger-gen/swagger.zip -d ./js-client
+      - run: rm -Rf ./swagger-gen
+      - name: Push to master branch
+        uses: Automattic/action-commit-to-branch@master
+        with:
+          branch: 'master'
+          commit_message: 'Build master from auto swagger gen'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
