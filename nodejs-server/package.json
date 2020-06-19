@@ -1,5 +1,5 @@
 {
-  "name": "td-ameritrade-api-w-oauth2",
+  "name": "td-ameritrade-api-oauth2",
   "version": "1.0.0-oas3",
   "description": "This is replication of the TD Ameritrade API.",
   "main": "index.js",

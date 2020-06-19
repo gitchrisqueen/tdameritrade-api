@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: TD Ameritrade API w/ OAuth2
+  title: TD Ameritrade API - OAuth2
   description: This is replication of the TD Ameritrade API.
   version: 1.0.0-oas3
 servers:
