@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Use Swagger To Generate Node.js Client Code
+      - name: Use Swagger To Generate Node.js Client code
         run: |
-          docker run --rm -v ./:/local swaggerapi/swagger-codegen-cli-v3 generate \
+          docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
           -i /local/nodejs-server/api/openapi.yaml \
           -l javascript \
           -D '{"lang":"javascript","type":"CLIENT","codegenVersion":"V3","options":{"additionalProperties":{"sortParamsByRequiredFlag":true,"projectName":"nodejs-client","usePromises":"true","modelPropertyNaming":"PascalCase"}}}' \
