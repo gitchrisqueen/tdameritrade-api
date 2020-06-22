@@ -1,0 +1,8 @@
+{
+  "additionalProperties": {
+    "sortParamsByRequiredFlag": true,
+    "projectName": "@gitchrisqueen/tdameritrade-js-client",
+    "usePromises": "true",
+    "modelPropertyNaming": "PascalCase"
+  }
+}

@@ -18,7 +18,7 @@ jobs:
           docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
           -i /local/nodejs-server/api/openapi.yaml \
           -l javascript \
-          -D '{"lang":"javascript","type":"CLIENT","codegenVersion":"V3","options":{"additionalProperties":{"sortParamsByRequiredFlag":true,"projectName":"nodejs-client","usePromises":"true","modelPropertyNaming":"PascalCase"}}}' \
+          -c /local/config.json \
           -o /local/nodejs-client
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
