@@ -1,24 +1,31 @@
-# This workflow will build the client api files using the swager codegen url and push the output into its own folder. Then copy both server and client api files into the master. Finally pushing the master package to npm
+# This workflow will build the client api files using the swagger codegen url and push the output into its own folder. Then copy both server and client api files into the master. Finally pushing the master package to npm
 
 name: TD Ameritrade API Workflow CI
 on:
   push:
     # Use `swaggerhub` branch to create nodejs client and publish to npm
     branches: [ swaggerhub ]
+
 jobs:
   codegen:
     name: Swagger Code Gen
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: curl
-        id: curl
-        uses: gitchrisqueen/curl-action-output@master
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use Swagger To Generate Node.js Client Code
+        run: |
+          docker run --rm -v ./:/local swaggerapi/swagger-codegen-cli-v3 generate \
+          -i /local/nodejs-server/api/openapi.yaml \
+          -l javascript \
+          -D '{"lang":"javascript","type":"CLIENT","codegenVersion":"V3","options":{"additionalProperties":{"sortParamsByRequiredFlag":true,"projectName":"nodejs-client","usePromises":"true","modelPropertyNaming":"PascalCase"}}}' \
+          -o /local/nodejs-client
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
         with:
-          curl: |
-            -X POST https://generator3.swagger.io/api/generate -H "content-type:application/json" -d '{"specURL":"https://raw.githubusercontent.com/gitchrisqueen/tdameritrade-api/swaggerhub/nodejs-server/api/openapi.yaml","lang":"javascript","type":"CLIENT","codegenVersion":"V3","options":{"additionalProperties":{"sortParamsByRequiredFlag":true,"projectName":"js-client","usePromises":"true","modelPropertyNaming":"PascalCase"}}}'
-      #- run: mv ./swagger.zip ./swagger-gen/swagger.zip
-      - name: unzip
-        uses: gitchrisqueen/action-zip@master
-        with:
-          args: unzip ${{ steps.curl.outputs.response }} ./js-client
+          author_name: Christopher Queen
+          author_email: christopher.queen@gmail.com
+          message: "Swagger Client code auto generated"
+          add: "/nodejs-client/*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
