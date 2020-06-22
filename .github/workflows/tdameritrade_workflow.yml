@@ -23,7 +23,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
-          ref: 'mnaster'
+          ref: 'master'
           author_name: Christopher Queen
           author_email: christopher.queen@gmail.com
           message: "Swagger Client code auto generated"
