@@ -1,25 +1,12 @@
 {
   "name": "@gitchrisqueen/tdameritrade-api-js-client",
   "version": "1.0.0-oas3",
-  "description": "TD Ameritrade API integration for Node.js",
+  "description": "TD Ameritrade API access via node javascript code.",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gitchrisqueen/tdameritrade-api.git"
-  },
-  "author": "Christopher Queen<npm@christopherqueenconsulting.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gitchrisqueen/tdameritrade-api/issues"
-  },
-  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api#readme",
-  "keywords": [
-    "tdameritrade",
-    "thinkorswim"
-  ],
   "browser": {
     "fs": false
   },

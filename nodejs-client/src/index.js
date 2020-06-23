@@ -32,7 +32,7 @@ import OrdersApi from './api/OrdersApi';
 import PriceHistoryApi from './api/PriceHistoryApi';
 
 /**
-* This_is_replication_of_the_TD_Ameritrade_API_.<br>
+* TD Ameritrade API access via node javascript code..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
