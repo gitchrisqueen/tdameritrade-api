@@ -26,6 +26,10 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EASObject'
       security: []
       x-swagger-router-controller: Authentication
   /accounts/{accountId}/orders/{orderId}:
