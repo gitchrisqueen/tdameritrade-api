@@ -5,8 +5,8 @@
  * Get price history for a symbol
  *
  * symbol String 
- * periodType PeriodType 
  * apikey String  (optional)
+ * periodType PeriodType  (optional)
  * period Integer  (optional)
  * frequencyType FrequencyType  (optional)
  * frequency Integer  (optional)
@@ -15,7 +15,7 @@
  * needExtendedHoursData Boolean  (optional)
  * returns CandleList
  **/
-exports.marketdataSymbolPricehistoryGET = function(symbol,periodType,apikey,period,frequencyType,frequency,endDate,startDate,needExtendedHoursData) {
+exports.marketdataSymbolPricehistoryGET = function(symbol,apikey,periodType,period,frequencyType,frequency,endDate,startDate,needExtendedHoursData) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {

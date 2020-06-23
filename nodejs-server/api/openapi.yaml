@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: TD Ameritrade API - OAuth2
   description: This is replication of the TD Ameritrade API.
-  version: 1.0.0-oas3
+  version: 0.1.3
 servers:
 - url: https://api.tdameritrade.com/v1
 security:
@@ -84,7 +84,7 @@ paths:
           type: string
       - name: periodType
         in: query
-        required: true
+        required: false
         style: form
         explode: true
         schema:
