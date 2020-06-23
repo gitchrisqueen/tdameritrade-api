@@ -17,11 +17,6 @@ Searh or retrieve instument data, including fundamental data
 import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
 let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.InntrumentsApi();
 let Symbol = "Symbol_example"; // String | Value to pass to the search. See projection description for more information.

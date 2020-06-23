@@ -14,33 +14,33 @@
 import ApiClient from '../ApiClient';
 
 /**
-* The InlineResponse200 model module.
-* @module model/InlineResponse200
+* The AnyOfinlineResponse200 model module.
+* @module model/AnyOfinlineResponse200
 * @version 1.0.0-oas3
 */
-export default class InlineResponse200 {
+export default class AnyOfinlineResponse200 {
     /**
-    * Constructs a new <code>InlineResponse200</code>.
-    * @alias module:model/InlineResponse200
+    * Constructs a new <code>AnyOfinlineResponse200</code>.
+    * @alias module:model/AnyOfinlineResponse200
     * @class
     */
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        
         
     }
 
     /**
-    * Constructs a <code>InlineResponse200</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>AnyOfinlineResponse200</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/InlineResponse200} obj Optional instance to populate.
-    * @return {module:model/InlineResponse200} The populated <code>InlineResponse200</code> instance.
+    * @param {module:model/AnyOfinlineResponse200} obj Optional instance to populate.
+    * @return {module:model/AnyOfinlineResponse200} The populated <code>AnyOfinlineResponse200</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new InlineResponse200();
+            obj = obj || new AnyOfinlineResponse200();
                         
             
         }
@@ -48,8 +48,7 @@ export default class InlineResponse200 {
     }
 
 
-    // Implement AnyOfinlineResponse200 interface:
-    
+
 
 
 }

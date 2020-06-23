@@ -12,7 +12,7 @@
  */
 
 import ApiClient from './ApiClient';
-import Body from './model/Body';
+import AnyOfinlineResponse200 from './model/AnyOfinlineResponse200';
 import Bond from './model/Bond';
 import CandleList from './model/CandleList';
 import CandleListCandles from './model/CandleListCandles';
@@ -70,10 +70,10 @@ export {
     ApiClient,
 
     /**
-     * The Body model constructor.
-     * @property {module:model/Body}
+     * The AnyOfinlineResponse200 model constructor.
+     * @property {module:model/AnyOfinlineResponse200}
      */
-    Body,
+    AnyOfinlineResponse200,
 
     /**
      * The Bond model constructor.

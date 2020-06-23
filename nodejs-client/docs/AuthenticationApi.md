@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="oauth2TokenPOST"></a>
 # **oauth2TokenPOST**
-> oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectUri)
+> oauth2TokenPOST(opts)
 
 Post Access Token
 
@@ -17,21 +17,17 @@ The token endpoint returns an access token along with an optional refresh token.
 ### Example
 ```javascript
 import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
-let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
-
-// Configure OAuth2 access token for authorization: application
-let application = defaultClient.authentications['application'];
-application.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.AuthenticationApi();
-let GrantType = "GrantType_example"; // String | 
-let RefreshToken = "RefreshToken_example"; // String | 
-let AccessType = "AccessType_example"; // String | 
-let Code = "Code_example"; // String | 
-let ClientId = 56; // Number | 
-let RedirectUri = "RedirectUri_example"; // String | 
-
-apiInstance.oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectUri).then(() => {
+let opts = { 
+  'GrantType': "GrantType_example" // String | 
+  'RefreshToken': "RefreshToken_example" // String | 
+  'AccessType': "AccessType_example" // String | 
+  'Code': "Code_example" // String | 
+  'ClientId': 56 // Number | 
+  'RedirectUri': "RedirectUri_example" // String | 
+};
+apiInstance.oauth2TokenPOST(opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -43,12 +39,12 @@ apiInstance.oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectU
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GrantType** | **String**|  | 
- **RefreshToken** | **String**|  | 
- **AccessType** | **String**|  | 
- **Code** | **String**|  | 
- **ClientId** | **Number**|  | 
- **RedirectUri** | **String**|  | 
+ **GrantType** | **String**|  | [optional] 
+ **RefreshToken** | **String**|  | [optional] 
+ **AccessType** | **String**|  | [optional] 
+ **Code** | **String**|  | [optional] 
+ **ClientId** | **Number**|  | [optional] 
+ **RedirectUri** | **String**|  | [optional] 
 
 ### Return type
 
@@ -56,7 +52,7 @@ null (empty response body)
 
 ### Authorization
 
-[application](../README.md#application)
+No authorization required
 
 ### HTTP request headers
 

@@ -27,7 +27,7 @@ export default class Bond {
 
     constructor() {
         
-        
+        AnyOfinlineResponse200.call(this);
         
     }
 
@@ -43,14 +43,14 @@ export default class Bond {
             obj = obj || new Bond();
                         
             
-            if (data.hasOwnProperty('assetType')) {
-                obj['assetType'] = ApiClient.convertToType(data['assetType'], 'String');
-            }
             if (data.hasOwnProperty('bondPrice')) {
                 obj['bondPrice'] = ApiClient.convertToType(data['bondPrice'], 'Number');
             }
             if (data.hasOwnProperty('cusip')) {
                 obj['cusip'] = ApiClient.convertToType(data['cusip'], 'String');
+            }
+            if (data.hasOwnProperty('symbol')) {
+                obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
@@ -58,17 +58,13 @@ export default class Bond {
             if (data.hasOwnProperty('exchange')) {
                 obj['exchange'] = ApiClient.convertToType(data['exchange'], 'String');
             }
-            if (data.hasOwnProperty('symbol')) {
-                obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
+            if (data.hasOwnProperty('assetType')) {
+                obj['assetType'] = ApiClient.convertToType(data['assetType'], 'String');
             }
         }
         return obj;
     }
 
-    /**
-    * @member {module:model/Bond.AssetTypeEnum} assetType
-    */
-    'assetType' = undefined;
     /**
     * @member {Number} bondPrice
     */
@@ -78,6 +74,10 @@ export default class Bond {
     */
     'cusip' = undefined;
     /**
+    * @member {String} symbol
+    */
+    'symbol' = undefined;
+    /**
     * @member {String} description
     */
     'description' = undefined;
@@ -86,11 +86,12 @@ export default class Bond {
     */
     'exchange' = undefined;
     /**
-    * @member {String} symbol
+    * @member {module:model/Bond.AssetTypeEnum} assetType
     */
-    'symbol' = undefined;
+    'assetType' = undefined;
 
-
+    // Implement AnyOfinlineResponse200 interface:
+    
 
     /**
     * Allowed values for the <code>assetType</code> property.

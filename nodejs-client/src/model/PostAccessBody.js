@@ -24,15 +24,15 @@ export default class PostAccessBody {
     * Body Parmeers for the Post Access Token Endpoint
     * @alias module:model/PostAccessBody
     * @class
-    * @param ClientId {Number} OAuth User ID of your application
     * @param GrantType {String} The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+    * @param ClientId {Number} OAuth User ID of your application
     */
 
-    constructor(ClientId, GrantType) {
+    constructor(GrantType, ClientId) {
         
         
-        this['client_id'] = ClientId;
         this['grant_type'] = GrantType;
+        this['client_id'] = ClientId;
         
     }
 
@@ -48,33 +48,48 @@ export default class PostAccessBody {
             obj = obj || new PostAccessBody();
                         
             
+            if (data.hasOwnProperty('grant_type')) {
+                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
+            }
+            if (data.hasOwnProperty('refresh_token')) {
+                obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
+            }
             if (data.hasOwnProperty('access_type')) {
                 obj['access_type'] = ApiClient.convertToType(data['access_type'], 'String');
-            }
-            if (data.hasOwnProperty('client_id')) {
-                obj['client_id'] = ApiClient.convertToType(data['client_id'], 'Number');
             }
             if (data.hasOwnProperty('code')) {
                 obj['code'] = ApiClient.convertToType(data['code'], 'String');
             }
-            if (data.hasOwnProperty('grant_type')) {
-                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
+            if (data.hasOwnProperty('client_id')) {
+                obj['client_id'] = ApiClient.convertToType(data['client_id'], 'Number');
             }
             if (data.hasOwnProperty('redirect_uri')) {
                 obj['redirect_uri'] = ApiClient.convertToType(data['redirect_uri'], 'String');
-            }
-            if (data.hasOwnProperty('refresh_token')) {
-                obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
             }
         }
         return obj;
     }
 
     /**
+    * The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+    * @member {String} grant_type
+    */
+    'grant_type' = undefined;
+    /**
+    * Required if using refresh token grant
+    * @member {String} refresh_token
+    */
+    'refresh_token' = undefined;
+    /**
     * Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
     * @member {String} access_type
     */
     'access_type' = undefined;
+    /**
+    * Required if trying to use authorization code grant
+    * @member {String} code
+    */
+    'code' = undefined;
     /**
     * OAuth User ID of your application
     * @member {Number} client_id
@@ -82,24 +97,9 @@ export default class PostAccessBody {
     'client_id' = undefined;
     /**
     * Required if trying to use authorization code grant
-    * @member {String} code
-    */
-    'code' = undefined;
-    /**
-    * The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
-    * @member {String} grant_type
-    */
-    'grant_type' = undefined;
-    /**
-    * Required if trying to use authorization code grant
     * @member {String} redirect_uri
     */
     'redirect_uri' = undefined;
-    /**
-    * Required if using refresh token grant
-    * @member {String} refresh_token
-    */
-    'refresh_token' = undefined;
 
 
 
