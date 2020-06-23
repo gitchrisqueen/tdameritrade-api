@@ -1,8 +1,10 @@
 {
   "additionalProperties": {
     "sortParamsByRequiredFlag": true,
-    "projectName": "@gitchrisqueen/tdameritrade-js-client",
+    "projectName": "@gitchrisqueen/tdameritrade-api-js-client",
+    "projectDescription": "TD Ameritrade API access via node javascript code.",
     "usePromises": "true",
-    "modelPropertyNaming": "PascalCase"
+    "modelPropertyNaming": "PascalCase",
+    "licenseName": "MIT"
   }
 }

@@ -1,0 +1,573 @@
+swagger: '2.0'
+info:
+  description: This is replication of the TD Ameritrade API.
+  title: TD Ameritrade API - OAuth2
+  version: 1.0.0-oas3
+host: api.tdameritrade.com
+basePath: /v1
+schemes:
+  - https
+paths:
+  '/accounts/{accountId}/orders/{orderId}':
+    delete:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: orderId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Accounts and Trading
+        - Orders
+      description: Cancel a specific order for a spcific account
+      operationId: accountsAccountIdOrdersOrderIdDELETE
+      summary: Cancel Order
+      x-swagger-router-controller: AccountsAndTrading
+  /instruments:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: >-
+            Pass your OAuth User ID to make an unauthenticated request for
+            delayed data.
+          in: query
+          name: apikey
+          required: false
+          type: string
+        - description: >-
+            Value to pass to the search. See projection description for more
+            information.
+          in: query
+          name: symbol
+          required: true
+          type: string
+        - description: >-
+            The type of request: symbol-search: Retrieve instrument data of a
+            specific symbol or cusip symbol-regex: Retrieve instrument data for
+            all symbols matching regex. Example: symbol=XYZ.* will return all
+            symbols beginning with XYZ desc-search: Retrieve instrument data for
+            instruments whose description contains the word supplied. Example:
+            symbol=FakeCompany will return all instruments with FakeCompany in
+            the description. desc-regex: Search description with full regex
+            support. Example: symbol=XYZ.[A-C] returns all instruments whose
+            descriptions contain a word beginning with XYZ followed by a
+            character A through C. fundamental: Returns fundamental data for a
+            single instrument specified by exact symbol.
+          in: query
+          name: projection
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/inline_response_200'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a non null value in
+            the parameter.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: >-
+            An error message indicating the instrument for the symbol/cusip was
+            not found.
+        '406':
+          description: >-
+            An error message indicating an issue in the symbol regex, or number
+            of symbols searched is over the maximum.
+      security:
+        - bearerAuth: []
+      tags:
+        - Inntruments
+      operationId: instrumentsGET
+      summary: 'Searh or retrieve instument data, including fundamental data'
+      x-swagger-router-controller: Inntruments
+  '/marketdata/{symbol}/pricehistory':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: symbol
+          required: true
+          type: string
+        - in: query
+          name: apikey
+          required: false
+          type: string
+        - enum:
+            - day
+            - month
+            - year
+            - ytd
+          in: query
+          name: periodType
+          required: true
+          type: string
+        - in: query
+          name: period
+          required: false
+          type: integer
+        - enum:
+            - minute
+            - daily
+            - weekly
+            - monthly
+          in: query
+          name: frequencyType
+          required: false
+          type: string
+        - in: query
+          name: frequency
+          required: false
+          type: integer
+        - in: query
+          name: endDate
+          required: false
+          type: integer
+        - in: query
+          name: startDate
+          required: false
+          type: integer
+        - default: true
+          in: query
+          name: needExtendedHoursData
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CandleList'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+        - bearerAuth: []
+      tags:
+        - Price History
+      operationId: marketdataSymbolPricehistoryGET
+      summary: Get price history for a symbol
+      x-swagger-router-controller: PriceHistory
+  /oauth2/token:
+    post:
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - description: >-
+            The grant type of the oAuth scheme. Possible values are
+            authorization_code, refresh_token
+          in: formData
+          name: grant_type
+          required: true
+          type: string
+        - description: Required if using refresh token grant
+          in: formData
+          name: refresh_token
+          type: string
+        - description: >-
+            Set to offline to receive a refresh token on an authorization_code
+            grant type request. Do not set to offline on a refresh_token grant
+            type request.
+          in: formData
+          name: access_type
+          type: string
+        - description: Required if trying to use authorization code grant
+          in: formData
+          name: code
+          type: string
+        - description: OAuth User ID of your application
+          in: formData
+          name: client_id
+          required: true
+          type: integer
+        - description: Required if trying to use authorization code grant
+          in: formData
+          name: redirect_uri
+          type: string
+      responses:
+        '200':
+          description: OK
+      security: []
+      tags:
+        - Authentication
+      description: >-
+        The token endpoint returns an access token along with an optional
+        refresh token.
+      operationId: oauth2TokenPOST
+      summary: Post Access Token
+      x-swagger-router-controller: Authentication
+definitions:
+  Bond:
+    properties:
+      assetType:
+        enum:
+          - BOND
+        type: string
+      bondPrice:
+        format: double
+        type: number
+      cusip:
+        type: string
+      description:
+        type: string
+      exchange:
+        type: string
+      symbol:
+        type: string
+    type: object
+  CandleList:
+    description: List of Candles
+    example:
+      candles:
+        - close: 0.8008281904610115
+          datetime: 6
+          high: 1.4658129805029452
+          low: 5.962133916683182
+          open: 5.637376656633329
+          volume: 2.3021358869347655
+        - close: 0.8008281904610115
+          datetime: 6
+          high: 1.4658129805029452
+          low: 5.962133916683182
+          open: 5.637376656633329
+          volume: 2.3021358869347655
+      empty: true
+      symbol: symbol
+    properties:
+      candles:
+        items:
+          $ref: '#/definitions/CandleList_candles'
+        type: array
+      empty:
+        type: boolean
+      symbol:
+        description: Symbol
+        type: string
+    type: object
+  CandleList_candles:
+    example:
+      close: 0.8008281904610115
+      datetime: 6
+      high: 1.4658129805029452
+      low: 5.962133916683182
+      open: 5.637376656633329
+      volume: 2.3021358869347655
+    properties:
+      close:
+        description: Close
+        format: double
+        type: number
+      datetime:
+        description: DateTime
+        format: int64
+        type: integer
+      high:
+        description: High
+        format: double
+        type: number
+      low:
+        description: Low
+        format: double
+        type: number
+      open:
+        description: Open
+        format: double
+        type: number
+      volume:
+        description: Volume
+        format: double
+        type: number
+    type: object
+  EASObject:
+    example:
+      access_token: access_token
+      expires_in: 0
+      refresh_token: refresh_token
+      refresh_token_expires_in: 6
+      scope: scope
+      token_type: token_type
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        format: int32
+        type: integer
+      refresh_token:
+        type: string
+      refresh_token_expires_in:
+        format: int32
+        type: integer
+      scope:
+        type: string
+      token_type:
+        type: string
+    type: object
+  FrequencyType:
+    enum:
+      - minute
+      - daily
+      - weekly
+      - monthly
+    type: string
+  Fundamental:
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - ETF
+          - MUTUAL_FUND
+          - UNKNOWN
+        type: string
+      cusip:
+        type: string
+      description:
+        type: string
+      exchange:
+        type: string
+      fundamental:
+        $ref: '#/definitions/Fundamental_fundamental'
+      symbol:
+        type: string
+    type: object
+  FundamentalData:
+    properties:
+      beta:
+        format: double
+        type: number
+      bookValuePerShare:
+        format: double
+        type: number
+      currentRatio:
+        format: double
+        type: number
+      divGrowthRate3Year:
+        format: double
+        type: number
+      dividendAmount:
+        format: double
+        type: number
+      dividendDate:
+        type: string
+      dividendPayAmount:
+        format: double
+        type: number
+      dividendPayDate:
+        type: string
+      dividendYield:
+        format: double
+        type: number
+      epsChange:
+        format: double
+        type: number
+      epsChangePercentTTM:
+        format: double
+        type: number
+      epsChangeYear:
+        format: double
+        type: number
+      epsTTM:
+        format: double
+        type: number
+      grossMarginMRQ:
+        format: double
+        type: number
+      grossMarginTTM:
+        format: double
+        type: number
+      high52:
+        format: double
+        type: number
+      interestCoverage:
+        format: double
+        type: number
+      low52:
+        format: double
+        type: number
+      ltDebtToEquity:
+        format: double
+        type: number
+      marketCap:
+        format: double
+        type: number
+      marketCapFloat:
+        format: double
+        type: number
+      netProfitMarginMRQ:
+        format: double
+        type: number
+      netProfitMarginTTM:
+        format: double
+        type: number
+      operatingMarginMRQ:
+        format: double
+        type: number
+      operatingMarginTTM:
+        format: double
+        type: number
+      pbRatio:
+        format: double
+        type: number
+      pcfRatio:
+        format: double
+        type: number
+      peRatio:
+        format: double
+        type: number
+      pegRatio:
+        format: double
+        type: number
+      prRatio:
+        format: double
+        type: number
+      quickRatio:
+        format: double
+        type: number
+      returnOnAssets:
+        format: double
+        type: number
+      returnOnEquity:
+        format: double
+        type: number
+      returnOnInvestment:
+        format: double
+        type: number
+      revChangeIn:
+        format: double
+        type: number
+      revChangeTTM:
+        format: double
+        type: number
+      revChangeYear:
+        format: double
+        type: number
+      sharesOutstanding:
+        format: double
+        type: number
+      shortIntDayToCover:
+        format: double
+        type: number
+      shortIntToFloat:
+        format: double
+        type: number
+      symbol:
+        type: string
+      totalDebtToCapital:
+        format: double
+        type: number
+      totalDebtToEquity:
+        format: double
+        type: number
+      vol10DayAvg:
+        format: double
+        type: number
+      vol1DayAvg:
+        format: double
+        type: number
+      vol3MonthAvg:
+        format: double
+        type: number
+    type: object
+  Fundamental_fundamental:
+    properties:
+      schema:
+        $ref: '#/definitions/FundamentalData'
+  Instrument:
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - ETF
+          - FOREX
+          - FUTURE
+          - FUTURE_OPTION
+          - INDEX
+          - INDICATOR
+          - MUTUAL_FUND
+          - OPTION
+          - UNKNOWN
+        type: string
+      cusip:
+        type: string
+      description:
+        type: string
+      exchange:
+        type: string
+      symbol:
+        type: string
+    type: object
+  PeriodType:
+    enum:
+      - day
+      - month
+      - year
+      - ytd
+    type: string
+  PostAccessBody:
+    description: Body Parmeers for the Post Access Token Endpoint
+    properties:
+      access_type:
+        description: >-
+          Set to offline to receive a refresh token on an authorization_code
+          grant type request. Do not set to offline on a refresh_token grant
+          type request.
+        type: string
+      client_id:
+        description: OAuth User ID of your application
+        type: integer
+      code:
+        description: Required if trying to use authorization code grant
+        type: string
+      grant_type:
+        description: >-
+          The grant type of the oAuth scheme. Possible values are
+          authorization_code, refresh_token
+        type: string
+      redirect_uri:
+        description: Required if trying to use authorization code grant
+        type: string
+      refresh_token:
+        description: Required if using refresh token grant
+        type: string
+    required:
+      - client_id
+      - grant_type
+    type: object
+  inline_response_200: {}
+securityDefinitions:
+  application:
+    authorizationUrl: >-
+      https://auth.tdameritrade.com/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost&client_id=YHJUQFCHRMJ7XODGVGGPINB05SCG2H45%40AMER.OAUTHAP
+    flow: accessCode
+    scopes: {}
+    tokenUrl: /oauth2/token
+    type: oauth2
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+security:
+  - application:
+      - read
+      - write
+x-components: {}
+

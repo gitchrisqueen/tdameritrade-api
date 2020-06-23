@@ -10,18 +10,42 @@ jobs:
   codegen:
     name: Swagger Code Gen
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Use Swagger To Generate Node.js Client code
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Convert OpenAPI3.0 to Swagger 2
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm ci
+          npm run build --if-present
+          npm run convertopenapi3toswagger2
+      - name: Use Swagger To Generate Node.js Client Code
         run: |
           docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
-          -i /local/nodejs-server/api/openapi.yaml \
+          -i /local/nodejs-server/api/swagger2.yaml \
           -l javascript \
           -c /local/config.json \
-          -o /local/nodejs-client
+          -o /local/nodejs-client \
+          --git-user-id gitchrisqueen \
+          --git-repo-id https://github.com/gitchrisqueen/tdameritrade-api
       - name: Commit changes
-        uses: EndBug/add-and-commit@v4
+        uses: EndBug/add-and-commit@master
         with:
           ref: 'master'
           author_name: Christopher Queen

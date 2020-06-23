@@ -1,0 +1,58 @@
+{
+  "name": "@gitchrisqueen/tdameritrade-api-js-client",
+  "version": "0.1.0",
+  "description": "TD Ameritrade API integration for node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "pretest": "npm install",
+    "test": "jest",
+    "convertopenapi3toswagger2": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml ./nodejs-server/api/openapi.yaml > ./nodejs-server/api/swagger2.yaml"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "np": {
+    "anyBranch": true,
+    "cleanup": false,
+    "tests": false,
+    "publish": true,
+    "preview": false,
+    "tag": "latest",
+    "yarn": false,
+    "contents": "nodejs-client",
+    "releaseDraft": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitchrisqueen/tdameritrade-api.git"
+  },
+  "author": "Christopher Queen<git@christopherqueenconsutling.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gitchrisqueen/tdameritrade-api/issues"
+  },
+  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api#readme",
+  "keywords": [
+    "tdameritrade",
+    "thinkorswim",
+    "javascript",
+    "api",
+    "node",
+    "js"
+  ],
+  "dependencies": {
+    "api-spec-converter": "^2.11.0",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "superagent": "3.7.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "expect.js": "~0.3.1",
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3"
+  }
+}
