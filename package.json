@@ -2,9 +2,8 @@
   "name": "@gitchrisqueen/tdameritrade-api-js-client",
   "version": "0.1.2",
   "description": "TD Ameritrade API integration for node.js",
-  "main": "src/index.js",
+  "main": "nodejs-client/src/index.js",
   "scripts": {
-    "pretest": "npm install",
     "test": "echo 'No test specified'",
     "convertopenapi3toswagger2": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml ./nodejs-server/api/openapi.yaml > ./nodejs-server/api/swagger2.yaml"
   },
@@ -12,14 +11,14 @@
     "access": "public"
   },
   "np": {
-    "anyBranch": true,
-    "cleanup": false,
+    "anyBranch": false,
+    "cleanup": true,
     "tests": false,
     "publish": true,
     "preview": false,
     "tag": "latest",
     "yarn": false,
-    "contents": "./nodejs-client",
+    "contents": "nodejs-client",
     "releaseDraft": true
   },
   "repository": {
