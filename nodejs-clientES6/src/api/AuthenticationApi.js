@@ -12,6 +12,7 @@
  */
 
 import ApiClient from "../ApiClient";
+import EASObject from '../model/EASObject';
 
 /**
 * Authentication service.
@@ -37,7 +38,7 @@ export default class AuthenticationApi {
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
      */
     oauth2TokenPOSTWithHttpInfo(opts) {
       opts = opts || {};
@@ -60,8 +61,8 @@ export default class AuthenticationApi {
 
       let authNames = [];
       let contentTypes = ['application/x-www-form-urlencoded'];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = EASObject;
 
       return this.apiClient.callApi(
         '/oauth2/token', 'POST',
@@ -74,7 +75,7 @@ export default class AuthenticationApi {
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
      */
     oauth2TokenPOST(opts) {
       return this.oauth2TokenPOSTWithHttpInfo(opts)

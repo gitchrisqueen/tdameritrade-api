@@ -172,6 +172,8 @@ paths:
     post:
       consumes:
         - application/x-www-form-urlencoded
+      produces:
+        - application/json
       parameters:
         - description: >-
             The grant type of the oAuth scheme. Possible values are
@@ -207,6 +209,8 @@ paths:
       responses:
         '200':
           description: OK
+          schema:
+            $ref: '#/definitions/EASObject'
       security: []
       tags:
         - Authentication

@@ -37,7 +37,7 @@
     describe('AuthenticationApi', function() {
       describe('oauth2TokenPOST', function() {
         it('should call oauth2TokenPOST successfully', function(done) {
-          // TODO: uncomment, update parameter values for oauth2TokenPOST call
+          // TODO: uncomment, update parameter values for oauth2TokenPOST call and complete the assertions
           /*
           var GrantType = "GrantType_example";
           var ClientId = 56;
@@ -48,6 +48,20 @@
           opts.RedirectUri = "RedirectUri_example";
 
           instance.oauth2TokenPOST(GrantType, ClientId, opts).then(function(data) {
+            // TODO: update response assertions
+            expect(data).to.be.a(GitChrisQueen_TDA_JS.EASObject);
+            expect(data.AccessToken).to.be.a('string');
+            expect(data.AccessToken).to.be("");
+            expect(data.ExpiresIn).to.be.a('number');
+            expect(data.ExpiresIn).to.be(0);
+            expect(data.RefreshToken).to.be.a('string');
+            expect(data.RefreshToken).to.be("");
+            expect(data.RefreshTokenExpiresIn).to.be.a('number');
+            expect(data.RefreshTokenExpiresIn).to.be(0);
+            expect(data.Scope).to.be.a('string');
+            expect(data.Scope).to.be("");
+            expect(data.TokenType).to.be.a('string');
+            expect(data.TokenType).to.be("");
 
             done();
           }, function(error) {

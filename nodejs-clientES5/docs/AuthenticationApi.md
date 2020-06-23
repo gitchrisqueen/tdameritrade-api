@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="oauth2TokenPOST"></a>
 # **oauth2TokenPOST**
-> oauth2TokenPOST(GrantType, ClientId, opts)
+> EASObject oauth2TokenPOST(GrantType, ClientId, opts)
 
 Post Access Token
 
@@ -31,8 +31,8 @@ var opts = {
   'Code': "Code_example", // String | Required if trying to use authorization code grant
   'RedirectUri': "RedirectUri_example" // String | Required if trying to use authorization code grant
 };
-apiInstance.oauth2TokenPOST(GrantType, ClientId, opts).then(function() {
-  console.log('API called successfully.');
+apiInstance.oauth2TokenPOST(GrantType, ClientId, opts).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
 });
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**EASObject**](EASObject.md)
 
 ### Authorization
 
@@ -61,5 +61,5 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 

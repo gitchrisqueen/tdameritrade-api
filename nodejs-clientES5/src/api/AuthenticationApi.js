@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/EASObject'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/EASObject'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.AuthenticationApi = factory(root.GitChrisQueen_TDA_JS.ApiClient);
+    root.GitChrisQueen_TDA_JS.AuthenticationApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EASObject);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, EASObject) {
   'use strict';
 
   /**
@@ -58,7 +58,7 @@
      * @param {String} opts.AccessType Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
      * @param {String} opts.Code Required if trying to use authorization code grant
      * @param {String} opts.RedirectUri Required if trying to use authorization code grant
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
      */
     this.oauth2TokenPOSTWithHttpInfo = function(GrantType, ClientId, opts) {
       opts = opts || {};
@@ -94,8 +94,8 @@
 
       var authNames = [];
       var contentTypes = ['application/x-www-form-urlencoded'];
-      var accepts = [];
-      var returnType = null;
+      var accepts = ['application/json'];
+      var returnType = EASObject;
 
       return this.apiClient.callApi(
         '/oauth2/token', 'POST',
@@ -114,7 +114,7 @@
      * @param {String} opts.AccessType Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
      * @param {String} opts.Code Required if trying to use authorization code grant
      * @param {String} opts.RedirectUri Required if trying to use authorization code grant
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
      */
     this.oauth2TokenPOST = function(GrantType, ClientId, opts) {
       return this.oauth2TokenPOSTWithHttpInfo(GrantType, ClientId, opts)

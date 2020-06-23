@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="oauth2TokenPOST"></a>
 # **oauth2TokenPOST**
-> oauth2TokenPOST(opts)
+> EASObject oauth2TokenPOST(opts)
 
 Post Access Token
 
@@ -27,8 +27,8 @@ let opts = {
   'ClientId': 56 // Number | 
   'RedirectUri': "RedirectUri_example" // String | 
 };
-apiInstance.oauth2TokenPOST(opts).then(() => {
-  console.log('API called successfully.');
+apiInstance.oauth2TokenPOST(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
 });
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**EASObject**](EASObject.md)
 
 ### Authorization
 
@@ -57,5 +57,5 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/json
 
