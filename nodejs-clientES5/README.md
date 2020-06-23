@@ -105,11 +105,11 @@ bearerAuth.apiKey = "YOUR API KEY"
 
 var api = new GitChrisQueen_TDA_JS.AccountsAndTradingApi()
 
-var AccountId = 56; // {Number} 
+var accountId = 56; // {Number} 
 
-var OrderId = 56; // {Number} 
+var orderId = 56; // {Number} 
 
-api.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(function(data) {
+api.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -141,7 +141,6 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.Fundamental](docs/Fundamental.md)
  - [GitChrisQueen_TDA_JS.FundamentalData](docs/FundamentalData.md)
  - [GitChrisQueen_TDA_JS.FundamentalFundamental](docs/FundamentalFundamental.md)
- - [GitChrisQueen_TDA_JS.InlineResponse200](docs/InlineResponse200.md)
  - [GitChrisQueen_TDA_JS.Instrument](docs/Instrument.md)
  - [GitChrisQueen_TDA_JS.PeriodType](docs/PeriodType.md)
  - [GitChrisQueen_TDA_JS.PostAccessBody](docs/PostAccessBody.md)

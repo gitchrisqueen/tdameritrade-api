@@ -41,12 +41,12 @@
    * Body Parmeers for the Post Access Token Endpoint
    * @alias module:model/PostAccessBody
    * @class
-   * @param ClientId {Number} OAuth User ID of your application
-   * @param GrantType {String} The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+   * @param client_id {Number} OAuth User ID of your application
+   * @param grant_type {String} The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
    */
-  var exports = function(ClientId, GrantType) {
-    this.ClientId = ClientId;
-    this.GrantType = GrantType;
+  var exports = function(client_id, grant_type) {
+    this.client_id = client_id;
+    this.grant_type = grant_type;
   };
 
   /**
@@ -60,56 +60,56 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('access_type'))
-        obj.AccessType = ApiClient.convertToType(data['access_type'], 'String');
+        obj.access_type = ApiClient.convertToType(data['access_type'], 'String');
       if (data.hasOwnProperty('client_id'))
-        obj.ClientId = ApiClient.convertToType(data['client_id'], 'Number');
+        obj.client_id = ApiClient.convertToType(data['client_id'], 'Number');
       if (data.hasOwnProperty('code'))
-        obj.Code = ApiClient.convertToType(data['code'], 'String');
+        obj.code = ApiClient.convertToType(data['code'], 'String');
       if (data.hasOwnProperty('grant_type'))
-        obj.GrantType = ApiClient.convertToType(data['grant_type'], 'String');
+        obj.grant_type = ApiClient.convertToType(data['grant_type'], 'String');
       if (data.hasOwnProperty('redirect_uri'))
-        obj.RedirectUri = ApiClient.convertToType(data['redirect_uri'], 'String');
+        obj.redirect_uri = ApiClient.convertToType(data['redirect_uri'], 'String');
       if (data.hasOwnProperty('refresh_token'))
-        obj.RefreshToken = ApiClient.convertToType(data['refresh_token'], 'String');
+        obj.refresh_token = ApiClient.convertToType(data['refresh_token'], 'String');
     }
     return obj;
   }
 
   /**
    * Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
-   * @member {String} AccessType
+   * @member {String} access_type
    */
-  exports.prototype.AccessType = undefined;
+  exports.prototype.access_type = undefined;
 
   /**
    * OAuth User ID of your application
-   * @member {Number} ClientId
+   * @member {Number} client_id
    */
-  exports.prototype.ClientId = undefined;
+  exports.prototype.client_id = undefined;
 
   /**
    * Required if trying to use authorization code grant
-   * @member {String} Code
+   * @member {String} code
    */
-  exports.prototype.Code = undefined;
+  exports.prototype.code = undefined;
 
   /**
    * The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
-   * @member {String} GrantType
+   * @member {String} grant_type
    */
-  exports.prototype.GrantType = undefined;
+  exports.prototype.grant_type = undefined;
 
   /**
    * Required if trying to use authorization code grant
-   * @member {String} RedirectUri
+   * @member {String} redirect_uri
    */
-  exports.prototype.RedirectUri = undefined;
+  exports.prototype.redirect_uri = undefined;
 
   /**
    * Required if using refresh token grant
-   * @member {String} RefreshToken
+   * @member {String} refresh_token
    */
-  exports.prototype.RefreshToken = undefined;
+  exports.prototype.refresh_token = undefined;
 
   return exports;
 

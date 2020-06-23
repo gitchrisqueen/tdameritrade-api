@@ -55,50 +55,50 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('access_token'))
-        obj.AccessToken = ApiClient.convertToType(data['access_token'], 'String');
+        obj.access_token = ApiClient.convertToType(data['access_token'], 'String');
       if (data.hasOwnProperty('expires_in'))
-        obj.ExpiresIn = ApiClient.convertToType(data['expires_in'], 'Number');
+        obj.expires_in = ApiClient.convertToType(data['expires_in'], 'Number');
       if (data.hasOwnProperty('refresh_token'))
-        obj.RefreshToken = ApiClient.convertToType(data['refresh_token'], 'String');
+        obj.refresh_token = ApiClient.convertToType(data['refresh_token'], 'String');
       if (data.hasOwnProperty('refresh_token_expires_in'))
-        obj.RefreshTokenExpiresIn = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
+        obj.refresh_token_expires_in = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
       if (data.hasOwnProperty('scope'))
-        obj.Scope = ApiClient.convertToType(data['scope'], 'String');
+        obj.scope = ApiClient.convertToType(data['scope'], 'String');
       if (data.hasOwnProperty('token_type'))
-        obj.TokenType = ApiClient.convertToType(data['token_type'], 'String');
+        obj.token_type = ApiClient.convertToType(data['token_type'], 'String');
     }
     return obj;
   }
 
   /**
-   * @member {String} AccessToken
+   * @member {String} access_token
    */
-  exports.prototype.AccessToken = undefined;
+  exports.prototype.access_token = undefined;
 
   /**
-   * @member {Number} ExpiresIn
+   * @member {Number} expires_in
    */
-  exports.prototype.ExpiresIn = undefined;
+  exports.prototype.expires_in = undefined;
 
   /**
-   * @member {String} RefreshToken
+   * @member {String} refresh_token
    */
-  exports.prototype.RefreshToken = undefined;
+  exports.prototype.refresh_token = undefined;
 
   /**
-   * @member {Number} RefreshTokenExpiresIn
+   * @member {Number} refresh_token_expires_in
    */
-  exports.prototype.RefreshTokenExpiresIn = undefined;
+  exports.prototype.refresh_token_expires_in = undefined;
 
   /**
-   * @member {String} Scope
+   * @member {String} scope
    */
-  exports.prototype.Scope = undefined;
+  exports.prototype.scope = undefined;
 
   /**
-   * @member {String} TokenType
+   * @member {String} token_type
    */
-  exports.prototype.TokenType = undefined;
+  exports.prototype.token_type = undefined;
 
   return exports;
 

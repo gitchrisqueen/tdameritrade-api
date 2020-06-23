@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cusip** | **String** |  | [optional] 
-**Symbol** | **String** |  | [optional] 
-**Description** | **String** |  | [optional] 
-**Exchange** | **String** |  | [optional] 
-**AssetType** | **String** |  | [optional] 
-**Fundamental** | [**FundamentalFundamental**](FundamentalFundamental.md) |  | [optional] 
+**cusip** | **String** |  | [optional] 
+**symbol** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**exchange** | **String** |  | [optional] 
+**assetType** | **String** |  | [optional] 
+**fundamental** | [**FundamentalFundamental**](FundamentalFundamental.md) |  | [optional] 
 
 <a name="AssetTypeEnum"></a>
 ## Enum: AssetTypeEnum

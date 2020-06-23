@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessToken** | **String** |  | [optional] 
-**ExpiresIn** | **Number** |  | [optional] 
-**RefreshToken** | **String** |  | [optional] 
-**RefreshTokenExpiresIn** | **Number** |  | [optional] 
-**Scope** | **String** |  | [optional] 
-**TokenType** | **String** |  | [optional] 
+**access_token** | **String** |  | [optional] 
+**expires_in** | **Number** |  | [optional] 
+**refresh_token** | **String** |  | [optional] 
+**refresh_token_expires_in** | **Number** |  | [optional] 
+**scope** | **String** |  | [optional] 
+**token_type** | **String** |  | [optional] 
 
 

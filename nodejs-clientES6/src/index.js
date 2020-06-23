@@ -12,7 +12,6 @@
  */
 
 import ApiClient from './ApiClient';
-import AnyOfinlineResponse200 from './model/AnyOfinlineResponse200';
 import Bond from './model/Bond';
 import CandleList from './model/CandleList';
 import CandleListCandles from './model/CandleListCandles';
@@ -21,7 +20,6 @@ import FrequencyType from './model/FrequencyType';
 import Fundamental from './model/Fundamental';
 import FundamentalData from './model/FundamentalData';
 import FundamentalFundamental from './model/FundamentalFundamental';
-import InlineResponse200 from './model/InlineResponse200';
 import Instrument from './model/Instrument';
 import PeriodType from './model/PeriodType';
 import PostAccessBody from './model/PostAccessBody';
@@ -70,12 +68,6 @@ export {
     ApiClient,
 
     /**
-     * The AnyOfinlineResponse200 model constructor.
-     * @property {module:model/AnyOfinlineResponse200}
-     */
-    AnyOfinlineResponse200,
-
-    /**
      * The Bond model constructor.
      * @property {module:model/Bond}
      */
@@ -122,12 +114,6 @@ export {
      * @property {module:model/FundamentalFundamental}
      */
     FundamentalFundamental,
-
-    /**
-     * The InlineResponse200 model constructor.
-     * @property {module:model/InlineResponse200}
-     */
-    InlineResponse200,
 
     /**
      * The Instrument model constructor.

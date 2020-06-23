@@ -55,330 +55,330 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('beta'))
-        obj.Beta = ApiClient.convertToType(data['beta'], 'Number');
+        obj.beta = ApiClient.convertToType(data['beta'], 'Number');
       if (data.hasOwnProperty('bookValuePerShare'))
-        obj.BookValuePerShare = ApiClient.convertToType(data['bookValuePerShare'], 'Number');
+        obj.bookValuePerShare = ApiClient.convertToType(data['bookValuePerShare'], 'Number');
       if (data.hasOwnProperty('currentRatio'))
-        obj.CurrentRatio = ApiClient.convertToType(data['currentRatio'], 'Number');
+        obj.currentRatio = ApiClient.convertToType(data['currentRatio'], 'Number');
       if (data.hasOwnProperty('divGrowthRate3Year'))
-        obj.DivGrowthRate3Year = ApiClient.convertToType(data['divGrowthRate3Year'], 'Number');
+        obj.divGrowthRate3Year = ApiClient.convertToType(data['divGrowthRate3Year'], 'Number');
       if (data.hasOwnProperty('dividendAmount'))
-        obj.DividendAmount = ApiClient.convertToType(data['dividendAmount'], 'Number');
+        obj.dividendAmount = ApiClient.convertToType(data['dividendAmount'], 'Number');
       if (data.hasOwnProperty('dividendDate'))
-        obj.DividendDate = ApiClient.convertToType(data['dividendDate'], 'String');
+        obj.dividendDate = ApiClient.convertToType(data['dividendDate'], 'String');
       if (data.hasOwnProperty('dividendPayAmount'))
-        obj.DividendPayAmount = ApiClient.convertToType(data['dividendPayAmount'], 'Number');
+        obj.dividendPayAmount = ApiClient.convertToType(data['dividendPayAmount'], 'Number');
       if (data.hasOwnProperty('dividendPayDate'))
-        obj.DividendPayDate = ApiClient.convertToType(data['dividendPayDate'], 'String');
+        obj.dividendPayDate = ApiClient.convertToType(data['dividendPayDate'], 'String');
       if (data.hasOwnProperty('dividendYield'))
-        obj.DividendYield = ApiClient.convertToType(data['dividendYield'], 'Number');
+        obj.dividendYield = ApiClient.convertToType(data['dividendYield'], 'Number');
       if (data.hasOwnProperty('epsChange'))
-        obj.EpsChange = ApiClient.convertToType(data['epsChange'], 'Number');
+        obj.epsChange = ApiClient.convertToType(data['epsChange'], 'Number');
       if (data.hasOwnProperty('epsChangePercentTTM'))
-        obj.EpsChangePercentTTM = ApiClient.convertToType(data['epsChangePercentTTM'], 'Number');
+        obj.epsChangePercentTTM = ApiClient.convertToType(data['epsChangePercentTTM'], 'Number');
       if (data.hasOwnProperty('epsChangeYear'))
-        obj.EpsChangeYear = ApiClient.convertToType(data['epsChangeYear'], 'Number');
+        obj.epsChangeYear = ApiClient.convertToType(data['epsChangeYear'], 'Number');
       if (data.hasOwnProperty('epsTTM'))
-        obj.EpsTTM = ApiClient.convertToType(data['epsTTM'], 'Number');
+        obj.epsTTM = ApiClient.convertToType(data['epsTTM'], 'Number');
       if (data.hasOwnProperty('grossMarginMRQ'))
-        obj.GrossMarginMRQ = ApiClient.convertToType(data['grossMarginMRQ'], 'Number');
+        obj.grossMarginMRQ = ApiClient.convertToType(data['grossMarginMRQ'], 'Number');
       if (data.hasOwnProperty('grossMarginTTM'))
-        obj.GrossMarginTTM = ApiClient.convertToType(data['grossMarginTTM'], 'Number');
+        obj.grossMarginTTM = ApiClient.convertToType(data['grossMarginTTM'], 'Number');
       if (data.hasOwnProperty('high52'))
-        obj.High52 = ApiClient.convertToType(data['high52'], 'Number');
+        obj.high52 = ApiClient.convertToType(data['high52'], 'Number');
       if (data.hasOwnProperty('interestCoverage'))
-        obj.InterestCoverage = ApiClient.convertToType(data['interestCoverage'], 'Number');
+        obj.interestCoverage = ApiClient.convertToType(data['interestCoverage'], 'Number');
       if (data.hasOwnProperty('low52'))
-        obj.Low52 = ApiClient.convertToType(data['low52'], 'Number');
+        obj.low52 = ApiClient.convertToType(data['low52'], 'Number');
       if (data.hasOwnProperty('ltDebtToEquity'))
-        obj.LtDebtToEquity = ApiClient.convertToType(data['ltDebtToEquity'], 'Number');
+        obj.ltDebtToEquity = ApiClient.convertToType(data['ltDebtToEquity'], 'Number');
       if (data.hasOwnProperty('marketCap'))
-        obj.MarketCap = ApiClient.convertToType(data['marketCap'], 'Number');
+        obj.marketCap = ApiClient.convertToType(data['marketCap'], 'Number');
       if (data.hasOwnProperty('marketCapFloat'))
-        obj.MarketCapFloat = ApiClient.convertToType(data['marketCapFloat'], 'Number');
+        obj.marketCapFloat = ApiClient.convertToType(data['marketCapFloat'], 'Number');
       if (data.hasOwnProperty('netProfitMarginMRQ'))
-        obj.NetProfitMarginMRQ = ApiClient.convertToType(data['netProfitMarginMRQ'], 'Number');
+        obj.netProfitMarginMRQ = ApiClient.convertToType(data['netProfitMarginMRQ'], 'Number');
       if (data.hasOwnProperty('netProfitMarginTTM'))
-        obj.NetProfitMarginTTM = ApiClient.convertToType(data['netProfitMarginTTM'], 'Number');
+        obj.netProfitMarginTTM = ApiClient.convertToType(data['netProfitMarginTTM'], 'Number');
       if (data.hasOwnProperty('operatingMarginMRQ'))
-        obj.OperatingMarginMRQ = ApiClient.convertToType(data['operatingMarginMRQ'], 'Number');
+        obj.operatingMarginMRQ = ApiClient.convertToType(data['operatingMarginMRQ'], 'Number');
       if (data.hasOwnProperty('operatingMarginTTM'))
-        obj.OperatingMarginTTM = ApiClient.convertToType(data['operatingMarginTTM'], 'Number');
+        obj.operatingMarginTTM = ApiClient.convertToType(data['operatingMarginTTM'], 'Number');
       if (data.hasOwnProperty('pbRatio'))
-        obj.PbRatio = ApiClient.convertToType(data['pbRatio'], 'Number');
+        obj.pbRatio = ApiClient.convertToType(data['pbRatio'], 'Number');
       if (data.hasOwnProperty('pcfRatio'))
-        obj.PcfRatio = ApiClient.convertToType(data['pcfRatio'], 'Number');
+        obj.pcfRatio = ApiClient.convertToType(data['pcfRatio'], 'Number');
       if (data.hasOwnProperty('peRatio'))
-        obj.PeRatio = ApiClient.convertToType(data['peRatio'], 'Number');
+        obj.peRatio = ApiClient.convertToType(data['peRatio'], 'Number');
       if (data.hasOwnProperty('pegRatio'))
-        obj.PegRatio = ApiClient.convertToType(data['pegRatio'], 'Number');
+        obj.pegRatio = ApiClient.convertToType(data['pegRatio'], 'Number');
       if (data.hasOwnProperty('prRatio'))
-        obj.PrRatio = ApiClient.convertToType(data['prRatio'], 'Number');
+        obj.prRatio = ApiClient.convertToType(data['prRatio'], 'Number');
       if (data.hasOwnProperty('quickRatio'))
-        obj.QuickRatio = ApiClient.convertToType(data['quickRatio'], 'Number');
+        obj.quickRatio = ApiClient.convertToType(data['quickRatio'], 'Number');
       if (data.hasOwnProperty('returnOnAssets'))
-        obj.ReturnOnAssets = ApiClient.convertToType(data['returnOnAssets'], 'Number');
+        obj.returnOnAssets = ApiClient.convertToType(data['returnOnAssets'], 'Number');
       if (data.hasOwnProperty('returnOnEquity'))
-        obj.ReturnOnEquity = ApiClient.convertToType(data['returnOnEquity'], 'Number');
+        obj.returnOnEquity = ApiClient.convertToType(data['returnOnEquity'], 'Number');
       if (data.hasOwnProperty('returnOnInvestment'))
-        obj.ReturnOnInvestment = ApiClient.convertToType(data['returnOnInvestment'], 'Number');
+        obj.returnOnInvestment = ApiClient.convertToType(data['returnOnInvestment'], 'Number');
       if (data.hasOwnProperty('revChangeIn'))
-        obj.RevChangeIn = ApiClient.convertToType(data['revChangeIn'], 'Number');
+        obj.revChangeIn = ApiClient.convertToType(data['revChangeIn'], 'Number');
       if (data.hasOwnProperty('revChangeTTM'))
-        obj.RevChangeTTM = ApiClient.convertToType(data['revChangeTTM'], 'Number');
+        obj.revChangeTTM = ApiClient.convertToType(data['revChangeTTM'], 'Number');
       if (data.hasOwnProperty('revChangeYear'))
-        obj.RevChangeYear = ApiClient.convertToType(data['revChangeYear'], 'Number');
+        obj.revChangeYear = ApiClient.convertToType(data['revChangeYear'], 'Number');
       if (data.hasOwnProperty('sharesOutstanding'))
-        obj.SharesOutstanding = ApiClient.convertToType(data['sharesOutstanding'], 'Number');
+        obj.sharesOutstanding = ApiClient.convertToType(data['sharesOutstanding'], 'Number');
       if (data.hasOwnProperty('shortIntDayToCover'))
-        obj.ShortIntDayToCover = ApiClient.convertToType(data['shortIntDayToCover'], 'Number');
+        obj.shortIntDayToCover = ApiClient.convertToType(data['shortIntDayToCover'], 'Number');
       if (data.hasOwnProperty('shortIntToFloat'))
-        obj.ShortIntToFloat = ApiClient.convertToType(data['shortIntToFloat'], 'Number');
+        obj.shortIntToFloat = ApiClient.convertToType(data['shortIntToFloat'], 'Number');
       if (data.hasOwnProperty('symbol'))
-        obj.Symbol = ApiClient.convertToType(data['symbol'], 'String');
+        obj.symbol = ApiClient.convertToType(data['symbol'], 'String');
       if (data.hasOwnProperty('totalDebtToCapital'))
-        obj.TotalDebtToCapital = ApiClient.convertToType(data['totalDebtToCapital'], 'Number');
+        obj.totalDebtToCapital = ApiClient.convertToType(data['totalDebtToCapital'], 'Number');
       if (data.hasOwnProperty('totalDebtToEquity'))
-        obj.TotalDebtToEquity = ApiClient.convertToType(data['totalDebtToEquity'], 'Number');
+        obj.totalDebtToEquity = ApiClient.convertToType(data['totalDebtToEquity'], 'Number');
       if (data.hasOwnProperty('vol10DayAvg'))
-        obj.Vol10DayAvg = ApiClient.convertToType(data['vol10DayAvg'], 'Number');
+        obj.vol10DayAvg = ApiClient.convertToType(data['vol10DayAvg'], 'Number');
       if (data.hasOwnProperty('vol1DayAvg'))
-        obj.Vol1DayAvg = ApiClient.convertToType(data['vol1DayAvg'], 'Number');
+        obj.vol1DayAvg = ApiClient.convertToType(data['vol1DayAvg'], 'Number');
       if (data.hasOwnProperty('vol3MonthAvg'))
-        obj.Vol3MonthAvg = ApiClient.convertToType(data['vol3MonthAvg'], 'Number');
+        obj.vol3MonthAvg = ApiClient.convertToType(data['vol3MonthAvg'], 'Number');
     }
     return obj;
   }
 
   /**
-   * @member {Number} Beta
+   * @member {Number} beta
    */
-  exports.prototype.Beta = undefined;
+  exports.prototype.beta = undefined;
 
   /**
-   * @member {Number} BookValuePerShare
+   * @member {Number} bookValuePerShare
    */
-  exports.prototype.BookValuePerShare = undefined;
+  exports.prototype.bookValuePerShare = undefined;
 
   /**
-   * @member {Number} CurrentRatio
+   * @member {Number} currentRatio
    */
-  exports.prototype.CurrentRatio = undefined;
+  exports.prototype.currentRatio = undefined;
 
   /**
-   * @member {Number} DivGrowthRate3Year
+   * @member {Number} divGrowthRate3Year
    */
-  exports.prototype.DivGrowthRate3Year = undefined;
+  exports.prototype.divGrowthRate3Year = undefined;
 
   /**
-   * @member {Number} DividendAmount
+   * @member {Number} dividendAmount
    */
-  exports.prototype.DividendAmount = undefined;
+  exports.prototype.dividendAmount = undefined;
 
   /**
-   * @member {String} DividendDate
+   * @member {String} dividendDate
    */
-  exports.prototype.DividendDate = undefined;
+  exports.prototype.dividendDate = undefined;
 
   /**
-   * @member {Number} DividendPayAmount
+   * @member {Number} dividendPayAmount
    */
-  exports.prototype.DividendPayAmount = undefined;
+  exports.prototype.dividendPayAmount = undefined;
 
   /**
-   * @member {String} DividendPayDate
+   * @member {String} dividendPayDate
    */
-  exports.prototype.DividendPayDate = undefined;
+  exports.prototype.dividendPayDate = undefined;
 
   /**
-   * @member {Number} DividendYield
+   * @member {Number} dividendYield
    */
-  exports.prototype.DividendYield = undefined;
+  exports.prototype.dividendYield = undefined;
 
   /**
-   * @member {Number} EpsChange
+   * @member {Number} epsChange
    */
-  exports.prototype.EpsChange = undefined;
+  exports.prototype.epsChange = undefined;
 
   /**
-   * @member {Number} EpsChangePercentTTM
+   * @member {Number} epsChangePercentTTM
    */
-  exports.prototype.EpsChangePercentTTM = undefined;
+  exports.prototype.epsChangePercentTTM = undefined;
 
   /**
-   * @member {Number} EpsChangeYear
+   * @member {Number} epsChangeYear
    */
-  exports.prototype.EpsChangeYear = undefined;
+  exports.prototype.epsChangeYear = undefined;
 
   /**
-   * @member {Number} EpsTTM
+   * @member {Number} epsTTM
    */
-  exports.prototype.EpsTTM = undefined;
+  exports.prototype.epsTTM = undefined;
 
   /**
-   * @member {Number} GrossMarginMRQ
+   * @member {Number} grossMarginMRQ
    */
-  exports.prototype.GrossMarginMRQ = undefined;
+  exports.prototype.grossMarginMRQ = undefined;
 
   /**
-   * @member {Number} GrossMarginTTM
+   * @member {Number} grossMarginTTM
    */
-  exports.prototype.GrossMarginTTM = undefined;
+  exports.prototype.grossMarginTTM = undefined;
 
   /**
-   * @member {Number} High52
+   * @member {Number} high52
    */
-  exports.prototype.High52 = undefined;
+  exports.prototype.high52 = undefined;
 
   /**
-   * @member {Number} InterestCoverage
+   * @member {Number} interestCoverage
    */
-  exports.prototype.InterestCoverage = undefined;
+  exports.prototype.interestCoverage = undefined;
 
   /**
-   * @member {Number} Low52
+   * @member {Number} low52
    */
-  exports.prototype.Low52 = undefined;
+  exports.prototype.low52 = undefined;
 
   /**
-   * @member {Number} LtDebtToEquity
+   * @member {Number} ltDebtToEquity
    */
-  exports.prototype.LtDebtToEquity = undefined;
+  exports.prototype.ltDebtToEquity = undefined;
 
   /**
-   * @member {Number} MarketCap
+   * @member {Number} marketCap
    */
-  exports.prototype.MarketCap = undefined;
+  exports.prototype.marketCap = undefined;
 
   /**
-   * @member {Number} MarketCapFloat
+   * @member {Number} marketCapFloat
    */
-  exports.prototype.MarketCapFloat = undefined;
+  exports.prototype.marketCapFloat = undefined;
 
   /**
-   * @member {Number} NetProfitMarginMRQ
+   * @member {Number} netProfitMarginMRQ
    */
-  exports.prototype.NetProfitMarginMRQ = undefined;
+  exports.prototype.netProfitMarginMRQ = undefined;
 
   /**
-   * @member {Number} NetProfitMarginTTM
+   * @member {Number} netProfitMarginTTM
    */
-  exports.prototype.NetProfitMarginTTM = undefined;
+  exports.prototype.netProfitMarginTTM = undefined;
 
   /**
-   * @member {Number} OperatingMarginMRQ
+   * @member {Number} operatingMarginMRQ
    */
-  exports.prototype.OperatingMarginMRQ = undefined;
+  exports.prototype.operatingMarginMRQ = undefined;
 
   /**
-   * @member {Number} OperatingMarginTTM
+   * @member {Number} operatingMarginTTM
    */
-  exports.prototype.OperatingMarginTTM = undefined;
+  exports.prototype.operatingMarginTTM = undefined;
 
   /**
-   * @member {Number} PbRatio
+   * @member {Number} pbRatio
    */
-  exports.prototype.PbRatio = undefined;
+  exports.prototype.pbRatio = undefined;
 
   /**
-   * @member {Number} PcfRatio
+   * @member {Number} pcfRatio
    */
-  exports.prototype.PcfRatio = undefined;
+  exports.prototype.pcfRatio = undefined;
 
   /**
-   * @member {Number} PeRatio
+   * @member {Number} peRatio
    */
-  exports.prototype.PeRatio = undefined;
+  exports.prototype.peRatio = undefined;
 
   /**
-   * @member {Number} PegRatio
+   * @member {Number} pegRatio
    */
-  exports.prototype.PegRatio = undefined;
+  exports.prototype.pegRatio = undefined;
 
   /**
-   * @member {Number} PrRatio
+   * @member {Number} prRatio
    */
-  exports.prototype.PrRatio = undefined;
+  exports.prototype.prRatio = undefined;
 
   /**
-   * @member {Number} QuickRatio
+   * @member {Number} quickRatio
    */
-  exports.prototype.QuickRatio = undefined;
+  exports.prototype.quickRatio = undefined;
 
   /**
-   * @member {Number} ReturnOnAssets
+   * @member {Number} returnOnAssets
    */
-  exports.prototype.ReturnOnAssets = undefined;
+  exports.prototype.returnOnAssets = undefined;
 
   /**
-   * @member {Number} ReturnOnEquity
+   * @member {Number} returnOnEquity
    */
-  exports.prototype.ReturnOnEquity = undefined;
+  exports.prototype.returnOnEquity = undefined;
 
   /**
-   * @member {Number} ReturnOnInvestment
+   * @member {Number} returnOnInvestment
    */
-  exports.prototype.ReturnOnInvestment = undefined;
+  exports.prototype.returnOnInvestment = undefined;
 
   /**
-   * @member {Number} RevChangeIn
+   * @member {Number} revChangeIn
    */
-  exports.prototype.RevChangeIn = undefined;
+  exports.prototype.revChangeIn = undefined;
 
   /**
-   * @member {Number} RevChangeTTM
+   * @member {Number} revChangeTTM
    */
-  exports.prototype.RevChangeTTM = undefined;
+  exports.prototype.revChangeTTM = undefined;
 
   /**
-   * @member {Number} RevChangeYear
+   * @member {Number} revChangeYear
    */
-  exports.prototype.RevChangeYear = undefined;
+  exports.prototype.revChangeYear = undefined;
 
   /**
-   * @member {Number} SharesOutstanding
+   * @member {Number} sharesOutstanding
    */
-  exports.prototype.SharesOutstanding = undefined;
+  exports.prototype.sharesOutstanding = undefined;
 
   /**
-   * @member {Number} ShortIntDayToCover
+   * @member {Number} shortIntDayToCover
    */
-  exports.prototype.ShortIntDayToCover = undefined;
+  exports.prototype.shortIntDayToCover = undefined;
 
   /**
-   * @member {Number} ShortIntToFloat
+   * @member {Number} shortIntToFloat
    */
-  exports.prototype.ShortIntToFloat = undefined;
+  exports.prototype.shortIntToFloat = undefined;
 
   /**
-   * @member {String} Symbol
+   * @member {String} symbol
    */
-  exports.prototype.Symbol = undefined;
+  exports.prototype.symbol = undefined;
 
   /**
-   * @member {Number} TotalDebtToCapital
+   * @member {Number} totalDebtToCapital
    */
-  exports.prototype.TotalDebtToCapital = undefined;
+  exports.prototype.totalDebtToCapital = undefined;
 
   /**
-   * @member {Number} TotalDebtToEquity
+   * @member {Number} totalDebtToEquity
    */
-  exports.prototype.TotalDebtToEquity = undefined;
+  exports.prototype.totalDebtToEquity = undefined;
 
   /**
-   * @member {Number} Vol10DayAvg
+   * @member {Number} vol10DayAvg
    */
-  exports.prototype.Vol10DayAvg = undefined;
+  exports.prototype.vol10DayAvg = undefined;
 
   /**
-   * @member {Number} Vol1DayAvg
+   * @member {Number} vol1DayAvg
    */
-  exports.prototype.Vol1DayAvg = undefined;
+  exports.prototype.vol1DayAvg = undefined;
 
   /**
-   * @member {Number} Vol3MonthAvg
+   * @member {Number} vol3MonthAvg
    */
-  exports.prototype.Vol3MonthAvg = undefined;
+  exports.prototype.vol3MonthAvg = undefined;
 
   return exports;
 

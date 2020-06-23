@@ -3,12 +3,12 @@
 ## Enum
 
 
-* `Minute` (value: `"minute"`)
+* `minute` (value: `"minute"`)
 
-* `Daily` (value: `"daily"`)
+* `daily` (value: `"daily"`)
 
-* `Weekly` (value: `"weekly"`)
+* `weekly` (value: `"weekly"`)
 
-* `Monthly` (value: `"monthly"`)
+* `monthly` (value: `"monthly"`)
 
 

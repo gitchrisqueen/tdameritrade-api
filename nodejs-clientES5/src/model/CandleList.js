@@ -56,30 +56,30 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('candles'))
-        obj.Candles = ApiClient.convertToType(data['candles'], [CandleListCandles]);
+        obj.candles = ApiClient.convertToType(data['candles'], [CandleListCandles]);
       if (data.hasOwnProperty('empty'))
-        obj.Empty = ApiClient.convertToType(data['empty'], 'Boolean');
+        obj.empty = ApiClient.convertToType(data['empty'], 'Boolean');
       if (data.hasOwnProperty('symbol'))
-        obj.Symbol = ApiClient.convertToType(data['symbol'], 'String');
+        obj.symbol = ApiClient.convertToType(data['symbol'], 'String');
     }
     return obj;
   }
 
   /**
-   * @member {Array.<module:model/CandleListCandles>} Candles
+   * @member {Array.<module:model/CandleListCandles>} candles
    */
-  exports.prototype.Candles = undefined;
+  exports.prototype.candles = undefined;
 
   /**
-   * @member {Boolean} Empty
+   * @member {Boolean} empty
    */
-  exports.prototype.Empty = undefined;
+  exports.prototype.empty = undefined;
 
   /**
    * Symbol
-   * @member {String} Symbol
+   * @member {String} symbol
    */
-  exports.prototype.Symbol = undefined;
+  exports.prototype.symbol = undefined;
 
   return exports;
 

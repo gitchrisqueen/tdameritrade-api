@@ -24,15 +24,15 @@ export default class PostAccessBody {
     * Body Parmeers for the Post Access Token Endpoint
     * @alias module:model/PostAccessBody
     * @class
-    * @param GrantType {String} The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
-    * @param ClientId {Number} OAuth User ID of your application
+    * @param grant_type {String} The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+    * @param client_id {Number} OAuth User ID of your application
     */
 
-    constructor(GrantType, ClientId) {
+    constructor(grant_type, client_id) {
         
         
-        this['grant_type'] = GrantType;
-        this['client_id'] = ClientId;
+        this['grant_type'] = grant_type;
+        this['client_id'] = client_id;
         
     }
 

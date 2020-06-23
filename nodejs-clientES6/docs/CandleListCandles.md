@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Close** | **Number** | Close | [optional] 
-**Datetime** | **Number** | DateTime | [optional] 
-**High** | **Number** | High | [optional] 
-**Low** | **Number** | Low | [optional] 
-**Open** | **Number** | Open | [optional] 
-**Volume** | **Number** | Volume | [optional] 
+**close** | **Number** | Close | [optional] 
+**datetime** | **Number** | DateTime | [optional] 
+**high** | **Number** | High | [optional] 
+**low** | **Number** | Low | [optional] 
+**open** | **Number** | Open | [optional] 
+**volume** | **Number** | Volume | [optional] 

@@ -51,27 +51,27 @@
     /**
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
-     * @param {String} GrantType The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
-     * @param {Number} ClientId OAuth User ID of your application
+     * @param {String} grant_type The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+     * @param {Number} client_id OAuth User ID of your application
      * @param {Object} opts Optional parameters
-     * @param {String} opts.RefreshToken Required if using refresh token grant
-     * @param {String} opts.AccessType Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
-     * @param {String} opts.Code Required if trying to use authorization code grant
-     * @param {String} opts.RedirectUri Required if trying to use authorization code grant
+     * @param {String} opts.refresh_token Required if using refresh token grant
+     * @param {String} opts.access_type Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
+     * @param {String} opts.code Required if trying to use authorization code grant
+     * @param {String} opts.redirect_uri Required if trying to use authorization code grant
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
      */
-    this.oauth2TokenPOSTWithHttpInfo = function(GrantType, ClientId, opts) {
+    this.oauth2TokenPOSTWithHttpInfo = function(grant_type, client_id, opts) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'GrantType' is set
-      if (GrantType === undefined || GrantType === null) {
-        throw new Error("Missing the required parameter 'GrantType' when calling oauth2TokenPOST");
+      // verify the required parameter 'grant_type' is set
+      if (grant_type === undefined || grant_type === null) {
+        throw new Error("Missing the required parameter 'grant_type' when calling oauth2TokenPOST");
       }
 
-      // verify the required parameter 'ClientId' is set
-      if (ClientId === undefined || ClientId === null) {
-        throw new Error("Missing the required parameter 'ClientId' when calling oauth2TokenPOST");
+      // verify the required parameter 'client_id' is set
+      if (client_id === undefined || client_id === null) {
+        throw new Error("Missing the required parameter 'client_id' when calling oauth2TokenPOST");
       }
 
 
@@ -84,12 +84,12 @@
       var headerParams = {
       };
       var formParams = {
-        'grant_type': GrantType,
-        'refresh_token': opts['RefreshToken'],
-        'access_type': opts['AccessType'],
-        'code': opts['Code'],
-        'client_id': ClientId,
-        'redirect_uri': opts['RedirectUri']
+        'grant_type': grant_type,
+        'refresh_token': opts['refresh_token'],
+        'access_type': opts['access_type'],
+        'code': opts['code'],
+        'client_id': client_id,
+        'redirect_uri': opts['redirect_uri']
       };
 
       var authNames = [];
@@ -107,17 +107,17 @@
     /**
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
-     * @param {String} GrantType The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
-     * @param {Number} ClientId OAuth User ID of your application
+     * @param {String} grant_type The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
+     * @param {Number} client_id OAuth User ID of your application
      * @param {Object} opts Optional parameters
-     * @param {String} opts.RefreshToken Required if using refresh token grant
-     * @param {String} opts.AccessType Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
-     * @param {String} opts.Code Required if trying to use authorization code grant
-     * @param {String} opts.RedirectUri Required if trying to use authorization code grant
+     * @param {String} opts.refresh_token Required if using refresh token grant
+     * @param {String} opts.access_type Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
+     * @param {String} opts.code Required if trying to use authorization code grant
+     * @param {String} opts.redirect_uri Required if trying to use authorization code grant
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
      */
-    this.oauth2TokenPOST = function(GrantType, ClientId, opts) {
-      return this.oauth2TokenPOSTWithHttpInfo(GrantType, ClientId, opts)
+    this.oauth2TokenPOST = function(grant_type, client_id, opts) {
+      return this.oauth2TokenPOSTWithHttpInfo(grant_type, client_id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

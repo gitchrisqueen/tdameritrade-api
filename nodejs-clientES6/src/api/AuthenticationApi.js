@@ -51,12 +51,12 @@ export default class AuthenticationApi {
       let headerParams = {
       };
       let formParams = {
-        'grant_type': opts['GrantType'],
-        'refresh_token': opts['RefreshToken'],
-        'access_type': opts['AccessType'],
-        'code': opts['Code'],
-        'client_id': opts['ClientId'],
-        'redirect_uri': opts['RedirectUri']
+        'grant_type': opts['grant_type'],
+        'refresh_token': opts['refresh_token'],
+        'access_type': opts['access_type'],
+        'code': opts['code'],
+        'client_id': opts['client_id'],
+        'redirect_uri': opts['redirect_uri']
       };
 
       let authNames = [];

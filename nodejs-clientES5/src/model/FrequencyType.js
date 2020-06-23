@@ -40,25 +40,25 @@
      * value: "minute"
      * @const
      */
-    Minute: "minute",
+    minute: "minute",
 
     /**
      * value: "daily"
      * @const
      */
-    Daily: "daily",
+    daily: "daily",
 
     /**
      * value: "weekly"
      * @const
      */
-    Weekly: "weekly",
+    weekly: "weekly",
 
     /**
      * value: "monthly"
      * @const
      */
-    Monthly: "monthly"
+    monthly: "monthly"
   };
 
   /**
