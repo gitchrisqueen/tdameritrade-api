@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="marketdataSymbolPricehistoryGET"></a>
 # **marketdataSymbolPricehistoryGET**
-> CandleList marketdataSymbolPricehistoryGET(Symbol, PeriodType, opts)
+> CandleList marketdataSymbolPricehistoryGET(Symbol, opts)
 
 Get price history for a symbol
 
@@ -20,9 +20,9 @@ let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
 let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.PriceHistoryApi();
 let Symbol = "Symbol_example"; // String | 
-let PeriodType = new @GitchrisqueenTdameritradeApiJsClient.PeriodType(); // PeriodType | 
 let opts = { 
   'Apikey': "Apikey_example", // String | 
+  'PeriodType': new @GitchrisqueenTdameritradeApiJsClient.PeriodType(), // PeriodType | 
   'Period': 56, // Number | 
   'FrequencyType': new @GitchrisqueenTdameritradeApiJsClient.FrequencyType(), // FrequencyType | 
   'Frequency': 56, // Number | 
@@ -30,7 +30,7 @@ let opts = {
   'StartDate': 56, // Number | 
   'NeedExtendedHoursData': true // Boolean | 
 };
-apiInstance.marketdataSymbolPricehistoryGET(Symbol, PeriodType, opts).then((data) => {
+apiInstance.marketdataSymbolPricehistoryGET(Symbol, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -43,8 +43,8 @@ apiInstance.marketdataSymbolPricehistoryGET(Symbol, PeriodType, opts).then((data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Symbol** | **String**|  | 
- **PeriodType** | [**PeriodType**](.md)|  | 
  **Apikey** | **String**|  | [optional] 
+ **PeriodType** | [**PeriodType**](.md)|  | [optional] 
  **Period** | **Number**|  | [optional] 
  **FrequencyType** | [**FrequencyType**](.md)|  | [optional] 
  **Frequency** | **Number**|  | [optional] 
