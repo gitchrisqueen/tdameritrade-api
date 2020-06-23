@@ -9,3 +9,5 @@ Name | Type | Description | Notes
 **Low** | **Number** | Low | [optional] 
 **Open** | **Number** | Open | [optional] 
 **Volume** | **Number** | Volume | [optional] 
+
+

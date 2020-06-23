@@ -9,3 +9,5 @@ Name | Type | Description | Notes
 **GrantType** | **String** | The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token | 
 **RedirectUri** | **String** | Required if trying to use authorization code grant | [optional] 
 **RefreshToken** | **String** | Required if using refresh token grant | [optional] 
+
+

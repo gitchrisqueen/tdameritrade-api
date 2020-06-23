@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accountsAccountIdOrdersOrderIdDELETE**](OrdersApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 
+
 <a name="accountsAccountIdOrdersOrderIdDELETE"></a>
 # **accountsAccountIdOrdersOrderIdDELETE**
 > EASObject accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId)
@@ -16,22 +17,24 @@ Cancel a specific order for a spcific account
 
 ### Example
 ```javascript
-import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
-let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
+var @GitchrisqueenTdameritradeApiJsClient = require('@gitchrisqueen/tdameritrade-api-js-client');
+var defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
+var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.OrdersApi();
-let AccountId = 56; // Number | 
-let OrderId = 56; // Number | 
+var apiInstance = new @GitchrisqueenTdameritradeApiJsClient.OrdersApi();
 
-apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then((data) => {
+var AccountId = 56; // Number | 
+
+var OrderId = 56; // Number | 
+
+apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
+}, function(error) {
   console.error(error);
 });
 

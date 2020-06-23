@@ -9,3 +9,5 @@ Name | Type | Description | Notes
 **RefreshTokenExpiresIn** | **Number** |  | [optional] 
 **Scope** | **String** |  | [optional] 
 **TokenType** | **String** |  | [optional] 
+
+

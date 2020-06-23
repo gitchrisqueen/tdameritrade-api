@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**marketdataSymbolPricehistoryGET**](PriceHistoryApi.md#marketdataSymbolPricehistoryGET) | **GET** /marketdata/{symbol}/pricehistory | Get price history for a symbol
 
+
 <a name="marketdataSymbolPricehistoryGET"></a>
 # **marketdataSymbolPricehistoryGET**
 > CandleList marketdataSymbolPricehistoryGET(Symbol, opts)
@@ -14,18 +15,20 @@ Get price history for a symbol
 
 ### Example
 ```javascript
-import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
-let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
+var @GitchrisqueenTdameritradeApiJsClient = require('@gitchrisqueen/tdameritrade-api-js-client');
+var defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
+var bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.PriceHistoryApi();
-let Symbol = "Symbol_example"; // String | 
-let opts = { 
+var apiInstance = new @GitchrisqueenTdameritradeApiJsClient.PriceHistoryApi();
+
+var Symbol = "Symbol_example"; // String | 
+
+var opts = { 
   'Apikey': "Apikey_example", // String | 
   'PeriodType': "PeriodType_example", // String | 
   'Period': 56, // Number | 
@@ -35,9 +38,9 @@ let opts = {
   'StartDate': 56, // Number | 
   'NeedExtendedHoursData': true // Boolean | 
 };
-apiInstance.marketdataSymbolPricehistoryGET(Symbol, opts).then((data) => {
+apiInstance.marketdataSymbolPricehistoryGET(Symbol, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
+}, function(error) {
   console.error(error);
 });
 

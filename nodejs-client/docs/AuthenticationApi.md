@@ -6,9 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**oauth2TokenPOST**](AuthenticationApi.md#oauth2TokenPOST) | **POST** /oauth2/token | Post Access Token
 
+
 <a name="oauth2TokenPOST"></a>
 # **oauth2TokenPOST**
-> oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectUri)
+> oauth2TokenPOST(GrantType, ClientId, opts)
 
 Post Access Token
 
@@ -16,24 +17,23 @@ The token endpoint returns an access token along with an optional refresh token.
 
 ### Example
 ```javascript
-import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
-let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
+var @GitchrisqueenTdameritradeApiJsClient = require('@gitchrisqueen/tdameritrade-api-js-client');
 
-// Configure OAuth2 access token for authorization: application
-let application = defaultClient.authentications['application'];
-application.accessToken = 'YOUR ACCESS TOKEN';
+var apiInstance = new @GitchrisqueenTdameritradeApiJsClient.AuthenticationApi();
 
-let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.AuthenticationApi();
-let GrantType = "GrantType_example"; // String | 
-let RefreshToken = "RefreshToken_example"; // String | 
-let AccessType = "AccessType_example"; // String | 
-let Code = "Code_example"; // String | 
-let ClientId = 56; // Number | 
-let RedirectUri = "RedirectUri_example"; // String | 
+var GrantType = "GrantType_example"; // String | The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token
 
-apiInstance.oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectUri).then(() => {
+var ClientId = 56; // Number | OAuth User ID of your application
+
+var opts = { 
+  'RefreshToken': "RefreshToken_example", // String | Required if using refresh token grant
+  'AccessType': "AccessType_example", // String | Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.
+  'Code': "Code_example", // String | Required if trying to use authorization code grant
+  'RedirectUri': "RedirectUri_example" // String | Required if trying to use authorization code grant
+};
+apiInstance.oauth2TokenPOST(GrantType, ClientId, opts).then(function() {
   console.log('API called successfully.');
-}, (error) => {
+}, function(error) {
   console.error(error);
 });
 
@@ -43,12 +43,12 @@ apiInstance.oauth2TokenPOST(GrantTypeRefreshTokenAccessTypeCodeClientIdRedirectU
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GrantType** | **String**|  | 
- **RefreshToken** | **String**|  | 
- **AccessType** | **String**|  | 
- **Code** | **String**|  | 
- **ClientId** | **Number**|  | 
- **RedirectUri** | **String**|  | 
+ **GrantType** | **String**| The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token | 
+ **ClientId** | **Number**| OAuth User ID of your application | 
+ **RefreshToken** | **String**| Required if using refresh token grant | [optional] 
+ **AccessType** | **String**| Set to offline to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request. | [optional] 
+ **Code** | **String**| Required if trying to use authorization code grant | [optional] 
+ **RedirectUri** | **String**| Required if trying to use authorization code grant | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ null (empty response body)
 
 ### Authorization
 
-[application](../README.md#application)
+No authorization required
 
 ### HTTP request headers
 

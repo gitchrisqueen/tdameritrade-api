@@ -10,11 +10,19 @@ Name | Type | Description | Notes
 **Fundamental** | [**FundamentalFundamental**](FundamentalFundamental.md) |  | [optional] 
 **Symbol** | **String** |  | [optional] 
 
+
 <a name="AssetTypeEnum"></a>
 ## Enum: AssetTypeEnum
 
+
 * `EQUITY` (value: `"EQUITY"`)
+
 * `ETF` (value: `"ETF"`)
+
 * `MUTUAL_FUND` (value: `"MUTUAL_FUND"`)
+
 * `UNKNOWN` (value: `"UNKNOWN"`)
+
+
+
 

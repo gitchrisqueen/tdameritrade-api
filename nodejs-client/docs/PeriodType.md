@@ -2,7 +2,13 @@
 
 ## Enum
 
-* `day` (value: `"day"`)
-* `month` (value: `"month"`)
-* `year` (value: `"year"`)
-* `ytd` (value: `"ytd"`)
+
+* `Day` (value: `"day"`)
+
+* `Month` (value: `"month"`)
+
+* `Year` (value: `"year"`)
+
+* `Ytd` (value: `"ytd"`)
+
+

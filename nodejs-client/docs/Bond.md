@@ -10,8 +10,13 @@ Name | Type | Description | Notes
 **Exchange** | **String** |  | [optional] 
 **Symbol** | **String** |  | [optional] 
 
+
 <a name="AssetTypeEnum"></a>
 ## Enum: AssetTypeEnum
 
+
 * `BOND` (value: `"BOND"`)
+
+
+
 

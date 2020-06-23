@@ -49,3 +49,5 @@ Name | Type | Description | Notes
 **Vol10DayAvg** | **Number** |  | [optional] 
 **Vol1DayAvg** | **Number** |  | [optional] 
 **Vol3MonthAvg** | **Number** |  | [optional] 
+
+
