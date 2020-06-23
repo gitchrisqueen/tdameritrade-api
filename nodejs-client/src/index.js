@@ -12,7 +12,7 @@
  */
 
 import ApiClient from './ApiClient';
-import AnyOfinlineResponse200 from './model/AnyOfinlineResponse200';
+import Body from './model/Body';
 import Bond from './model/Bond';
 import CandleList from './model/CandleList';
 import CandleListCandles from './model/CandleListCandles';
@@ -27,7 +27,7 @@ import PeriodType from './model/PeriodType';
 import PostAccessBody from './model/PostAccessBody';
 import AccountsAndTradingApi from './api/AccountsAndTradingApi';
 import AuthenticationApi from './api/AuthenticationApi';
-import InntrumentsApi from './api/InntrumentsApi';
+import InstrumentsApi from './api/InstrumentsApi';
 import OrdersApi from './api/OrdersApi';
 import PriceHistoryApi from './api/PriceHistoryApi';
 
@@ -70,10 +70,10 @@ export {
     ApiClient,
 
     /**
-     * The AnyOfinlineResponse200 model constructor.
-     * @property {module:model/AnyOfinlineResponse200}
+     * The Body model constructor.
+     * @property {module:model/Body}
      */
-    AnyOfinlineResponse200,
+    Body,
 
     /**
      * The Bond model constructor.
@@ -160,10 +160,10 @@ export {
     AuthenticationApi,
 
     /**
-    * The InntrumentsApi service constructor.
-    * @property {module:api/InntrumentsApi}
+    * The InstrumentsApi service constructor.
+    * @property {module:api/InstrumentsApi}
     */
-    InntrumentsApi,
+    InstrumentsApi,
 
     /**
     * The OrdersApi service constructor.

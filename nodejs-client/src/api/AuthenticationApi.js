@@ -36,11 +36,9 @@ export default class AuthenticationApi {
     /**
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
-     * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    oauth2TokenPOSTWithHttpInfo(opts) {
-      opts = opts || {};
+    oauth2TokenPOSTWithHttpInfo(GrantType, RefreshToken, AccessType, Code, ClientId, RedirectUri) {
       let postBody = null;
 
       let pathParams = {
@@ -50,15 +48,15 @@ export default class AuthenticationApi {
       let headerParams = {
       };
       let formParams = {
-        'grant_type': opts['GrantType'],
-        'refresh_token': opts['RefreshToken'],
-        'access_type': opts['AccessType'],
-        'code': opts['Code'],
-        'client_id': opts['ClientId'],
-        'redirect_uri': opts['RedirectUri']
+        'grant_type': GrantType,
+        'refresh_token': RefreshToken,
+        'access_type': AccessType,
+        'code': Code,
+        'client_id': ClientId,
+        'redirect_uri': RedirectUri
       };
 
-      let authNames = [];
+      let authNames = ['application'];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
       let returnType = null;
@@ -73,11 +71,10 @@ export default class AuthenticationApi {
     /**
      * Post Access Token
      * The token endpoint returns an access token along with an optional refresh token.
-     * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    oauth2TokenPOST(opts) {
-      return this.oauth2TokenPOSTWithHttpInfo(opts)
+    oauth2TokenPOST(GrantType, RefreshToken, AccessType, Code, ClientId, RedirectUri) {
+      return this.oauth2TokenPOSTWithHttpInfo(GrantType, RefreshToken, AccessType, Code, ClientId, RedirectUri)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

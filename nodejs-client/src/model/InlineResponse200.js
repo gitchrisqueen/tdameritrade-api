@@ -27,7 +27,7 @@ export default class InlineResponse200 {
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        
         
     }
 
@@ -48,8 +48,7 @@ export default class InlineResponse200 {
     }
 
 
-    // Implement AnyOfinlineResponse200 interface:
-    
+
 
 
 }

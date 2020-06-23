@@ -28,7 +28,7 @@ export default class Fundamental {
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        
         
     }
 
@@ -44,11 +44,11 @@ export default class Fundamental {
             obj = obj || new Fundamental();
                         
             
+            if (data.hasOwnProperty('assetType')) {
+                obj['assetType'] = ApiClient.convertToType(data['assetType'], 'String');
+            }
             if (data.hasOwnProperty('cusip')) {
                 obj['cusip'] = ApiClient.convertToType(data['cusip'], 'String');
-            }
-            if (data.hasOwnProperty('symbol')) {
-                obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
@@ -56,24 +56,24 @@ export default class Fundamental {
             if (data.hasOwnProperty('exchange')) {
                 obj['exchange'] = ApiClient.convertToType(data['exchange'], 'String');
             }
-            if (data.hasOwnProperty('assetType')) {
-                obj['assetType'] = ApiClient.convertToType(data['assetType'], 'String');
-            }
             if (data.hasOwnProperty('fundamental')) {
                 obj['fundamental'] = FundamentalFundamental.constructFromObject(data['fundamental']);
+            }
+            if (data.hasOwnProperty('symbol')) {
+                obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
         }
         return obj;
     }
 
     /**
+    * @member {module:model/Fundamental.AssetTypeEnum} assetType
+    */
+    'assetType' = undefined;
+    /**
     * @member {String} cusip
     */
     'cusip' = undefined;
-    /**
-    * @member {String} symbol
-    */
-    'symbol' = undefined;
     /**
     * @member {String} description
     */
@@ -83,16 +83,15 @@ export default class Fundamental {
     */
     'exchange' = undefined;
     /**
-    * @member {module:model/Fundamental.AssetTypeEnum} assetType
-    */
-    'assetType' = undefined;
-    /**
     * @member {module:model/FundamentalFundamental} fundamental
     */
     'fundamental' = undefined;
+    /**
+    * @member {String} symbol
+    */
+    'symbol' = undefined;
 
-    // Implement AnyOfinlineResponse200 interface:
-    
+
 
     /**
     * Allowed values for the <code>assetType</code> property.

@@ -71,6 +71,11 @@ Please follow the [installation](#installation) instruction and execute the foll
 var @GitchrisqueenTdameritradeApiJsClient = require('@gitchrisqueen/tdameritrade-api-js-client');
 var defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new @GitchrisqueenTdameritradeApiJsClient.AccountsAndTradingApi()
 var AccountId = 56; // {Number} 
@@ -92,13 +97,13 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *@GitchrisqueenTdameritradeApiJsClient.AccountsAndTradingApi* | [**accountsAccountIdOrdersOrderIdDELETE**](docs/AccountsAndTradingApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 *@GitchrisqueenTdameritradeApiJsClient.AuthenticationApi* | [**oauth2TokenPOST**](docs/AuthenticationApi.md#oauth2TokenPOST) | **POST** /oauth2/token | Post Access Token
-*@GitchrisqueenTdameritradeApiJsClient.InntrumentsApi* | [**instrumentsGET**](docs/InntrumentsApi.md#instrumentsGET) | **GET** /instruments | Searh or retrieve instument data, including fundamental data
+*@GitchrisqueenTdameritradeApiJsClient.InstrumentsApi* | [**instrumentsGET**](docs/InstrumentsApi.md#instrumentsGET) | **GET** /instruments | Searh or retrieve instument data, including fundamental data
 *@GitchrisqueenTdameritradeApiJsClient.OrdersApi* | [**accountsAccountIdOrdersOrderIdDELETE**](docs/OrdersApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 *@GitchrisqueenTdameritradeApiJsClient.PriceHistoryApi* | [**marketdataSymbolPricehistoryGET**](docs/PriceHistoryApi.md#marketdataSymbolPricehistoryGET) | **GET** /marketdata/{symbol}/pricehistory | Get price history for a symbol
 
 ## Documentation for Models
 
- - [@GitchrisqueenTdameritradeApiJsClient.AnyOfinlineResponse200](docs/AnyOfinlineResponse200.md)
+ - [@GitchrisqueenTdameritradeApiJsClient.Body](docs/Body.md)
  - [@GitchrisqueenTdameritradeApiJsClient.Bond](docs/Bond.md)
  - [@GitchrisqueenTdameritradeApiJsClient.CandleList](docs/CandleList.md)
  - [@GitchrisqueenTdameritradeApiJsClient.CandleListCandles](docs/CandleListCandles.md)
@@ -125,4 +130,7 @@ Class | Method | HTTP request | Description
 
 ### bearerAuth
 
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 

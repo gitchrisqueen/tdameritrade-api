@@ -46,20 +46,20 @@ export default class EASObject {
             if (data.hasOwnProperty('access_token')) {
                 obj['access_token'] = ApiClient.convertToType(data['access_token'], 'String');
             }
+            if (data.hasOwnProperty('expires_in')) {
+                obj['expires_in'] = ApiClient.convertToType(data['expires_in'], 'Number');
+            }
             if (data.hasOwnProperty('refresh_token')) {
                 obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
             }
-            if (data.hasOwnProperty('token_type')) {
-                obj['token_type'] = ApiClient.convertToType(data['token_type'], 'String');
-            }
-            if (data.hasOwnProperty('expires_in')) {
-                obj['expires_in'] = ApiClient.convertToType(data['expires_in'], 'Number');
+            if (data.hasOwnProperty('refresh_token_expires_in')) {
+                obj['refresh_token_expires_in'] = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
             }
             if (data.hasOwnProperty('scope')) {
                 obj['scope'] = ApiClient.convertToType(data['scope'], 'String');
             }
-            if (data.hasOwnProperty('refresh_token_expires_in')) {
-                obj['refresh_token_expires_in'] = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
+            if (data.hasOwnProperty('token_type')) {
+                obj['token_type'] = ApiClient.convertToType(data['token_type'], 'String');
             }
         }
         return obj;
@@ -70,25 +70,25 @@ export default class EASObject {
     */
     'access_token' = undefined;
     /**
+    * @member {Number} expires_in
+    */
+    'expires_in' = undefined;
+    /**
     * @member {String} refresh_token
     */
     'refresh_token' = undefined;
     /**
-    * @member {String} token_type
+    * @member {Number} refresh_token_expires_in
     */
-    'token_type' = undefined;
-    /**
-    * @member {Number} expires_in
-    */
-    'expires_in' = undefined;
+    'refresh_token_expires_in' = undefined;
     /**
     * @member {String} scope
     */
     'scope' = undefined;
     /**
-    * @member {Number} refresh_token_expires_in
+    * @member {String} token_type
     */
-    'refresh_token_expires_in' = undefined;
+    'token_type' = undefined;
 
 
 

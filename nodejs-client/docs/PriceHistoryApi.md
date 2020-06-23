@@ -17,14 +17,19 @@ Get price history for a symbol
 import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
 let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.PriceHistoryApi();
 let Symbol = "Symbol_example"; // String | 
 let opts = { 
   'Apikey': "Apikey_example", // String | 
-  'PeriodType': new @GitchrisqueenTdameritradeApiJsClient.PeriodType(), // PeriodType | 
+  'PeriodType': "PeriodType_example", // String | 
   'Period': 56, // Number | 
-  'FrequencyType': new @GitchrisqueenTdameritradeApiJsClient.FrequencyType(), // FrequencyType | 
+  'FrequencyType': "FrequencyType_example", // String | 
   'Frequency': 56, // Number | 
   'EndDate': 56, // Number | 
   'StartDate': 56, // Number | 
@@ -44,9 +49,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Symbol** | **String**|  | 
  **Apikey** | **String**|  | [optional] 
- **PeriodType** | [**PeriodType**](.md)|  | [optional] 
+ **PeriodType** | **String**|  | [optional] 
  **Period** | **Number**|  | [optional] 
- **FrequencyType** | [**FrequencyType**](.md)|  | [optional] 
+ **FrequencyType** | **String**|  | [optional] 
  **Frequency** | **Number**|  | [optional] 
  **EndDate** | **Number**|  | [optional] 
  **StartDate** | **Number**|  | [optional] 

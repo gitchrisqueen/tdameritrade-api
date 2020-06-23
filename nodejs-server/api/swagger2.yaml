@@ -94,10 +94,10 @@ paths:
       security:
         - bearerAuth: []
       tags:
-        - Inntruments
+        - Instruments
       operationId: instrumentsGET
       summary: 'Searh or retrieve instument data, including fundamental data'
-      x-swagger-router-controller: Inntruments
+      x-swagger-router-controller: Instruments
   '/marketdata/{symbol}/pricehistory':
     get:
       produces:
