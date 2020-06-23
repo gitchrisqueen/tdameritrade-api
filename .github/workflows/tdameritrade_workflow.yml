@@ -37,7 +37,7 @@ jobs:
           npm run convertopenapi3toswagger2
       - name: Use Swagger To Generate Node.js Client Code
         run: |
-          docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
+          docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate \
           -i /local/nodejs-server/api/swagger2.yaml \
           -l javascript \
           -c /local/config.json \
