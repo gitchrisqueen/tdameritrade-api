@@ -5,7 +5,7 @@
     "projectName": "@gitchrisqueen/tdameritrade-api-js-client",
     "projectDescription": "TD Ameritrade API node javascript client code.",
     "usePromises": "true",
-    "modelPropertyNaming": "PascalCase",
+    "modelPropertyNaming": "original",
     "licenseName": "MIT",
     "useES6": false
   }
