@@ -19,11 +19,6 @@ Cancel a specific order for a spcific account
 import @GitchrisqueenTdameritradeApiJsClient from '@gitchrisqueen/tdameritrade-api-js-client';
 let defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new @GitchrisqueenTdameritradeApiJsClient.OrdersApi();
 let AccountId = 56; // Number | 

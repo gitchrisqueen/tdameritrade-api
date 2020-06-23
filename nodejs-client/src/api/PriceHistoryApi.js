@@ -13,6 +13,8 @@
 
 import ApiClient from "../ApiClient";
 import CandleList from '../model/CandleList';
+import FrequencyType from '../model/FrequencyType';
+import PeriodType from '../model/PeriodType';
 
 /**
 * PriceHistory service.

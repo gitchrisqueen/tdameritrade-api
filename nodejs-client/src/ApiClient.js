@@ -41,7 +41,6 @@ export default class ApiClient {
          */
         this.authentications = {
             'application': {type: 'oauth2'},
-            'bearerAuth': {type: 'apiKey', 'in': 'header', name: 'Authorization'}
         }
 
         /**

@@ -71,11 +71,6 @@ Please follow the [installation](#installation) instruction and execute the foll
 var @GitchrisqueenTdameritradeApiJsClient = require('@gitchrisqueen/tdameritrade-api-js-client');
 var defaultClient = @GitchrisqueenTdameritradeApiJsClient.ApiClient.instance;
 
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new @GitchrisqueenTdameritradeApiJsClient.AccountsAndTradingApi()
 var AccountId = 56; // {Number} 
@@ -103,7 +98,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [@GitchrisqueenTdameritradeApiJsClient.Body](docs/Body.md)
+ - [@GitchrisqueenTdameritradeApiJsClient.AnyOfinlineResponse200](docs/AnyOfinlineResponse200.md)
  - [@GitchrisqueenTdameritradeApiJsClient.Bond](docs/Bond.md)
  - [@GitchrisqueenTdameritradeApiJsClient.CandleList](docs/CandleList.md)
  - [@GitchrisqueenTdameritradeApiJsClient.CandleListCandles](docs/CandleListCandles.md)
@@ -130,7 +125,4 @@ Class | Method | HTTP request | Description
 
 ### bearerAuth
 
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
 
