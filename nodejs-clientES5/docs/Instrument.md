@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetType** | **String** |  | [optional] 
-**Cusip** | **String** |  | [optional] 
-**Description** | **String** |  | [optional] 
-**Exchange** | **String** |  | [optional] 
-**Symbol** | **String** |  | [optional] 
+**assetType** | **String** |  | [optional] 
+**cusip** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**exchange** | **String** |  | [optional] 
+**symbol** | **String** |  | [optional] 
 
 
 <a name="AssetTypeEnum"></a>

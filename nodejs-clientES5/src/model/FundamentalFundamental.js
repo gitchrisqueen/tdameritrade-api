@@ -55,15 +55,15 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('schema'))
-        obj.Schema = FundamentalData.constructFromObject(data['schema']);
+        obj.schema = FundamentalData.constructFromObject(data['schema']);
     }
     return obj;
   }
 
   /**
-   * @member {module:model/FundamentalData} Schema
+   * @member {module:model/FundamentalData} schema
    */
-  exports.prototype.Schema = undefined;
+  exports.prototype.schema = undefined;
 
   return exports;
 

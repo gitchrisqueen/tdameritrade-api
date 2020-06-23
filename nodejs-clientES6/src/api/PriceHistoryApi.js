@@ -41,22 +41,22 @@ export default class PriceHistoryApi {
      * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CandleList} and HTTP response
      */
-    marketdataSymbolPricehistoryGETWithHttpInfo(Symbol, opts) {
+    marketdataSymbolPricehistoryGETWithHttpInfo(symbol, opts) {
       opts = opts || {};
       let postBody = null;
 
       let pathParams = {
-        'symbol': Symbol
+        'symbol': symbol
       };
       let queryParams = {
-        'apikey': opts['Apikey'],
-        'periodType': opts['PeriodType'],
-        'period': opts['Period'],
-        'frequencyType': opts['FrequencyType'],
-        'frequency': opts['Frequency'],
-        'endDate': opts['EndDate'],
-        'startDate': opts['StartDate'],
-        'needExtendedHoursData': opts['NeedExtendedHoursData']
+        'apikey': opts['apikey'],
+        'periodType': opts['periodType'],
+        'period': opts['period'],
+        'frequencyType': opts['frequencyType'],
+        'frequency': opts['frequency'],
+        'endDate': opts['endDate'],
+        'startDate': opts['startDate'],
+        'needExtendedHoursData': opts['needExtendedHoursData']
       };
       let headerParams = {
       };
@@ -80,8 +80,8 @@ export default class PriceHistoryApi {
      * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CandleList}
      */
-    marketdataSymbolPricehistoryGET(Symbol, opts) {
-      return this.marketdataSymbolPricehistoryGETWithHttpInfo(Symbol, opts)
+    marketdataSymbolPricehistoryGET(symbol, opts) {
+      return this.marketdataSymbolPricehistoryGETWithHttpInfo(symbol, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

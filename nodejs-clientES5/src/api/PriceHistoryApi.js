@@ -50,40 +50,40 @@
 
     /**
      * Get price history for a symbol
-     * @param {String} Symbol 
+     * @param {String} symbol 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.Apikey 
-     * @param {module:model/String} opts.PeriodType 
-     * @param {Number} opts.Period 
-     * @param {module:model/String} opts.FrequencyType 
-     * @param {Number} opts.Frequency 
-     * @param {Number} opts.EndDate 
-     * @param {Number} opts.StartDate 
-     * @param {Boolean} opts.NeedExtendedHoursData  (default to true)
+     * @param {String} opts.apikey 
+     * @param {module:model/String} opts.periodType 
+     * @param {Number} opts.period 
+     * @param {module:model/String} opts.frequencyType 
+     * @param {Number} opts.frequency 
+     * @param {Number} opts.endDate 
+     * @param {Number} opts.startDate 
+     * @param {Boolean} opts.needExtendedHoursData  (default to true)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CandleList} and HTTP response
      */
-    this.marketdataSymbolPricehistoryGETWithHttpInfo = function(Symbol, opts) {
+    this.marketdataSymbolPricehistoryGETWithHttpInfo = function(symbol, opts) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'Symbol' is set
-      if (Symbol === undefined || Symbol === null) {
-        throw new Error("Missing the required parameter 'Symbol' when calling marketdataSymbolPricehistoryGET");
+      // verify the required parameter 'symbol' is set
+      if (symbol === undefined || symbol === null) {
+        throw new Error("Missing the required parameter 'symbol' when calling marketdataSymbolPricehistoryGET");
       }
 
 
       var pathParams = {
-        'symbol': Symbol
+        'symbol': symbol
       };
       var queryParams = {
-        'apikey': opts['Apikey'],
-        'periodType': opts['PeriodType'],
-        'period': opts['Period'],
-        'frequencyType': opts['FrequencyType'],
-        'frequency': opts['Frequency'],
-        'endDate': opts['EndDate'],
-        'startDate': opts['StartDate'],
-        'needExtendedHoursData': opts['NeedExtendedHoursData'],
+        'apikey': opts['apikey'],
+        'periodType': opts['periodType'],
+        'period': opts['period'],
+        'frequencyType': opts['frequencyType'],
+        'frequency': opts['frequency'],
+        'endDate': opts['endDate'],
+        'startDate': opts['startDate'],
+        'needExtendedHoursData': opts['needExtendedHoursData'],
       };
       var collectionQueryParams = {
       };
@@ -106,20 +106,20 @@
 
     /**
      * Get price history for a symbol
-     * @param {String} Symbol 
+     * @param {String} symbol 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.Apikey 
-     * @param {module:model/String} opts.PeriodType 
-     * @param {Number} opts.Period 
-     * @param {module:model/String} opts.FrequencyType 
-     * @param {Number} opts.Frequency 
-     * @param {Number} opts.EndDate 
-     * @param {Number} opts.StartDate 
-     * @param {Boolean} opts.NeedExtendedHoursData  (default to true)
+     * @param {String} opts.apikey 
+     * @param {module:model/String} opts.periodType 
+     * @param {Number} opts.period 
+     * @param {module:model/String} opts.frequencyType 
+     * @param {Number} opts.frequency 
+     * @param {Number} opts.endDate 
+     * @param {Number} opts.startDate 
+     * @param {Boolean} opts.needExtendedHoursData  (default to true)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CandleList}
      */
-    this.marketdataSymbolPricehistoryGET = function(Symbol, opts) {
-      return this.marketdataSymbolPricehistoryGETWithHttpInfo(Symbol, opts)
+    this.marketdataSymbolPricehistoryGET = function(symbol, opts) {
+      return this.marketdataSymbolPricehistoryGETWithHttpInfo(symbol, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

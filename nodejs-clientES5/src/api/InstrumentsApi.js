@@ -50,33 +50,33 @@
 
     /**
      * Searh or retrieve instument data, including fundamental data
-     * @param {String} Symbol Value to pass to the search. See projection description for more information.
-     * @param {String} Projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
+     * @param {String} symbol Value to pass to the search. See projection description for more information.
+     * @param {String} projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.Apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
+     * @param {String} opts.apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
-    this.instrumentsGETWithHttpInfo = function(Symbol, Projection, opts) {
+    this.instrumentsGETWithHttpInfo = function(symbol, projection, opts) {
       opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'Symbol' is set
-      if (Symbol === undefined || Symbol === null) {
-        throw new Error("Missing the required parameter 'Symbol' when calling instrumentsGET");
+      // verify the required parameter 'symbol' is set
+      if (symbol === undefined || symbol === null) {
+        throw new Error("Missing the required parameter 'symbol' when calling instrumentsGET");
       }
 
-      // verify the required parameter 'Projection' is set
-      if (Projection === undefined || Projection === null) {
-        throw new Error("Missing the required parameter 'Projection' when calling instrumentsGET");
+      // verify the required parameter 'projection' is set
+      if (projection === undefined || projection === null) {
+        throw new Error("Missing the required parameter 'projection' when calling instrumentsGET");
       }
 
 
       var pathParams = {
       };
       var queryParams = {
-        'apikey': opts['Apikey'],
-        'symbol': Symbol,
-        'projection': Projection,
+        'apikey': opts['apikey'],
+        'symbol': symbol,
+        'projection': projection,
       };
       var collectionQueryParams = {
       };
@@ -99,14 +99,14 @@
 
     /**
      * Searh or retrieve instument data, including fundamental data
-     * @param {String} Symbol Value to pass to the search. See projection description for more information.
-     * @param {String} Projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
+     * @param {String} symbol Value to pass to the search. See projection description for more information.
+     * @param {String} projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.Apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
+     * @param {String} opts.apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
-    this.instrumentsGET = function(Symbol, Projection, opts) {
-      return this.instrumentsGETWithHttpInfo(Symbol, Projection, opts)
+    this.instrumentsGET = function(symbol, projection, opts) {
+      return this.instrumentsGETWithHttpInfo(symbol, projection, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

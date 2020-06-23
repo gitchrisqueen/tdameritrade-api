@@ -40,25 +40,25 @@
      * value: "day"
      * @const
      */
-    Day: "day",
+    day: "day",
 
     /**
      * value: "month"
      * @const
      */
-    Month: "month",
+    month: "month",
 
     /**
      * value: "year"
      * @const
      */
-    Year: "year",
+    year: "year",
 
     /**
      * value: "ytd"
      * @const
      */
-    Ytd: "ytd"
+    ytd: "ytd"
   };
 
   /**

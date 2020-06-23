@@ -39,12 +39,12 @@ export default class OrdersApi {
      * Cancel a specific order for a spcific account
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
      */
-    accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(AccountId, OrderId) {
+    accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId) {
       let postBody = null;
 
       let pathParams = {
-        'accountId': AccountId,
-        'orderId': OrderId
+        'accountId': accountId,
+        'orderId': orderId
       };
       let queryParams = {
       };
@@ -70,8 +70,8 @@ export default class OrdersApi {
      * Cancel a specific order for a spcific account
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
      */
-    accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId) {
-      return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(AccountId, OrderId)
+    accountsAccountIdOrdersOrderIdDELETE(accountId, orderId) {
+      return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

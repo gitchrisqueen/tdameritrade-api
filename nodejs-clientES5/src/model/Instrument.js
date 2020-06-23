@@ -55,47 +55,47 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('assetType'))
-        obj.AssetType = ApiClient.convertToType(data['assetType'], 'String');
+        obj.assetType = ApiClient.convertToType(data['assetType'], 'String');
       if (data.hasOwnProperty('cusip'))
-        obj.Cusip = ApiClient.convertToType(data['cusip'], 'String');
+        obj.cusip = ApiClient.convertToType(data['cusip'], 'String');
       if (data.hasOwnProperty('description'))
-        obj.Description = ApiClient.convertToType(data['description'], 'String');
+        obj.description = ApiClient.convertToType(data['description'], 'String');
       if (data.hasOwnProperty('exchange'))
-        obj.Exchange = ApiClient.convertToType(data['exchange'], 'String');
+        obj.exchange = ApiClient.convertToType(data['exchange'], 'String');
       if (data.hasOwnProperty('symbol'))
-        obj.Symbol = ApiClient.convertToType(data['symbol'], 'String');
+        obj.symbol = ApiClient.convertToType(data['symbol'], 'String');
     }
     return obj;
   }
 
   /**
-   * @member {module:model/Instrument.AssetTypeEnum} AssetType
+   * @member {module:model/Instrument.AssetTypeEnum} assetType
    */
-  exports.prototype.AssetType = undefined;
+  exports.prototype.assetType = undefined;
 
   /**
-   * @member {String} Cusip
+   * @member {String} cusip
    */
-  exports.prototype.Cusip = undefined;
+  exports.prototype.cusip = undefined;
 
   /**
-   * @member {String} Description
+   * @member {String} description
    */
-  exports.prototype.Description = undefined;
+  exports.prototype.description = undefined;
 
   /**
-   * @member {String} Exchange
+   * @member {String} exchange
    */
-  exports.prototype.Exchange = undefined;
+  exports.prototype.exchange = undefined;
 
   /**
-   * @member {String} Symbol
+   * @member {String} symbol
    */
-  exports.prototype.Symbol = undefined;
+  exports.prototype.symbol = undefined;
 
 
   /**
-   * Allowed values for the <code>AssetType</code> property.
+   * Allowed values for the <code>assetType</code> property.
    * @enum {String}
    * @readonly
    */

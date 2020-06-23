@@ -39,16 +39,16 @@ export default class InstrumentsApi {
      * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
-    instrumentsGETWithHttpInfo(Symbol, Projection, opts) {
+    instrumentsGETWithHttpInfo(symbol, projection, opts) {
       opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
-        'apikey': opts['Apikey'],
-        'symbol': Symbol,
-        'projection': Projection
+        'apikey': opts['apikey'],
+        'symbol': symbol,
+        'projection': projection
       };
       let headerParams = {
       };
@@ -72,8 +72,8 @@ export default class InstrumentsApi {
      * @param {Object} opts Optional parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
-    instrumentsGET(Symbol, Projection, opts) {
-      return this.instrumentsGETWithHttpInfo(Symbol, Projection, opts)
+    instrumentsGET(symbol, projection, opts) {
+      return this.instrumentsGETWithHttpInfo(symbol, projection, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

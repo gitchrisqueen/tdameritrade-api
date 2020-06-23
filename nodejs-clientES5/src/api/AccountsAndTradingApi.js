@@ -51,27 +51,27 @@
     /**
      * Cancel Order
      * Cancel a specific order for a spcific account
-     * @param {Number} AccountId 
-     * @param {Number} OrderId 
+     * @param {Number} accountId 
+     * @param {Number} orderId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
      */
-    this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo = function(AccountId, OrderId) {
+    this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo = function(accountId, orderId) {
       var postBody = null;
 
-      // verify the required parameter 'AccountId' is set
-      if (AccountId === undefined || AccountId === null) {
-        throw new Error("Missing the required parameter 'AccountId' when calling accountsAccountIdOrdersOrderIdDELETE");
+      // verify the required parameter 'accountId' is set
+      if (accountId === undefined || accountId === null) {
+        throw new Error("Missing the required parameter 'accountId' when calling accountsAccountIdOrdersOrderIdDELETE");
       }
 
-      // verify the required parameter 'OrderId' is set
-      if (OrderId === undefined || OrderId === null) {
-        throw new Error("Missing the required parameter 'OrderId' when calling accountsAccountIdOrdersOrderIdDELETE");
+      // verify the required parameter 'orderId' is set
+      if (orderId === undefined || orderId === null) {
+        throw new Error("Missing the required parameter 'orderId' when calling accountsAccountIdOrdersOrderIdDELETE");
       }
 
 
       var pathParams = {
-        'accountId': AccountId,
-        'orderId': OrderId
+        'accountId': accountId,
+        'orderId': orderId
       };
       var queryParams = {
       };
@@ -97,12 +97,12 @@
     /**
      * Cancel Order
      * Cancel a specific order for a spcific account
-     * @param {Number} AccountId 
-     * @param {Number} OrderId 
+     * @param {Number} accountId 
+     * @param {Number} orderId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
      */
-    this.accountsAccountIdOrdersOrderIdDELETE = function(AccountId, OrderId) {
-      return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(AccountId, OrderId)
+    this.accountsAccountIdOrdersOrderIdDELETE = function(accountId, orderId) {
+      return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

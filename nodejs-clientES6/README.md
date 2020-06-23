@@ -73,10 +73,10 @@ var defaultClient = GitChrisQueen_TDA_JS.ApiClient.instance;
 
 
 var api = new GitChrisQueen_TDA_JS.AccountsAndTradingApi()
-var AccountId = 56; // {Number} 
-var OrderId = 56; // {Number} 
+var accountId = 56; // {Number} 
+var orderId = 56; // {Number} 
 
-api.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(function(data) {
+api.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);

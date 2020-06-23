@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 <a name="accountsAccountIdOrdersOrderIdDELETE"></a>
 # **accountsAccountIdOrdersOrderIdDELETE**
-> EASObject accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId)
+> EASObject accountsAccountIdOrdersOrderIdDELETE(accountId, orderId)
 
 Cancel Order
 
@@ -21,10 +21,10 @@ let defaultClient = GitChrisQueen_TDA_JS.ApiClient.instance;
 
 
 let apiInstance = new GitChrisQueen_TDA_JS.OrdersApi();
-let AccountId = 56; // Number | 
-let OrderId = 56; // Number | 
+let accountId = 56; // Number | 
+let orderId = 56; // Number | 
 
-apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then((data) => {
+apiInstance.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -36,8 +36,8 @@ apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then((data)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AccountId** | **Number**|  | 
- **OrderId** | **Number**|  | 
+ **accountId** | **Number**|  | 
+ **orderId** | **Number**|  | 
 
 ### Return type
 

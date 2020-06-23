@@ -55,56 +55,56 @@
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('close'))
-        obj.Close = ApiClient.convertToType(data['close'], 'Number');
+        obj.close = ApiClient.convertToType(data['close'], 'Number');
       if (data.hasOwnProperty('datetime'))
-        obj.Datetime = ApiClient.convertToType(data['datetime'], 'Number');
+        obj.datetime = ApiClient.convertToType(data['datetime'], 'Number');
       if (data.hasOwnProperty('high'))
-        obj.High = ApiClient.convertToType(data['high'], 'Number');
+        obj.high = ApiClient.convertToType(data['high'], 'Number');
       if (data.hasOwnProperty('low'))
-        obj.Low = ApiClient.convertToType(data['low'], 'Number');
+        obj.low = ApiClient.convertToType(data['low'], 'Number');
       if (data.hasOwnProperty('open'))
-        obj.Open = ApiClient.convertToType(data['open'], 'Number');
+        obj.open = ApiClient.convertToType(data['open'], 'Number');
       if (data.hasOwnProperty('volume'))
-        obj.Volume = ApiClient.convertToType(data['volume'], 'Number');
+        obj.volume = ApiClient.convertToType(data['volume'], 'Number');
     }
     return obj;
   }
 
   /**
    * Close
-   * @member {Number} Close
+   * @member {Number} close
    */
-  exports.prototype.Close = undefined;
+  exports.prototype.close = undefined;
 
   /**
    * DateTime
-   * @member {Number} Datetime
+   * @member {Number} datetime
    */
-  exports.prototype.Datetime = undefined;
+  exports.prototype.datetime = undefined;
 
   /**
    * High
-   * @member {Number} High
+   * @member {Number} high
    */
-  exports.prototype.High = undefined;
+  exports.prototype.high = undefined;
 
   /**
    * Low
-   * @member {Number} Low
+   * @member {Number} low
    */
-  exports.prototype.Low = undefined;
+  exports.prototype.low = undefined;
 
   /**
    * Open
-   * @member {Number} Open
+   * @member {Number} open
    */
-  exports.prototype.Open = undefined;
+  exports.prototype.open = undefined;
 
   /**
    * Volume
-   * @member {Number} Volume
+   * @member {Number} volume
    */
-  exports.prototype.Volume = undefined;
+  exports.prototype.volume = undefined;
 
   return exports;
 

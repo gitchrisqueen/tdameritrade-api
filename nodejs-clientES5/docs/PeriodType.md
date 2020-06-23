@@ -3,12 +3,12 @@
 ## Enum
 
 
-* `Day` (value: `"day"`)
+* `day` (value: `"day"`)
 
-* `Month` (value: `"month"`)
+* `month` (value: `"month"`)
 
-* `Year` (value: `"year"`)
+* `year` (value: `"year"`)
 
-* `Ytd` (value: `"ytd"`)
+* `ytd` (value: `"ytd"`)
 
 
