@@ -35,16 +35,25 @@ jobs:
           npm ci
           npm run build --if-present
           npm run convertopenapi3toswagger2
-      - name: Use Swagger To Generate Node.js Client Code
+      - name: Use Swagger To Generate Node.js Client Code ES5
         run: |
           docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate \
           -i /local/nodejs-server/api/swagger2.yaml \
           -l javascript \
           -c /local/config.json \
-          -o /local/nodejs-client \
+          -o /local/nodejs-clientES5 \
           --git-user-id $GITHUB_ACTOR \
           --git-repo-id https://github.com/$GITHUB_REPOSITORY
-      - name: Commit changes
+      - name: Use Swagger To Generate Node.js Client Code ES6
+        run: |
+          docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
+                    -i /local/nodejs-server/api/openapi.yaml \
+                    -l javascript \
+                    -c /local/config.json \
+                    -o /local/nodejs-clientES6 \
+                    --git-user-id $GITHUB_ACTOR \
+                    --git-repo-id https://github.com/$GITHUB_REPOSITORY
+      - name: Commit changes to master branch
         uses: EndBug/add-and-commit@master
         with:
           ref: 'master'

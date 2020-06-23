@@ -1,10 +1,12 @@
 {
   "additionalProperties": {
     "sortParamsByRequiredFlag": true,
+    "moduleName": "GitChrisQueen_TDA_JS",
     "projectName": "@gitchrisqueen/tdameritrade-api-js-client",
-    "projectDescription": "TD Ameritrade API access via node javascript code.",
+    "projectDescription": "TD Ameritrade API node javascript client code.",
     "usePromises": "true",
     "modelPropertyNaming": "PascalCase",
-    "licenseName": "MIT"
+    "licenseName": "MIT",
+    "useES6": false
   }
 }
