@@ -19,7 +19,7 @@
     "preview": false,
     "tag": "latest",
     "yarn": false,
-    "contents": "nodejs-client",
+    "contents": "./nodejs-client",
     "releaseDraft": true
   },
   "repository": {
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/gitchrisqueen/tdameritrade-api/issues"
   },
-  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api#readme",
+  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api/tree/master/nodejs-client#readme",
   "keywords": [
     "tdameritrade",
     "thinkorswim",
