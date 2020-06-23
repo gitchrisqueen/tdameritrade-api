@@ -4,7 +4,7 @@ name: TD Ameritrade API Workflow CI
 on:
   push:
     # Use `swaggerhub` branch to create nodejs client and publish to npm
-    branches: [ swaggerhub ]
+    branches: [ swaggerhub* ]
 
 jobs:
   codegen:
