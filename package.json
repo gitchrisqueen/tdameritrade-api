@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "jest",
+    "test": "echo 'No test specified'",
     "convertopenapi3toswagger2": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml ./nodejs-server/api/openapi.yaml > ./nodejs-server/api/swagger2.yaml"
   },
   "publishConfig": {
