@@ -12,7 +12,7 @@
  */
 
 import ApiClient from "../ApiClient";
-import InlineResponse200 from '../model/InlineResponse200';
+import Instrument from '../model/Instrument';
 
 /**
 * Instruments service.
@@ -37,7 +37,7 @@ export default class InstrumentsApi {
     /**
      * Searh or retrieve instument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Instrument} and HTTP response
      */
     instrumentsGETWithHttpInfo(symbol, projection, opts) {
       opts = opts || {};
@@ -58,7 +58,7 @@ export default class InstrumentsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse200;
+      let returnType = Instrument;
 
       return this.apiClient.callApi(
         '/instruments', 'GET',
@@ -70,7 +70,7 @@ export default class InstrumentsApi {
     /**
      * Searh or retrieve instument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Instrument}
      */
     instrumentsGET(symbol, projection, opts) {
       return this.instrumentsGETWithHttpInfo(symbol, projection, opts)

@@ -141,7 +141,6 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.Fundamental](docs/Fundamental.md)
  - [GitChrisQueen_TDA_JS.FundamentalData](docs/FundamentalData.md)
  - [GitChrisQueen_TDA_JS.FundamentalFundamental](docs/FundamentalFundamental.md)
- - [GitChrisQueen_TDA_JS.InlineResponse200](docs/InlineResponse200.md)
  - [GitChrisQueen_TDA_JS.Instrument](docs/Instrument.md)
  - [GitChrisQueen_TDA_JS.PeriodType](docs/PeriodType.md)
  - [GitChrisQueen_TDA_JS.PostAccessBody](docs/PostAccessBody.md)

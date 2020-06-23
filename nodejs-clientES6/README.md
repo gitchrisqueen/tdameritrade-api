@@ -98,7 +98,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [GitChrisQueen_TDA_JS.AnyOfinlineResponse200](docs/AnyOfinlineResponse200.md)
  - [GitChrisQueen_TDA_JS.Bond](docs/Bond.md)
  - [GitChrisQueen_TDA_JS.CandleList](docs/CandleList.md)
  - [GitChrisQueen_TDA_JS.CandleListCandles](docs/CandleListCandles.md)
@@ -107,7 +106,6 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.Fundamental](docs/Fundamental.md)
  - [GitChrisQueen_TDA_JS.FundamentalData](docs/FundamentalData.md)
  - [GitChrisQueen_TDA_JS.FundamentalFundamental](docs/FundamentalFundamental.md)
- - [GitChrisQueen_TDA_JS.InlineResponse200](docs/InlineResponse200.md)
  - [GitChrisQueen_TDA_JS.Instrument](docs/Instrument.md)
  - [GitChrisQueen_TDA_JS.PeriodType](docs/PeriodType.md)
  - [GitChrisQueen_TDA_JS.PostAccessBody](docs/PostAccessBody.md)

@@ -27,7 +27,7 @@ export default class Instrument {
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        
         
     }
 
@@ -83,8 +83,7 @@ export default class Instrument {
     */
     'assetType' = undefined;
 
-    // Implement AnyOfinlineResponse200 interface:
-    
+
 
     /**
     * Allowed values for the <code>assetType</code> property.
