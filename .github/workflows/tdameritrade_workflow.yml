@@ -1,6 +1,6 @@
 # This workflow will build the client api files using the swagger codegen url and push the output into its own folder. Then copy both server and client api files into the master. Finally pushing the master package to npm
 
-name: TD Ameritrade API Workflow CI
+name: TD Ameritrade API Swagger Workflow CI
 on:
   push:
     # Use `swaggerhub` branch to create nodejs client and publish to npm
