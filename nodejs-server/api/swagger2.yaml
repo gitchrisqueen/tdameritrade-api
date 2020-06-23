@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   description: This is replication of the TD Ameritrade API.
   title: TD Ameritrade API - OAuth2
-  version: 1.0.0-oas3
+  version: 0.1.3
 host: api.tdameritrade.com
 basePath: /v1
 schemes:
@@ -118,7 +118,7 @@ paths:
             - ytd
           in: query
           name: periodType
-          required: true
+          required: false
           type: string
         - in: query
           name: period
