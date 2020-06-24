@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Bond', 'model/CandleList', 'model/CandleListCandles', 'model/EASObject', 'model/FrequencyType', 'model/Fundamental', 'model/FundamentalData', 'model/FundamentalFundamental', 'model/Instrument', 'model/PeriodType', 'model/PostAccessBody', 'api/AccountsAndTradingApi', 'api/AuthenticationApi', 'api/InstrumentsApi', 'api/OrdersApi', 'api/PriceHistoryApi'], factory);
+    define(['ApiClient', 'model/Bond', 'model/CandleList', 'model/CandleListCandles', 'model/EASObject', 'model/FrequencyType', 'model/Fundamental', 'model/FundamentalData', 'model/FundamentalFundamental', 'model/InlineResponse200', 'model/Instrument', 'model/PeriodType', 'model/PostAccessBody', 'api/AccountsAndTradingApi', 'api/AuthenticationApi', 'api/OrdersApi', 'api/PriceHistoryApi', 'api/SearchInstrumentsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Bond'), require('./model/CandleList'), require('./model/CandleListCandles'), require('./model/EASObject'), require('./model/FrequencyType'), require('./model/Fundamental'), require('./model/FundamentalData'), require('./model/FundamentalFundamental'), require('./model/Instrument'), require('./model/PeriodType'), require('./model/PostAccessBody'), require('./api/AccountsAndTradingApi'), require('./api/AuthenticationApi'), require('./api/InstrumentsApi'), require('./api/OrdersApi'), require('./api/PriceHistoryApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Bond'), require('./model/CandleList'), require('./model/CandleListCandles'), require('./model/EASObject'), require('./model/FrequencyType'), require('./model/Fundamental'), require('./model/FundamentalData'), require('./model/FundamentalFundamental'), require('./model/InlineResponse200'), require('./model/Instrument'), require('./model/PeriodType'), require('./model/PostAccessBody'), require('./api/AccountsAndTradingApi'), require('./api/AuthenticationApi'), require('./api/OrdersApi'), require('./api/PriceHistoryApi'), require('./api/SearchInstrumentsApi'));
   }
-}(function(ApiClient, Bond, CandleList, CandleListCandles, EASObject, FrequencyType, Fundamental, FundamentalData, FundamentalFundamental, Instrument, PeriodType, PostAccessBody, AccountsAndTradingApi, AuthenticationApi, InstrumentsApi, OrdersApi, PriceHistoryApi) {
+}(function(ApiClient, Bond, CandleList, CandleListCandles, EASObject, FrequencyType, Fundamental, FundamentalData, FundamentalFundamental, InlineResponse200, Instrument, PeriodType, PostAccessBody, AccountsAndTradingApi, AuthenticationApi, OrdersApi, PriceHistoryApi, SearchInstrumentsApi) {
   'use strict';
 
   /**
@@ -102,6 +102,11 @@
      */
     FundamentalFundamental: FundamentalFundamental,
     /**
+     * The InlineResponse200 model constructor.
+     * @property {module:model/InlineResponse200}
+     */
+    InlineResponse200: InlineResponse200,
+    /**
      * The Instrument model constructor.
      * @property {module:model/Instrument}
      */
@@ -127,11 +132,6 @@
      */
     AuthenticationApi: AuthenticationApi,
     /**
-     * The InstrumentsApi service constructor.
-     * @property {module:api/InstrumentsApi}
-     */
-    InstrumentsApi: InstrumentsApi,
-    /**
      * The OrdersApi service constructor.
      * @property {module:api/OrdersApi}
      */
@@ -140,7 +140,12 @@
      * The PriceHistoryApi service constructor.
      * @property {module:api/PriceHistoryApi}
      */
-    PriceHistoryApi: PriceHistoryApi
+    PriceHistoryApi: PriceHistoryApi,
+    /**
+     * The SearchInstrumentsApi service constructor.
+     * @property {module:api/SearchInstrumentsApi}
+     */
+    SearchInstrumentsApi: SearchInstrumentsApi
   };
 
   return exports;

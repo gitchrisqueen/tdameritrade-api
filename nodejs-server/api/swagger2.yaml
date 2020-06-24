@@ -94,10 +94,10 @@ paths:
       security:
         - bearerAuth: []
       tags:
-        - Instruments
+        - Search Instruments
       operationId: instrumentsGET
-      summary: 'Searh or retrieve instument data, including fundamental data'
-      x-swagger-router-controller: Instruments
+      summary: 'Search or retrieve instrument data, including fundamental data'
+      x-swagger-router-controller: SearchInstruments
   '/marketdata/{symbol}/pricehistory':
     get:
       produces:
@@ -578,5 +578,122 @@ security:
   - application:
       - read
       - write
-x-components: {}
+x-components:
+  examples:
+    bondObject:
+      value:
+        assetType: BOND
+        bondPrice: 11
+        cusip: christopherqueen
+        descriptions: Chris Queen Madeup Bond
+        exchange: CDQ
+        symbol: cdq
+    fundamentalDataObject:
+      value:
+        beta: 0.51493
+        bookValuePerShare: 0
+        currentRatio: 79.54602
+        divGrowthRate3Year: 0
+        dividendAmount: 0
+        dividendPayAmount: 0
+        dividendPayDate: 0
+        dividendYield: 0
+        epsChange: 0
+        epsChangePercentTTM: 7.09258
+        epsChangeYear: 0
+        epsTTM: 0
+        grossMarginMRQ: 0
+        grossMarginTTM: 0
+        high52: 12.845
+        interestCoverage: '0,'
+        low52: 4.65
+        ltDebtToEquity: 80.56223
+        marketCap: 2855.913
+        marketCapFloat: 239.4534
+        netProfitMarginMRQ: 0
+        netProfitMarginTTM: 0
+        operatingMarginMRQ: 0
+        operatingMarginTTM: 0
+        pbRatio: 21.99646
+        pcfRatio: 0
+        peRatio: 0
+        pegRatio: 0
+        prRatio: 0
+        quickRatio: 0
+        returnOnAssets: 0
+        returnOnEquity: 0
+        returnOnInvestment: 0
+        revChangeIn: 0
+        revChangeTTM: 0
+        revChangeYear: 0
+        sharesOutstanding: 328671632
+        shortIntDayToCover: 0
+        shortIntToFloat: 0
+        symbol: NG
+        totalDebtToCapital: 44.61743
+        totalDebtToEquity: 80.56223
+        vol10DayAvg: 3357303
+        vol1DayAvg: 3357300
+        vol3MonthAvg: 77925210
+    fundamentalObject:
+      value:
+        NG:
+          assetType: EQUITY
+          cusip: 6.6987e+210
+          description: Novagold Resources Inc.
+          exchange: AMEX
+          fundamental:
+            beta: 0.51493
+            bookValuePerShare: 0
+            currentRatio: 79.54602
+            divGrowthRate3Year: 0
+            dividendAmount: 0
+            dividendPayAmount: 0
+            dividendPayDate: 0
+            dividendYield: 0
+            epsChange: 0
+            epsChangePercentTTM: 7.09258
+            epsChangeYear: 0
+            epsTTM: 0
+            grossMarginMRQ: 0
+            grossMarginTTM: 0
+            high52: 12.845
+            interestCoverage: '0,'
+            low52: 4.65
+            ltDebtToEquity: 80.56223
+            marketCap: 2855.913
+            marketCapFloat: 239.4534
+            netProfitMarginMRQ: 0
+            netProfitMarginTTM: 0
+            operatingMarginMRQ: 0
+            operatingMarginTTM: 0
+            pbRatio: 21.99646
+            pcfRatio: 0
+            peRatio: 0
+            pegRatio: 0
+            prRatio: 0
+            quickRatio: 0
+            returnOnAssets: 0
+            returnOnEquity: 0
+            returnOnInvestment: 0
+            revChangeIn: 0
+            revChangeTTM: 0
+            revChangeYear: 0
+            sharesOutstanding: 328671632
+            shortIntDayToCover: 0
+            shortIntToFloat: 0
+            symbol: NG
+            totalDebtToCapital: 44.61743
+            totalDebtToEquity: 80.56223
+            vol10DayAvg: 3357303
+            vol1DayAvg: 3357300
+            vol3MonthAvg: 77925210'
+          symbol: NG
+    instrumentObject:
+      value:
+        assetType: EQUITY
+        cusip: 6.6987e+210
+        description: Novagold Resources Inc.
+        exchange: AMEX
+        symbol: NG
 

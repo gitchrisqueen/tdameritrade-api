@@ -155,8 +155,8 @@ paths:
   /instruments:
     get:
       tags:
-      - Instruments
-      summary: Searh or retrieve instument data, including fundamental data
+      - Search Instruments
+      summary: Search or retrieve instrument data, including fundamental data
       operationId: instrumentsGET
       parameters:
       - name: apikey
@@ -200,7 +200,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Instrument'
+                $ref: '#/components/schemas/inline_response_200'
+              examples:
+                Instrument:
+                  $ref: '#/components/examples/instrumentObject'
+                Fundamental:
+                  $ref: '#/components/examples/fundamentalObject'
+                FundamentalData:
+                  $ref: '#/components/examples/fundamentalDataObject'
+                Bond:
+                  $ref: '#/components/examples/bondObject'
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
@@ -216,7 +225,7 @@ paths:
             number of symbols searched is over the maximum.
       security:
       - bearerAuth: []
-      x-swagger-router-controller: Instruments
+      x-swagger-router-controller: SearchInstruments
 components:
   schemas:
     FrequencyType:
@@ -514,12 +523,12 @@ components:
           - MUTUAL_FUND
           - OPTION
           - UNKNOWN
-      example:
-        symbol: symbol
-        cusip: cusip
-        description: description
-        exchange: exchange
-        assetType: EQUITY
+    inline_response_200:
+      oneOf:
+      - $ref: '#/components/schemas/Bond'
+      - $ref: '#/components/schemas/Fundamental'
+      - $ref: '#/components/schemas/FundamentalData'
+      - $ref: '#/components/schemas/Instrument'
     CandleList_candles:
       type: object
       properties:
@@ -558,6 +567,123 @@ components:
       properties:
         schema:
           $ref: '#/components/schemas/FundamentalData'
+  examples:
+    bondObject:
+      value:
+        bondPrice: 11
+        cusip: christopherqueen
+        symbol: cdq
+        descriptions: Chris Queen Madeup Bond
+        exchange: CDQ
+        assetType: BOND
+    instrumentObject:
+      value:
+        cusip: 66987E206
+        symbol: NG
+        description: Novagold Resources Inc.
+        exchange: AMEX
+        assetType: EQUITY
+    fundamentalDataObject:
+      value:
+        symbol: NG
+        high52: 12.845
+        low52: 4.65
+        dividendAmount: 0
+        dividendYield: 0
+        peRatio: 0
+        pegRatio: 0
+        pbRatio: 21.99646
+        prRatio: 0
+        pcfRatio: 0
+        grossMarginTTM: 0
+        grossMarginMRQ: 0
+        netProfitMarginTTM: 0
+        netProfitMarginMRQ: 0
+        operatingMarginTTM: 0
+        operatingMarginMRQ: 0
+        returnOnEquity: 0
+        returnOnAssets: 0
+        returnOnInvestment: 0
+        quickRatio: 0
+        currentRatio: 79.54602
+        interestCoverage: 0,
+        totalDebtToCapital: 44.61743
+        ltDebtToEquity: 80.56223
+        totalDebtToEquity: 80.56223
+        epsTTM: 0
+        epsChangePercentTTM: 7.09258
+        epsChangeYear: 0
+        epsChange: 0
+        revChangeYear: 0
+        revChangeTTM: 0
+        revChangeIn: 0
+        sharesOutstanding: 328671632
+        marketCapFloat: 239.4534
+        marketCap: 2855.913
+        bookValuePerShare: 0
+        shortIntToFloat: 0
+        shortIntDayToCover: 0
+        divGrowthRate3Year: 0
+        dividendPayAmount: 0
+        dividendPayDate: 0
+        beta: 0.51493
+        vol1DayAvg: 3357300
+        vol10DayAvg: 3357303
+        vol3MonthAvg: 77925210
+    fundamentalObject:
+      value:
+        NG:
+          fundamental:
+            symbol: NG
+            high52: 12.845
+            low52: 4.65
+            dividendAmount: 0
+            dividendYield: 0
+            peRatio: 0
+            pegRatio: 0
+            pbRatio: 21.99646
+            prRatio: 0
+            pcfRatio: 0
+            grossMarginTTM: 0
+            grossMarginMRQ: 0
+            netProfitMarginTTM: 0
+            netProfitMarginMRQ: 0
+            operatingMarginTTM: 0
+            operatingMarginMRQ: 0
+            returnOnEquity: 0
+            returnOnAssets: 0
+            returnOnInvestment: 0
+            quickRatio: 0
+            currentRatio: 79.54602
+            interestCoverage: 0,
+            totalDebtToCapital: 44.61743
+            ltDebtToEquity: 80.56223
+            totalDebtToEquity: 80.56223
+            epsTTM: 0
+            epsChangePercentTTM: 7.09258
+            epsChangeYear: 0
+            epsChange: 0
+            revChangeYear: 0
+            revChangeTTM: 0
+            revChangeIn: 0
+            sharesOutstanding: 328671632
+            marketCapFloat: 239.4534
+            marketCap: 2855.913
+            bookValuePerShare: 0
+            shortIntToFloat: 0
+            shortIntDayToCover: 0
+            divGrowthRate3Year: 0
+            dividendPayAmount: 0
+            dividendPayDate: 0
+            beta: 0.51493
+            vol1DayAvg: 3357300
+            vol10DayAvg: 3357303
+            vol3MonthAvg: 77925210'
+          cusip: 66987E206
+          symbol: NG
+          description: Novagold Resources Inc.
+          exchange: AMEX
+          assetType: EQUITY
   securitySchemes:
     application:
       type: oauth2
