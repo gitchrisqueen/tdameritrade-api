@@ -74,7 +74,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Instrument'
+            $ref: '#/definitions/inline_response_200'
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
@@ -496,12 +496,6 @@ definitions:
       schema:
         $ref: '#/definitions/FundamentalData'
   Instrument:
-    example:
-      assetType: EQUITY
-      cusip: cusip
-      description: description
-      exchange: exchange
-      symbol: symbol
     properties:
       assetType:
         enum:
@@ -562,6 +556,7 @@ definitions:
       - client_id
       - grant_type
     type: object
+  inline_response_200: {}
 securityDefinitions:
   application:
     authorizationUrl: >-
