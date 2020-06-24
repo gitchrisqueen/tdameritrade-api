@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Candles** | [**[CandleListCandles]**](CandleListCandles.md) |  | [optional] 
-**Empty** | **Boolean** |  | [optional] 
-**Symbol** | **String** | Symbol | [optional] 
+**candles** | [**[CandleListCandles]**](CandleListCandles.md) |  | [optional] 
+**empty** | **Boolean** |  | [optional] 
+**symbol** | **String** | Symbol | [optional] 
 
 

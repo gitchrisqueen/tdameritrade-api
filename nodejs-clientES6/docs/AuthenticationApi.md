@@ -20,12 +20,12 @@ import GitChrisQueen_TDA_JS from '@gitchrisqueen/tdameritrade-api-js-client';
 
 let apiInstance = new GitChrisQueen_TDA_JS.AuthenticationApi();
 let opts = { 
-  'GrantType': "GrantType_example" // String | 
-  'RefreshToken': "RefreshToken_example" // String | 
-  'AccessType': "AccessType_example" // String | 
-  'Code': "Code_example" // String | 
-  'ClientId': 56 // Number | 
-  'RedirectUri': "RedirectUri_example" // String | 
+  'grant_type': "grant_type_example" // String | 
+  'refresh_token': "refresh_token_example" // String | 
+  'access_type': "access_type_example" // String | 
+  'code': "code_example" // String | 
+  'client_id': 56 // Number | 
+  'redirect_uri': "redirect_uri_example" // String | 
 };
 apiInstance.oauth2TokenPOST(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -39,12 +39,12 @@ apiInstance.oauth2TokenPOST(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GrantType** | **String**|  | [optional] 
- **RefreshToken** | **String**|  | [optional] 
- **AccessType** | **String**|  | [optional] 
- **Code** | **String**|  | [optional] 
- **ClientId** | **Number**|  | [optional] 
- **RedirectUri** | **String**|  | [optional] 
+ **grant_type** | **String**|  | [optional] 
+ **refresh_token** | **String**|  | [optional] 
+ **access_type** | **String**|  | [optional] 
+ **code** | **String**|  | [optional] 
+ **client_id** | **Number**|  | [optional] 
+ **redirect_uri** | **String**|  | [optional] 
 
 ### Return type
 

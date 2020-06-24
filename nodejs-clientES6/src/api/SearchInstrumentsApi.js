@@ -12,20 +12,18 @@
  */
 
 import ApiClient from "../ApiClient";
-import CandleList from '../model/CandleList';
-import FrequencyType from '../model/FrequencyType';
-import PeriodType from '../model/PeriodType';
+import InlineResponse200 from '../model/InlineResponse200';
 
 /**
-* PriceHistory service.
-* @module api/PriceHistoryApi
+* SearchInstruments service.
+* @module api/SearchInstrumentsApi
 * @version 0.1.3
 */
-export default class PriceHistoryApi {
+export default class SearchInstrumentsApi {
 
     /**
-    * Constructs a new PriceHistoryApi. 
-    * @alias module:api/PriceHistoryApi
+    * Constructs a new SearchInstrumentsApi. 
+    * @alias module:api/SearchInstrumentsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instance} if unspecified.
@@ -37,26 +35,20 @@ export default class PriceHistoryApi {
 
 
     /**
-     * Get price history for a symbol
+     * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CandleList} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
-    marketdataSymbolPricehistoryGETWithHttpInfo(symbol, opts) {
+    instrumentsGETWithHttpInfo(symbol, projection, opts) {
       opts = opts || {};
       let postBody = null;
 
       let pathParams = {
-        'symbol': symbol
       };
       let queryParams = {
         'apikey': opts['apikey'],
-        'periodType': opts['periodType'],
-        'period': opts['period'],
-        'frequencyType': opts['frequencyType'],
-        'frequency': opts['frequency'],
-        'endDate': opts['endDate'],
-        'startDate': opts['startDate'],
-        'needExtendedHoursData': opts['needExtendedHoursData']
+        'symbol': symbol,
+        'projection': projection
       };
       let headerParams = {
       };
@@ -66,22 +58,22 @@ export default class PriceHistoryApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CandleList;
+      let returnType = InlineResponse200;
 
       return this.apiClient.callApi(
-        '/marketdata/{symbol}/pricehistory', 'GET',
+        '/instruments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Get price history for a symbol
+     * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CandleList}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
-    marketdataSymbolPricehistoryGET(symbol, opts) {
-      return this.marketdataSymbolPricehistoryGETWithHttpInfo(symbol, opts)
+    instrumentsGET(symbol, projection, opts) {
+      return this.instrumentsGETWithHttpInfo(symbol, projection, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -28,7 +28,7 @@ export default class Fundamental {
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        OneOfinlineResponse200.call(this);
         
     }
 
@@ -91,7 +91,7 @@ export default class Fundamental {
     */
     'fundamental' = undefined;
 
-    // Implement AnyOfinlineResponse200 interface:
+    // Implement OneOfinlineResponse200 interface:
     
 
     /**

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="accountsAccountIdOrdersOrderIdDELETE"></a>
 # **accountsAccountIdOrdersOrderIdDELETE**
-> EASObject accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId)
+> EASObject accountsAccountIdOrdersOrderIdDELETE(accountId, orderId)
 
 Cancel Order
 
@@ -28,11 +28,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new GitChrisQueen_TDA_JS.OrdersApi();
 
-var AccountId = 56; // Number | 
+var accountId = 56; // Number | 
 
-var OrderId = 56; // Number | 
+var orderId = 56; // Number | 
 
-apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(function(data) {
+apiInstance.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -44,8 +44,8 @@ apiInstance.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(functi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **AccountId** | **Number**|  | 
- **OrderId** | **Number**|  | 
+ **accountId** | **Number**|  | 
+ **orderId** | **Number**|  | 
 
 ### Return type
 

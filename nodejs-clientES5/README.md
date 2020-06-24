@@ -105,11 +105,11 @@ bearerAuth.apiKey = "YOUR API KEY"
 
 var api = new GitChrisQueen_TDA_JS.AccountsAndTradingApi()
 
-var AccountId = 56; // {Number} 
+var accountId = 56; // {Number} 
 
-var OrderId = 56; // {Number} 
+var orderId = 56; // {Number} 
 
-api.accountsAccountIdOrdersOrderIdDELETE(AccountId, OrderId).then(function(data) {
+api.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -126,9 +126,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *GitChrisQueen_TDA_JS.AccountsAndTradingApi* | [**accountsAccountIdOrdersOrderIdDELETE**](docs/AccountsAndTradingApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 *GitChrisQueen_TDA_JS.AuthenticationApi* | [**oauth2TokenPOST**](docs/AuthenticationApi.md#oauth2TokenPOST) | **POST** /oauth2/token | Post Access Token
-*GitChrisQueen_TDA_JS.InstrumentsApi* | [**instrumentsGET**](docs/InstrumentsApi.md#instrumentsGET) | **GET** /instruments | Searh or retrieve instument data, including fundamental data
 *GitChrisQueen_TDA_JS.OrdersApi* | [**accountsAccountIdOrdersOrderIdDELETE**](docs/OrdersApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 *GitChrisQueen_TDA_JS.PriceHistoryApi* | [**marketdataSymbolPricehistoryGET**](docs/PriceHistoryApi.md#marketdataSymbolPricehistoryGET) | **GET** /marketdata/{symbol}/pricehistory | Get price history for a symbol
+*GitChrisQueen_TDA_JS.SearchInstrumentsApi* | [**instrumentsGET**](docs/SearchInstrumentsApi.md#instrumentsGET) | **GET** /instruments | Search or retrieve instrument data, including fundamental data
 
 
 ## Documentation for Models

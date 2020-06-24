@@ -27,7 +27,7 @@ export default class Bond {
 
     constructor() {
         
-        AnyOfinlineResponse200.call(this);
+        OneOfinlineResponse200.call(this);
         
     }
 
@@ -90,7 +90,7 @@ export default class Bond {
     */
     'assetType' = undefined;
 
-    // Implement AnyOfinlineResponse200 interface:
+    // Implement OneOfinlineResponse200 interface:
     
 
     /**

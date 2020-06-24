@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="marketdataSymbolPricehistoryGET"></a>
 # **marketdataSymbolPricehistoryGET**
-> CandleList marketdataSymbolPricehistoryGET(Symbol, opts)
+> CandleList marketdataSymbolPricehistoryGET(symbol, opts)
 
 Get price history for a symbol
 
@@ -26,19 +26,19 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new GitChrisQueen_TDA_JS.PriceHistoryApi();
 
-var Symbol = "Symbol_example"; // String | 
+var symbol = "symbol_example"; // String | 
 
 var opts = { 
-  'Apikey': "Apikey_example", // String | 
-  'PeriodType': "PeriodType_example", // String | 
-  'Period': 56, // Number | 
-  'FrequencyType': "FrequencyType_example", // String | 
-  'Frequency': 56, // Number | 
-  'EndDate': 56, // Number | 
-  'StartDate': 56, // Number | 
-  'NeedExtendedHoursData': true // Boolean | 
+  'apikey': "apikey_example", // String | 
+  'periodType': "periodType_example", // String | 
+  'period': 56, // Number | 
+  'frequencyType': "frequencyType_example", // String | 
+  'frequency': 56, // Number | 
+  'endDate': 56, // Number | 
+  'startDate': 56, // Number | 
+  'needExtendedHoursData': true // Boolean | 
 };
-apiInstance.marketdataSymbolPricehistoryGET(Symbol, opts).then(function(data) {
+apiInstance.marketdataSymbolPricehistoryGET(symbol, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -50,15 +50,15 @@ apiInstance.marketdataSymbolPricehistoryGET(Symbol, opts).then(function(data) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Symbol** | **String**|  | 
- **Apikey** | **String**|  | [optional] 
- **PeriodType** | **String**|  | [optional] 
- **Period** | **Number**|  | [optional] 
- **FrequencyType** | **String**|  | [optional] 
- **Frequency** | **Number**|  | [optional] 
- **EndDate** | **Number**|  | [optional] 
- **StartDate** | **Number**|  | [optional] 
- **NeedExtendedHoursData** | **Boolean**|  | [optional] [default to true]
+ **symbol** | **String**|  | 
+ **apikey** | **String**|  | [optional] 
+ **periodType** | **String**|  | [optional] 
+ **period** | **Number**|  | [optional] 
+ **frequencyType** | **String**|  | [optional] 
+ **frequency** | **Number**|  | [optional] 
+ **endDate** | **Number**|  | [optional] 
+ **startDate** | **Number**|  | [optional] 
+ **needExtendedHoursData** | **Boolean**|  | [optional] [default to true]
 
 ### Return type
 

@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BondPrice** | **Number** |  | [optional] 
-**Cusip** | **String** |  | [optional] 
-**Symbol** | **String** |  | [optional] 
-**Description** | **String** |  | [optional] 
-**Exchange** | **String** |  | [optional] 
-**AssetType** | **String** |  | [optional] 
+**bondPrice** | **Number** |  | [optional] 
+**cusip** | **String** |  | [optional] 
+**symbol** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
+**exchange** | **String** |  | [optional] 
+**assetType** | **String** |  | [optional] 
 
 <a name="AssetTypeEnum"></a>
 ## Enum: AssetTypeEnum

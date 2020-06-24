@@ -12,7 +12,6 @@
  */
 
 import ApiClient from './ApiClient';
-import AnyOfinlineResponse200 from './model/AnyOfinlineResponse200';
 import Bond from './model/Bond';
 import CandleList from './model/CandleList';
 import CandleListCandles from './model/CandleListCandles';
@@ -23,13 +22,14 @@ import FundamentalData from './model/FundamentalData';
 import FundamentalFundamental from './model/FundamentalFundamental';
 import InlineResponse200 from './model/InlineResponse200';
 import Instrument from './model/Instrument';
+import OneOfinlineResponse200 from './model/OneOfinlineResponse200';
 import PeriodType from './model/PeriodType';
 import PostAccessBody from './model/PostAccessBody';
 import AccountsAndTradingApi from './api/AccountsAndTradingApi';
 import AuthenticationApi from './api/AuthenticationApi';
-import InstrumentsApi from './api/InstrumentsApi';
 import OrdersApi from './api/OrdersApi';
 import PriceHistoryApi from './api/PriceHistoryApi';
+import SearchInstrumentsApi from './api/SearchInstrumentsApi';
 
 /**
 * TD Ameritrade API node javascript client code..<br>
@@ -68,12 +68,6 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
-
-    /**
-     * The AnyOfinlineResponse200 model constructor.
-     * @property {module:model/AnyOfinlineResponse200}
-     */
-    AnyOfinlineResponse200,
 
     /**
      * The Bond model constructor.
@@ -136,6 +130,12 @@ export {
     Instrument,
 
     /**
+     * The OneOfinlineResponse200 model constructor.
+     * @property {module:model/OneOfinlineResponse200}
+     */
+    OneOfinlineResponse200,
+
+    /**
      * The PeriodType model constructor.
      * @property {module:model/PeriodType}
      */
@@ -160,12 +160,6 @@ export {
     AuthenticationApi,
 
     /**
-    * The InstrumentsApi service constructor.
-    * @property {module:api/InstrumentsApi}
-    */
-    InstrumentsApi,
-
-    /**
     * The OrdersApi service constructor.
     * @property {module:api/OrdersApi}
     */
@@ -175,5 +169,11 @@ export {
     * The PriceHistoryApi service constructor.
     * @property {module:api/PriceHistoryApi}
     */
-    PriceHistoryApi
+    PriceHistoryApi,
+
+    /**
+    * The SearchInstrumentsApi service constructor.
+    * @property {module:api/SearchInstrumentsApi}
+    */
+    SearchInstrumentsApi
 };

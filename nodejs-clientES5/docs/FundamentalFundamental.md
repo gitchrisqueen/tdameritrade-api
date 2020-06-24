@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Schema** | [**FundamentalData**](FundamentalData.md) |  | [optional] 
+**schema** | [**FundamentalData**](FundamentalData.md) |  | [optional] 
 
 
