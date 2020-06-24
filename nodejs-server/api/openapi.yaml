@@ -155,8 +155,8 @@ paths:
   /instruments:
     get:
       tags:
-      - Instruments
-      summary: Searh or retrieve instument data, including fundamental data
+      - Search Instruments
+      summary: Search or retrieve instrument data, including fundamental data
       operationId: instrumentsGET
       parameters:
       - name: apikey
@@ -216,7 +216,7 @@ paths:
             number of symbols searched is over the maximum.
       security:
       - bearerAuth: []
-      x-swagger-router-controller: Instruments
+      x-swagger-router-controller: SearchInstruments
 components:
   schemas:
     FrequencyType:
