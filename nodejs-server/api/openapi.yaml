@@ -8,7 +8,7 @@ servers:
 security:
 - application:
   - read
-  - write
+  - writegit cl
 paths:
   /oauth2/token:
     post:
