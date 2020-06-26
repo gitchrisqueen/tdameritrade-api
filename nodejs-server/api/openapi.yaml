@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: TD Ameritrade API - OAuth2
   description: This is replication of the TD Ameritrade API.
-  version: 0.1.3
+  version: 0.1.4
 servers:
 - url: https://api.tdameritrade.com/v1
 security:
@@ -200,16 +200,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
-              examples:
-                Instrument:
-                  $ref: '#/components/examples/instrumentObject'
-                Fundamental:
-                  $ref: '#/components/examples/fundamentalObject'
-                FundamentalData:
-                  $ref: '#/components/examples/fundamentalDataObject'
-                Bond:
-                  $ref: '#/components/examples/bondObject'
+                type: string
+                x-content-type: application/json
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
@@ -523,12 +515,6 @@ components:
           - MUTUAL_FUND
           - OPTION
           - UNKNOWN
-    inline_response_200:
-      oneOf:
-      - $ref: '#/components/schemas/Bond'
-      - $ref: '#/components/schemas/Fundamental'
-      - $ref: '#/components/schemas/FundamentalData'
-      - $ref: '#/components/schemas/Instrument'
     CandleList_candles:
       type: object
       properties:
