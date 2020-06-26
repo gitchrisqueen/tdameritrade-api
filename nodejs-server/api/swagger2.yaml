@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   description: This is replication of the TD Ameritrade API.
   title: TD Ameritrade API - OAuth2
-  version: 0.1.3
+  version: 0.1.4
 host: api.tdameritrade.com
 basePath: /v1
 schemes:
@@ -74,7 +74,8 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/inline_response_200'
+            type: string
+            x-content-type: application/json
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
@@ -556,7 +557,6 @@ definitions:
       - client_id
       - grant_type
     type: object
-  inline_response_200: {}
 securityDefinitions:
   application:
     authorizationUrl: >-
