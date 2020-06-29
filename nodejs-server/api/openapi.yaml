@@ -1260,7 +1260,7 @@ paths:
               schema:
                 type: array
                 items:
-                  anyOf:
+                  oneOf:
                   - $ref: '#/components/schemas/SearchInstrument'
                   - $ref: '#/components/schemas/Bond'
                   - $ref: '#/components/schemas/FundamentalData'
@@ -1392,7 +1392,7 @@ components:
       type: object
       properties:
         schema:
-          anyOf:
+          oneOf:
           - $ref: '#/components/schemas/MarginAccount'
           - $ref: '#/components/schemas/CashAccount'
       example:
