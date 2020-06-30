@@ -1259,15 +1259,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
-              examples:
-                Instrument:
-                  $ref: '#/components/examples/instrumentExample'
-                Bond:
-                  $ref: '#/components/examples/bondExample'
-                FundamentalData:
-                  $ref: '#/components/examples/fundamentalDataExample'
-                Fundamental:
-                  $ref: '#/components/examples/fundamentalExample'
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
