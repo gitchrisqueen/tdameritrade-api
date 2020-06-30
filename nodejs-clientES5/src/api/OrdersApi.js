@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EASObject', 'model/OrderGet'], factory);
+    define(['ApiClient', 'model/ErrorObject', 'model/OrderGet'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/EASObject'), require('../model/OrderGet'));
+    module.exports = factory(require('../ApiClient'), require('../model/ErrorObject'), require('../model/OrderGet'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.OrdersApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EASObject, root.GitChrisQueen_TDA_JS.OrderGet);
+    root.GitChrisQueen_TDA_JS.OrdersApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.ErrorObject, root.GitChrisQueen_TDA_JS.OrderGet);
   }
-}(this, function(ApiClient, EASObject, OrderGet) {
+}(this, function(ApiClient, ErrorObject, OrderGet) {
   'use strict';
 
   /**
@@ -121,7 +121,7 @@
      * Cancel a specific order for a spcific account
      * @param {Number} accountId 
      * @param {Number} orderId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ErrorObject} and HTTP response
      */
     this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo = function(accountId, orderId) {
       var postBody = null;
@@ -153,7 +153,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = EASObject;
+      var returnType = ErrorObject;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/orders/{orderId}', 'DELETE',
@@ -167,7 +167,7 @@
      * Cancel a specific order for a spcific account
      * @param {Number} accountId 
      * @param {Number} orderId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ErrorObject}
      */
     this.accountsAccountIdOrdersOrderIdDELETE = function(accountId, orderId) {
       return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId)

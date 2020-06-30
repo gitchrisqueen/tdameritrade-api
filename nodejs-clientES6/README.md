@@ -94,9 +94,12 @@ Class | Method | HTTP request | Description
 *GitChrisQueen_TDA_JS.AccountsApi* | [**accountsAccountIdGET**](docs/AccountsApi.md#accountsAccountIdGET) | **GET** /accounts/{accountId} | Get Account
 *GitChrisQueen_TDA_JS.AccountsApi* | [**accountsGET**](docs/AccountsApi.md#accountsGET) | **GET** /accounts | Get Accounts
 *GitChrisQueen_TDA_JS.AuthenticationApi* | [**oauth2TokenPOST**](docs/AuthenticationApi.md#oauth2TokenPOST) | **POST** /oauth2/token | Post Access Token
+*GitChrisQueen_TDA_JS.InstrumentsApi* | [**instrumentsCusipGET**](docs/InstrumentsApi.md#instrumentsCusipGET) | **GET** /instruments/{cusip} | Get Instrument
+*GitChrisQueen_TDA_JS.InstrumentsApi* | [**instrumentsGET**](docs/InstrumentsApi.md#instrumentsGET) | **GET** /instruments | Search Instruments
 *GitChrisQueen_TDA_JS.MarketHoursApi* | [**marketdataHoursGET**](docs/MarketHoursApi.md#marketdataHoursGET) | **GET** /marketdata/hours | Get Hours for Multiple Markets
 *GitChrisQueen_TDA_JS.MarketHoursApi* | [**marketdataMarketHoursGET**](docs/MarketHoursApi.md#marketdataMarketHoursGET) | **GET** /marketdata/{market}/hours | Get Hours for Multiple Markets
 *GitChrisQueen_TDA_JS.MoversApi* | [**marketdataIndexMoversGET**](docs/MoversApi.md#marketdataIndexMoversGET) | **GET** /marketdata/{index}/movers | Get price history for a symbol
+*GitChrisQueen_TDA_JS.OptionChainsApi* | [**marketdataChainsGET**](docs/OptionChainsApi.md#marketdataChainsGET) | **GET** /marketdata/chains | Get Option Chain
 *GitChrisQueen_TDA_JS.OrdersApi* | [**accountsAccountIdOrdersGET**](docs/OrdersApi.md#accountsAccountIdOrdersGET) | **GET** /accounts/{accountId}/orders | Get Orders by Path
 *GitChrisQueen_TDA_JS.OrdersApi* | [**accountsAccountIdOrdersOrderIdDELETE**](docs/OrdersApi.md#accountsAccountIdOrdersOrderIdDELETE) | **DELETE** /accounts/{accountId}/orders/{orderId} | Cancel Order
 *GitChrisQueen_TDA_JS.OrdersApi* | [**accountsAccountIdOrdersOrderIdGET**](docs/OrdersApi.md#accountsAccountIdOrdersOrderIdGET) | **GET** /accounts/{accountId}/orders/{orderId} | Get Order
@@ -109,7 +112,6 @@ Class | Method | HTTP request | Description
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdDELETE**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdDELETE) | **DELETE** /accounts/{accountId}/savedorders/{savedOrderId} | Delete Saved Orders
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdGET**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdGET) | **GET** /accounts/{accountId}/savedorders/{savedOrderId} | Get Saved Orders
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdPUT**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdPUT) | **PUT** /accounts/{accountId}/savedorders/{savedOrderId} | Replace Saved Orders
-*GitChrisQueen_TDA_JS.SearchInstrumentsApi* | [**instrumentsGET**](docs/SearchInstrumentsApi.md#instrumentsGET) | **GET** /instruments | Search or retrieve instrument data, including fundamental data
 
 ## Documentation for Models
 
@@ -128,6 +130,7 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.EASObject](docs/EASObject.md)
  - [GitChrisQueen_TDA_JS.Equity](docs/Equity.md)
  - [GitChrisQueen_TDA_JS.EquityAssetType](docs/EquityAssetType.md)
+ - [GitChrisQueen_TDA_JS.ErrorObject](docs/ErrorObject.md)
  - [GitChrisQueen_TDA_JS.Execution](docs/Execution.md)
  - [GitChrisQueen_TDA_JS.ExecutionExecutionLegs](docs/ExecutionExecutionLegs.md)
  - [GitChrisQueen_TDA_JS.FixedIncome](docs/FixedIncome.md)
@@ -149,6 +152,7 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.OneOfInstrumentSchema](docs/OneOfInstrumentSchema.md)
  - [GitChrisQueen_TDA_JS.OneOfSecuritiesAccountSchema](docs/OneOfSecuritiesAccountSchema.md)
  - [GitChrisQueen_TDA_JS.Option](docs/Option.md)
+ - [GitChrisQueen_TDA_JS.OptionChain](docs/OptionChain.md)
  - [GitChrisQueen_TDA_JS.OptionOptionDeliverables](docs/OptionOptionDeliverables.md)
  - [GitChrisQueen_TDA_JS.OrderActivity](docs/OrderActivity.md)
  - [GitChrisQueen_TDA_JS.OrderGet](docs/OrderGet.md)
@@ -169,6 +173,7 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.SearchInstrumentResponse](docs/SearchInstrumentResponse.md)
  - [GitChrisQueen_TDA_JS.SecuritiesAccount](docs/SecuritiesAccount.md)
  - [GitChrisQueen_TDA_JS.Session](docs/Session.md)
+ - [GitChrisQueen_TDA_JS.Strategy](docs/Strategy.md)
 
 ## Documentation for Authorization
 

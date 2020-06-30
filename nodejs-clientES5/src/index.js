@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Account', 'model/AccountSecuritiesAccount', 'model/AssetType', 'model/Bond', 'model/CandleList', 'model/CandleListCandles', 'model/CashAccount', 'model/CashAccountBalances', 'model/CashAccountCurrentBalances', 'model/CashAccountInitialBalances', 'model/CashEquivalent', 'model/Duration', 'model/EASObject', 'model/Equity', 'model/EquityAssetType', 'model/Execution', 'model/ExecutionExecutionLegs', 'model/FixedIncome', 'model/FrequencyType', 'model/Fundamental', 'model/FundamentalData', 'model/FundamentalFundamental', 'model/Hours', 'model/HoursSessionHours', 'model/Instrument', 'model/MarginAccount', 'model/MarginAccountBalances', 'model/MarginAccountCurrentBalances', 'model/MarginAccountInitialBalances', 'model/MarginAccountOrderStrategies', 'model/MarginAccountPositions', 'model/Mover', 'model/MutualFund', 'model/Option', 'model/OptionOptionDeliverables', 'model/OrderActivity', 'model/OrderGet', 'model/OrderGetCancelTime', 'model/OrderGetDuration', 'model/OrderGetInstrument', 'model/OrderGetOrderActivityCollection', 'model/OrderGetOrderLegCollection', 'model/OrderGetOrderType', 'model/OrderGetSession', 'model/OrderType', 'model/PeriodType', 'model/Positions', 'model/PositionsInner', 'model/PositionsInnerInstrument', 'model/PostAccessBody', 'model/SearchInstrument', 'model/SearchInstrumentResponse', 'model/SecuritiesAccount', 'model/Session', 'api/AccountsApi', 'api/AuthenticationApi', 'api/MarketHoursApi', 'api/MoversApi', 'api/OrdersApi', 'api/PriceHistoryApi', 'api/SavedOrdersApi', 'api/SearchInstrumentsApi'], factory);
+    define(['ApiClient', 'model/Account', 'model/AccountSecuritiesAccount', 'model/AssetType', 'model/Bond', 'model/CandleList', 'model/CandleListCandles', 'model/CashAccount', 'model/CashAccountBalances', 'model/CashAccountCurrentBalances', 'model/CashAccountInitialBalances', 'model/CashEquivalent', 'model/Duration', 'model/EASObject', 'model/Equity', 'model/EquityAssetType', 'model/ErrorObject', 'model/Execution', 'model/ExecutionExecutionLegs', 'model/FixedIncome', 'model/FrequencyType', 'model/Fundamental', 'model/FundamentalData', 'model/FundamentalFundamental', 'model/Hours', 'model/HoursSessionHours', 'model/Instrument', 'model/MarginAccount', 'model/MarginAccountBalances', 'model/MarginAccountCurrentBalances', 'model/MarginAccountInitialBalances', 'model/MarginAccountOrderStrategies', 'model/MarginAccountPositions', 'model/Mover', 'model/MutualFund', 'model/Option', 'model/OptionChain', 'model/OptionOptionDeliverables', 'model/OrderActivity', 'model/OrderGet', 'model/OrderGetCancelTime', 'model/OrderGetDuration', 'model/OrderGetInstrument', 'model/OrderGetOrderActivityCollection', 'model/OrderGetOrderLegCollection', 'model/OrderGetOrderType', 'model/OrderGetSession', 'model/OrderType', 'model/PeriodType', 'model/Positions', 'model/PositionsInner', 'model/PositionsInnerInstrument', 'model/PostAccessBody', 'model/SearchInstrument', 'model/SearchInstrumentResponse', 'model/SecuritiesAccount', 'model/Session', 'model/Strategy', 'api/AccountsApi', 'api/AuthenticationApi', 'api/InstrumentsApi', 'api/MarketHoursApi', 'api/MoversApi', 'api/OptionChainsApi', 'api/OrdersApi', 'api/PriceHistoryApi', 'api/SavedOrdersApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountSecuritiesAccount'), require('./model/AssetType'), require('./model/Bond'), require('./model/CandleList'), require('./model/CandleListCandles'), require('./model/CashAccount'), require('./model/CashAccountBalances'), require('./model/CashAccountCurrentBalances'), require('./model/CashAccountInitialBalances'), require('./model/CashEquivalent'), require('./model/Duration'), require('./model/EASObject'), require('./model/Equity'), require('./model/EquityAssetType'), require('./model/Execution'), require('./model/ExecutionExecutionLegs'), require('./model/FixedIncome'), require('./model/FrequencyType'), require('./model/Fundamental'), require('./model/FundamentalData'), require('./model/FundamentalFundamental'), require('./model/Hours'), require('./model/HoursSessionHours'), require('./model/Instrument'), require('./model/MarginAccount'), require('./model/MarginAccountBalances'), require('./model/MarginAccountCurrentBalances'), require('./model/MarginAccountInitialBalances'), require('./model/MarginAccountOrderStrategies'), require('./model/MarginAccountPositions'), require('./model/Mover'), require('./model/MutualFund'), require('./model/Option'), require('./model/OptionOptionDeliverables'), require('./model/OrderActivity'), require('./model/OrderGet'), require('./model/OrderGetCancelTime'), require('./model/OrderGetDuration'), require('./model/OrderGetInstrument'), require('./model/OrderGetOrderActivityCollection'), require('./model/OrderGetOrderLegCollection'), require('./model/OrderGetOrderType'), require('./model/OrderGetSession'), require('./model/OrderType'), require('./model/PeriodType'), require('./model/Positions'), require('./model/PositionsInner'), require('./model/PositionsInnerInstrument'), require('./model/PostAccessBody'), require('./model/SearchInstrument'), require('./model/SearchInstrumentResponse'), require('./model/SecuritiesAccount'), require('./model/Session'), require('./api/AccountsApi'), require('./api/AuthenticationApi'), require('./api/MarketHoursApi'), require('./api/MoversApi'), require('./api/OrdersApi'), require('./api/PriceHistoryApi'), require('./api/SavedOrdersApi'), require('./api/SearchInstrumentsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Account'), require('./model/AccountSecuritiesAccount'), require('./model/AssetType'), require('./model/Bond'), require('./model/CandleList'), require('./model/CandleListCandles'), require('./model/CashAccount'), require('./model/CashAccountBalances'), require('./model/CashAccountCurrentBalances'), require('./model/CashAccountInitialBalances'), require('./model/CashEquivalent'), require('./model/Duration'), require('./model/EASObject'), require('./model/Equity'), require('./model/EquityAssetType'), require('./model/ErrorObject'), require('./model/Execution'), require('./model/ExecutionExecutionLegs'), require('./model/FixedIncome'), require('./model/FrequencyType'), require('./model/Fundamental'), require('./model/FundamentalData'), require('./model/FundamentalFundamental'), require('./model/Hours'), require('./model/HoursSessionHours'), require('./model/Instrument'), require('./model/MarginAccount'), require('./model/MarginAccountBalances'), require('./model/MarginAccountCurrentBalances'), require('./model/MarginAccountInitialBalances'), require('./model/MarginAccountOrderStrategies'), require('./model/MarginAccountPositions'), require('./model/Mover'), require('./model/MutualFund'), require('./model/Option'), require('./model/OptionChain'), require('./model/OptionOptionDeliverables'), require('./model/OrderActivity'), require('./model/OrderGet'), require('./model/OrderGetCancelTime'), require('./model/OrderGetDuration'), require('./model/OrderGetInstrument'), require('./model/OrderGetOrderActivityCollection'), require('./model/OrderGetOrderLegCollection'), require('./model/OrderGetOrderType'), require('./model/OrderGetSession'), require('./model/OrderType'), require('./model/PeriodType'), require('./model/Positions'), require('./model/PositionsInner'), require('./model/PositionsInnerInstrument'), require('./model/PostAccessBody'), require('./model/SearchInstrument'), require('./model/SearchInstrumentResponse'), require('./model/SecuritiesAccount'), require('./model/Session'), require('./model/Strategy'), require('./api/AccountsApi'), require('./api/AuthenticationApi'), require('./api/InstrumentsApi'), require('./api/MarketHoursApi'), require('./api/MoversApi'), require('./api/OptionChainsApi'), require('./api/OrdersApi'), require('./api/PriceHistoryApi'), require('./api/SavedOrdersApi'));
   }
-}(function(ApiClient, Account, AccountSecuritiesAccount, AssetType, Bond, CandleList, CandleListCandles, CashAccount, CashAccountBalances, CashAccountCurrentBalances, CashAccountInitialBalances, CashEquivalent, Duration, EASObject, Equity, EquityAssetType, Execution, ExecutionExecutionLegs, FixedIncome, FrequencyType, Fundamental, FundamentalData, FundamentalFundamental, Hours, HoursSessionHours, Instrument, MarginAccount, MarginAccountBalances, MarginAccountCurrentBalances, MarginAccountInitialBalances, MarginAccountOrderStrategies, MarginAccountPositions, Mover, MutualFund, Option, OptionOptionDeliverables, OrderActivity, OrderGet, OrderGetCancelTime, OrderGetDuration, OrderGetInstrument, OrderGetOrderActivityCollection, OrderGetOrderLegCollection, OrderGetOrderType, OrderGetSession, OrderType, PeriodType, Positions, PositionsInner, PositionsInnerInstrument, PostAccessBody, SearchInstrument, SearchInstrumentResponse, SecuritiesAccount, Session, AccountsApi, AuthenticationApi, MarketHoursApi, MoversApi, OrdersApi, PriceHistoryApi, SavedOrdersApi, SearchInstrumentsApi) {
+}(function(ApiClient, Account, AccountSecuritiesAccount, AssetType, Bond, CandleList, CandleListCandles, CashAccount, CashAccountBalances, CashAccountCurrentBalances, CashAccountInitialBalances, CashEquivalent, Duration, EASObject, Equity, EquityAssetType, ErrorObject, Execution, ExecutionExecutionLegs, FixedIncome, FrequencyType, Fundamental, FundamentalData, FundamentalFundamental, Hours, HoursSessionHours, Instrument, MarginAccount, MarginAccountBalances, MarginAccountCurrentBalances, MarginAccountInitialBalances, MarginAccountOrderStrategies, MarginAccountPositions, Mover, MutualFund, Option, OptionChain, OptionOptionDeliverables, OrderActivity, OrderGet, OrderGetCancelTime, OrderGetDuration, OrderGetInstrument, OrderGetOrderActivityCollection, OrderGetOrderLegCollection, OrderGetOrderType, OrderGetSession, OrderType, PeriodType, Positions, PositionsInner, PositionsInnerInstrument, PostAccessBody, SearchInstrument, SearchInstrumentResponse, SecuritiesAccount, Session, Strategy, AccountsApi, AuthenticationApi, InstrumentsApi, MarketHoursApi, MoversApi, OptionChainsApi, OrdersApi, PriceHistoryApi, SavedOrdersApi) {
   'use strict';
 
   /**
@@ -137,6 +137,11 @@
      */
     EquityAssetType: EquityAssetType,
     /**
+     * The ErrorObject model constructor.
+     * @property {module:model/ErrorObject}
+     */
+    ErrorObject: ErrorObject,
+    /**
      * The Execution model constructor.
      * @property {module:model/Execution}
      */
@@ -231,6 +236,11 @@
      * @property {module:model/Option}
      */
     Option: Option,
+    /**
+     * The OptionChain model constructor.
+     * @property {module:model/OptionChain}
+     */
+    OptionChain: OptionChain,
     /**
      * The OptionOptionDeliverables model constructor.
      * @property {module:model/OptionOptionDeliverables}
@@ -332,6 +342,11 @@
      */
     Session: Session,
     /**
+     * The Strategy model constructor.
+     * @property {module:model/Strategy}
+     */
+    Strategy: Strategy,
+    /**
      * The AccountsApi service constructor.
      * @property {module:api/AccountsApi}
      */
@@ -342,6 +357,11 @@
      */
     AuthenticationApi: AuthenticationApi,
     /**
+     * The InstrumentsApi service constructor.
+     * @property {module:api/InstrumentsApi}
+     */
+    InstrumentsApi: InstrumentsApi,
+    /**
      * The MarketHoursApi service constructor.
      * @property {module:api/MarketHoursApi}
      */
@@ -351,6 +371,11 @@
      * @property {module:api/MoversApi}
      */
     MoversApi: MoversApi,
+    /**
+     * The OptionChainsApi service constructor.
+     * @property {module:api/OptionChainsApi}
+     */
+    OptionChainsApi: OptionChainsApi,
     /**
      * The OrdersApi service constructor.
      * @property {module:api/OrdersApi}
@@ -365,12 +390,7 @@
      * The SavedOrdersApi service constructor.
      * @property {module:api/SavedOrdersApi}
      */
-    SavedOrdersApi: SavedOrdersApi,
-    /**
-     * The SearchInstrumentsApi service constructor.
-     * @property {module:api/SearchInstrumentsApi}
-     */
-    SearchInstrumentsApi: SearchInstrumentsApi
+    SavedOrdersApi: SavedOrdersApi
   };
 
   return exports;

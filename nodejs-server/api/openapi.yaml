@@ -30,6 +30,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EASObject'
+        "400":
+          description: An error message indicating the validation problem with the
+            request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "401":
+          description: An error message indicating the caller must pass valid credentials
+            in the request body.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "500":
+          description: An error message indicating there was an unexpected server
+            error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "403":
+          description: An error message indicating the caller doesn't have access
+            to the account in the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "503":
+          description: An error message indicating there is a temporary problem responding.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
       security: []
       x-swagger-router-controller: Authentication
   /accounts/{accountId}/orders/{orderId}:
@@ -67,28 +101,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -128,34 +162,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message if the order was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -186,41 +220,41 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "400":
           description: An error message indicating the validation problem with the
             request.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message if the order was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -298,28 +332,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -398,28 +432,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -456,28 +490,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Orders
@@ -509,28 +543,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: SavedOrders
@@ -567,21 +601,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
@@ -627,28 +661,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: SavedOrders
@@ -693,34 +727,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message if the order was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: SavedOrders
@@ -758,34 +792,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message if the order was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: SavedOrders
@@ -819,28 +853,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "207":
           description: Indicates there was a problem getting account data for one
             or more linked accounts, but the accounts who's data returned successfully
@@ -889,28 +923,28 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "500":
           description: An error message indicating there was an unexpected server
             error.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: An error message indicating the caller is forbidden from accessing
             this page.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Accounts
@@ -961,19 +995,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: MarketHours
@@ -1018,19 +1052,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: MarketHours
@@ -1088,26 +1122,26 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message indicating movers for the instrument was not
             found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
       x-swagger-router-controller: Movers
@@ -1210,11 +1244,298 @@ paths:
       security:
       - bearerAuth: []
       x-swagger-router-controller: PriceHistory
+  /marketdata/chains:
+    get:
+      tags:
+      - Option Chains
+      summary: Get Option Chain
+      description: Get option chain for an optionable Symbol
+      operationId: marketdataChainsGET
+      parameters:
+      - name: apikey
+        in: query
+        description: Pass your OAuth User ID to make an unauthenticated request for
+          delayed data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: symbol
+        in: query
+        description: Enter one symbol
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: contractType
+        in: query
+        description: Type of contracts to return in the chain. Can be CALL, PUT, or
+          ALL. Default is ALL.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: ALL
+          enum:
+          - CALL
+          - PUT
+          - ALL
+      - name: strikeCount
+        in: query
+        description: The number of strikes to return above and below the at-the-money
+          price.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: includeQuotes
+        in: query
+        description: Include quotes for options in the option chain. Can be TRUE or
+          FALSE. Default is FALSE.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: strategy
+        in: query
+        description: Passing a value returns a Strategy Chain. Possible values are
+          SINGLE, ANALYTICAL (allows use of the volatility, underlyingPrice, interestRate,
+          and daysToExpiration params to calculate theoretical values), COVERED, VERTICAL,
+          CALENDAR, STRANGLE, STRADDLE, BUTTERFLY, CONDOR, DIAGONAL, COLLAR, or ROLL.
+          Default is SINGLE.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Strategy'
+      - name: interval
+        in: query
+        description: Strike interval for spread strategy chains (see strategy param).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: strike
+        in: query
+        description: Provide a strike price to return options only at that strike
+          price.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: range
+        in: query
+        description: 'Returns options for the given range. Possible values are: ITM:
+          In-the-money NTM: Near-the-money OTM: Out-of-the-money SAK: Strikes Above
+          Market SBK: Strikes Below Market SNK: Strikes Near Market ALL: All Strikes
+          Default is ALL.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ITM
+          - NTM
+          - OTM
+          - SAK
+          - SBK
+          - SNK
+          - ALL
+      - name: fromDate
+        in: query
+        description: 'Only return expirations after this date. For strategies, expiration
+          refers to the nearest term expiration in the strategy. Valid ISO-8601 formats
+          are: yyyy-MM-dd and yyyy-MM-ddTHH:mm:ssz.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: toDate
+        in: query
+        description: 'Only return expirations before this date. For strategies, expiration
+          refers to the nearest term expiration in the strategy. Valid ISO-8601 formats
+          are: yyyy-MM-dd and yyyy-MM-ddTHH:mm:ssz.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: volatility
+        in: query
+        description: Volatility to use in calculations. Applies only to ANALYTICAL
+          strategy chains (see strategy param).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: underlyingPrice
+        in: query
+        description: Underlying price to use in calculations. Applies only to ANALYTICAL
+          strategy chains (see strategy param).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: interestRate
+        in: query
+        description: Interest rate to use in calculations. Applies only to ANALYTICAL
+          strategy chains (see strategy param).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: daysToExpiration
+        in: query
+        description: Days to expiration to use in calculations. Applies only to ANALYTICAL
+          strategy chains (see strategy param)
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: expMonth
+        in: query
+        description: 'Return only options expiring in the specified month. Month is
+          given in the three character format. Example: JAN Default is ALL.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: ALL
+      - name: optionType
+        in: query
+        description: 'Type of contracts to return. Possible values are: S: Standard
+          contract NS: Non-standard contract ALL: All contracts Default is ALL.'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: ALL
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionChain'
+        "400":
+          description: An error message indicating the caller must pass a non null
+            value in the parameter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "404":
+          description: An error message indicating the optionchain for the symbol
+            was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "500":
+          description: An error message indicating internal error in the service.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+      security:
+      - bearerAuth: []
+      x-swagger-router-controller: OptionChains
+  /instruments/{cusip}:
+    get:
+      tags:
+      - Instruments
+      summary: Get Instrument
+      description: Get an instrument by CUSIP
+      operationId: instrumentsCusipGET
+      parameters:
+      - name: cusip
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: apikey
+        in: query
+        description: Pass your OAuth User ID to make an unauthenticated request for
+          delayed data.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchInstrumentResponse'
+        "400":
+          description: An error message indicating the caller must pass a non null
+            value in the parameter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+        "404":
+          description: An error message indicating the instrument for the symbol/cusip
+            was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorObject'
+      security:
+      - bearerAuth: []
+      x-swagger-router-controller: Instruments
   /instruments:
     get:
       tags:
-      - Search Instruments
-      summary: Search or retrieve instrument data, including fundamental data
+      - Instruments
+      summary: Search Instruments
+      description: Search or retrieve instrument data, including fundamental data
       operationId: instrumentsGET
       parameters:
       - name: apikey
@@ -1265,38 +1586,63 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "403":
           description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "404":
           description: An error message indicating the instrument for the symbol/cusip
             was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
         "406":
           description: An error message indicating an issue in the symbol regex, or
             number of symbols searched is over the maximum.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EASObject'
+                $ref: '#/components/schemas/ErrorObject'
       security:
       - bearerAuth: []
-      x-swagger-router-controller: SearchInstruments
+      x-swagger-router-controller: Instruments
 components:
   schemas:
+    OptionChain:
+      type: object
+      properties:
+        symbol:
+          type: string
+        status:
+          type: string
+      example:
+        symbol: symbol
+        status: status
+    Strategy:
+      type: string
+      enum:
+      - SINGLE
+      - ANALYTICAL
+      - COVERED
+      - VERTICAL
+      - CALENDAR
+      - STRANGLE
+      - STRADDLE
+      - BUTTERFLY
+      - CONDOR
+      - DIAGONAL
+      - COLLAR
+      - ROLL
     Mover:
       type: object
       properties:
@@ -2212,6 +2558,13 @@ components:
           close: 0.80082819046101150206595775671303272247314453125
           open: 5.63737665663332876420099637471139430999755859375
         empty: true
+    ErrorObject:
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: error
     EASObject:
       type: object
       properties:

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EASObject', 'model/Hours'], factory);
+    define(['ApiClient', 'model/ErrorObject', 'model/Hours'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/EASObject'), require('../model/Hours'));
+    module.exports = factory(require('../ApiClient'), require('../model/ErrorObject'), require('../model/Hours'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.MarketHoursApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EASObject, root.GitChrisQueen_TDA_JS.Hours);
+    root.GitChrisQueen_TDA_JS.MarketHoursApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.ErrorObject, root.GitChrisQueen_TDA_JS.Hours);
   }
-}(this, function(ApiClient, EASObject, Hours) {
+}(this, function(ApiClient, ErrorObject, Hours) {
   'use strict';
 
   /**

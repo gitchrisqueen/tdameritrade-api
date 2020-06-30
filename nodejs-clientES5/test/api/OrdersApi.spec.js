@@ -224,19 +224,9 @@
 
           instance.accountsAccountIdOrdersOrderIdDELETE(accountId, orderId).then(function(data) {
             // TODO: update response assertions
-            expect(data).to.be.a(GitChrisQueen_TDA_JS.EASObject);
-            expect(data.access_token).to.be.a('string');
-            expect(data.access_token).to.be("");
-            expect(data.expires_in).to.be.a('number');
-            expect(data.expires_in).to.be(0);
-            expect(data.refresh_token).to.be.a('string');
-            expect(data.refresh_token).to.be("");
-            expect(data.refresh_token_expires_in).to.be.a('number');
-            expect(data.refresh_token_expires_in).to.be(0);
-            expect(data.scope).to.be.a('string');
-            expect(data.scope).to.be("");
-            expect(data.token_type).to.be.a('string');
-            expect(data.token_type).to.be("");
+            expect(data).to.be.a(GitChrisQueen_TDA_JS.ErrorObject);
+            expect(data.error).to.be.a('string');
+            expect(data.error).to.be("");
 
             done();
           }, function(error) {

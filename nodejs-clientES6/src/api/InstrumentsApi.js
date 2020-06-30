@@ -12,19 +12,19 @@
  */
 
 import ApiClient from "../ApiClient";
-import Account from '../model/Account';
 import ErrorObject from '../model/ErrorObject';
+import SearchInstrumentResponse from '../model/SearchInstrumentResponse';
 
 /**
-* Accounts service.
-* @module api/AccountsApi
+* Instruments service.
+* @module api/InstrumentsApi
 * @version 0.1.4
 */
-export default class AccountsApi {
+export default class InstrumentsApi {
 
     /**
-    * Constructs a new AccountsApi. 
-    * @alias module:api/AccountsApi
+    * Constructs a new InstrumentsApi. 
+    * @alias module:api/InstrumentsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instance} if unspecified.
@@ -36,20 +36,20 @@ export default class AccountsApi {
 
 
     /**
-     * Get Account
-     * Account balances, positions, and orders for a specific account.
+     * Get Instrument
+     * Get an instrument by CUSIP
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Account} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SearchInstrumentResponse} and HTTP response
      */
-    accountsAccountIdGETWithHttpInfo(accountId, opts) {
+    instrumentsCusipGETWithHttpInfo(cusip, opts) {
       opts = opts || {};
       let postBody = null;
 
       let pathParams = {
-        'accountId': accountId
+        'cusip': cusip
       };
       let queryParams = {
-        'fields': opts['fields']
+        'apikey': opts['apikey']
       };
       let headerParams = {
       };
@@ -59,23 +59,23 @@ export default class AccountsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Account;
+      let returnType = SearchInstrumentResponse;
 
       return this.apiClient.callApi(
-        '/accounts/{accountId}', 'GET',
+        '/instruments/{cusip}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Get Account
-     * Account balances, positions, and orders for a specific account.
+     * Get Instrument
+     * Get an instrument by CUSIP
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Account}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SearchInstrumentResponse}
      */
-    accountsAccountIdGET(accountId, opts) {
-      return this.accountsAccountIdGETWithHttpInfo(accountId, opts)
+    instrumentsCusipGET(cusip, opts) {
+      return this.instrumentsCusipGETWithHttpInfo(cusip, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -83,19 +83,21 @@ export default class AccountsApi {
 
 
     /**
-     * Get Accounts
-     * Account balances, positions, and orders for all linked accounts.
+     * Search Instruments
+     * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Account} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SearchInstrumentResponse} and HTTP response
      */
-    accountsGETWithHttpInfo(opts) {
+    instrumentsGETWithHttpInfo(symbol, projection, opts) {
       opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
-        'fields': opts['fields']
+        'apikey': opts['apikey'],
+        'symbol': symbol,
+        'projection': projection
       };
       let headerParams = {
       };
@@ -105,23 +107,23 @@ export default class AccountsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Account;
+      let returnType = SearchInstrumentResponse;
 
       return this.apiClient.callApi(
-        '/accounts', 'GET',
+        '/instruments', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Get Accounts
-     * Account balances, positions, and orders for all linked accounts.
+     * Search Instruments
+     * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Account}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SearchInstrumentResponse}
      */
-    accountsGET(opts) {
-      return this.accountsGETWithHttpInfo(opts)
+    instrumentsGET(symbol, projection, opts) {
+      return this.instrumentsGETWithHttpInfo(symbol, projection, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

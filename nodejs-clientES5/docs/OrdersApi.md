@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 <a name="accountsAccountIdOrdersOrderIdDELETE"></a>
 # **accountsAccountIdOrdersOrderIdDELETE**
-> EASObject accountsAccountIdOrdersOrderIdDELETE(accountId, orderId)
+> ErrorObject accountsAccountIdOrdersOrderIdDELETE(accountId, orderId)
 
 Cancel Order
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EASObject**](EASObject.md)
+[**ErrorObject**](ErrorObject.md)
 
 ### Authorization
 

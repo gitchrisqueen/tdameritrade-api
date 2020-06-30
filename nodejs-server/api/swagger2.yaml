@@ -36,23 +36,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -85,23 +85,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -161,23 +161,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -203,31 +203,31 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: An error message if the order was not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -256,23 +256,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -301,27 +301,27 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: An error message if the order was not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -351,23 +351,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -398,13 +398,13 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
@@ -414,7 +414,7 @@ paths:
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -446,27 +446,27 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: An error message if the order was not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -495,23 +495,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -546,27 +546,27 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: An error message if the order was not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -623,34 +623,278 @@ paths:
             An error message indicating the caller must pass a non null value in
             the parameter.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: Unauthorized
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: Forbidden
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: >-
             An error message indicating the instrument for the symbol/cusip was
             not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '406':
           description: >-
             An error message indicating an issue in the symbol regex, or number
             of symbols searched is over the maximum.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
-        - Search Instruments
+        - Instruments
+      description: 'Search or retrieve instrument data, including fundamental data'
       operationId: instrumentsGET
-      summary: 'Search or retrieve instrument data, including fundamental data'
-      x-swagger-router-controller: SearchInstruments
+      summary: Search Instruments
+      x-swagger-router-controller: Instruments
+  '/instruments/{cusip}':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: cusip
+          required: true
+          type: string
+        - description: >-
+            Pass your OAuth User ID to make an unauthenticated request for
+            delayed data.
+          in: query
+          name: apikey
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SearchInstrumentResponse'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a non null value in
+            the parameter.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the instrument for the symbol/cusip was
+            not found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Instruments
+      description: Get an instrument by CUSIP
+      operationId: instrumentsCusipGET
+      summary: Get Instrument
+      x-swagger-router-controller: Instruments
+  /marketdata/chains:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: >-
+            Pass your OAuth User ID to make an unauthenticated request for
+            delayed data.
+          in: query
+          name: apikey
+          required: false
+          type: string
+        - description: Enter one symbol
+          in: query
+          name: symbol
+          required: false
+          type: string
+        - default: ALL
+          description: >-
+            Type of contracts to return in the chain. Can be CALL, PUT, or ALL.
+            Default is ALL.
+          enum:
+            - CALL
+            - PUT
+            - ALL
+          in: query
+          name: contractType
+          required: false
+          type: string
+        - description: >-
+            The number of strikes to return above and below the at-the-money
+            price.
+          in: query
+          name: strikeCount
+          required: false
+          type: integer
+        - default: false
+          description: >-
+            Include quotes for options in the option chain. Can be TRUE or
+            FALSE. Default is FALSE.
+          in: query
+          name: includeQuotes
+          required: false
+          type: boolean
+        - description: >-
+            Passing a value returns a Strategy Chain. Possible values are
+            SINGLE, ANALYTICAL (allows use of the volatility, underlyingPrice,
+            interestRate, and daysToExpiration params to calculate theoretical
+            values), COVERED, VERTICAL, CALENDAR, STRANGLE, STRADDLE, BUTTERFLY,
+            CONDOR, DIAGONAL, COLLAR, or ROLL. Default is SINGLE.
+          enum:
+            - SINGLE
+            - ANALYTICAL
+            - COVERED
+            - VERTICAL
+            - CALENDAR
+            - STRANGLE
+            - STRADDLE
+            - BUTTERFLY
+            - CONDOR
+            - DIAGONAL
+            - COLLAR
+            - ROLL
+          in: query
+          name: strategy
+          required: false
+          type: string
+        - description: Strike interval for spread strategy chains (see strategy param).
+          in: query
+          name: interval
+          required: false
+          type: integer
+        - description: Provide a strike price to return options only at that strike price.
+          in: query
+          name: strike
+          required: false
+          type: number
+        - description: >-
+            Returns options for the given range. Possible values are: ITM:
+            In-the-money NTM: Near-the-money OTM: Out-of-the-money SAK: Strikes
+            Above Market SBK: Strikes Below Market SNK: Strikes Near Market ALL:
+            All Strikes Default is ALL.
+          enum:
+            - ITM
+            - NTM
+            - OTM
+            - SAK
+            - SBK
+            - SNK
+            - ALL
+          in: query
+          name: range
+          required: false
+          type: string
+        - description: >-
+            Only return expirations after this date. For strategies, expiration
+            refers to the nearest term expiration in the strategy. Valid
+            ISO-8601 formats are: yyyy-MM-dd and yyyy-MM-ddTHH:mm:ssz.
+          format: date-time
+          in: query
+          name: fromDate
+          required: false
+          type: string
+        - description: >-
+            Only return expirations before this date. For strategies, expiration
+            refers to the nearest term expiration in the strategy. Valid
+            ISO-8601 formats are: yyyy-MM-dd and yyyy-MM-ddTHH:mm:ssz.
+          format: date-time
+          in: query
+          name: toDate
+          required: false
+          type: string
+        - description: >-
+            Volatility to use in calculations. Applies only to ANALYTICAL
+            strategy chains (see strategy param).
+          in: query
+          name: volatility
+          required: false
+          type: number
+        - description: >-
+            Underlying price to use in calculations. Applies only to ANALYTICAL
+            strategy chains (see strategy param).
+          in: query
+          name: underlyingPrice
+          required: false
+          type: number
+        - description: >-
+            Interest rate to use in calculations. Applies only to ANALYTICAL
+            strategy chains (see strategy param).
+          in: query
+          name: interestRate
+          required: false
+          type: number
+        - description: >-
+            Days to expiration to use in calculations. Applies only to
+            ANALYTICAL strategy chains (see strategy param)
+          in: query
+          name: daysToExpiration
+          required: false
+          type: integer
+        - default: ALL
+          description: >-
+            Return only options expiring in the specified month. Month is given
+            in the three character format. Example: JAN Default is ALL.
+          in: query
+          name: expMonth
+          required: false
+          type: string
+        - default: ALL
+          description: >-
+            Type of contracts to return. Possible values are: S: Standard
+            contract NS: Non-standard contract ALL: All contracts Default is
+            ALL.
+          in: query
+          name: optionType
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OptionChain'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a non null value in
+            the parameter.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the optionchain for the symbol was not
+            found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating internal error in the service.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Option Chains
+      description: Get option chain for an optionable Symbol
+      operationId: marketdataChainsGET
+      summary: Get Option Chain
+      x-swagger-router-controller: OptionChains
   /marketdata/hours:
     get:
       produces:
@@ -683,15 +927,15 @@ paths:
         '401':
           description: Unauthorized
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: Forbidden
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: Not Found
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -736,19 +980,19 @@ paths:
             An error message indicating the caller must pass a correct value in
             the parameter.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: Unauthorized
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: Forbidden
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: An error message indicating movers for the instrument was not found.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -782,15 +1026,15 @@ paths:
         '401':
           description: Unauthorized
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: Forbidden
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: Not Found
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -917,6 +1161,30 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/EASObject'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass valid credentials
+            in the request body.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller doesn't have access to the
+            account in the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
       security: []
       tags:
         - Authentication
@@ -977,23 +1245,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -1026,23 +1294,23 @@ paths:
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '401':
           description: >-
             An error message indicating the caller must pass a valid AuthToken
             in the HTTP authorization request header.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: >-
             An error message indicating the caller is forbidden from accessing
             this page.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '500':
           description: An error message indicating there was an unexpected server error.
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -1375,6 +1643,13 @@ definitions:
     properties:
       schema:
         $ref: '#/definitions/AssetType'
+  ErrorObject:
+    example:
+      error: error
+    properties:
+      error:
+        type: string
+    type: object
   Execution:
     example:
       activityType: EXECUTION
@@ -2012,6 +2287,16 @@ definitions:
       underlyingSymbol:
         type: string
     type: object
+  OptionChain:
+    example:
+      status: status
+      symbol: symbol
+    properties:
+      status:
+        type: string
+      symbol:
+        type: string
+    type: object
   Option_optionDeliverables:
     properties:
       assetType:
@@ -2612,6 +2897,21 @@ definitions:
       - AM
       - PM
       - SEAMLESS
+    type: string
+  Strategy:
+    enum:
+      - SINGLE
+      - ANALYTICAL
+      - COVERED
+      - VERTICAL
+      - CALENDAR
+      - STRANGLE
+      - STRADDLE
+      - BUTTERFLY
+      - CONDOR
+      - DIAGONAL
+      - COLLAR
+      - ROLL
     type: string
 securityDefinitions:
   application:

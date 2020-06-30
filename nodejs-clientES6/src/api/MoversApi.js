@@ -12,7 +12,7 @@
  */
 
 import ApiClient from "../ApiClient";
-import EASObject from '../model/EASObject';
+import ErrorObject from '../model/ErrorObject';
 import Mover from '../model/Mover';
 
 /**

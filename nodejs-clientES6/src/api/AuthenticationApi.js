@@ -13,6 +13,7 @@
 
 import ApiClient from "../ApiClient";
 import EASObject from '../model/EASObject';
+import ErrorObject from '../model/ErrorObject';
 
 /**
 * Authentication service.

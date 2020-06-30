@@ -12,7 +12,7 @@
  */
 
 import ApiClient from "../ApiClient";
-import EASObject from '../model/EASObject';
+import ErrorObject from '../model/ErrorObject';
 import OrderGet from '../model/OrderGet';
 
 /**
@@ -88,7 +88,7 @@ export default class OrdersApi {
     /**
      * Cancel Order
      * Cancel a specific order for a spcific account
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/EASObject} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ErrorObject} and HTTP response
      */
     accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId) {
       let postBody = null;
@@ -107,7 +107,7 @@ export default class OrdersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = EASObject;
+      let returnType = ErrorObject;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/orders/{orderId}', 'DELETE',
@@ -119,7 +119,7 @@ export default class OrdersApi {
     /**
      * Cancel Order
      * Cancel a specific order for a spcific account
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EASObject}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ErrorObject}
      */
     accountsAccountIdOrdersOrderIdDELETE(accountId, orderId) {
       return this.accountsAccountIdOrdersOrderIdDELETEWithHttpInfo(accountId, orderId)

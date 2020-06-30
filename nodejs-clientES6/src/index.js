@@ -27,6 +27,7 @@ import Duration from './model/Duration';
 import EASObject from './model/EASObject';
 import Equity from './model/Equity';
 import EquityAssetType from './model/EquityAssetType';
+import ErrorObject from './model/ErrorObject';
 import Execution from './model/Execution';
 import ExecutionExecutionLegs from './model/ExecutionExecutionLegs';
 import FixedIncome from './model/FixedIncome';
@@ -48,6 +49,7 @@ import MutualFund from './model/MutualFund';
 import OneOfInstrumentSchema from './model/OneOfInstrumentSchema';
 import OneOfSecuritiesAccountSchema from './model/OneOfSecuritiesAccountSchema';
 import Option from './model/Option';
+import OptionChain from './model/OptionChain';
 import OptionOptionDeliverables from './model/OptionOptionDeliverables';
 import OrderActivity from './model/OrderActivity';
 import OrderGet from './model/OrderGet';
@@ -68,14 +70,16 @@ import SearchInstrument from './model/SearchInstrument';
 import SearchInstrumentResponse from './model/SearchInstrumentResponse';
 import SecuritiesAccount from './model/SecuritiesAccount';
 import Session from './model/Session';
+import Strategy from './model/Strategy';
 import AccountsApi from './api/AccountsApi';
 import AuthenticationApi from './api/AuthenticationApi';
+import InstrumentsApi from './api/InstrumentsApi';
 import MarketHoursApi from './api/MarketHoursApi';
 import MoversApi from './api/MoversApi';
+import OptionChainsApi from './api/OptionChainsApi';
 import OrdersApi from './api/OrdersApi';
 import PriceHistoryApi from './api/PriceHistoryApi';
 import SavedOrdersApi from './api/SavedOrdersApi';
-import SearchInstrumentsApi from './api/SearchInstrumentsApi';
 
 /**
 * TD Ameritrade API node javascript client code..<br>
@@ -206,6 +210,12 @@ export {
     EquityAssetType,
 
     /**
+     * The ErrorObject model constructor.
+     * @property {module:model/ErrorObject}
+     */
+    ErrorObject,
+
+    /**
      * The Execution model constructor.
      * @property {module:model/Execution}
      */
@@ -332,6 +342,12 @@ export {
     Option,
 
     /**
+     * The OptionChain model constructor.
+     * @property {module:model/OptionChain}
+     */
+    OptionChain,
+
+    /**
      * The OptionOptionDeliverables model constructor.
      * @property {module:model/OptionOptionDeliverables}
      */
@@ -452,6 +468,12 @@ export {
     Session,
 
     /**
+     * The Strategy model constructor.
+     * @property {module:model/Strategy}
+     */
+    Strategy,
+
+    /**
     * The AccountsApi service constructor.
     * @property {module:api/AccountsApi}
     */
@@ -464,6 +486,12 @@ export {
     AuthenticationApi,
 
     /**
+    * The InstrumentsApi service constructor.
+    * @property {module:api/InstrumentsApi}
+    */
+    InstrumentsApi,
+
+    /**
     * The MarketHoursApi service constructor.
     * @property {module:api/MarketHoursApi}
     */
@@ -474,6 +502,12 @@ export {
     * @property {module:api/MoversApi}
     */
     MoversApi,
+
+    /**
+    * The OptionChainsApi service constructor.
+    * @property {module:api/OptionChainsApi}
+    */
+    OptionChainsApi,
 
     /**
     * The OrdersApi service constructor.
@@ -491,11 +525,5 @@ export {
     * The SavedOrdersApi service constructor.
     * @property {module:api/SavedOrdersApi}
     */
-    SavedOrdersApi,
-
-    /**
-    * The SearchInstrumentsApi service constructor.
-    * @property {module:api/SearchInstrumentsApi}
-    */
-    SearchInstrumentsApi
+    SavedOrdersApi
 };
