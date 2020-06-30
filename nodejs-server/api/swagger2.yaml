@@ -2,12 +2,190 @@ swagger: '2.0'
 info:
   description: This is replication of the TD Ameritrade API.
   title: TD Ameritrade API - OAuth2
-  version: 0.1.3
+  version: 0.1.4
 host: api.tdameritrade.com
 basePath: /v1
 schemes:
   - https
 paths:
+  /accounts:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: >-
+            Balances displayed by default, additional fields can be added here
+            by adding positions or orders. Example: fields=positions,orders
+          in: query
+          name: fields
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Account'
+        '207':
+          description: >-
+            Indicates there was a problem getting account data for one or more
+            linked accounts, but the accounts who's data returned successfully
+            is in the response. Do not aggregate balances and positions for this
+            case.
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Accounts
+      description: 'Account balances, positions, and orders for all linked accounts.'
+      operationId: accountsGET
+      summary: Get Accounts
+      x-swagger-router-controller: Accounts
+  '/accounts/{accountId}':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - description: >-
+            Balances displayed by default, additional fields can be added here
+            by adding positions or orders. Example: fields=positions,orders
+          in: query
+          name: fields
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Accounts
+      description: 'Account balances, positions, and orders for a specific account.'
+      operationId: accountsAccountIdGET
+      summary: Get Account
+      x-swagger-router-controller: Accounts
+  '/accounts/{accountId}/orders':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: query
+          name: maxResults
+          required: false
+          type: integer
+        - format: date-time
+          in: query
+          name: fromEnteredTime
+          required: false
+          type: string
+        - format: date-time
+          in: query
+          name: toEnteredTime
+          required: false
+          type: string
+        - enum:
+            - AWAITING_PARENT_ORDER
+            - AWAITING_CONDITION
+            - AWAITING_MANUAL_REVIEW
+            - ACCEPTED
+            - AWAITING_UR_OUT
+            - PENDING_ACTIVATION
+            - QUEUED
+            - WORKING
+            - REJECTED
+            - PENDING_CANCEL
+            - CANCELED
+            - PENDING_REPLACE
+            - REPLACED
+            - FILLED
+            - EXPIRED
+          in: query
+          name: status
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Orders
+      description: Orders for a specific account.
+      operationId: accountsAccountIdOrdersGET
+      summary: Get Orders by Path
+      x-swagger-router-controller: Orders
   '/accounts/{accountId}/orders/{orderId}':
     delete:
       produces:
@@ -26,15 +204,380 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/EASObject'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: An error message if the order was not found.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
       security:
         - bearerAuth: []
       tags:
-        - Accounts and Trading
         - Orders
       description: Cancel a specific order for a spcific account
       operationId: accountsAccountIdOrdersOrderIdDELETE
       summary: Cancel Order
-      x-swagger-router-controller: AccountsAndTrading
+      x-swagger-router-controller: Orders
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: orderId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Orders
+      description: Get a specific order for a specific account.
+      operationId: accountsAccountIdOrdersOrderIdGET
+      summary: Get Order
+      x-swagger-router-controller: Orders
+    put:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: orderId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: An error message if the order was not found.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Orders
+      description: >-
+        Replace an existing order for an account. The existing order will be
+        replaced by the new order. Once replaced, the old order will be canceled
+        and a new order will be created. See our Place Order Samples Guide -
+        https://developer.tdameritrade.com/content/place-order-samples.
+      operationId: accountsAccountIdOrdersOrderIdPUT
+      summary: Replace Order
+      x-swagger-router-controller: Orders
+  '/accounts/{accountId}/savedorders':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Saved Orders
+      description: Saved orders for a specific account.
+      operationId: accountsAccountIdSavedordersGET
+      summary: Get Saved Orders by Path
+      x-swagger-router-controller: SavedOrders
+    post:
+      consumes:
+        - application/Json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/OrderGet'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Saved Orders
+      description: >-
+        Save an order for a specific account. See our Place Order Samples Guide
+        - https://developer.tdameritrade.com/content/place-order-samples.
+      operationId: accountsAccountIdSavedordersPOST
+      summary: Create Saved Orders
+      x-swagger-router-controller: SavedOrders
+  '/accounts/{accountId}/savedorders/{savedOrderId}':
+    delete:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: savedOrderId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EASObject'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: An error message if the order was not found.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Saved Orders
+      description: Delete a specific saved order for a specific account.
+      operationId: accountsAccountIdSavedordersSavedOrderIdDELETE
+      summary: Delete Saved Orders
+      x-swagger-router-controller: SavedOrders
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: savedOrderId
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Saved Orders
+      description: 'Specific saved order by its ID, for a specific account.'
+      operationId: accountsAccountIdSavedordersSavedOrderIdGET
+      summary: Get Saved Orders
+      x-swagger-router-controller: SavedOrders
+    put:
+      consumes:
+        - application/Json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: path
+          name: savedOrderId
+          required: true
+          type: integer
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/OrderGet'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: An error message if the order was not found.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Saved Orders
+      description: >-
+        Replace an existing saved order for an account. The existing saved order
+        will be replaced by the new order. see our Place Order Samples Guide -
+        Click here.
+      operationId: accountsAccountIdSavedordersSavedOrderIdPUT
+      summary: Replace Saved Orders
+      x-swagger-router-controller: SavedOrders
   /instruments:
     get:
       produces:
@@ -74,23 +617,33 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/inline_response_200'
+            $ref: '#/definitions/SearchInstrumentResponse'
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
             the parameter.
+          schema:
+            $ref: '#/definitions/EASObject'
         '401':
           description: Unauthorized
+          schema:
+            $ref: '#/definitions/EASObject'
         '403':
           description: Forbidden
+          schema:
+            $ref: '#/definitions/EASObject'
         '404':
           description: >-
             An error message indicating the instrument for the symbol/cusip was
             not found.
+          schema:
+            $ref: '#/definitions/EASObject'
         '406':
           description: >-
             An error message indicating an issue in the symbol regex, or number
             of symbols searched is over the maximum.
+          schema:
+            $ref: '#/definitions/EASObject'
       security:
         - bearerAuth: []
       tags:
@@ -98,6 +651,153 @@ paths:
       operationId: instrumentsGET
       summary: 'Search or retrieve instrument data, including fundamental data'
       x-swagger-router-controller: SearchInstruments
+  /marketdata/hours:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: apiKey
+          required: false
+          type: string
+        - enum:
+            - EQUITY
+            - OPTION
+            - FUTURE
+            - BOND
+            - FOREX
+          in: query
+          name: markets
+          required: false
+          type: string
+        - format: date-time
+          in: query
+          name: date
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Hours'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Market Hours
+      operationId: marketdataHoursGET
+      summary: Get Hours for Multiple Markets
+      x-swagger-router-controller: MarketHours
+  '/marketdata/{index}/movers':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: index
+          required: true
+          type: string
+        - in: query
+          name: apikey
+          required: false
+          type: string
+        - enum:
+            - up
+            - down
+          in: query
+          name: direction
+          required: false
+          type: string
+        - enum:
+            - value
+            - percent
+          in: query
+          name: change
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Mover'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a correct value in
+            the parameter.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: An error message indicating movers for the instrument was not found.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Movers
+      operationId: marketdataIndexMoversGET
+      summary: Get price history for a symbol
+      x-swagger-router-controller: Movers
+  '/marketdata/{market}/hours':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: apiKey
+          required: false
+          type: string
+        - in: path
+          name: market
+          required: true
+          type: string
+        - format: date-time
+          in: query
+          name: date
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Hours'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/EASObject'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Market Hours
+      operationId: marketdataMarketHoursGET
+      summary: Get Hours for Multiple Markets
+      x-swagger-router-controller: MarketHours
   '/marketdata/{symbol}/pricehistory':
     get:
       produces:
@@ -157,10 +857,16 @@ paths:
             $ref: '#/definitions/CandleList'
         '401':
           description: Unauthorized
+          schema:
+            $ref: '#/definitions/EASObject'
         '403':
           description: Forbidden
+          schema:
+            $ref: '#/definitions/EASObject'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/EASObject'
       security:
         - bearerAuth: []
       tags:
@@ -220,7 +926,160 @@ paths:
       operationId: oauth2TokenPOST
       summary: Post Access Token
       x-swagger-router-controller: Authentication
+  /orders:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: accountId
+          required: false
+          type: integer
+        - in: query
+          name: maxResults
+          required: false
+          type: integer
+        - format: date-time
+          in: query
+          name: fromEnteredTime
+          required: false
+          type: string
+        - format: date-time
+          in: query
+          name: toEnteredTime
+          required: false
+          type: string
+        - enum:
+            - AWAITING_PARENT_ORDER
+            - AWAITING_CONDITION
+            - AWAITING_MANUAL_REVIEW
+            - ACCEPTED
+            - AWAITING_UR_OUT
+            - PENDING_ACTIVATION
+            - QUEUED
+            - WORKING
+            - REJECTED
+            - PENDING_CANCEL
+            - CANCELED
+            - PENDING_REPLACE
+            - REPLACED
+            - FILLED
+            - EXPIRED
+          in: query
+          name: status
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Orders
+      description: >-
+        All orders for a specific account or, if account ID isn't specified,
+        orders will be returned for all linked accounts.
+      operationId: ordersGET
+      summary: Get Orders By Query
+      x-swagger-router-controller: Orders
+    post:
+      consumes:
+        - application/Json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: integer
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/OrderGet'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderGet'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/EASObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/EASObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Orders
+      description: >-
+        Place an order for a specific account. See our Place Order Samples Guide
+        - https://developer.tdameritrade.com/content/place-order-samples.
+      operationId: ordersPOST
+      summary: Place Order
+      x-swagger-router-controller: Orders
 definitions:
+  Account:
+    example:
+      securitiesAccount:
+        schema:
+          schema: ''
+    properties:
+      securitiesAccount:
+        $ref: '#/definitions/Account_securitiesAccount'
+    type: object
+  Account_securitiesAccount:
+    example:
+      schema:
+        schema: ''
+    properties:
+      schema:
+        $ref: '#/definitions/SecuritiesAccount'
+  AssetType:
+    enum:
+      - EQUITY
+      - OPTION
+      - INDEX
+      - MUTUAL_FUND
+      - CASH_EQUIVALENT
+      - FIXED_INCOME
+      - CURRENCY
+    type: string
   Bond:
     properties:
       assetType:
@@ -302,6 +1161,181 @@ definitions:
         format: double
         type: number
     type: object
+  CashAccount:
+    properties:
+      accountId:
+        type: string
+      currentBalances:
+        $ref: '#/definitions/CashAccount_currentBalances'
+      initialBalances:
+        $ref: '#/definitions/CashAccount_initialBalances'
+      isClosingOnlyRestricted:
+        default: false
+        type: boolean
+      isDayTrader:
+        default: false
+        type: boolean
+      orderStrategies:
+        $ref: '#/definitions/MarginAccount_orderStrategies'
+      positions:
+        $ref: '#/definitions/MarginAccount_positions'
+      projectedBalances:
+        $ref: '#/definitions/CashAccount_currentBalances'
+      roundTrips:
+        format: int32
+        type: integer
+      type:
+        enum:
+          - CASH
+          - MARGIN
+        type: string
+    type: object
+  CashAccountBalances:
+    properties:
+      accruedInterest:
+        format: double
+        type: number
+      bondValue:
+        format: double
+        type: number
+      cashAvailableForTrading:
+        format: double
+        type: number
+      cashAvailableForWithdrawal:
+        format: double
+        type: number
+      cashBalance:
+        format: double
+        type: number
+      cashCall:
+        format: double
+        type: number
+      cashDebitCallValue:
+        format: double
+        type: number
+      cashReceipts:
+        format: double
+        type: number
+      liquidationValue:
+        format: double
+        type: number
+      longMarketValue:
+        format: double
+        type: number
+      longNonMarginableMarketValue:
+        format: double
+        type: number
+      longOptionMarketValue:
+        format: double
+        type: number
+      moneyMarketFund:
+        format: double
+        type: number
+      mutualFundValue:
+        format: double
+        type: number
+      pendingDeposits:
+        format: double
+        type: number
+      savings:
+        format: double
+        type: number
+      shortMarketValue:
+        format: double
+        type: number
+      shortOptionMarketValue:
+        format: double
+        type: number
+      totalCash:
+        format: double
+        type: number
+      unsettledCash:
+        format: double
+        type: number
+    type: object
+  CashAccount_currentBalances:
+    properties:
+      schema:
+        $ref: '#/definitions/CashAccountBalances'
+  CashAccount_initialBalances:
+    properties:
+      accountValue:
+        format: double
+        type: number
+      accruedInterest:
+        format: double
+        type: number
+      bondValue:
+        format: double
+        type: number
+      cashAvailableForTrading:
+        format: double
+        type: number
+      cashAvailableForWithdrawal:
+        format: double
+        type: number
+      cashBalance:
+        format: double
+        type: number
+      cashDebitCallValue:
+        format: double
+        type: number
+      cashReceipts:
+        format: double
+        type: number
+      isInCall:
+        default: false
+        type: boolean
+      liquidationValue:
+        format: double
+        type: number
+      longOptionMarketValue:
+        format: double
+        type: number
+      longStockValue:
+        format: double
+        type: number
+      moneyMarketFund:
+        format: double
+        type: number
+      mutualFundValue:
+        format: double
+        type: number
+      pendingDeposits:
+        format: double
+        type: number
+      shortOptionMarketValue:
+        format: double
+        type: number
+      shortStockValue:
+        format: double
+        type: number
+      unsettledCash:
+        format: double
+        type: number
+    type: object
+  CashEquivalent:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
+      cusip:
+        type: string
+      description:
+        type: string
+      symbol:
+        type: string
+      type:
+        enum:
+          - SAVINGS
+          - MONEY_MARKET_FUND
+        type: string
+    type: object
+  Duration:
+    enum:
+      - DAY
+      - GOOD_TIL_CANCEL
+      - FILL_OR_KILL
+    type: string
   EASObject:
     example:
       access_token: access_token
@@ -325,6 +1359,106 @@ definitions:
         type: string
       token_type:
         type: string
+    type: object
+  Equity:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
+      cusip:
+        type: string
+      description:
+        type: string
+      symbol:
+        type: string
+    type: object
+  Equity_assetType:
+    properties:
+      schema:
+        $ref: '#/definitions/AssetType'
+  Execution:
+    example:
+      activityType: EXECUTION
+      executionLegs:
+        - legId: 1
+          mismarkedQuantity: 6.84685269835264
+          price: 7.457744773683766
+          quantity: 1.4894159098541704
+          time: '2000-01-23T04:56:07.000Z'
+        - legId: 1
+          mismarkedQuantity: 6.84685269835264
+          price: 7.457744773683766
+          quantity: 1.4894159098541704
+          time: '2000-01-23T04:56:07.000Z'
+      executionType: FILL
+      orderRamainingQuantity: 1.2315135367772556
+      quantity: 7.386281948385884
+    properties:
+      activityType:
+        enum:
+          - EXECUTION
+          - ORDER_ACTION
+        type: string
+      executionLegs:
+        items:
+          $ref: '#/definitions/Execution_executionLegs'
+        type: array
+        xml:
+          name: executionLeg
+          wrapped: true
+      executionType:
+        enum:
+          - FILL
+        type: string
+      orderRamainingQuantity:
+        format: doudlbe
+        type: number
+      quantity:
+        format: double
+        type: number
+    type: object
+  Execution_executionLegs:
+    example:
+      legId: 1
+      mismarkedQuantity: 6.84685269835264
+      price: 7.457744773683766
+      quantity: 1.4894159098541704
+      time: '2000-01-23T04:56:07.000Z'
+    properties:
+      legId:
+        format: int32
+        type: integer
+      mismarkedQuantity:
+        format: double
+        type: number
+      price:
+        format: double
+        type: number
+      quantity:
+        format: double
+        type: number
+      time:
+        format: date-time
+        type: string
+    type: object
+  FixedIncome:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
+      cusip:
+        type: string
+      description:
+        type: string
+      factor:
+        format: double
+        type: number
+      maturityDate:
+        format: date-time
+        type: string
+      symbol:
+        type: string
+      variableRate:
+        format: double
+        type: number
     type: object
   FrequencyType:
     enum:
@@ -495,10 +1629,31 @@ definitions:
     properties:
       schema:
         $ref: '#/definitions/FundamentalData'
-  Instrument:
+  Hours:
+    example:
+      category: category
+      date: date
+      exchange: exchange
+      isOpen: true
+      marketType: BOND
+      product: product
+      productName: productName
+      sessionHours:
+        additionalProperties:
+          - additionalProperties
+          - additionalProperties
     properties:
-      assetType:
+      category:
+        type: string
+      date:
+        type: string
+      exchange:
+        type: string
+      isOpen:
+        type: boolean
+      marketType:
         enum:
+          - BOND
           - EQUITY
           - ETF
           - FOREX
@@ -510,15 +1665,826 @@ definitions:
           - OPTION
           - UNKNOWN
         type: string
+      product:
+        type: string
+      productName:
+        type: string
+      sessionHours:
+        $ref: '#/definitions/Hours_sessionHours'
+    type: object
+  Hours_sessionHours:
+    example:
+      additionalProperties:
+        - additionalProperties
+        - additionalProperties
+    properties:
+      additionalProperties:
+        items:
+          type: string
+        type: array
+    type: object
+  Instrument:
+    example:
+      schema: ''
+    properties:
+      schema: {}
+    type: object
+  MarginAccount:
+    properties:
+      accountId:
+        type: string
+      currentBalances:
+        $ref: '#/definitions/MarginAccount_currentBalances'
+      initialBalances:
+        $ref: '#/definitions/MarginAccount_initialBalances'
+      isClosingOnlyRestricted:
+        default: false
+        type: boolean
+      isDayTrader:
+        default: false
+        type: boolean
+      orderStrategies:
+        $ref: '#/definitions/MarginAccount_orderStrategies'
+      positions:
+        $ref: '#/definitions/MarginAccount_positions'
+      projectedBalances:
+        $ref: '#/definitions/MarginAccount_currentBalances'
+      roundTrips:
+        format: int32
+        type: integer
+      type:
+        enum:
+          - CASH
+          - MARGIN
+        type: string
+    type: object
+  MarginAccountBalances:
+    properties:
+      accruedInterest:
+        format: double
+        type: number
+      availableFunds:
+        format: double
+        type: number
+      availableFundsNonMarginableTrade:
+        format: double
+        type: number
+      bondValue:
+        format: double
+        type: number
+      buyingPower:
+        format: double
+        type: number
+      buyingPowerNonMarginableTrade:
+        format: double
+        type: number
+      cashBalance:
+        format: double
+        type: number
+      cashReceipts:
+        format: double
+        type: number
+      dayTradingBuyingPower:
+        format: double
+        type: number
+      dayTradingBuyingPowerCall:
+        format: double
+        type: number
+      equity:
+        format: double
+        type: number
+      equityPercentage:
+        format: double
+        type: number
+      isInCall:
+        default: false
+        type: boolean
+      liquidationValue:
+        format: double
+        type: number
+      longMarginValue:
+        format: double
+        type: number
+      longMarketValue:
+        format: double
+        type: number
+      longOptionMarketValue:
+        format: double
+        type: number
+      maintenanceCall:
+        format: double
+        type: number
+      maintenanceRequirement:
+        format: double
+        type: number
+      marginBalance:
+        format: double
+        type: number
+      moneyMarketFund:
+        format: double
+        type: number
+      mutualFundValue:
+        format: double
+        type: number
+      optionBuyingPower:
+        format: double
+        type: number
+      pendingDeposits:
+        format: double
+        type: number
+      regTCall:
+        format: double
+        type: number
+      savings:
+        format: double
+        type: number
+      shortBalance:
+        format: double
+        type: number
+      shortMarginValue:
+        format: double
+        type: number
+      shortMarketValue:
+        format: double
+        type: number
+      shortOptionMarketValue:
+        format: double
+        type: number
+      sma:
+        format: double
+        type: number
+      stockBuyingPower:
+        format: double
+        type: number
+    type: object
+  MarginAccount_currentBalances:
+    properties:
+      schema:
+        $ref: '#/definitions/MarginAccountBalances'
+  MarginAccount_initialBalances:
+    properties:
+      accountValue:
+        format: double
+        type: number
+      accruedInterest:
+        format: double
+        type: number
+      availableFundsNonMarginableTrade:
+        format: double
+        type: number
+      bondValue:
+        format: double
+        type: number
+      buyingPower:
+        format: double
+        type: number
+      cashAvailableForTrading:
+        format: double
+        type: number
+      cashBalance:
+        format: double
+        type: number
+      cashReceipts:
+        format: double
+        type: number
+      dayTradingBuyingPower:
+        format: double
+        type: number
+      dayTradingBuyingPowerCall:
+        format: double
+        type: number
+      dayTradingEquityCall:
+        format: double
+        type: number
+      equity:
+        format: double
+        type: number
+      equityPercentage:
+        format: double
+        type: number
+      isInCall:
+        default: false
+        type: boolean
+      liquidationValue:
+        format: double
+        type: number
+      longMarginValue:
+        format: double
+        type: number
+      longOptionMarketValue:
+        format: double
+        type: number
+      longStockValue:
+        format: double
+        type: number
+      maintenanceCall:
+        format: double
+        type: number
+      maintenanceRequirement:
+        format: double
+        type: number
+      margin:
+        format: double
+        type: number
+      marginBalance:
+        format: double
+        type: number
+      marginEquity:
+        format: double
+        type: number
+      moneyMarketFund:
+        format: double
+        type: number
+      mutualFundValue:
+        format: double
+        type: number
+      pendingDeposits:
+        format: double
+        type: number
+      regTCall:
+        format: double
+        type: number
+      shortBalance:
+        format: double
+        type: number
+      shortMarginValue:
+        format: double
+        type: number
+      shortOptionMarketValue:
+        format: double
+        type: number
+      shortStockValue:
+        format: double
+        type: number
+      totalCash:
+        format: double
+        type: number
+      unsettledCash:
+        format: double
+        type: number
+    type: object
+  MarginAccount_orderStrategies:
+    properties:
+      schema:
+        $ref: '#/definitions/OrderGet'
+  MarginAccount_positions:
+    properties:
+      schema:
+        $ref: '#/definitions/Positions'
+  Mover:
+    example:
+      change: 0.8008281904610115
+      description: description
+      direction: up
+      last: 6.027456183070403
+      symbol: symbol
+      totalVolume: 1
+    properties:
+      change:
+        format: double
+        type: number
+      description:
+        type: string
+      direction:
+        enum:
+          - up
+          - down
+        type: string
+      last:
+        format: double
+        type: number
+      symbol:
+        type: string
+      totalVolume:
+        format: int64
+        type: integer
+    type: object
+  MutualFund:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
       cusip:
         type: string
       description:
         type: string
-      exchange:
+      symbol:
+        type: string
+      type:
+        enum:
+          - NOT_APPLICABLE
+          - OPEN_END_NON_TAXABLE
+          - OPEN_END_TAXABLE
+          - NO_LOAD_NON_TAXABLE
+          - NO_LOAD_TAXABLE
+        type: string
+    type: object
+  Option:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
+      cusip:
+        type: string
+      description:
+        type: string
+      optionDeliverables:
+        items:
+          $ref: '#/definitions/Option_optionDeliverables'
+        type: array
+        xml:
+          name: optionDeliverable
+          wrapped: true
+      optionMultiplier:
+        format: int32
+        type: integer
+      putCall:
+        enum:
+          - PUT
+          - CALL
         type: string
       symbol:
         type: string
+      type:
+        enum:
+          - VANILLA
+          - BINARY
+          - BARRIER
+        type: string
+      underlyingSymbol:
+        type: string
     type: object
+  Option_optionDeliverables:
+    properties:
+      assetType:
+        $ref: '#/definitions/Equity_assetType'
+      currencyType:
+        enum:
+          - USD
+          - CAD
+          - EUR
+          - JPY
+        type: string
+      deliverableUnits:
+        format: double
+        type: number
+      symbol:
+        type: string
+    type: object
+  OrderActivity:
+    example:
+      schema:
+        activityType: EXECUTION
+        executionLegs:
+          - legId: 1
+            mismarkedQuantity: 6.84685269835264
+            price: 7.457744773683766
+            quantity: 1.4894159098541704
+            time: '2000-01-23T04:56:07.000Z'
+          - legId: 1
+            mismarkedQuantity: 6.84685269835264
+            price: 7.457744773683766
+            quantity: 1.4894159098541704
+            time: '2000-01-23T04:56:07.000Z'
+        executionType: FILL
+        orderRamainingQuantity: 1.2315135367772556
+        quantity: 7.386281948385884
+    properties:
+      schema:
+        $ref: '#/definitions/Execution'
+    type: object
+  OrderGet:
+    example:
+      accountId: 4
+      activationPrice: 3.616076749251911
+      cancelTime:
+        date: date
+        shortFormat: false
+      cancelable: false
+      childOrderStrategies:
+        - {}
+        - {}
+      closedTime: '2000-01-23T04:56:07.000Z'
+      complexOrderStrategyType: NONE
+      destinationLinkName: destinationLinkName
+      duration:
+        schema: DAY
+      editable: false
+      enteredTime: '2000-01-23T04:56:07.000Z'
+      filledQuantity: 6.027456183070403
+      orderActivityCollection:
+        - schema:
+            schema:
+              activityType: EXECUTION
+              executionLegs:
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+              executionType: FILL
+              orderRamainingQuantity: 1.2315135367772556
+              quantity: 7.386281948385884
+        - schema:
+            schema:
+              activityType: EXECUTION
+              executionLegs:
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+              executionType: FILL
+              orderRamainingQuantity: 1.2315135367772556
+              quantity: 7.386281948385884
+      orderId: 2
+      orderLegCollection:
+        - instruction: BUY
+          instrument:
+            schema:
+              schema: ''
+          legId: 7
+          orderLegType: EQUITY
+          positionEffect: OPENING
+          quantity: 9.301444243932576
+          quantityType: ALL_SHARES
+        - instruction: BUY
+          instrument:
+            schema:
+              schema: ''
+          legId: 7
+          orderLegType: EQUITY
+          positionEffect: OPENING
+          quantity: 9.301444243932576
+          quantityType: ALL_SHARES
+      orderStrategyType: SINGLE
+      orderType:
+        schema: MARKET
+      price: 2.3021358869347655
+      priceLinkBasis: MANUAL
+      priceLinkType: VALUE
+      quality: 0.8008281904610115
+      releaseTime: '2000-01-23T04:56:07.000Z'
+      remainingQuantity: 1.4658129805029452
+      replacingOrderCollection:
+        - {}
+        - {}
+      requestedDestination: INET
+      session:
+        schema: NORMAL
+      specialInstruction: ALL_OR_NONE
+      status: AWAITING_PARENT_ORDER
+      statusDescription: statusDescription
+      stopPrice: 5.962133916683182
+      stopPriceLinkBasis: MANUAL
+      stopPriceLinkType: VALUE
+      stopPriceOffset: 5.637376656633329
+      stopType: STANDARD
+      tag: tag
+      taxLotMethod: FIFO
+    properties:
+      accountId:
+        format: int64
+        type: integer
+      activationPrice:
+        format: double
+        type: number
+      cancelTime:
+        $ref: '#/definitions/OrderGet_cancelTime'
+      cancelable:
+        default: false
+        type: boolean
+      childOrderStrategies:
+        items:
+          type: object
+        type: array
+        xml:
+          name: childOrder
+          wrapped: true
+      closedTime:
+        format: date-time
+        type: string
+      complexOrderStrategyType:
+        enum:
+          - NONE
+          - COVERED
+          - VERTICAL
+          - BACK_RATIO
+          - CALENDAR
+          - DIAGONAL
+          - STRADDLE
+          - STRANGLE
+          - COLLAR_SYNTHETIC
+          - BUTTERFLY
+          - CONDOR
+          - IRON_CONDOR
+          - VERTICAL_ROLL
+          - COLLAR_WITH_STOCK
+          - DOUBLE_DIAGONAL
+          - UNBALANCED_BUTTERFLY
+          - UNBALANCED_CONDOR
+          - UNBALANCED_IRON_CONDOR
+          - UNBALANCED_VERTICAL_ROLL
+          - CUSTOM
+        type: string
+      destinationLinkName:
+        type: string
+      duration:
+        $ref: '#/definitions/OrderGet_duration'
+      editable:
+        default: false
+        type: boolean
+      enteredTime:
+        format: date-time
+        type: string
+      filledQuantity:
+        format: double
+        type: number
+      orderActivityCollection:
+        items:
+          $ref: '#/definitions/OrderGet_orderActivityCollection'
+        type: array
+        xml:
+          name: orderActivity
+          wrapped: true
+      orderId:
+        format: int64
+        type: integer
+      orderLegCollection:
+        items:
+          $ref: '#/definitions/OrderGet_orderLegCollection'
+        type: array
+        xml:
+          name: orderLeg
+          wrapped: true
+      orderStrategyType:
+        enum:
+          - SINGLE
+          - OCO
+          - TRIGGER
+        type: string
+      orderType:
+        $ref: '#/definitions/OrderGet_orderType'
+      price:
+        format: double
+        type: number
+      priceLinkBasis:
+        enum:
+          - MANUAL
+          - BASE
+          - TRIGGER
+          - LAST
+          - BID
+          - ASK
+          - ASK_BID
+          - MARK
+          - AVERAGE
+        type: string
+      priceLinkType:
+        enum:
+          - VALUE
+          - PERCENT
+          - TICK
+        type: string
+      quality:
+        format: double
+        type: number
+      releaseTime:
+        format: date-time
+        type: string
+      remainingQuantity:
+        format: double
+        type: number
+      replacingOrderCollection:
+        items:
+          type: object
+        type: array
+        xml:
+          name: replacingOrder
+          wrapped: true
+      requestedDestination:
+        enum:
+          - INET
+          - ECN_ARCA
+          - CBOE
+          - AMEX
+          - PHLX
+          - ISE
+          - BOX
+          - NYSE
+          - NASDAQ
+          - BATS
+          - C2
+          - AUTO
+        type: string
+      session:
+        $ref: '#/definitions/OrderGet_session'
+      specialInstruction:
+        enum:
+          - ALL_OR_NONE
+          - DO_NOT_REDUCE
+          - ALL_OR_NONE_DO_NOT_REDUCE
+        type: string
+      status:
+        enum:
+          - AWAITING_PARENT_ORDER
+          - AWAITING_CONDITION
+          - AWAITING_MANUAL_REVIEW
+          - ACCEPTED
+          - AWAITING_UR_OUT
+          - PENDING_ACTIVATION
+          - QUEUED
+          - WORKING
+          - REJECTED
+          - PENDING_CANCEL
+          - CANCELED
+          - PENDING_REPLACE
+          - REPLACED
+          - FILLED
+          - EXPIRED
+        type: string
+      statusDescription:
+        type: string
+      stopPrice:
+        format: double
+        type: number
+      stopPriceLinkBasis:
+        enum:
+          - MANUAL
+          - BASE
+          - TRIGGER
+          - LAST
+          - BID
+          - ASK
+          - ASK_BID
+          - MARK
+          - AVERAGE
+        type: string
+      stopPriceLinkType:
+        enum:
+          - VALUE
+          - PERCENT
+          - TICK
+        type: string
+      stopPriceOffset:
+        format: double
+        type: number
+      stopType:
+        enum:
+          - STANDARD
+          - BID
+          - ASK
+          - LAST
+          - MARK
+        type: string
+      tag:
+        type: string
+      taxLotMethod:
+        enum:
+          - FIFO
+          - LIFO
+          - HIGH_COST
+          - LOW_COST
+          - AVERAGE_COST
+          - SPECIFIC_LOT
+        type: string
+    type: object
+  OrderGet_cancelTime:
+    example:
+      date: date
+      shortFormat: false
+    properties:
+      date:
+        type: string
+      shortFormat:
+        default: false
+        type: boolean
+    type: object
+  OrderGet_duration:
+    example:
+      schema: DAY
+    properties:
+      schema:
+        $ref: '#/definitions/Duration'
+  OrderGet_instrument:
+    example:
+      schema:
+        schema: ''
+    properties:
+      schema:
+        $ref: '#/definitions/Instrument'
+  OrderGet_orderActivityCollection:
+    example:
+      schema:
+        schema:
+          activityType: EXECUTION
+          executionLegs:
+            - legId: 1
+              mismarkedQuantity: 6.84685269835264
+              price: 7.457744773683766
+              quantity: 1.4894159098541704
+              time: '2000-01-23T04:56:07.000Z'
+            - legId: 1
+              mismarkedQuantity: 6.84685269835264
+              price: 7.457744773683766
+              quantity: 1.4894159098541704
+              time: '2000-01-23T04:56:07.000Z'
+          executionType: FILL
+          orderRamainingQuantity: 1.2315135367772556
+          quantity: 7.386281948385884
+    properties:
+      schema:
+        $ref: '#/definitions/OrderActivity'
+    type: object
+  OrderGet_orderLegCollection:
+    example:
+      instruction: BUY
+      instrument:
+        schema:
+          schema: ''
+      legId: 7
+      orderLegType: EQUITY
+      positionEffect: OPENING
+      quantity: 9.301444243932576
+      quantityType: ALL_SHARES
+    properties:
+      instruction:
+        enum:
+          - BUY
+          - SELL
+          - BUY_TO_COVER
+          - SELL_SHORT
+          - BUY_TO_OPEN
+          - BUY_TO_CLOSE
+          - SELL_TO_OPEN
+          - SELL_TO_CLOSE
+          - EXCHANGE
+        type: string
+      instrument:
+        $ref: '#/definitions/OrderGet_instrument'
+      legId:
+        format: int64
+        type: integer
+      orderLegType:
+        enum:
+          - EQUITY
+          - OPTION
+          - INDEX
+          - MUTUAL_FUND
+          - CASH_EQUIVALENT
+          - FIXED_INCOME
+          - CURRENCY
+        type: string
+      positionEffect:
+        enum:
+          - OPENING
+          - CLOSING
+          - AUTOMATIC
+        type: string
+      quantity:
+        format: double
+        type: number
+      quantityType:
+        enum:
+          - ALL_SHARES
+          - DOLLARS
+          - SHARES
+        type: string
+    type: object
+  OrderGet_orderType:
+    example:
+      schema: MARKET
+    properties:
+      schema:
+        $ref: '#/definitions/OrderType'
+  OrderGet_session:
+    example:
+      schema: NORMAL
+    properties:
+      schema:
+        $ref: '#/definitions/Session'
+  OrderType:
+    enum:
+      - MARKET
+      - LIMIT
+      - STOP
+      - STOP_LIMIT
+      - TRAILING_STOP
+      - MARKET_ON_CLOSE
+      - EXERCISE
+      - TRAILING_STOP_LIMIT
+      - NET_DEBIT
+      - NET_CREDIT
+      - NET_ZERO
+    type: string
   PeriodType:
     enum:
       - day
@@ -526,6 +2492,41 @@ definitions:
       - year
       - ytd
     type: string
+  Positions:
+    items:
+      $ref: '#/definitions/Positions_inner'
+    type: array
+  Positions_inner:
+    properties:
+      agedQuantity:
+        format: double
+        type: number
+      averagePrice:
+        format: double
+        type: number
+      currentDayProfitLoss:
+        format: double
+        type: number
+      currentDayProfitLossPercentage:
+        format: double
+        type: number
+      instrument:
+        properties:
+          schema:
+            $ref: '#/definitions/Instrument'
+      longQuantity:
+        format: double
+        type: number
+      settledLongQuantity:
+        format: double
+        type: number
+      settledShortQuantity:
+        format: double
+        type: number
+      shortQuantity:
+        format: double
+        type: number
+    type: object
   PostAccessBody:
     description: Body Parmeers for the Post Access Token Endpoint
     properties:
@@ -556,7 +2557,62 @@ definitions:
       - client_id
       - grant_type
     type: object
-  inline_response_200: {}
+  SearchInstrument:
+    example:
+      $ref: '#/x-components/examples/instrumentExample'
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - ETF
+          - FOREX
+          - FUTURE
+          - FUTURE_OPTION
+          - INDEX
+          - INDICATOR
+          - MUTUAL_FUND
+          - OPTION
+          - UNKNOWN
+        type: string
+      cusip:
+        type: string
+      description:
+        type: string
+      exchange:
+        type: string
+      symbol:
+        type: string
+    type: object
+  SearchInstrumentResponse:
+    additionalProperties:
+      example:
+        $ref: '#/x-components/examples/instrumentExample'
+      properties:
+        schemas:
+          discriminator:
+            mapping:
+              BOND: '#/components/schemas/Bond'
+            propertyName: assetType
+          oneOf:
+            - $ref: '#/definitions/SearchInstrument'
+            - $ref: '#/definitions/Bond'
+            - $ref: '#/definitions/FundamentalData'
+            - $ref: '#/definitions/Fundamental'
+      type: object
+    type: object
+  SecuritiesAccount:
+    example:
+      schema: ''
+    properties:
+      schema: {}
+    type: object
+  Session:
+    enum:
+      - NORMAL
+      - AM
+      - PM
+      - SEAMLESS
+    type: string
 securityDefinitions:
   application:
     authorizationUrl: >-
@@ -575,7 +2631,7 @@ security:
       - write
 x-components:
   examples:
-    bondObject:
+    bondExample:
       value:
         assetType: BOND
         bondPrice: 11
@@ -583,7 +2639,7 @@ x-components:
         descriptions: Chris Queen Madeup Bond
         exchange: CDQ
         symbol: cdq
-    fundamentalDataObject:
+    fundamentalDataExample:
       value:
         beta: 0.51493
         bookValuePerShare: 0
@@ -630,7 +2686,7 @@ x-components:
         vol10DayAvg: 3357303
         vol1DayAvg: 3357300
         vol3MonthAvg: 77925210
-    fundamentalObject:
+    fundamentalExample:
       value:
         NG:
           assetType: EQUITY
@@ -684,7 +2740,7 @@ x-components:
             vol1DayAvg: 3357300
             vol3MonthAvg: 77925210'
           symbol: NG
-    instrumentObject:
+    instrumentExample:
       value:
         assetType: EQUITY
         cusip: 6.6987e+210
