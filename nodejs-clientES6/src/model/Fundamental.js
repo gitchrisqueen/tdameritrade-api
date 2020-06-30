@@ -28,7 +28,7 @@ export default class Fundamental {
 
     constructor() {
         
-        OneOfinlineResponse200Schema.call(this);
+        
         
     }
 
@@ -91,8 +91,7 @@ export default class Fundamental {
     */
     'fundamental' = undefined;
 
-    // Implement OneOfinlineResponse200Schema interface:
-    
+
 
     /**
     * Allowed values for the <code>assetType</code> property.

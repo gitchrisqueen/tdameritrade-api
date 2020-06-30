@@ -617,7 +617,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/inline_response_200'
+            $ref: '#/definitions/SearchInstrumentResponse'
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
@@ -2558,6 +2558,8 @@ definitions:
       - grant_type
     type: object
   SearchInstrument:
+    example:
+      $ref: '#/x-components/examples/instrumentExample'
     properties:
       assetType:
         enum:
@@ -2581,6 +2583,23 @@ definitions:
       symbol:
         type: string
     type: object
+  SearchInstrumentResponse:
+    additionalProperties:
+      example:
+        $ref: '#/x-components/examples/instrumentExample'
+      properties:
+        schemas:
+          discriminator:
+            mapping:
+              BOND: '#/components/schemas/Bond'
+            propertyName: assetType
+          oneOf:
+            - $ref: '#/definitions/SearchInstrument'
+            - $ref: '#/definitions/Bond'
+            - $ref: '#/definitions/FundamentalData'
+            - $ref: '#/definitions/Fundamental'
+      type: object
+    type: object
   SecuritiesAccount:
     example:
       schema: ''
@@ -2594,12 +2613,6 @@ definitions:
       - PM
       - SEAMLESS
     type: string
-  inline_response_200:
-    example:
-      schema: ''
-    properties:
-      schema: {}
-    type: object
 securityDefinitions:
   application:
     authorizationUrl: >-

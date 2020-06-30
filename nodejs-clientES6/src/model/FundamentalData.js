@@ -27,7 +27,7 @@ export default class FundamentalData {
 
     constructor() {
         
-        OneOfinlineResponse200Schema.call(this);
+        
         
     }
 
@@ -370,8 +370,7 @@ export default class FundamentalData {
     */
     'vol3MonthAvg' = undefined;
 
-    // Implement OneOfinlineResponse200Schema interface:
-    
+
 
 
 }

@@ -172,7 +172,6 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.FundamentalFundamental](docs/FundamentalFundamental.md)
  - [GitChrisQueen_TDA_JS.Hours](docs/Hours.md)
  - [GitChrisQueen_TDA_JS.HoursSessionHours](docs/HoursSessionHours.md)
- - [GitChrisQueen_TDA_JS.InlineResponse200](docs/InlineResponse200.md)
  - [GitChrisQueen_TDA_JS.Instrument](docs/Instrument.md)
  - [GitChrisQueen_TDA_JS.MarginAccount](docs/MarginAccount.md)
  - [GitChrisQueen_TDA_JS.MarginAccountBalances](docs/MarginAccountBalances.md)
@@ -200,6 +199,7 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.PositionsInnerInstrument](docs/PositionsInnerInstrument.md)
  - [GitChrisQueen_TDA_JS.PostAccessBody](docs/PostAccessBody.md)
  - [GitChrisQueen_TDA_JS.SearchInstrument](docs/SearchInstrument.md)
+ - [GitChrisQueen_TDA_JS.SearchInstrumentResponse](docs/SearchInstrumentResponse.md)
  - [GitChrisQueen_TDA_JS.SecuritiesAccount](docs/SecuritiesAccount.md)
  - [GitChrisQueen_TDA_JS.Session](docs/Session.md)
 

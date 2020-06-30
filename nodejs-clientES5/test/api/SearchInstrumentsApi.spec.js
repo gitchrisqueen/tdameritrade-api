@@ -46,9 +46,7 @@
 
           instance.instrumentsGET(symbol, projection, opts).then(function(data) {
             // TODO: update response assertions
-            expect(data).to.be.a(GitChrisQueen_TDA_JS.InlineResponse200);
-            expect(data.schema).to.be.a(Object);
-            expect(data.schema).to.be();
+            expect(data).to.be.a(GitChrisQueen_TDA_JS.SearchInstrumentResponse);
 
             done();
           }, function(error) {

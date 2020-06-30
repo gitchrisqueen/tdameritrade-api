@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="instrumentsGET"></a>
 # **instrumentsGET**
-> InlineResponse200 instrumentsGET(symbol, projection, opts)
+> SearchInstrumentResponse instrumentsGET(symbol, projection, opts)
 
 Search or retrieve instrument data, including fundamental data
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchInstrumentResponse**](SearchInstrumentResponse.md)
 
 ### Authorization
 

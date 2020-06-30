@@ -36,7 +36,6 @@ import FundamentalData from './model/FundamentalData';
 import FundamentalFundamental from './model/FundamentalFundamental';
 import Hours from './model/Hours';
 import HoursSessionHours from './model/HoursSessionHours';
-import InlineResponse200 from './model/InlineResponse200';
 import Instrument from './model/Instrument';
 import MarginAccount from './model/MarginAccount';
 import MarginAccountBalances from './model/MarginAccountBalances';
@@ -48,7 +47,6 @@ import Mover from './model/Mover';
 import MutualFund from './model/MutualFund';
 import OneOfInstrumentSchema from './model/OneOfInstrumentSchema';
 import OneOfSecuritiesAccountSchema from './model/OneOfSecuritiesAccountSchema';
-import OneOfinlineResponse200Schema from './model/OneOfinlineResponse200Schema';
 import Option from './model/Option';
 import OptionOptionDeliverables from './model/OptionOptionDeliverables';
 import OrderActivity from './model/OrderActivity';
@@ -67,6 +65,7 @@ import PositionsInner from './model/PositionsInner';
 import PositionsInnerInstrument from './model/PositionsInnerInstrument';
 import PostAccessBody from './model/PostAccessBody';
 import SearchInstrument from './model/SearchInstrument';
+import SearchInstrumentResponse from './model/SearchInstrumentResponse';
 import SecuritiesAccount from './model/SecuritiesAccount';
 import Session from './model/Session';
 import AccountsApi from './api/AccountsApi';
@@ -261,12 +260,6 @@ export {
     HoursSessionHours,
 
     /**
-     * The InlineResponse200 model constructor.
-     * @property {module:model/InlineResponse200}
-     */
-    InlineResponse200,
-
-    /**
      * The Instrument model constructor.
      * @property {module:model/Instrument}
      */
@@ -331,12 +324,6 @@ export {
      * @property {module:model/OneOfSecuritiesAccountSchema}
      */
     OneOfSecuritiesAccountSchema,
-
-    /**
-     * The OneOfinlineResponse200Schema model constructor.
-     * @property {module:model/OneOfinlineResponse200Schema}
-     */
-    OneOfinlineResponse200Schema,
 
     /**
      * The Option model constructor.
@@ -445,6 +432,12 @@ export {
      * @property {module:model/SearchInstrument}
      */
     SearchInstrument,
+
+    /**
+     * The SearchInstrumentResponse model constructor.
+     * @property {module:model/SearchInstrumentResponse}
+     */
+    SearchInstrumentResponse,
 
     /**
      * The SecuritiesAccount model constructor.
