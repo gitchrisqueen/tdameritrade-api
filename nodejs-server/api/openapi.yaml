@@ -1258,14 +1258,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  oneOf:
-                  - $ref: '#/components/schemas/SearchInstrument'
-                  - $ref: '#/components/schemas/Bond'
-                  - $ref: '#/components/schemas/FundamentalData'
-                  - $ref: '#/components/schemas/Fundamental'
-                x-content-type: application/json
+                $ref: '#/components/schemas/inline_response_200'
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
@@ -2436,6 +2429,12 @@ components:
           - MUTUAL_FUND
           - OPTION
           - UNKNOWN
+    inline_response_200:
+      oneOf:
+      - $ref: '#/components/schemas/SearchInstrument'
+      - $ref: '#/components/schemas/Bond'
+      - $ref: '#/components/schemas/FundamentalData'
+      - $ref: '#/components/schemas/Fundamental'
     Hours_sessionHours:
       type: object
       properties:
