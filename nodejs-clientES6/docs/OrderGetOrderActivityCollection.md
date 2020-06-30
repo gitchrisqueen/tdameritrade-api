@@ -3,4 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**activityType** | [**OrderGetActivityType**](OrderGetActivityType.md) |  | [optional] 
+**schema** | [**OrderActivity**](OrderActivity.md) |  | [optional] 

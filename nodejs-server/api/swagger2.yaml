@@ -617,9 +617,7 @@ paths:
         '200':
           description: OK
           schema:
-            items: {}
-            type: array
-            x-content-type: application/json
+            $ref: '#/definitions/inline_response_200'
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
@@ -1686,7 +1684,6 @@ definitions:
         type: array
     type: object
   Instrument:
-    discriminator: assetType
     example:
       schema: ''
     properties:
@@ -2074,42 +2071,40 @@ definitions:
       enteredTime: '2000-01-23T04:56:07.000Z'
       filledQuantity: 6.027456183070403
       orderActivityCollection:
-        - activityType:
+        - schema:
             schema:
-              schema:
-                activityType: EXECUTION
-                executionLegs:
-                  - legId: 1
-                    mismarkedQuantity: 6.84685269835264
-                    price: 7.457744773683766
-                    quantity: 1.4894159098541704
-                    time: '2000-01-23T04:56:07.000Z'
-                  - legId: 1
-                    mismarkedQuantity: 6.84685269835264
-                    price: 7.457744773683766
-                    quantity: 1.4894159098541704
-                    time: '2000-01-23T04:56:07.000Z'
-                executionType: FILL
-                orderRamainingQuantity: 1.2315135367772556
-                quantity: 7.386281948385884
-        - activityType:
+              activityType: EXECUTION
+              executionLegs:
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+              executionType: FILL
+              orderRamainingQuantity: 1.2315135367772556
+              quantity: 7.386281948385884
+        - schema:
             schema:
-              schema:
-                activityType: EXECUTION
-                executionLegs:
-                  - legId: 1
-                    mismarkedQuantity: 6.84685269835264
-                    price: 7.457744773683766
-                    quantity: 1.4894159098541704
-                    time: '2000-01-23T04:56:07.000Z'
-                  - legId: 1
-                    mismarkedQuantity: 6.84685269835264
-                    price: 7.457744773683766
-                    quantity: 1.4894159098541704
-                    time: '2000-01-23T04:56:07.000Z'
-                executionType: FILL
-                orderRamainingQuantity: 1.2315135367772556
-                quantity: 7.386281948385884
+              activityType: EXECUTION
+              executionLegs:
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+                - legId: 1
+                  mismarkedQuantity: 6.84685269835264
+                  price: 7.457744773683766
+                  quantity: 1.4894159098541704
+                  time: '2000-01-23T04:56:07.000Z'
+              executionType: FILL
+              orderRamainingQuantity: 1.2315135367772556
+              quantity: 7.386281948385884
       orderId: 2
       orderLegCollection:
         - instruction: BUY
@@ -2362,28 +2357,6 @@ definitions:
           - SPECIFIC_LOT
         type: string
     type: object
-  OrderGet_activityType:
-    example:
-      schema:
-        schema:
-          activityType: EXECUTION
-          executionLegs:
-            - legId: 1
-              mismarkedQuantity: 6.84685269835264
-              price: 7.457744773683766
-              quantity: 1.4894159098541704
-              time: '2000-01-23T04:56:07.000Z'
-            - legId: 1
-              mismarkedQuantity: 6.84685269835264
-              price: 7.457744773683766
-              quantity: 1.4894159098541704
-              time: '2000-01-23T04:56:07.000Z'
-          executionType: FILL
-          orderRamainingQuantity: 1.2315135367772556
-          quantity: 7.386281948385884
-    properties:
-      schema:
-        $ref: '#/definitions/OrderActivity'
   OrderGet_cancelTime:
     example:
       date: date
@@ -2410,27 +2383,26 @@ definitions:
         $ref: '#/definitions/Instrument'
   OrderGet_orderActivityCollection:
     example:
-      activityType:
+      schema:
         schema:
-          schema:
-            activityType: EXECUTION
-            executionLegs:
-              - legId: 1
-                mismarkedQuantity: 6.84685269835264
-                price: 7.457744773683766
-                quantity: 1.4894159098541704
-                time: '2000-01-23T04:56:07.000Z'
-              - legId: 1
-                mismarkedQuantity: 6.84685269835264
-                price: 7.457744773683766
-                quantity: 1.4894159098541704
-                time: '2000-01-23T04:56:07.000Z'
-            executionType: FILL
-            orderRamainingQuantity: 1.2315135367772556
-            quantity: 7.386281948385884
+          activityType: EXECUTION
+          executionLegs:
+            - legId: 1
+              mismarkedQuantity: 6.84685269835264
+              price: 7.457744773683766
+              quantity: 1.4894159098541704
+              time: '2000-01-23T04:56:07.000Z'
+            - legId: 1
+              mismarkedQuantity: 6.84685269835264
+              price: 7.457744773683766
+              quantity: 1.4894159098541704
+              time: '2000-01-23T04:56:07.000Z'
+          executionType: FILL
+          orderRamainingQuantity: 1.2315135367772556
+          quantity: 7.386281948385884
     properties:
-      activityType:
-        $ref: '#/definitions/OrderGet_activityType'
+      schema:
+        $ref: '#/definitions/OrderActivity'
     type: object
   OrderGet_orderLegCollection:
     example:
@@ -2610,7 +2582,6 @@ definitions:
         type: string
     type: object
   SecuritiesAccount:
-    discriminator: type
     example:
       schema: ''
     properties:
@@ -2623,6 +2594,12 @@ definitions:
       - PM
       - SEAMLESS
     type: string
+  inline_response_200:
+    example:
+      schema: ''
+    properties:
+      schema: {}
+    type: object
 securityDefinitions:
   application:
     authorizationUrl: >-
@@ -2641,7 +2618,7 @@ security:
       - write
 x-components:
   examples:
-    bondObject:
+    bondExample:
       value:
         assetType: BOND
         bondPrice: 11
@@ -2649,7 +2626,7 @@ x-components:
         descriptions: Chris Queen Madeup Bond
         exchange: CDQ
         symbol: cdq
-    fundamentalDataObject:
+    fundamentalDataExample:
       value:
         beta: 0.51493
         bookValuePerShare: 0
@@ -2696,7 +2673,7 @@ x-components:
         vol10DayAvg: 3357303
         vol1DayAvg: 3357300
         vol3MonthAvg: 77925210
-    fundamentalObject:
+    fundamentalExample:
       value:
         NG:
           assetType: EQUITY
@@ -2750,7 +2727,7 @@ x-components:
             vol1DayAvg: 3357300
             vol3MonthAvg: 77925210'
           symbol: NG
-    instrumentObject:
+    instrumentExample:
       value:
         assetType: EQUITY
         cusip: 6.6987e+210

@@ -13,7 +13,7 @@
 
 import ApiClient from "../ApiClient";
 import EASObject from '../model/EASObject';
-import ModelObject from '../model/ModelObject';
+import InlineResponse200 from '../model/InlineResponse200';
 
 /**
 * SearchInstruments service.
@@ -38,7 +38,7 @@ export default class SearchInstrumentsApi {
     /**
      * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ModelObject>} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
     instrumentsGETWithHttpInfo(symbol, projection, opts) {
       opts = opts || {};
@@ -59,7 +59,7 @@ export default class SearchInstrumentsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [ModelObject];
+      let returnType = InlineResponse200;
 
       return this.apiClient.callApi(
         '/instruments', 'GET',
@@ -71,7 +71,7 @@ export default class SearchInstrumentsApi {
     /**
      * Search or retrieve instrument data, including fundamental data
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ModelObject>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
     instrumentsGET(symbol, projection, opts) {
       return this.instrumentsGETWithHttpInfo(symbol, projection, opts)

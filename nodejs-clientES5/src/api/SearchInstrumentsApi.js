@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EASObject'], factory);
+    define(['ApiClient', 'model/EASObject', 'model/InlineResponse200'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/EASObject'));
+    module.exports = factory(require('../ApiClient'), require('../model/EASObject'), require('../model/InlineResponse200'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.SearchInstrumentsApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EASObject);
+    root.GitChrisQueen_TDA_JS.SearchInstrumentsApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EASObject, root.GitChrisQueen_TDA_JS.InlineResponse200);
   }
-}(this, function(ApiClient, EASObject) {
+}(this, function(ApiClient, EASObject, InlineResponse200) {
   'use strict';
 
   /**
@@ -54,7 +54,7 @@
      * @param {String} projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
      * @param {Object} opts Optional parameters
      * @param {String} opts.apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<Object>} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
     this.instrumentsGETWithHttpInfo = function(symbol, projection, opts) {
       opts = opts || {};
@@ -88,7 +88,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [Object];
+      var returnType = InlineResponse200;
 
       return this.apiClient.callApi(
         '/instruments', 'GET',
@@ -103,7 +103,7 @@
      * @param {String} projection The type of request: symbol-search: Retrieve instrument data of a specific symbol or cusip symbol-regex: Retrieve instrument data for all symbols matching regex. Example: symbol=XYZ.* will return all symbols beginning with XYZ desc-search: Retrieve instrument data for instruments whose description contains the word supplied. Example: symbol=FakeCompany will return all instruments with FakeCompany in the description. desc-regex: Search description with full regex support. Example: symbol=XYZ.[A-C] returns all instruments whose descriptions contain a word beginning with XYZ followed by a character A through C. fundamental: Returns fundamental data for a single instrument specified by exact symbol.
      * @param {Object} opts Optional parameters
      * @param {String} opts.apikey Pass your OAuth User ID to make an unauthenticated request for delayed data.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<Object>}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
     this.instrumentsGET = function(symbol, projection, opts) {
       return this.instrumentsGETWithHttpInfo(symbol, projection, opts)

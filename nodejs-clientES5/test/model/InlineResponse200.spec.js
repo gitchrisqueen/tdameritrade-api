@@ -30,14 +30,14 @@
   var instance;
 
   describe('(package)', function() {
-    describe('OrderGetOrderActivityCollection', function() {
+    describe('InlineResponse200', function() {
       beforeEach(function() {
-        instance = new GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection();
+        instance = new GitChrisQueen_TDA_JS.InlineResponse200();
       });
 
-      it('should create an instance of OrderGetOrderActivityCollection', function() {
-        // TODO: update the code to test OrderGetOrderActivityCollection
-        expect(instance).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
+      it('should create an instance of InlineResponse200', function() {
+        // TODO: update the code to test InlineResponse200
+        expect(instance).to.be.a(GitChrisQueen_TDA_JS.InlineResponse200);
       });
 
       it('should have the property schema (base name: "schema")', function() {

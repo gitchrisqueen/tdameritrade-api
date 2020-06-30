@@ -92,37 +92,36 @@
               for (let p in dataCtr) {
                 let data = dataCtr[p];
                 expect(data).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
-                expect(data.activityType).to.be.a(GitChrisQueen_TDA_JS.OrderGetActivityType);
-                      expect(data.activityType.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
-                        expect(data.activityType.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
-                          expect(data.activityType.schema.schema.activityType).to.be.a('string');
-                      expect(data.activityType.schema.schema.activityType).to.be("EXECUTION");
-                      {
-                        let dataCtr = data.activityType.schema.schema.executionLegs;
-                        expect(dataCtr).to.be.an(Array);
-                        expect(dataCtr).to.not.be.empty();
-                        for (let p in dataCtr) {
-                          let data = dataCtr[p];
-                          expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
-                          expect(data.legId).to.be.a('number');
-                          expect(data.legId).to.be(0);
-                          expect(data.mismarkedQuantity).to.be.a('number');
-                          expect(data.mismarkedQuantity).to.be(0.0);
-                          expect(data.price).to.be.a('number');
-                          expect(data.price).to.be(0.0);
-                          expect(data.quantity).to.be.a('number');
-                          expect(data.quantity).to.be(0.0);
-                          expect(data.time).to.be.a(Date);
-                          expect(data.time).to.be(new Date());
-          
-                                }
-                      }
-                      expect(data.activityType.schema.schema.executionType).to.be.a('string');
-                      expect(data.activityType.schema.schema.executionType).to.be("FILL");
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be();
-                      expect(data.activityType.schema.schema.quantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.quantity).to.be(0.0);
+                expect(data.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
+                      expect(data.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
+                        expect(data.schema.schema.activityType).to.be.a('string');
+                    expect(data.schema.schema.activityType).to.be("EXECUTION");
+                    {
+                      let dataCtr = data.schema.schema.executionLegs;
+                      expect(dataCtr).to.be.an(Array);
+                      expect(dataCtr).to.not.be.empty();
+                      for (let p in dataCtr) {
+                        let data = dataCtr[p];
+                        expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
+                        expect(data.legId).to.be.a('number');
+                        expect(data.legId).to.be(0);
+                        expect(data.mismarkedQuantity).to.be.a('number');
+                        expect(data.mismarkedQuantity).to.be(0.0);
+                        expect(data.price).to.be.a('number');
+                        expect(data.price).to.be(0.0);
+                        expect(data.quantity).to.be.a('number');
+                        expect(data.quantity).to.be(0.0);
+                        expect(data.time).to.be.a(Date);
+                        expect(data.time).to.be(new Date());
+        
+                              }
+                    }
+                    expect(data.schema.schema.executionType).to.be.a('string');
+                    expect(data.schema.schema.executionType).to.be("FILL");
+                    expect(data.schema.schema.orderRamainingQuantity).to.be.a('number');
+                    expect(data.schema.schema.orderRamainingQuantity).to.be();
+                    expect(data.schema.schema.quantity).to.be.a('number');
+                    expect(data.schema.schema.quantity).to.be(0.0);
 
                       }
             }
@@ -301,37 +300,36 @@
               for (let p in dataCtr) {
                 let data = dataCtr[p];
                 expect(data).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
-                expect(data.activityType).to.be.a(GitChrisQueen_TDA_JS.OrderGetActivityType);
-                      expect(data.activityType.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
-                        expect(data.activityType.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
-                          expect(data.activityType.schema.schema.activityType).to.be.a('string');
-                      expect(data.activityType.schema.schema.activityType).to.be("EXECUTION");
-                      {
-                        let dataCtr = data.activityType.schema.schema.executionLegs;
-                        expect(dataCtr).to.be.an(Array);
-                        expect(dataCtr).to.not.be.empty();
-                        for (let p in dataCtr) {
-                          let data = dataCtr[p];
-                          expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
-                          expect(data.legId).to.be.a('number');
-                          expect(data.legId).to.be(0);
-                          expect(data.mismarkedQuantity).to.be.a('number');
-                          expect(data.mismarkedQuantity).to.be(0.0);
-                          expect(data.price).to.be.a('number');
-                          expect(data.price).to.be(0.0);
-                          expect(data.quantity).to.be.a('number');
-                          expect(data.quantity).to.be(0.0);
-                          expect(data.time).to.be.a(Date);
-                          expect(data.time).to.be(new Date());
-          
-                                }
-                      }
-                      expect(data.activityType.schema.schema.executionType).to.be.a('string');
-                      expect(data.activityType.schema.schema.executionType).to.be("FILL");
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be();
-                      expect(data.activityType.schema.schema.quantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.quantity).to.be(0.0);
+                expect(data.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
+                      expect(data.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
+                        expect(data.schema.schema.activityType).to.be.a('string');
+                    expect(data.schema.schema.activityType).to.be("EXECUTION");
+                    {
+                      let dataCtr = data.schema.schema.executionLegs;
+                      expect(dataCtr).to.be.an(Array);
+                      expect(dataCtr).to.not.be.empty();
+                      for (let p in dataCtr) {
+                        let data = dataCtr[p];
+                        expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
+                        expect(data.legId).to.be.a('number');
+                        expect(data.legId).to.be(0);
+                        expect(data.mismarkedQuantity).to.be.a('number');
+                        expect(data.mismarkedQuantity).to.be(0.0);
+                        expect(data.price).to.be.a('number');
+                        expect(data.price).to.be(0.0);
+                        expect(data.quantity).to.be.a('number');
+                        expect(data.quantity).to.be(0.0);
+                        expect(data.time).to.be.a(Date);
+                        expect(data.time).to.be(new Date());
+        
+                              }
+                    }
+                    expect(data.schema.schema.executionType).to.be.a('string');
+                    expect(data.schema.schema.executionType).to.be("FILL");
+                    expect(data.schema.schema.orderRamainingQuantity).to.be.a('number');
+                    expect(data.schema.schema.orderRamainingQuantity).to.be();
+                    expect(data.schema.schema.quantity).to.be.a('number');
+                    expect(data.schema.schema.quantity).to.be(0.0);
 
                       }
             }
@@ -478,37 +476,36 @@
               for (let p in dataCtr) {
                 let data = dataCtr[p];
                 expect(data).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
-                expect(data.activityType).to.be.a(GitChrisQueen_TDA_JS.OrderGetActivityType);
-                      expect(data.activityType.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
-                        expect(data.activityType.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
-                          expect(data.activityType.schema.schema.activityType).to.be.a('string');
-                      expect(data.activityType.schema.schema.activityType).to.be("EXECUTION");
-                      {
-                        let dataCtr = data.activityType.schema.schema.executionLegs;
-                        expect(dataCtr).to.be.an(Array);
-                        expect(dataCtr).to.not.be.empty();
-                        for (let p in dataCtr) {
-                          let data = dataCtr[p];
-                          expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
-                          expect(data.legId).to.be.a('number');
-                          expect(data.legId).to.be(0);
-                          expect(data.mismarkedQuantity).to.be.a('number');
-                          expect(data.mismarkedQuantity).to.be(0.0);
-                          expect(data.price).to.be.a('number');
-                          expect(data.price).to.be(0.0);
-                          expect(data.quantity).to.be.a('number');
-                          expect(data.quantity).to.be(0.0);
-                          expect(data.time).to.be.a(Date);
-                          expect(data.time).to.be(new Date());
-          
-                                }
-                      }
-                      expect(data.activityType.schema.schema.executionType).to.be.a('string');
-                      expect(data.activityType.schema.schema.executionType).to.be("FILL");
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be();
-                      expect(data.activityType.schema.schema.quantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.quantity).to.be(0.0);
+                expect(data.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
+                      expect(data.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
+                        expect(data.schema.schema.activityType).to.be.a('string');
+                    expect(data.schema.schema.activityType).to.be("EXECUTION");
+                    {
+                      let dataCtr = data.schema.schema.executionLegs;
+                      expect(dataCtr).to.be.an(Array);
+                      expect(dataCtr).to.not.be.empty();
+                      for (let p in dataCtr) {
+                        let data = dataCtr[p];
+                        expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
+                        expect(data.legId).to.be.a('number');
+                        expect(data.legId).to.be(0);
+                        expect(data.mismarkedQuantity).to.be.a('number');
+                        expect(data.mismarkedQuantity).to.be(0.0);
+                        expect(data.price).to.be.a('number');
+                        expect(data.price).to.be(0.0);
+                        expect(data.quantity).to.be.a('number');
+                        expect(data.quantity).to.be(0.0);
+                        expect(data.time).to.be.a(Date);
+                        expect(data.time).to.be(new Date());
+        
+                              }
+                    }
+                    expect(data.schema.schema.executionType).to.be.a('string');
+                    expect(data.schema.schema.executionType).to.be("FILL");
+                    expect(data.schema.schema.orderRamainingQuantity).to.be.a('number');
+                    expect(data.schema.schema.orderRamainingQuantity).to.be();
+                    expect(data.schema.schema.quantity).to.be.a('number');
+                    expect(data.schema.schema.quantity).to.be(0.0);
 
                       }
             }
@@ -659,37 +656,36 @@
               for (let p in dataCtr) {
                 let data = dataCtr[p];
                 expect(data).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
-                expect(data.activityType).to.be.a(GitChrisQueen_TDA_JS.OrderGetActivityType);
-                      expect(data.activityType.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
-                        expect(data.activityType.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
-                          expect(data.activityType.schema.schema.activityType).to.be.a('string');
-                      expect(data.activityType.schema.schema.activityType).to.be("EXECUTION");
-                      {
-                        let dataCtr = data.activityType.schema.schema.executionLegs;
-                        expect(dataCtr).to.be.an(Array);
-                        expect(dataCtr).to.not.be.empty();
-                        for (let p in dataCtr) {
-                          let data = dataCtr[p];
-                          expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
-                          expect(data.legId).to.be.a('number');
-                          expect(data.legId).to.be(0);
-                          expect(data.mismarkedQuantity).to.be.a('number');
-                          expect(data.mismarkedQuantity).to.be(0.0);
-                          expect(data.price).to.be.a('number');
-                          expect(data.price).to.be(0.0);
-                          expect(data.quantity).to.be.a('number');
-                          expect(data.quantity).to.be(0.0);
-                          expect(data.time).to.be.a(Date);
-                          expect(data.time).to.be(new Date());
-          
-                                }
-                      }
-                      expect(data.activityType.schema.schema.executionType).to.be.a('string');
-                      expect(data.activityType.schema.schema.executionType).to.be("FILL");
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be();
-                      expect(data.activityType.schema.schema.quantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.quantity).to.be(0.0);
+                expect(data.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
+                      expect(data.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
+                        expect(data.schema.schema.activityType).to.be.a('string');
+                    expect(data.schema.schema.activityType).to.be("EXECUTION");
+                    {
+                      let dataCtr = data.schema.schema.executionLegs;
+                      expect(dataCtr).to.be.an(Array);
+                      expect(dataCtr).to.not.be.empty();
+                      for (let p in dataCtr) {
+                        let data = dataCtr[p];
+                        expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
+                        expect(data.legId).to.be.a('number');
+                        expect(data.legId).to.be(0);
+                        expect(data.mismarkedQuantity).to.be.a('number');
+                        expect(data.mismarkedQuantity).to.be(0.0);
+                        expect(data.price).to.be.a('number');
+                        expect(data.price).to.be(0.0);
+                        expect(data.quantity).to.be.a('number');
+                        expect(data.quantity).to.be(0.0);
+                        expect(data.time).to.be.a(Date);
+                        expect(data.time).to.be(new Date());
+        
+                              }
+                    }
+                    expect(data.schema.schema.executionType).to.be.a('string');
+                    expect(data.schema.schema.executionType).to.be("FILL");
+                    expect(data.schema.schema.orderRamainingQuantity).to.be.a('number');
+                    expect(data.schema.schema.orderRamainingQuantity).to.be();
+                    expect(data.schema.schema.quantity).to.be.a('number');
+                    expect(data.schema.schema.quantity).to.be(0.0);
 
                       }
             }
@@ -806,19 +802,18 @@
           opts.body.enteredTime = new Date();
           opts.body.filledQuantity = 0.0;
           opts.body.orderActivityCollection = [new GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection()];
-          opts.body.orderActivityCollection[0].activityType = new GitChrisQueen_TDA_JS.OrderGetActivityType();
-          opts.body.orderActivityCollection[0].activityType.schema = new GitChrisQueen_TDA_JS.OrderActivity();
-          opts.body.orderActivityCollection[0].activityType.schema.schema = new GitChrisQueen_TDA_JS.Execution();
-          opts.body.orderActivityCollection[0].activityType.schema.schema.activityType = "EXECUTION";
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs = [new GitChrisQueen_TDA_JS.ExecutionExecutionLegs()];
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs[0].legId = 0;
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs[0].mismarkedQuantity = 0.0;
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs[0].price = 0.0;
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs[0].quantity = 0.0;
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionLegs[0].time = new Date();
-          opts.body.orderActivityCollection[0].activityType.schema.schema.executionType = "FILL";
-          opts.body.orderActivityCollection[0].activityType.schema.schema.orderRamainingQuantity = ;
-          opts.body.orderActivityCollection[0].activityType.schema.schema.quantity = 0.0;
+          opts.body.orderActivityCollection[0].schema = new GitChrisQueen_TDA_JS.OrderActivity();
+          opts.body.orderActivityCollection[0].schema.schema = new GitChrisQueen_TDA_JS.Execution();
+          opts.body.orderActivityCollection[0].schema.schema.activityType = "EXECUTION";
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs = [new GitChrisQueen_TDA_JS.ExecutionExecutionLegs()];
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs[0].legId = 0;
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs[0].mismarkedQuantity = 0.0;
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs[0].price = 0.0;
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs[0].quantity = 0.0;
+          opts.body.orderActivityCollection[0].schema.schema.executionLegs[0].time = new Date();
+          opts.body.orderActivityCollection[0].schema.schema.executionType = "FILL";
+          opts.body.orderActivityCollection[0].schema.schema.orderRamainingQuantity = ;
+          opts.body.orderActivityCollection[0].schema.schema.quantity = 0.0;
           opts.body.orderId = "0";
           opts.body.orderLegCollection = [new GitChrisQueen_TDA_JS.OrderGetOrderLegCollection()];
           opts.body.orderLegCollection[0].instruction = "BUY";
@@ -900,37 +895,36 @@
               for (let p in dataCtr) {
                 let data = dataCtr[p];
                 expect(data).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
-                expect(data.activityType).to.be.a(GitChrisQueen_TDA_JS.OrderGetActivityType);
-                      expect(data.activityType.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
-                        expect(data.activityType.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
-                          expect(data.activityType.schema.schema.activityType).to.be.a('string');
-                      expect(data.activityType.schema.schema.activityType).to.be("EXECUTION");
-                      {
-                        let dataCtr = data.activityType.schema.schema.executionLegs;
-                        expect(dataCtr).to.be.an(Array);
-                        expect(dataCtr).to.not.be.empty();
-                        for (let p in dataCtr) {
-                          let data = dataCtr[p];
-                          expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
-                          expect(data.legId).to.be.a('number');
-                          expect(data.legId).to.be(0);
-                          expect(data.mismarkedQuantity).to.be.a('number');
-                          expect(data.mismarkedQuantity).to.be(0.0);
-                          expect(data.price).to.be.a('number');
-                          expect(data.price).to.be(0.0);
-                          expect(data.quantity).to.be.a('number');
-                          expect(data.quantity).to.be(0.0);
-                          expect(data.time).to.be.a(Date);
-                          expect(data.time).to.be(new Date());
-          
-                                }
-                      }
-                      expect(data.activityType.schema.schema.executionType).to.be.a('string');
-                      expect(data.activityType.schema.schema.executionType).to.be("FILL");
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.orderRamainingQuantity).to.be();
-                      expect(data.activityType.schema.schema.quantity).to.be.a('number');
-                      expect(data.activityType.schema.schema.quantity).to.be(0.0);
+                expect(data.schema).to.be.a(GitChrisQueen_TDA_JS.OrderActivity);
+                      expect(data.schema.schema).to.be.a(GitChrisQueen_TDA_JS.Execution);
+                        expect(data.schema.schema.activityType).to.be.a('string');
+                    expect(data.schema.schema.activityType).to.be("EXECUTION");
+                    {
+                      let dataCtr = data.schema.schema.executionLegs;
+                      expect(dataCtr).to.be.an(Array);
+                      expect(dataCtr).to.not.be.empty();
+                      for (let p in dataCtr) {
+                        let data = dataCtr[p];
+                        expect(data).to.be.a(GitChrisQueen_TDA_JS.ExecutionExecutionLegs);
+                        expect(data.legId).to.be.a('number');
+                        expect(data.legId).to.be(0);
+                        expect(data.mismarkedQuantity).to.be.a('number');
+                        expect(data.mismarkedQuantity).to.be(0.0);
+                        expect(data.price).to.be.a('number');
+                        expect(data.price).to.be(0.0);
+                        expect(data.quantity).to.be.a('number');
+                        expect(data.quantity).to.be(0.0);
+                        expect(data.time).to.be.a(Date);
+                        expect(data.time).to.be(new Date());
+        
+                              }
+                    }
+                    expect(data.schema.schema.executionType).to.be.a('string');
+                    expect(data.schema.schema.executionType).to.be("FILL");
+                    expect(data.schema.schema.orderRamainingQuantity).to.be.a('number');
+                    expect(data.schema.schema.orderRamainingQuantity).to.be();
+                    expect(data.schema.schema.quantity).to.be.a('number');
+                    expect(data.schema.schema.quantity).to.be(0.0);
 
                       }
             }

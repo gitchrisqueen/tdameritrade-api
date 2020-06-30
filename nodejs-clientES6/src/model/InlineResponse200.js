@@ -12,17 +12,17 @@
  */
 
 import ApiClient from '../ApiClient';
-import OrderActivity from './OrderActivity';
+import ModelObject from './ModelObject';
 
 /**
-* The OrderGetOrderActivityCollection model module.
-* @module model/OrderGetOrderActivityCollection
+* The InlineResponse200 model module.
+* @module model/InlineResponse200
 * @version 0.1.4
 */
-export default class OrderGetOrderActivityCollection {
+export default class InlineResponse200 {
     /**
-    * Constructs a new <code>OrderGetOrderActivityCollection</code>.
-    * @alias module:model/OrderGetOrderActivityCollection
+    * Constructs a new <code>InlineResponse200</code>.
+    * @alias module:model/InlineResponse200
     * @class
     */
 
@@ -33,26 +33,26 @@ export default class OrderGetOrderActivityCollection {
     }
 
     /**
-    * Constructs a <code>OrderGetOrderActivityCollection</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>InlineResponse200</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/OrderGetOrderActivityCollection} obj Optional instance to populate.
-    * @return {module:model/OrderGetOrderActivityCollection} The populated <code>OrderGetOrderActivityCollection</code> instance.
+    * @param {module:model/InlineResponse200} obj Optional instance to populate.
+    * @return {module:model/InlineResponse200} The populated <code>InlineResponse200</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new OrderGetOrderActivityCollection();
+            obj = obj || new InlineResponse200();
                         
             
             if (data.hasOwnProperty('schema')) {
-                obj['schema'] = OrderActivity.constructFromObject(data['schema']);
+                obj['schema'] = ApiClient.convertToType(data['schema'], ModelObject);
             }
         }
         return obj;
     }
 
     /**
-    * @member {module:model/OrderActivity} schema
+    * @member {module:model/ModelObject} schema
     */
     'schema' = undefined;
 

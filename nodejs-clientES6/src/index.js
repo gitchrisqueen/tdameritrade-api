@@ -36,6 +36,7 @@ import FundamentalData from './model/FundamentalData';
 import FundamentalFundamental from './model/FundamentalFundamental';
 import Hours from './model/Hours';
 import HoursSessionHours from './model/HoursSessionHours';
+import InlineResponse200 from './model/InlineResponse200';
 import Instrument from './model/Instrument';
 import MarginAccount from './model/MarginAccount';
 import MarginAccountBalances from './model/MarginAccountBalances';
@@ -47,11 +48,11 @@ import Mover from './model/Mover';
 import MutualFund from './model/MutualFund';
 import OneOfInstrumentSchema from './model/OneOfInstrumentSchema';
 import OneOfSecuritiesAccountSchema from './model/OneOfSecuritiesAccountSchema';
+import OneOfinlineResponse200Schema from './model/OneOfinlineResponse200Schema';
 import Option from './model/Option';
 import OptionOptionDeliverables from './model/OptionOptionDeliverables';
 import OrderActivity from './model/OrderActivity';
 import OrderGet from './model/OrderGet';
-import OrderGetActivityType from './model/OrderGetActivityType';
 import OrderGetCancelTime from './model/OrderGetCancelTime';
 import OrderGetDuration from './model/OrderGetDuration';
 import OrderGetInstrument from './model/OrderGetInstrument';
@@ -260,6 +261,12 @@ export {
     HoursSessionHours,
 
     /**
+     * The InlineResponse200 model constructor.
+     * @property {module:model/InlineResponse200}
+     */
+    InlineResponse200,
+
+    /**
      * The Instrument model constructor.
      * @property {module:model/Instrument}
      */
@@ -326,6 +333,12 @@ export {
     OneOfSecuritiesAccountSchema,
 
     /**
+     * The OneOfinlineResponse200Schema model constructor.
+     * @property {module:model/OneOfinlineResponse200Schema}
+     */
+    OneOfinlineResponse200Schema,
+
+    /**
      * The Option model constructor.
      * @property {module:model/Option}
      */
@@ -348,12 +361,6 @@ export {
      * @property {module:model/OrderGet}
      */
     OrderGet,
-
-    /**
-     * The OrderGetActivityType model constructor.
-     * @property {module:model/OrderGetActivityType}
-     */
-    OrderGetActivityType,
 
     /**
      * The OrderGetCancelTime model constructor.

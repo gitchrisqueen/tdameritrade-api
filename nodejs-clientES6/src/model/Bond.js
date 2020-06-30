@@ -27,7 +27,7 @@ export default class Bond {
 
     constructor() {
         
-        
+        OneOfinlineResponse200Schema.call(this);
         
     }
 
@@ -90,7 +90,8 @@ export default class Bond {
     */
     'assetType' = undefined;
 
-
+    // Implement OneOfinlineResponse200Schema interface:
+    
 
     /**
     * Allowed values for the <code>assetType</code> property.

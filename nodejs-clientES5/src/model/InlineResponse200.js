@@ -16,52 +16,52 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OrderActivity'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OrderActivity'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.OrderActivity);
+    root.GitChrisQueen_TDA_JS.InlineResponse200 = factory(root.GitChrisQueen_TDA_JS.ApiClient);
   }
-}(this, function(ApiClient, OrderActivity) {
+}(this, function(ApiClient) {
   'use strict';
 
   /**
-   * The OrderGetOrderActivityCollection model module.
-   * @module model/OrderGetOrderActivityCollection
+   * The InlineResponse200 model module.
+   * @module model/InlineResponse200
    * @version 0.1.4
    */
 
   /**
-   * Constructs a new <code>OrderGetOrderActivityCollection</code>.
-   * @alias module:model/OrderGetOrderActivityCollection
+   * Constructs a new <code>InlineResponse200</code>.
+   * @alias module:model/InlineResponse200
    * @class
    */
   var exports = function() {
   };
 
   /**
-   * Constructs a <code>OrderGetOrderActivityCollection</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InlineResponse200</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/OrderGetOrderActivityCollection} obj Optional instance to populate.
-   * @return {module:model/OrderGetOrderActivityCollection} The populated <code>OrderGetOrderActivityCollection</code> instance.
+   * @param {module:model/InlineResponse200} obj Optional instance to populate.
+   * @return {module:model/InlineResponse200} The populated <code>InlineResponse200</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('schema'))
-        obj.schema = OrderActivity.constructFromObject(data['schema']);
+        obj.schema = ApiClient.convertToType(data['schema'], Object);
     }
     return obj;
   }
 
   /**
-   * @member {module:model/OrderActivity} schema
+   * @member {Object} schema
    */
   exports.prototype.schema = undefined;
 

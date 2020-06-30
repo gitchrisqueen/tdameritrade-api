@@ -27,7 +27,7 @@ export default class SearchInstrument {
 
     constructor() {
         
-        
+        OneOfinlineResponse200Schema.call(this);
         
     }
 
@@ -83,7 +83,8 @@ export default class SearchInstrument {
     */
     'assetType' = undefined;
 
-
+    // Implement OneOfinlineResponse200Schema interface:
+    
 
     /**
     * Allowed values for the <code>assetType</code> property.

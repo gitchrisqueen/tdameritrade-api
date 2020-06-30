@@ -27,7 +27,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection();
+    instance = new GitChrisQueen_TDA_JS.InlineResponse200();
   });
 
   var getProperty = function(object, getter, property) {
@@ -46,16 +46,16 @@
       object[property] = value;
   }
 
-  describe('OrderGetOrderActivityCollection', function() {
-    it('should create an instance of OrderGetOrderActivityCollection', function() {
-      // uncomment below and update the code to test OrderGetOrderActivityCollection
-      //var instane = new GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection();
-      //expect(instance).to.be.a(GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection);
+  describe('InlineResponse200', function() {
+    it('should create an instance of InlineResponse200', function() {
+      // uncomment below and update the code to test InlineResponse200
+      //var instane = new GitChrisQueen_TDA_JS.InlineResponse200();
+      //expect(instance).to.be.a(GitChrisQueen_TDA_JS.InlineResponse200);
     });
 
     it('should have the property schema (base name: "schema")', function() {
       // uncomment below and update the code to test the property schema
-      //var instane = new GitChrisQueen_TDA_JS.OrderGetOrderActivityCollection();
+      //var instane = new GitChrisQueen_TDA_JS.InlineResponse200();
       //expect(instance).to.be();
     });
 
