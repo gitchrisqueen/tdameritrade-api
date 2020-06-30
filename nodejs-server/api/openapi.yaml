@@ -1258,7 +1258,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/SearchInstrumentResponse'
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
@@ -2412,6 +2412,23 @@ components:
           - UNKNOWN
         fundamental:
           $ref: '#/components/schemas/Fundamental_fundamental'
+    SearchInstrumentResponse:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          schemas:
+            discriminator:
+              propertyName: assetType
+              mapping:
+                BOND: '#/components/schemas/Bond'
+            oneOf:
+            - $ref: '#/components/schemas/SearchInstrument'
+            - $ref: '#/components/schemas/Bond'
+            - $ref: '#/components/schemas/FundamentalData'
+            - $ref: '#/components/schemas/Fundamental'
+        example:
+          $ref: '#/components/examples/instrumentExample'
     SearchInstrument:
       type: object
       properties:
@@ -2436,21 +2453,8 @@ components:
           - MUTUAL_FUND
           - OPTION
           - UNKNOWN
-    inline_response_200:
-      type: object
-      properties:
-        schema:
-          discriminator:
-            propertyName: assetType
-            mapping:
-              BOND: '#/components/schemas/Bond'
-          oneOf:
-          - $ref: '#/components/schemas/SearchInstrument'
-          - $ref: '#/components/schemas/Bond'
-          - $ref: '#/components/schemas/FundamentalData'
-          - $ref: '#/components/schemas/Fundamental'
       example:
-        schema: ""
+        $ref: '#/components/examples/instrumentExample'
     Hours_sessionHours:
       type: object
       properties:
