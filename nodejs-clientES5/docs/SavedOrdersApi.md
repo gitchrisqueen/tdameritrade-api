@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 <a name="accountsAccountIdSavedordersSavedOrderIdPUT"></a>
 # **accountsAccountIdSavedordersSavedOrderIdPUT**
-> OrderGet accountsAccountIdSavedordersSavedOrderIdPUT(accountId, savedOrderId, opts)
+> accountsAccountIdSavedordersSavedOrderIdPUT(accountId, savedOrderId, opts)
 
 Replace Saved Orders
 
@@ -249,8 +249,8 @@ var savedOrderId = 56; // Number |
 var opts = { 
   'body': new GitChrisQueen_TDA_JS.OrderGet() // OrderGet | 
 };
-apiInstance.accountsAccountIdSavedordersSavedOrderIdPUT(accountId, savedOrderId, opts).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
+apiInstance.accountsAccountIdSavedordersSavedOrderIdPUT(accountId, savedOrderId, opts).then(function() {
+  console.log('API called successfully.');
 }, function(error) {
   console.error(error);
 });
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderGet**](OrderGet.md)
+null (empty response body)
 
 ### Authorization
 
@@ -275,6 +275,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/Json
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

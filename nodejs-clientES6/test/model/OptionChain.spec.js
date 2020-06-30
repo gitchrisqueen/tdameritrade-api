@@ -65,6 +65,72 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property underlying (base name: "underlying")', function() {
+      // uncomment below and update the code to test the property underlying
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property strategy (base name: "strategy")', function() {
+      // uncomment below and update the code to test the property strategy
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property interval (base name: "interval")', function() {
+      // uncomment below and update the code to test the property interval
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isDelayed (base name: "isDelayed")', function() {
+      // uncomment below and update the code to test the property isDelayed
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isIndex (base name: "isIndex")', function() {
+      // uncomment below and update the code to test the property isIndex
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property daysToExpiration (base name: "daysToExpiration")', function() {
+      // uncomment below and update the code to test the property daysToExpiration
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property interestRate (base name: "interestRate")', function() {
+      // uncomment below and update the code to test the property interestRate
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property underlyingPrice (base name: "underlyingPrice")', function() {
+      // uncomment below and update the code to test the property underlyingPrice
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property volatility (base name: "volatility")', function() {
+      // uncomment below and update the code to test the property volatility
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property callExpDateMap (base name: "callExpDateMap")', function() {
+      // uncomment below and update the code to test the property callExpDateMap
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property putExpDateMap (base name: "putExpDateMap")', function() {
+      // uncomment below and update the code to test the property putExpDateMap
+      //var instane = new GitChrisQueen_TDA_JS.OptionChain();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

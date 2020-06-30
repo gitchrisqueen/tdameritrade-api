@@ -243,10 +243,13 @@
      * Replace an existing order for an account. The existing order will be replaced by the new order. Once replaced, the old order will be canceled and a new order will be created. See our Place Order Samples Guide - https://developer.tdameritrade.com/content/place-order-samples.
      * @param {Number} accountId 
      * @param {Number} orderId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderGet} and HTTP response
+     * @param {Object} opts Optional parameters
+     * @param {module:model/OrderGet} opts.body 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo = function(accountId, orderId) {
-      var postBody = null;
+    this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo = function(accountId, orderId, opts) {
+      opts = opts || {};
+      var postBody = opts['body'];
 
       // verify the required parameter 'accountId' is set
       if (accountId === undefined || accountId === null) {
@@ -273,9 +276,9 @@
       };
 
       var authNames = ['bearerAuth'];
-      var contentTypes = [];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = OrderGet;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/orders/{orderId}', 'PUT',
@@ -289,10 +292,12 @@
      * Replace an existing order for an account. The existing order will be replaced by the new order. Once replaced, the old order will be canceled and a new order will be created. See our Place Order Samples Guide - https://developer.tdameritrade.com/content/place-order-samples.
      * @param {Number} accountId 
      * @param {Number} orderId 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderGet}
+     * @param {Object} opts Optional parameters
+     * @param {module:model/OrderGet} opts.body 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.accountsAccountIdOrdersOrderIdPUT = function(accountId, orderId) {
-      return this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId)
+    this.accountsAccountIdOrdersOrderIdPUT = function(accountId, orderId, opts) {
+      return this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

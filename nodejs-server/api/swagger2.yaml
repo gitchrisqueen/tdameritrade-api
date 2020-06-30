@@ -61,6 +61,34 @@ paths:
       operationId: accountsGET
       summary: Get Accounts
       x-swagger-router-controller: Accounts
+  /accounts/watchlists:
+    get:
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/WatchListResponse'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: All watchlists for all of the user's linked accounts.
+      operationId: accountsWatchlistsGET
+      summary: Get Watchlists for Multiple Accounts
+      x-swagger-router-controller: Watchlist
   '/accounts/{accountId}':
     get:
       produces:
@@ -282,6 +310,8 @@ paths:
       summary: Get Order
       x-swagger-router-controller: Orders
     put:
+      consumes:
+        - application/json
       produces:
         - application/json
       parameters:
@@ -293,11 +323,13 @@ paths:
           name: orderId
           required: true
           type: integer
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/OrderGet'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/OrderGet'
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
@@ -334,6 +366,98 @@ paths:
       operationId: accountsAccountIdOrdersOrderIdPUT
       summary: Replace Order
       x-swagger-router-controller: Orders
+  '/accounts/{accountId}/preferences':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Preferences'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - User Info & Preferences
+      description: Preferences for a specific account.
+      operationId: accountsAccountIdPreferencesGET
+      summary: Get Preferences
+      x-swagger-router-controller: UserInfoPreferences
+    put:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/Preferences'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this resource.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - User Info & Preferences
+      description: >-
+        Update preferences for a specific account. Please note that the
+        directOptionsRouting and directEquityRouting values cannot be modified
+        via this operation.
+      operationId: accountsAccountIdPreferencesPUT
+      summary: Update Preferences
+      x-swagger-router-controller: UserInfoPreferences
   '/accounts/{accountId}/savedorders':
     get:
       produces:
@@ -522,7 +646,7 @@ paths:
       x-swagger-router-controller: SavedOrders
     put:
       consumes:
-        - application/Json
+        - application/json
       produces:
         - application/json
       parameters:
@@ -541,8 +665,6 @@ paths:
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/OrderGet'
         '400':
           description: An error message indicating the validation problem with the request.
           schema:
@@ -578,6 +700,368 @@ paths:
       operationId: accountsAccountIdSavedordersSavedOrderIdPUT
       summary: Replace Saved Orders
       x-swagger-router-controller: SavedOrders
+  '/accounts/{accountId}/transactions':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - description: Only transactions with the specified type will be returned.
+          enum:
+            - ALL
+            - TRADE
+            - BUY_ONLY
+            - SELL_ONLY
+            - CASH_IN_OR_CASH_OUT
+            - CHECKING
+            - DIVEDEND
+            - INTEREST
+            - OTHER
+            - ADVISOR_FEES
+          in: query
+          name: type
+          required: false
+          type: string
+        - description: Only transactions with the specified symbol will be returned.
+          in: query
+          name: symbol
+          required: false
+          type: string
+        - description: >-
+            Only transactions after the Start Date will be returned. Note: The
+            maximum date range is one year. Valid ISO-8601 formats are :
+            yyyy-MM-dd.
+          in: query
+          name: startDate
+          required: false
+          type: string
+        - description: >-
+            Only transactions after the end Date will be returned. Note: The
+            maximum date range is one year. Valid ISO-8601 formats are :
+            yyyy-MM-dd.
+          in: query
+          name: endDate
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller doesn't have access to the
+            account in the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the specified transaction could not be
+            found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Transactions
+      description: Transaction for a specific account.
+      operationId: accountsAccountIdTransactionsGET
+      summary: Get Transactions
+      x-swagger-router-controller: Transactions
+  '/accounts/{accountId}/transactions/{transactionId}':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller doesn't have access to the
+            account in the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the specified transaction could not be
+            found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Transactions
+      description: Transaction for a specific account.
+      operationId: accountsAccountIdTransactionsTransactionIdGET
+      summary: Get Transaction
+      x-swagger-router-controller: Transactions
+  '/accounts/{accountId}/watchlists':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/WatchListResponse'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: all watchlist for an account.
+      operationId: accountsAccountIdWatchlistsGET
+      summary: Get Watchlists for Single Account
+      x-swagger-router-controller: Watchlist
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/WatchListRequest'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: >-
+        Create watchlist for specific account.This method does not verify that
+        the symbol or asset type are valid.
+      operationId: accountsAccountIdWatchlistsPOST
+      summary: Create Watchlist
+      x-swagger-router-controller: Watchlist
+  '/accounts/{accountId}/watchlists/{watchlistId}':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: path
+          name: watchlistId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/WatchListResponse'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the account or the watchlist ID does not
+            exist.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: Specific watchlist for a specific account.
+      operationId: accountsAccountIdWatchlistsWatchlistIdGET
+      summary: Get Watchlists
+      x-swagger-router-controller: Watchlist
+    patch:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: path
+          name: watchlistId
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/WatchListRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: Watchlist updated.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: >-
+        Partially update watchlist for a specific account: change watchlist
+        name, add to the beginning/end of a watchlist, update or delete items in
+        a watchlist. This method does not verify that the symbol or asset type
+        are valid.
+      operationId: accountsAccountIdWatchlistsWatchlistIdPATCH
+      summary: Update Watchlist
+      x-swagger-router-controller: Watchlist
+    put:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          type: string
+        - in: path
+          name: watchlistId
+          required: true
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/WatchListRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: Watchlist updated.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Watchlist
+      description: Replace watchlist for a specific account.
+      operationId: accountsAccountIdWatchlistsWatchlistIdPUT
+      summary: Replace Watchlist
+      x-swagger-router-controller: Watchlist
   /instruments:
     get:
       produces:
@@ -862,7 +1346,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/OptionChain'
+            $ref: '#/definitions/GetOptionChainResponse'
         '400':
           description: >-
             An error message indicating the caller must pass a non null value in
@@ -943,6 +1427,62 @@ paths:
       operationId: marketdataHoursGET
       summary: Get Hours for Multiple Markets
       x-swagger-router-controller: MarketHours
+  /marketdata/quotes:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: apikey
+          required: false
+          type: string
+        - in: query
+          name: symbol
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetQuoteResponse'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a non null value in
+            the parameter.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the instrument for the symbol/cusip was
+            not found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '406':
+          description: >-
+            An error message indicating an issue in the symbol regex, or number
+            of symbols searched is over the maximum.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Quotes
+      description: Get quote for one or more symbols
+      operationId: marketdataQuotesGET
+      summary: Get Quotes
+      x-swagger-router-controller: Quotes
   '/marketdata/{index}/movers':
     get:
       produces:
@@ -1102,15 +1642,15 @@ paths:
         '401':
           description: Unauthorized
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '403':
           description: Forbidden
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
         '404':
           description: Not Found
           schema:
-            $ref: '#/definitions/EASObject'
+            $ref: '#/definitions/ErrorObject'
       security:
         - bearerAuth: []
       tags:
@@ -1118,6 +1658,56 @@ paths:
       operationId: marketdataSymbolPricehistoryGET
       summary: Get price history for a symbol
       x-swagger-router-controller: PriceHistory
+  '/marketdata/{symbol}/quotes':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: symbol
+          required: true
+          type: string
+        - in: query
+          name: apikey
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetQuoteResponse'
+        '400':
+          description: >-
+            An error message indicating the caller must pass a non null value in
+            the parameter.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid
+            Authorization in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '403':
+          description: >-
+            An error message indicating the caller is forbidden from accessing
+            this page.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '404':
+          description: >-
+            An error message indicating the instrument for the symbol/cusip was
+            not found.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - Quotes
+      description: Get quote for a symbol
+      operationId: marketdataSymbolQuotesGET
+      summary: Get Quote
+      x-swagger-router-controller: Quotes
   /oauth2/token:
     post:
       consumes:
@@ -1321,6 +1911,96 @@ paths:
       operationId: ordersPOST
       summary: Place Order
       x-swagger-router-controller: Orders
+  /userprincipals:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: >-
+            A comma separated String which allows one to specify additional
+            fields to return. None of these fields are returned by default.
+            Possible values in this String can be:
+            streamerSubscriptionKeys,streamerConnectionInfo,preferences,
+            surrogateIds. Example:
+            fields=streamerSubscriptionKeys,streamerConnectionInfo
+          in: query
+          name: fields
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserPrincipal'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - User Info & Preferences
+      description: User Principal details.
+      operationId: userprincipalsGET
+      summary: Get User Principals
+      x-swagger-router-controller: UserInfoPreferences
+  /userprincipals/streamersubscriptionkeys:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: >-
+            A comma separated string of account IDs, to fetch subscription keys
+            for each of them.
+          in: query
+          name: accountIds
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriptionKey'
+        '400':
+          description: An error message indicating the validation problem with the request.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '401':
+          description: >-
+            An error message indicating the caller must pass a valid AuthToken
+            in the HTTP authorization request header.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '500':
+          description: An error message indicating there was an unexpected server error.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+        '503':
+          description: An error message indicating there is a temporary problem responding.
+          schema:
+            $ref: '#/definitions/ErrorObject'
+      security:
+        - bearerAuth: []
+      tags:
+        - User Info & Preferences
+      description: SubscriptionKey for provided accounts or default accounts.
+      operationId: userprincipalsStreamersubscriptionkeysGET
+      summary: Get Streamer Subscription Keys
+      x-swagger-router-controller: UserInfoPreferences
 definitions:
   Account:
     example:
@@ -1628,6 +2308,111 @@ definitions:
       token_type:
         type: string
     type: object
+  ETFQuote:
+    properties:
+      52WkHigh:
+        format: double
+        type: number
+      52WkLow:
+        format: double
+        type: number
+      askId:
+        type: string
+      askPrice:
+        format: double
+        type: number
+      askSize:
+        format: int32
+        type: integer
+      bidId:
+        type: string
+      bidPrice:
+        format: double
+        type: number
+      bidSize:
+        format: int32
+        type: integer
+      closePrice:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      divAmount:
+        format: double
+        type: number
+      divDate:
+        type: string
+      divYield:
+        format: double
+        type: number
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      highPrice:
+        format: double
+        type: number
+      lastId:
+        type: string
+      lastPrice:
+        format: double
+        type: number
+      lastSize:
+        format: int32
+        type: integer
+      lowPrice:
+        format: double
+        type: number
+      marginable:
+        default: false
+        type: boolean
+      mark:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      openPrice:
+        format: double
+        type: number
+      peRatio:
+        format: double
+        type: number
+      quoteTimeInLong:
+        format: int32
+        type: integer
+      regularMarketLastPrice:
+        format: double
+        type: number
+      regularMarketLastSize:
+        format: int32
+        type: integer
+      regularMarketNetChange:
+        format: double
+        type: number
+      regularMarketTradeTimeInLong:
+        format: int32
+        type: integer
+      securityStatus:
+        type: string
+      shortable:
+        default: false
+        type: boolean
+      symbol:
+        type: string
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+      volatility:
+        format: double
+        type: number
+    type: object
   Equity:
     properties:
       assetType:
@@ -1638,6 +2423,111 @@ definitions:
         type: string
       symbol:
         type: string
+    type: object
+  EquityQuote:
+    properties:
+      52WkHigh:
+        format: double
+        type: number
+      52WkLow:
+        format: double
+        type: number
+      askId:
+        type: string
+      askPrice:
+        format: double
+        type: number
+      askSize:
+        format: int32
+        type: integer
+      bidId:
+        type: string
+      bidPrice:
+        format: double
+        type: number
+      bidSize:
+        format: int32
+        type: integer
+      closePrice:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      divAmount:
+        format: double
+        type: number
+      divDate:
+        type: string
+      divYield:
+        format: double
+        type: number
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      highPrice:
+        format: double
+        type: number
+      lastId:
+        type: string
+      lastPrice:
+        format: double
+        type: number
+      lastSize:
+        format: int32
+        type: integer
+      lowPrice:
+        format: double
+        type: number
+      marginable:
+        default: false
+        type: boolean
+      mark:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      openPrice:
+        format: double
+        type: number
+      peRatio:
+        format: double
+        type: number
+      quoteTimeInLong:
+        format: int32
+        type: integer
+      regularMarketLastPrice:
+        format: double
+        type: number
+      regularMarketLastSize:
+        format: int32
+        type: integer
+      regularMarketNetChange:
+        format: double
+        type: number
+      regularMarketTradeTimeInLong:
+        format: int32
+        type: integer
+      securityStatus:
+        type: string
+      shortable:
+        default: false
+        type: boolean
+      symbol:
+        type: string
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+      volatility:
+        format: double
+        type: number
     type: object
   Equity_assetType:
     properties:
@@ -1715,6 +2605,11 @@ definitions:
         format: date-time
         type: string
     type: object
+  ExpirationDate:
+    properties:
+      date:
+        type: string
+    type: object
   FixedIncome:
     properties:
       assetType:
@@ -1734,6 +2629,72 @@ definitions:
       variableRate:
         format: double
         type: number
+    type: object
+  ForexQuote:
+    properties:
+      52WkHighInDouble:
+        format: double
+        type: number
+      52WkLowInDouble:
+        format: double
+        type: number
+      askPriceInDouble:
+        format: double
+        type: number
+      bidPriceInDouble:
+        format: double
+        type: number
+      changeInDouble:
+        format: double
+        type: number
+      closePriceInDouble:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      highPriceInDouble:
+        format: double
+        type: number
+      isTradable:
+        type: boolean
+      lastPriceInDouble:
+        format: double
+        type: number
+      lowPriceInDouble:
+        format: double
+        type: number
+      mark:
+        format: double
+        type: number
+      marketMaker:
+        type: string
+      openPriceInDouble:
+        format: double
+        type: number
+      percentChange:
+        format: double
+        type: number
+      product:
+        type: string
+      securityStatus:
+        type: string
+      symbol:
+        type: string
+      tick:
+        format: double
+        type: number
+      tickAmount:
+        format: double
+        type: number
+      tradingHours:
+        type: string
     type: object
   FrequencyType:
     enum:
@@ -1904,6 +2865,218 @@ definitions:
     properties:
       schema:
         $ref: '#/definitions/FundamentalData'
+  FutureOptionsQuote:
+    properties:
+      askPriceInDouble:
+        format: double
+        type: number
+      bidPriceInDouble:
+        format: double
+        type: number
+      closePriceInDouble:
+        format: double
+        type: number
+      contractType:
+        type: string
+      deltaInDouble:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      exchangeName:
+        type: string
+      exerciseType:
+        type: string
+      expirationType:
+        type: string
+      futureExpirationDate:
+        format: int32
+        type: integer
+      futureIsActive:
+        type: boolean
+      futureIsTradable:
+        type: boolean
+      futurePercentChange:
+        format: double
+        type: number
+      futureTradingHours:
+        type: string
+      gammaInDouble:
+        format: double
+        type: number
+      highPriceInDouble:
+        format: double
+        type: number
+      inTheMoney:
+        type: boolean
+      lastPriceInDouble:
+        format: double
+        type: number
+      lowPriceInDouble:
+        format: double
+        type: number
+      mark:
+        format: double
+        type: number
+      moneyIntrinsicValueInDouble:
+        format: double
+        type: number
+      multiplierInDouble:
+        format: double
+        type: number
+      netChangeInDouble:
+        format: double
+        type: number
+      openInterest:
+        format: double
+        type: number
+      openPriceInDouble:
+        format: double
+        type: number
+      rhoInDouble:
+        format: double
+        type: number
+      securityStatus:
+        type: string
+      strikePriceInDouble:
+        format: double
+        type: number
+      symbol:
+        type: string
+      thetaInDouble:
+        format: double
+        type: number
+      tick:
+        format: double
+        type: number
+      tickAmount:
+        format: double
+        type: number
+      timeValueInDouble:
+        format: double
+        type: number
+      underlying:
+        type: string
+      vegaInDouble:
+        format: double
+        type: number
+      volatility:
+        format: double
+        type: number
+    type: object
+  FutureQuote:
+    properties:
+      askId:
+        type: string
+      askPriceInDouble:
+        format: double
+        type: number
+      bidId:
+        type: string
+      bidPriceInDouble:
+        format: double
+        type: number
+      changeInDouble:
+        format: double
+        type: number
+      closePriceInDouble:
+        format: double
+        type: number
+      description:
+        type: string
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      futureActiveSymbol:
+        type: string
+      futureExpirationDate:
+        type: string
+      futureIsActive:
+        type: boolean
+      futureIsTradable:
+        type: boolean
+      futureMultiplier:
+        format: double
+        type: number
+      futurePercentChange:
+        format: double
+        type: number
+      futurePriceFormat:
+        type: string
+      futureSettlementPrice:
+        format: double
+        type: number
+      futureTradinghours:
+        type: string
+      highPriceInDouble:
+        format: double
+        type: number
+      lastId:
+        type: string
+      lastPriceInDouble:
+        format: double
+        type: number
+      lowPriceInDouble:
+        format: double
+        type: number
+      mark:
+        format: double
+        type: number
+      openInterest:
+        format: double
+        type: number
+      openPriceInDouble:
+        format: double
+        type: number
+      product:
+        type: string
+      securityStatus:
+        type: string
+      symbol:
+        type: string
+      tick:
+        format: double
+        type: number
+      tickAmount:
+        format: double
+        type: number
+    type: object
+  GetOptionChainResponse:
+    additionalProperties:
+      example:
+        schemas: ''
+      properties:
+        schemas:
+          oneOf:
+            - $ref: '#/definitions/OptionChain'
+            - $ref: '#/definitions/StrikePriceMap'
+            - $ref: '#/definitions/OptionChainOption'
+            - $ref: '#/definitions/Underlying'
+            - $ref: '#/definitions/ExpirationDate'
+            - $ref: '#/definitions/OptionDeliverable'
+      type: object
+    type: object
+  GetQuoteResponse:
+    additionalProperties:
+      example:
+        schemas: ''
+      properties:
+        schemas:
+          oneOf:
+            - $ref: '#/definitions/MutualFundQuote'
+            - $ref: '#/definitions/FutureQuote'
+            - $ref: '#/definitions/FutureOptionsQuote'
+            - $ref: '#/definitions/IndexQuote'
+            - $ref: '#/definitions/OptionQuote'
+            - $ref: '#/definitions/ForexQuote'
+            - $ref: '#/definitions/ETFQuote'
+            - $ref: '#/definitions/EquityQuote'
+      type: object
+    type: object
   Hours:
     example:
       category: category
@@ -1958,12 +3131,68 @@ definitions:
           type: string
         type: array
     type: object
+  IndexQuote:
+    properties:
+      52WkHigh:
+        format: double
+        type: number
+      52WkLow:
+        format: double
+        type: number
+      closePrice:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      highPrice:
+        format: double
+        type: number
+      lastPrice:
+        format: double
+        type: number
+      lowPrice:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      openPrice:
+        format: double
+        type: number
+      securityStatus:
+        type: string
+      symbol:
+        type: string
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+    type: object
   Instrument:
     example:
       schema: ''
     properties:
       schema: {}
     type: object
+  LotMethod:
+    enum:
+      - FIFO
+      - LIFO
+      - HIGH_COST
+      - LOW_COST
+      - MINIMUM_TAX
+      - AVERAGE_COST
+      - NONE
+    type: string
   MarginAccount:
     properties:
       accountId:
@@ -2253,6 +3482,54 @@ definitions:
           - NO_LOAD_TAXABLE
         type: string
     type: object
+  MutualFundQuote:
+    properties:
+      52WkHigh:
+        format: double
+        type: number
+      52WkLow:
+        format: double
+        type: number
+      closePrice:
+        format: double
+        type: number
+      description:
+        type: string
+      digits:
+        format: int32
+        type: integer
+      divAmount:
+        format: double
+        type: number
+      divDate:
+        type: string
+      divYield:
+        format: double
+        type: number
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      nAV:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      perRatio:
+        format: double
+        type: number
+      securityStatus:
+        type: string
+      symbol:
+        type: string
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+    type: object
   Option:
     properties:
       assetType:
@@ -2262,20 +3539,12 @@ definitions:
       description:
         type: string
       optionDeliverables:
-        items:
-          $ref: '#/definitions/Option_optionDeliverables'
-        type: array
-        xml:
-          name: optionDeliverable
-          wrapped: true
+        $ref: '#/definitions/OptionChainOption_optionDeliverablesList'
       optionMultiplier:
         format: int32
         type: integer
       putCall:
-        enum:
-          - PUT
-          - CALL
-        type: string
+        $ref: '#/definitions/OptionChainOption_putCall'
       symbol:
         type: string
       type:
@@ -2288,19 +3557,191 @@ definitions:
         type: string
     type: object
   OptionChain:
-    example:
-      status: status
-      symbol: symbol
     properties:
+      callExpDateMap:
+        additionalProperties:
+          type: object
+        type: object
+      daysToExpiration:
+        format: double
+        type: number
+      interestRate:
+        format: double
+        type: number
+      interval:
+        format: double
+        type: number
+      isDelayed:
+        type: boolean
+      isIndex:
+        type: boolean
+      putExpDateMap:
+        additionalProperties:
+          type: object
+        type: object
       status:
         type: string
+      strategy:
+        $ref: '#/definitions/OptionChain_strategy'
       symbol:
         type: string
+      underlying:
+        $ref: '#/definitions/OptionChain_underlying'
+      underlyingPrice:
+        format: double
+        type: number
+      volatility:
+        format: double
+        type: number
     type: object
-  Option_optionDeliverables:
+  OptionChainOption:
+    properties:
+      askPrice:
+        format: double
+        type: number
+      askSize:
+        format: int32
+        type: integer
+      bidPrice:
+        format: double
+        type: number
+      bidSize:
+        format: int32
+        type: integer
+      closePrice:
+        format: double
+        type: number
+      delta:
+        format: double
+        type: number
+      delverableNote:
+        type: string
+      description:
+        type: string
+      exchangeName:
+        type: string
+      expirationDate:
+        type: string
+      expirationType:
+        type: string
+      gamma:
+        format: double
+        type: number
+      highPrice:
+        format: double
+        type: number
+      isInTheMoney:
+        type: boolean
+      isIndexOption:
+        type: boolean
+      isMini:
+        type: boolean
+      isNonStandard:
+        type: boolean
+      lastPrice:
+        format: double
+        type: number
+      lastSize:
+        format: int32
+        type: integer
+      lowPrice:
+        format: double
+        type: number
+      markChange:
+        format: double
+        type: number
+      markPercentChange:
+        format: double
+        type: number
+      markPrice:
+        format: double
+        type: number
+      multiplier:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      opePrice:
+        format: double
+        type: number
+      openInterest:
+        format: double
+        type: number
+      optionDeliverablesList:
+        $ref: '#/definitions/OptionChainOption_optionDeliverablesList'
+      percentChange:
+        format: double
+        type: number
+      putCall:
+        $ref: '#/definitions/OptionChainOption_putCall'
+      quoteTimeInLong:
+        format: int32
+        type: integer
+      rho:
+        format: double
+        type: number
+      settlementType:
+        type: string
+      strikePrice:
+        format: double
+        type: number
+      symbol:
+        type: string
+      theoreticalOptionValue:
+        format: double
+        type: number
+      theoreticalVolatility:
+        format: double
+        type: number
+      theta:
+        format: double
+        type: number
+      timeValue:
+        format: double
+        type: number
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+      vega:
+        format: double
+        type: number
+      volatility:
+        format: double
+        type: number
+    type: object
+  OptionChainOption_optionDeliverablesList:
+    properties:
+      schema:
+        $ref: '#/definitions/OptionDeliverable'
+  OptionChainOption_putCall:
+    properties:
+      schema:
+        $ref: '#/definitions/PutCall'
+  OptionChain_strategy:
+    properties:
+      schema:
+        $ref: '#/definitions/Strategy'
+  OptionChain_underlying:
+    properties:
+      schema:
+        $ref: '#/definitions/Underlying'
+  OptionDeliverable:
+    items:
+      $ref: '#/definitions/OptionDeliverable_inner'
+    type: array
+    xml:
+      name: optionDeliverable
+      wrapped: true
+  OptionDeliverable_inner:
     properties:
       assetType:
-        $ref: '#/definitions/Equity_assetType'
+        properties:
+          schema:
+            $ref: '#/definitions/AssetType'
       currencyType:
         enum:
           - USD
@@ -2313,6 +3754,113 @@ definitions:
         type: number
       symbol:
         type: string
+    type: object
+  OptionQuote:
+    properties:
+      askPrice:
+        format: double
+        type: number
+      askSize:
+        format: int32
+        type: integer
+      bidPrice:
+        format: double
+        type: number
+      bidSize:
+        format: int32
+        type: integer
+      closePrice:
+        format: double
+        type: number
+      contractType:
+        type: string
+      deliverables:
+        type: string
+      delta:
+        format: double
+        type: number
+      description:
+        type: string
+      exchange:
+        type: string
+      exchangeName:
+        type: string
+      gamma:
+        format: double
+        type: number
+      highPrice:
+        format: double
+        type: number
+      lastPrice:
+        format: double
+        type: number
+      lastSize:
+        format: int32
+        type: integer
+      lowPrice:
+        format: double
+        type: number
+      mark:
+        format: double
+        type: number
+      moneyIntrinsicValue:
+        format: double
+        type: number
+      multiplier:
+        format: double
+        type: number
+      netChange:
+        format: double
+        type: number
+      openInterest:
+        format: double
+        type: number
+      openPrice:
+        format: double
+        type: number
+      quoteTimeInLong:
+        format: int32
+        type: integer
+      rho:
+        format: double
+        type: number
+      securityStatus:
+        type: string
+      settlementType:
+        type: string
+      strikePrice:
+        format: double
+        type: number
+      symbol:
+        type: string
+      theoreticalOptionValue:
+        format: double
+        type: number
+      theta:
+        format: double
+        type: number
+      timeValue:
+        format: double
+        type: number
+      totalVolume:
+        format: int32
+        type: integer
+      tradeTimeInLong:
+        format: int32
+        type: integer
+      underlying:
+        type: string
+      underlyingPrice:
+        format: double
+        type: number
+      uvExpirationType:
+        type: string
+      vega:
+        format: double
+        type: number
+      volatility:
+        format: double
+        type: number
     type: object
   OrderActivity:
     example:
@@ -2842,6 +4390,114 @@ definitions:
       - client_id
       - grant_type
     type: object
+  Preferences:
+    example:
+      authTokenTimeout: FIFTY_FIVE_MINUTES
+      defaultAdvancedToolLaunch: TA
+      defaultEquityOrderDuration: DAY
+      defaultEquityOrderLegInstruction: BUY
+      defaultEquityOrderMarketSession: AM
+      defaultEquityOrderPriceLinkType: VALUE
+      defaultEquityOrderType: MARKET
+      defaultEquityQuantity: 0
+      directEquityRouting: false
+      directOptionsRouting: false
+      expressTrading: false
+      mutualFundTaxLotMethod:
+        schema: FIFO
+    properties:
+      authTokenTimeout:
+        enum:
+          - FIFTY_FIVE_MINUTES
+          - TWO_HOURS
+          - FOUR_HOURS
+          - EIGHT_HOURS
+        type: string
+      defaultAdvancedToolLaunch:
+        enum:
+          - TA
+          - 'N'
+          - 'Y'
+          - TOS
+          - NONE
+          - CC2
+        type: string
+      defaultEquityOrderDuration:
+        enum:
+          - DAY
+          - GOOD_TILL_CANCEL
+          - NONE
+        type: string
+      defaultEquityOrderLegInstruction:
+        enum:
+          - BUY
+          - SELL
+          - BUY_TO_COVER
+          - SELL_SHORT
+          - NONE
+        type: string
+      defaultEquityOrderMarketSession:
+        enum:
+          - AM
+          - PM
+          - NORMAL
+          - SEAMLESS
+          - NONE
+        type: string
+      defaultEquityOrderPriceLinkType:
+        enum:
+          - VALUE
+          - PERCENT
+          - NONE
+        type: string
+      defaultEquityOrderType:
+        enum:
+          - MARKET
+          - LIMIT
+          - STOP
+          - STOP_LIMIT
+          - TRAILING_STOP
+          - MARKET_ON_CLOSE
+          - NONE
+        type: string
+      defaultEquityQuantity:
+        format: int32
+        minimum: 0
+        type: integer
+      directEquityRouting:
+        default: false
+        type: boolean
+      directOptionsRouting:
+        default: false
+        type: boolean
+      equityTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+      expressTrading:
+        default: false
+        type: boolean
+      mutualFundTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+      optionTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+    required:
+      - authTokenTimeout
+      - defaultAdvancedToolLaunch
+      - defaultEquityOrderDuration
+      - defaultEquityOrderLegInstruction
+      - defaultEquityOrderMarketSession
+      - defaultEquityOrderPriceLinkType
+      - defaultEquityOrderType
+      - defaultEquityQuantity
+      - equityTaxLotMethod
+      - expressTrading
+      - mutualFundTaxLotMethod
+      - optionTaxLotMethod
+    type: object
+  PutCall:
+    enum:
+      - PUT
+      - CALL
+    type: string
   SearchInstrument:
     example:
       $ref: '#/x-components/examples/instrumentExample'
@@ -2913,6 +4569,919 @@ definitions:
       - COLLAR
       - ROLL
     type: string
+  StrikePriceMap:
+    type: object
+  SubscriptionKey:
+    example:
+      keys:
+        - key: key
+        - key: key
+    properties:
+      keys:
+        items:
+          $ref: '#/definitions/SubscriptionKey_keys'
+        type: array
+    type: object
+  SubscriptionKey_keys:
+    example:
+      key: key
+    properties:
+      key:
+        type: string
+    type: object
+  Transaction:
+    example:
+      accruedInterest: 2.3021358869347655
+      achStatus: Approved
+      cashBalanceEffectFlag: false
+      clearingReferenceNumber: clearingReferenceNumber
+      dayTradeBuyingPowerEffect: 1.4658129805029452
+      description: description
+      fees:
+        key: 7.061401241503109
+      netAmount: 5.962133916683182
+      orderDate: '2000-01-23T04:56:07.000Z'
+      orderId: orderId
+      requirementReallocationAmount: 6.027456183070403
+      settlementDate: '2000-01-23T04:56:07.000Z'
+      sma: 0.8008281904610115
+      subAccount: subAccount
+      transactionDate: '2000-01-23T04:56:07.000Z'
+      transactionId: 5
+      transactionItem:
+        accountId: 9
+        amount: 3.616076749251911
+        cost: 4.145608029883936
+        instruction: BUY
+        instrument:
+          assetType: EQUITY
+          bondInterestRate: 1.0246457001441578
+          bondMaturityDate: '2000-01-23T04:56:07.000Z'
+          cusip: cusip
+          description: description
+          optionExpirationDate: '2000-01-23T04:56:07.000Z'
+          optionStrikePrice: 1.2315135367772556
+          putCall: PUT
+          symbol: symbol
+          underlyingSymbol: underlyingSymbol
+        parentChildIndicator: parentChildIndicator
+        parentOrderKey: 7
+        positionEffect: OPENING
+        price: 2.027123023002322
+      transactionSubType: transactionSubType
+      type: TRADE
+    properties:
+      accruedInterest:
+        format: double
+        type: number
+      achStatus:
+        enum:
+          - Approved
+          - Rejected
+          - Cancel
+          - Error
+        type: string
+      cashBalanceEffectFlag:
+        default: false
+        type: boolean
+      clearingReferenceNumber:
+        type: string
+      dayTradeBuyingPowerEffect:
+        format: double
+        type: number
+      description:
+        type: string
+      fees:
+        additionalProperties:
+          format: double
+          type: number
+        type: object
+      netAmount:
+        format: double
+        type: number
+      orderDate:
+        format: date-time
+        type: string
+      orderId:
+        type: string
+      requirementReallocationAmount:
+        format: double
+        type: number
+      settlementDate:
+        format: date-time
+        type: string
+      sma:
+        format: double
+        type: number
+      subAccount:
+        type: string
+      transactionDate:
+        format: date-time
+        type: string
+      transactionId:
+        format: int64
+        type: integer
+      transactionItem:
+        $ref: '#/definitions/Transaction_transactionItem'
+      transactionSubType:
+        type: string
+      type:
+        enum:
+          - TRADE
+          - RECEIVE_AND_DELIVER
+          - DIVIDEND_OR_INTEREST
+          - ACH_RECEIPT
+          - ACH_DISBURSEMENT
+          - CASH_RECEIPT
+          - CASH_DISBURSEMENT
+          - ELECTRONIC_FUND
+          - WIRE_OUT
+          - WIRE_IN
+          - JOURNAL
+          - MEMORANDUM
+          - MARGIN_CALL
+          - MONEY_MARKET
+          - SMA_ADJUSTMENT
+        type: string
+    type: object
+  Transaction_transactionItem:
+    example:
+      accountId: 9
+      amount: 3.616076749251911
+      cost: 4.145608029883936
+      instruction: BUY
+      instrument:
+        assetType: EQUITY
+        bondInterestRate: 1.0246457001441578
+        bondMaturityDate: '2000-01-23T04:56:07.000Z'
+        cusip: cusip
+        description: description
+        optionExpirationDate: '2000-01-23T04:56:07.000Z'
+        optionStrikePrice: 1.2315135367772556
+        putCall: PUT
+        symbol: symbol
+        underlyingSymbol: underlyingSymbol
+      parentChildIndicator: parentChildIndicator
+      parentOrderKey: 7
+      positionEffect: OPENING
+      price: 2.027123023002322
+    properties:
+      accountId:
+        format: int32
+        type: integer
+      amount:
+        format: double
+        type: number
+      cost:
+        format: double
+        type: number
+      instruction:
+        enum:
+          - BUY
+          - SELL
+        type: string
+      instrument:
+        $ref: '#/definitions/Transaction_transactionItem_instrument'
+      parentChildIndicator:
+        type: string
+      parentOrderKey:
+        format: int32
+        type: integer
+      positionEffect:
+        enum:
+          - OPENING
+          - CLOSING
+          - AUTOMATIC
+        type: string
+      price:
+        format: double
+        type: number
+    type: object
+  Transaction_transactionItem_instrument:
+    example:
+      assetType: EQUITY
+      bondInterestRate: 1.0246457001441578
+      bondMaturityDate: '2000-01-23T04:56:07.000Z'
+      cusip: cusip
+      description: description
+      optionExpirationDate: '2000-01-23T04:56:07.000Z'
+      optionStrikePrice: 1.2315135367772556
+      putCall: PUT
+      symbol: symbol
+      underlyingSymbol: underlyingSymbol
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - MUTUAL_FUND
+          - OPTION
+          - FIXED_INCOME
+          - CASH_EQUIVALENT
+        type: string
+      bondInterestRate:
+        format: double
+        type: number
+      bondMaturityDate:
+        format: date-time
+        type: string
+      cusip:
+        type: string
+      description:
+        type: string
+      optionExpirationDate:
+        format: date-time
+        type: string
+      optionStrikePrice:
+        format: double
+        type: number
+      putCall:
+        enum:
+          - PUT
+          - CALL
+        type: string
+      symbol:
+        type: string
+      underlyingSymbol:
+        type: string
+    type: object
+  Underlying:
+    properties:
+      ask:
+        format: double
+        type: number
+      askSize:
+        format: int32
+        type: integer
+      bid:
+        format: double
+        type: number
+      bidSize:
+        format: int32
+        type: integer
+      change:
+        format: double
+        type: number
+      close:
+        format: double
+        type: number
+      delayed:
+        type: boolean
+      description:
+        type: string
+      exchangeName:
+        enum:
+          - IND
+          - ASE
+          - NYS
+          - NAS
+          - NAP
+          - PAC
+          - OPR
+          - BATS
+        type: string
+      fiftyTwoWeekHigh:
+        format: double
+        type: number
+      fiftyTwoWeekLow:
+        format: double
+        type: number
+      highePrice:
+        format: double
+        type: number
+      last:
+        format: double
+        type: number
+      lowPrice:
+        format: double
+        type: number
+      makrPercentChange:
+        format: double
+        type: number
+      mark:
+        format: double
+        type: number
+      markChange:
+        format: double
+        type: number
+      openPrice:
+        format: double
+        type: number
+      percentChange:
+        format: double
+        type: number
+      quoteTime:
+        format: int64
+        type: integer
+      symbol:
+        type: string
+      totalVolume:
+        format: int64
+        type: integer
+      tradeTime:
+        format: int64
+        type: integer
+    type: object
+  UserPrincipal:
+    example:
+      accessLevel: accessLevel
+      accounts:
+        - accountCdDomainId: accountCdDomainId
+          accountId: accountId
+          acl: acl
+          authorizations:
+            advancedMargin: false
+            apex: false
+            levelTwoQuotes: false
+            marginTrading: false
+            optionTradingLevel: COVERED
+            scottradeAccount: false
+            stockTrading: false
+            streamerAccess: false
+            streamingNews: false
+          company: company
+          description: description
+          displayName: displayName
+          preferences:
+            authTokenTimeout: FIFTY_FIVE_MINUTES
+            defaultAdvancedToolLaunch: TA
+            defaultEquityOrderDuration: DAY
+            defaultEquityOrderLegInstruction: BUY
+            defaultEquityOrderMarketSession: AM
+            defaultEquityOrderPriceLinkType: VALUE
+            defaultEquityOrderType: MARKET
+            defaultEquityQuantity: 0
+            directEquityRouting: false
+            directOptionsRouting: false
+            expressTrading: false
+            mutualFundTaxLotMethod:
+              schema: FIFO
+          segment: segment
+          surrogateIds:
+            key: surrogateIds
+        - accountCdDomainId: accountCdDomainId
+          accountId: accountId
+          acl: acl
+          authorizations:
+            advancedMargin: false
+            apex: false
+            levelTwoQuotes: false
+            marginTrading: false
+            optionTradingLevel: COVERED
+            scottradeAccount: false
+            stockTrading: false
+            streamerAccess: false
+            streamingNews: false
+          company: company
+          description: description
+          displayName: displayName
+          preferences:
+            authTokenTimeout: FIFTY_FIVE_MINUTES
+            defaultAdvancedToolLaunch: TA
+            defaultEquityOrderDuration: DAY
+            defaultEquityOrderLegInstruction: BUY
+            defaultEquityOrderMarketSession: AM
+            defaultEquityOrderPriceLinkType: VALUE
+            defaultEquityOrderType: MARKET
+            defaultEquityQuantity: 0
+            directEquityRouting: false
+            directOptionsRouting: false
+            expressTrading: false
+            mutualFundTaxLotMethod:
+              schema: FIFO
+          segment: segment
+          surrogateIds:
+            key: surrogateIds
+      authToken: authToken
+      lastLoginTime: '2000-01-23T04:56:07.000Z'
+      loginTime: '2000-01-23T04:56:07.000Z'
+      primaryAccountId: primaryAccountId
+      professionalStatus: PROFESSIONAL
+      quotes:
+        isAmexDelayed: false
+        isCmeDelayed: false
+        isForexDelayed: false
+        isIceDelayed: false
+        isNasdaqDelayed: false
+        isNyseDelayed: false
+        isOpraDelayed: false
+      stalePassword: false
+      streamerInfo:
+        accessLevel: accessLevel
+        acl: acl
+        appId: appId
+        streamerBinaryUrl: streamerBinaryUrl
+        streamerSocketUrl: streamerSocketUrl
+        token: token
+        tokenTimestamp: '2000-01-23T04:56:07.000Z'
+        userGroup: userGroup
+      streamerSubscriptionKeys:
+        schema:
+          keys:
+            - key: key
+            - key: key
+      tokenExpirationTime: '2000-01-23T04:56:07.000Z'
+      userCdDomainId: userCdDomainId
+      userId: userId
+    properties:
+      accessLevel:
+        type: string
+      accounts:
+        items:
+          $ref: '#/definitions/UserPrincipal_accounts'
+        type: array
+      authToken:
+        type: string
+      lastLoginTime:
+        format: date-time
+        type: string
+      loginTime:
+        format: date-time
+        type: string
+      primaryAccountId:
+        type: string
+      professionalStatus:
+        enum:
+          - PROFESSIONAL
+          - NON_PROFESSIONAL
+          - UNKNOWN_STATUS
+        type: string
+      quotes:
+        $ref: '#/definitions/UserPrincipal_quotes'
+      stalePassword:
+        default: false
+        type: boolean
+      streamerInfo:
+        $ref: '#/definitions/UserPrincipal_streamerInfo'
+      streamerSubscriptionKeys:
+        $ref: '#/definitions/UserPrincipal_streamerSubscriptionKeys'
+      tokenExpirationTime:
+        format: date-time
+        type: string
+      userCdDomainId:
+        type: string
+      userId:
+        type: string
+    type: object
+  UserPrincipal_accounts:
+    example:
+      accountCdDomainId: accountCdDomainId
+      accountId: accountId
+      acl: acl
+      authorizations:
+        advancedMargin: false
+        apex: false
+        levelTwoQuotes: false
+        marginTrading: false
+        optionTradingLevel: COVERED
+        scottradeAccount: false
+        stockTrading: false
+        streamerAccess: false
+        streamingNews: false
+      company: company
+      description: description
+      displayName: displayName
+      preferences:
+        authTokenTimeout: FIFTY_FIVE_MINUTES
+        defaultAdvancedToolLaunch: TA
+        defaultEquityOrderDuration: DAY
+        defaultEquityOrderLegInstruction: BUY
+        defaultEquityOrderMarketSession: AM
+        defaultEquityOrderPriceLinkType: VALUE
+        defaultEquityOrderType: MARKET
+        defaultEquityQuantity: 0
+        directEquityRouting: false
+        directOptionsRouting: false
+        expressTrading: false
+        mutualFundTaxLotMethod:
+          schema: FIFO
+      segment: segment
+      surrogateIds:
+        key: surrogateIds
+    properties:
+      accountCdDomainId:
+        type: string
+      accountId:
+        type: string
+      acl:
+        type: string
+      authorizations:
+        $ref: '#/definitions/UserPrincipal_authorizations'
+      company:
+        type: string
+      description:
+        type: string
+      displayName:
+        type: string
+      preferences:
+        $ref: '#/definitions/UserPrincipal_preferences'
+      segment:
+        type: string
+      surrogateIds:
+        additionalProperties:
+          type: string
+        type: object
+    type: object
+  UserPrincipal_authorizations:
+    example:
+      advancedMargin: false
+      apex: false
+      levelTwoQuotes: false
+      marginTrading: false
+      optionTradingLevel: COVERED
+      scottradeAccount: false
+      stockTrading: false
+      streamerAccess: false
+      streamingNews: false
+    properties:
+      advancedMargin:
+        default: false
+        type: boolean
+      apex:
+        default: false
+        type: boolean
+      levelTwoQuotes:
+        default: false
+        type: boolean
+      marginTrading:
+        default: false
+        type: boolean
+      optionTradingLevel:
+        enum:
+          - COVERED
+          - FULL
+          - LONG
+          - SPREAD
+          - NONE
+        type: string
+      scottradeAccount:
+        default: false
+        type: boolean
+      stockTrading:
+        default: false
+        type: boolean
+      streamerAccess:
+        default: false
+        type: boolean
+      streamingNews:
+        default: false
+        type: boolean
+    type: object
+  UserPrincipal_preferences:
+    example:
+      authTokenTimeout: FIFTY_FIVE_MINUTES
+      defaultAdvancedToolLaunch: TA
+      defaultEquityOrderDuration: DAY
+      defaultEquityOrderLegInstruction: BUY
+      defaultEquityOrderMarketSession: AM
+      defaultEquityOrderPriceLinkType: VALUE
+      defaultEquityOrderType: MARKET
+      defaultEquityQuantity: 0
+      directEquityRouting: false
+      directOptionsRouting: false
+      expressTrading: false
+      mutualFundTaxLotMethod:
+        schema: FIFO
+    properties:
+      authTokenTimeout:
+        enum:
+          - FIFTY_FIVE_MINUTES
+          - TWO_HOURS
+          - FOUR_HOURS
+          - EIGHT_HOURS
+        type: string
+      defaultAdvancedToolLaunch:
+        enum:
+          - TA
+          - 'N'
+          - 'Y'
+          - TOS
+          - NONE
+          - CC2
+        type: string
+      defaultEquityOrderDuration:
+        enum:
+          - DAY
+          - GOOD_TILL_CANCEL
+          - NONE
+        type: string
+      defaultEquityOrderLegInstruction:
+        enum:
+          - BUY
+          - SELL
+          - BUY_TO_COVER
+          - SELL_SHORT
+          - NONE
+        type: string
+      defaultEquityOrderMarketSession:
+        enum:
+          - AM
+          - PM
+          - NORMAL
+          - SEAMLESS
+          - NONE
+        type: string
+      defaultEquityOrderPriceLinkType:
+        enum:
+          - VALUE
+          - PERCENT
+          - NONE
+        type: string
+      defaultEquityOrderType:
+        enum:
+          - MARKET
+          - LIMIT
+          - STOP
+          - STOP_LIMIT
+          - TRAILING_STOP
+          - MARKET_ON_CLOSE
+          - NONE
+        type: string
+      defaultEquityQuantity:
+        format: int32
+        minimum: 0
+        type: integer
+      directEquityRouting:
+        default: false
+        type: boolean
+      directOptionsRouting:
+        default: false
+        type: boolean
+      equityTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+      expressTrading:
+        default: false
+        type: boolean
+      mutualFundTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+      optionTaxLotMethod:
+        $ref: '#/definitions/UserPrincipal_preferences_mutualFundTaxLotMethod'
+    type: object
+  UserPrincipal_preferences_mutualFundTaxLotMethod:
+    example:
+      schema: FIFO
+    properties:
+      schema:
+        $ref: '#/definitions/LotMethod'
+  UserPrincipal_quotes:
+    example:
+      isAmexDelayed: false
+      isCmeDelayed: false
+      isForexDelayed: false
+      isIceDelayed: false
+      isNasdaqDelayed: false
+      isNyseDelayed: false
+      isOpraDelayed: false
+    properties:
+      isAmexDelayed:
+        default: false
+        type: boolean
+      isCmeDelayed:
+        default: false
+        type: boolean
+      isForexDelayed:
+        default: false
+        type: boolean
+      isIceDelayed:
+        default: false
+        type: boolean
+      isNasdaqDelayed:
+        default: false
+        type: boolean
+      isNyseDelayed:
+        default: false
+        type: boolean
+      isOpraDelayed:
+        default: false
+        type: boolean
+    type: object
+  UserPrincipal_streamerInfo:
+    example:
+      accessLevel: accessLevel
+      acl: acl
+      appId: appId
+      streamerBinaryUrl: streamerBinaryUrl
+      streamerSocketUrl: streamerSocketUrl
+      token: token
+      tokenTimestamp: '2000-01-23T04:56:07.000Z'
+      userGroup: userGroup
+    properties:
+      accessLevel:
+        type: string
+      acl:
+        type: string
+      appId:
+        type: string
+      streamerBinaryUrl:
+        type: string
+      streamerSocketUrl:
+        type: string
+      token:
+        type: string
+      tokenTimestamp:
+        format: date-time
+        type: string
+      userGroup:
+        type: string
+    type: object
+  UserPrincipal_streamerSubscriptionKeys:
+    example:
+      schema:
+        keys:
+          - key: key
+          - key: key
+    properties:
+      schema:
+        $ref: '#/definitions/SubscriptionKey'
+  WatchList:
+    example:
+      accountId: accountId
+      name: name
+      status: UNCHANGED
+      watchlistId: watchlistId
+      watchlistItems:
+        - averagePrice: 0.14658129805029452
+          commission: 0.5962133916683182
+          instrument:
+            assetType: EQUITY
+            description: description
+            symbol: symbol
+          purchasedDate: {}
+          quantity: 6.027456183070403
+          sequenceId: 0
+          status: UNCHANGED
+        - averagePrice: 0.14658129805029452
+          commission: 0.5962133916683182
+          instrument:
+            assetType: EQUITY
+            description: description
+            symbol: symbol
+          purchasedDate: {}
+          quantity: 6.027456183070403
+          sequenceId: 0
+          status: UNCHANGED
+    properties:
+      accountId:
+        type: string
+      name:
+        type: string
+      status:
+        enum:
+          - UNCHANGED
+          - CREATED
+          - UPDATED
+          - DELETED
+        type: string
+      watchlistId:
+        type: string
+      watchlistItems:
+        items:
+          $ref: '#/definitions/WatchList_watchlistItems'
+        type: array
+    required:
+      - watchlistItems
+    type: object
+  WatchListRequest:
+    properties:
+      name:
+        type: string
+      watchlistId:
+        type: string
+      watchlistItems:
+        items:
+          $ref: '#/definitions/WatchListRequest_watchlistItems'
+        type: array
+    required:
+      - name
+      - watchlistItems
+    type: object
+  WatchListRequest_instrument:
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - OPTION
+          - MUTUAL_FUND
+          - FIXED_INCOME
+          - INDEX
+        type: string
+      symbol:
+        type: string
+    type: object
+  WatchListRequest_watchlistItems:
+    properties:
+      averagePrice:
+        format: double
+        minimum: 0
+        type: number
+      commission:
+        format: double
+        minimum: 0
+        type: number
+      instrument:
+        $ref: '#/definitions/WatchListRequest_instrument'
+      purchasedDate:
+        type: object
+      quantity:
+        format: double
+        type: number
+      sequenceId:
+        format: int32
+        minimum: 0
+        type: integer
+    type: object
+  WatchListResponse:
+    additionalProperties:
+      example:
+        schema:
+          accountId: accountId
+          name: name
+          status: UNCHANGED
+          watchlistId: watchlistId
+          watchlistItems:
+            - averagePrice: 0.14658129805029452
+              commission: 0.5962133916683182
+              instrument:
+                assetType: EQUITY
+                description: description
+                symbol: symbol
+              purchasedDate: {}
+              quantity: 6.027456183070403
+              sequenceId: 0
+              status: UNCHANGED
+            - averagePrice: 0.14658129805029452
+              commission: 0.5962133916683182
+              instrument:
+                assetType: EQUITY
+                description: description
+                symbol: symbol
+              purchasedDate: {}
+              quantity: 6.027456183070403
+              sequenceId: 0
+              status: UNCHANGED
+      properties:
+        schema:
+          $ref: '#/definitions/WatchList'
+      type: object
+    type: object
+  WatchList_instrument:
+    example:
+      assetType: EQUITY
+      description: description
+      symbol: symbol
+    properties:
+      assetType:
+        enum:
+          - EQUITY
+          - OPTION
+          - MUTUAL_FUND
+          - FIXED_INCOME
+          - INDEX
+        type: string
+      description:
+        type: string
+      symbol:
+        type: string
+    type: object
+  WatchList_watchlistItems:
+    example:
+      averagePrice: 0.14658129805029452
+      commission: 0.5962133916683182
+      instrument:
+        assetType: EQUITY
+        description: description
+        symbol: symbol
+      purchasedDate: {}
+      quantity: 6.027456183070403
+      sequenceId: 0
+      status: UNCHANGED
+    properties:
+      averagePrice:
+        format: double
+        minimum: 0
+        type: number
+      commission:
+        format: double
+        minimum: 0
+        type: number
+      instrument:
+        $ref: '#/definitions/WatchList_instrument'
+      purchasedDate:
+        type: object
+      quantity:
+        format: double
+        type: number
+      sequenceId:
+        format: int32
+        minimum: 0
+        type: integer
+      status:
+        enum:
+          - UNCHANGED
+          - CREATED
+          - UPDATED
+          - DELETED
+        type: string
+    type: object
 securityDefinitions:
   application:
     authorizationUrl: >-

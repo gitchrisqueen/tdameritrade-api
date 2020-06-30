@@ -25,19 +25,29 @@ import CashAccountInitialBalances from './model/CashAccountInitialBalances';
 import CashEquivalent from './model/CashEquivalent';
 import Duration from './model/Duration';
 import EASObject from './model/EASObject';
+import ETFQuote from './model/ETFQuote';
 import Equity from './model/Equity';
 import EquityAssetType from './model/EquityAssetType';
+import EquityQuote from './model/EquityQuote';
 import ErrorObject from './model/ErrorObject';
 import Execution from './model/Execution';
 import ExecutionExecutionLegs from './model/ExecutionExecutionLegs';
+import ExpirationDate from './model/ExpirationDate';
 import FixedIncome from './model/FixedIncome';
+import ForexQuote from './model/ForexQuote';
 import FrequencyType from './model/FrequencyType';
 import Fundamental from './model/Fundamental';
 import FundamentalData from './model/FundamentalData';
 import FundamentalFundamental from './model/FundamentalFundamental';
+import FutureOptionsQuote from './model/FutureOptionsQuote';
+import FutureQuote from './model/FutureQuote';
+import GetOptionChainResponse from './model/GetOptionChainResponse';
+import GetQuoteResponse from './model/GetQuoteResponse';
 import Hours from './model/Hours';
 import HoursSessionHours from './model/HoursSessionHours';
+import IndexQuote from './model/IndexQuote';
 import Instrument from './model/Instrument';
+import LotMethod from './model/LotMethod';
 import MarginAccount from './model/MarginAccount';
 import MarginAccountBalances from './model/MarginAccountBalances';
 import MarginAccountCurrentBalances from './model/MarginAccountCurrentBalances';
@@ -46,11 +56,20 @@ import MarginAccountOrderStrategies from './model/MarginAccountOrderStrategies';
 import MarginAccountPositions from './model/MarginAccountPositions';
 import Mover from './model/Mover';
 import MutualFund from './model/MutualFund';
+import MutualFundQuote from './model/MutualFundQuote';
 import OneOfInstrumentSchema from './model/OneOfInstrumentSchema';
 import OneOfSecuritiesAccountSchema from './model/OneOfSecuritiesAccountSchema';
 import Option from './model/Option';
 import OptionChain from './model/OptionChain';
-import OptionOptionDeliverables from './model/OptionOptionDeliverables';
+import OptionChainOption from './model/OptionChainOption';
+import OptionChainOptionOptionDeliverablesList from './model/OptionChainOptionOptionDeliverablesList';
+import OptionChainOptionPutCall from './model/OptionChainOptionPutCall';
+import OptionChainStrategy from './model/OptionChainStrategy';
+import OptionChainUnderlying from './model/OptionChainUnderlying';
+import OptionDeliverable from './model/OptionDeliverable';
+import OptionDeliverableInner from './model/OptionDeliverableInner';
+import OptionDeliverableInnerAssetType from './model/OptionDeliverableInnerAssetType';
+import OptionQuote from './model/OptionQuote';
 import OrderActivity from './model/OrderActivity';
 import OrderGet from './model/OrderGet';
 import OrderGetCancelTime from './model/OrderGetCancelTime';
@@ -66,11 +85,35 @@ import Positions from './model/Positions';
 import PositionsInner from './model/PositionsInner';
 import PositionsInnerInstrument from './model/PositionsInnerInstrument';
 import PostAccessBody from './model/PostAccessBody';
+import Preferences from './model/Preferences';
+import PutCall from './model/PutCall';
 import SearchInstrument from './model/SearchInstrument';
 import SearchInstrumentResponse from './model/SearchInstrumentResponse';
 import SecuritiesAccount from './model/SecuritiesAccount';
 import Session from './model/Session';
 import Strategy from './model/Strategy';
+import StrikePriceMap from './model/StrikePriceMap';
+import SubscriptionKey from './model/SubscriptionKey';
+import SubscriptionKeyKeys from './model/SubscriptionKeyKeys';
+import Transaction from './model/Transaction';
+import TransactionTransactionItem from './model/TransactionTransactionItem';
+import TransactionTransactionItemInstrument from './model/TransactionTransactionItemInstrument';
+import Underlying from './model/Underlying';
+import UserPrincipal from './model/UserPrincipal';
+import UserPrincipalAccounts from './model/UserPrincipalAccounts';
+import UserPrincipalAuthorizations from './model/UserPrincipalAuthorizations';
+import UserPrincipalPreferences from './model/UserPrincipalPreferences';
+import UserPrincipalPreferencesMutualFundTaxLotMethod from './model/UserPrincipalPreferencesMutualFundTaxLotMethod';
+import UserPrincipalQuotes from './model/UserPrincipalQuotes';
+import UserPrincipalStreamerInfo from './model/UserPrincipalStreamerInfo';
+import UserPrincipalStreamerSubscriptionKeys from './model/UserPrincipalStreamerSubscriptionKeys';
+import WatchList from './model/WatchList';
+import WatchListInstrument from './model/WatchListInstrument';
+import WatchListRequest from './model/WatchListRequest';
+import WatchListRequestInstrument from './model/WatchListRequestInstrument';
+import WatchListRequestWatchlistItems from './model/WatchListRequestWatchlistItems';
+import WatchListResponse from './model/WatchListResponse';
+import WatchListWatchlistItems from './model/WatchListWatchlistItems';
 import AccountsApi from './api/AccountsApi';
 import AuthenticationApi from './api/AuthenticationApi';
 import InstrumentsApi from './api/InstrumentsApi';
@@ -79,7 +122,11 @@ import MoversApi from './api/MoversApi';
 import OptionChainsApi from './api/OptionChainsApi';
 import OrdersApi from './api/OrdersApi';
 import PriceHistoryApi from './api/PriceHistoryApi';
+import QuotesApi from './api/QuotesApi';
 import SavedOrdersApi from './api/SavedOrdersApi';
+import TransactionsApi from './api/TransactionsApi';
+import UserInfoPreferencesApi from './api/UserInfoPreferencesApi';
+import WatchlistApi from './api/WatchlistApi';
 
 /**
 * TD Ameritrade API node javascript client code..<br>
@@ -198,6 +245,12 @@ export {
     EASObject,
 
     /**
+     * The ETFQuote model constructor.
+     * @property {module:model/ETFQuote}
+     */
+    ETFQuote,
+
+    /**
      * The Equity model constructor.
      * @property {module:model/Equity}
      */
@@ -208,6 +261,12 @@ export {
      * @property {module:model/EquityAssetType}
      */
     EquityAssetType,
+
+    /**
+     * The EquityQuote model constructor.
+     * @property {module:model/EquityQuote}
+     */
+    EquityQuote,
 
     /**
      * The ErrorObject model constructor.
@@ -228,10 +287,22 @@ export {
     ExecutionExecutionLegs,
 
     /**
+     * The ExpirationDate model constructor.
+     * @property {module:model/ExpirationDate}
+     */
+    ExpirationDate,
+
+    /**
      * The FixedIncome model constructor.
      * @property {module:model/FixedIncome}
      */
     FixedIncome,
+
+    /**
+     * The ForexQuote model constructor.
+     * @property {module:model/ForexQuote}
+     */
+    ForexQuote,
 
     /**
      * The FrequencyType model constructor.
@@ -258,6 +329,30 @@ export {
     FundamentalFundamental,
 
     /**
+     * The FutureOptionsQuote model constructor.
+     * @property {module:model/FutureOptionsQuote}
+     */
+    FutureOptionsQuote,
+
+    /**
+     * The FutureQuote model constructor.
+     * @property {module:model/FutureQuote}
+     */
+    FutureQuote,
+
+    /**
+     * The GetOptionChainResponse model constructor.
+     * @property {module:model/GetOptionChainResponse}
+     */
+    GetOptionChainResponse,
+
+    /**
+     * The GetQuoteResponse model constructor.
+     * @property {module:model/GetQuoteResponse}
+     */
+    GetQuoteResponse,
+
+    /**
      * The Hours model constructor.
      * @property {module:model/Hours}
      */
@@ -270,10 +365,22 @@ export {
     HoursSessionHours,
 
     /**
+     * The IndexQuote model constructor.
+     * @property {module:model/IndexQuote}
+     */
+    IndexQuote,
+
+    /**
      * The Instrument model constructor.
      * @property {module:model/Instrument}
      */
     Instrument,
+
+    /**
+     * The LotMethod model constructor.
+     * @property {module:model/LotMethod}
+     */
+    LotMethod,
 
     /**
      * The MarginAccount model constructor.
@@ -324,6 +431,12 @@ export {
     MutualFund,
 
     /**
+     * The MutualFundQuote model constructor.
+     * @property {module:model/MutualFundQuote}
+     */
+    MutualFundQuote,
+
+    /**
      * The OneOfInstrumentSchema model constructor.
      * @property {module:model/OneOfInstrumentSchema}
      */
@@ -348,10 +461,58 @@ export {
     OptionChain,
 
     /**
-     * The OptionOptionDeliverables model constructor.
-     * @property {module:model/OptionOptionDeliverables}
+     * The OptionChainOption model constructor.
+     * @property {module:model/OptionChainOption}
      */
-    OptionOptionDeliverables,
+    OptionChainOption,
+
+    /**
+     * The OptionChainOptionOptionDeliverablesList model constructor.
+     * @property {module:model/OptionChainOptionOptionDeliverablesList}
+     */
+    OptionChainOptionOptionDeliverablesList,
+
+    /**
+     * The OptionChainOptionPutCall model constructor.
+     * @property {module:model/OptionChainOptionPutCall}
+     */
+    OptionChainOptionPutCall,
+
+    /**
+     * The OptionChainStrategy model constructor.
+     * @property {module:model/OptionChainStrategy}
+     */
+    OptionChainStrategy,
+
+    /**
+     * The OptionChainUnderlying model constructor.
+     * @property {module:model/OptionChainUnderlying}
+     */
+    OptionChainUnderlying,
+
+    /**
+     * The OptionDeliverable model constructor.
+     * @property {module:model/OptionDeliverable}
+     */
+    OptionDeliverable,
+
+    /**
+     * The OptionDeliverableInner model constructor.
+     * @property {module:model/OptionDeliverableInner}
+     */
+    OptionDeliverableInner,
+
+    /**
+     * The OptionDeliverableInnerAssetType model constructor.
+     * @property {module:model/OptionDeliverableInnerAssetType}
+     */
+    OptionDeliverableInnerAssetType,
+
+    /**
+     * The OptionQuote model constructor.
+     * @property {module:model/OptionQuote}
+     */
+    OptionQuote,
 
     /**
      * The OrderActivity model constructor.
@@ -444,6 +605,18 @@ export {
     PostAccessBody,
 
     /**
+     * The Preferences model constructor.
+     * @property {module:model/Preferences}
+     */
+    Preferences,
+
+    /**
+     * The PutCall model constructor.
+     * @property {module:model/PutCall}
+     */
+    PutCall,
+
+    /**
      * The SearchInstrument model constructor.
      * @property {module:model/SearchInstrument}
      */
@@ -472,6 +645,138 @@ export {
      * @property {module:model/Strategy}
      */
     Strategy,
+
+    /**
+     * The StrikePriceMap model constructor.
+     * @property {module:model/StrikePriceMap}
+     */
+    StrikePriceMap,
+
+    /**
+     * The SubscriptionKey model constructor.
+     * @property {module:model/SubscriptionKey}
+     */
+    SubscriptionKey,
+
+    /**
+     * The SubscriptionKeyKeys model constructor.
+     * @property {module:model/SubscriptionKeyKeys}
+     */
+    SubscriptionKeyKeys,
+
+    /**
+     * The Transaction model constructor.
+     * @property {module:model/Transaction}
+     */
+    Transaction,
+
+    /**
+     * The TransactionTransactionItem model constructor.
+     * @property {module:model/TransactionTransactionItem}
+     */
+    TransactionTransactionItem,
+
+    /**
+     * The TransactionTransactionItemInstrument model constructor.
+     * @property {module:model/TransactionTransactionItemInstrument}
+     */
+    TransactionTransactionItemInstrument,
+
+    /**
+     * The Underlying model constructor.
+     * @property {module:model/Underlying}
+     */
+    Underlying,
+
+    /**
+     * The UserPrincipal model constructor.
+     * @property {module:model/UserPrincipal}
+     */
+    UserPrincipal,
+
+    /**
+     * The UserPrincipalAccounts model constructor.
+     * @property {module:model/UserPrincipalAccounts}
+     */
+    UserPrincipalAccounts,
+
+    /**
+     * The UserPrincipalAuthorizations model constructor.
+     * @property {module:model/UserPrincipalAuthorizations}
+     */
+    UserPrincipalAuthorizations,
+
+    /**
+     * The UserPrincipalPreferences model constructor.
+     * @property {module:model/UserPrincipalPreferences}
+     */
+    UserPrincipalPreferences,
+
+    /**
+     * The UserPrincipalPreferencesMutualFundTaxLotMethod model constructor.
+     * @property {module:model/UserPrincipalPreferencesMutualFundTaxLotMethod}
+     */
+    UserPrincipalPreferencesMutualFundTaxLotMethod,
+
+    /**
+     * The UserPrincipalQuotes model constructor.
+     * @property {module:model/UserPrincipalQuotes}
+     */
+    UserPrincipalQuotes,
+
+    /**
+     * The UserPrincipalStreamerInfo model constructor.
+     * @property {module:model/UserPrincipalStreamerInfo}
+     */
+    UserPrincipalStreamerInfo,
+
+    /**
+     * The UserPrincipalStreamerSubscriptionKeys model constructor.
+     * @property {module:model/UserPrincipalStreamerSubscriptionKeys}
+     */
+    UserPrincipalStreamerSubscriptionKeys,
+
+    /**
+     * The WatchList model constructor.
+     * @property {module:model/WatchList}
+     */
+    WatchList,
+
+    /**
+     * The WatchListInstrument model constructor.
+     * @property {module:model/WatchListInstrument}
+     */
+    WatchListInstrument,
+
+    /**
+     * The WatchListRequest model constructor.
+     * @property {module:model/WatchListRequest}
+     */
+    WatchListRequest,
+
+    /**
+     * The WatchListRequestInstrument model constructor.
+     * @property {module:model/WatchListRequestInstrument}
+     */
+    WatchListRequestInstrument,
+
+    /**
+     * The WatchListRequestWatchlistItems model constructor.
+     * @property {module:model/WatchListRequestWatchlistItems}
+     */
+    WatchListRequestWatchlistItems,
+
+    /**
+     * The WatchListResponse model constructor.
+     * @property {module:model/WatchListResponse}
+     */
+    WatchListResponse,
+
+    /**
+     * The WatchListWatchlistItems model constructor.
+     * @property {module:model/WatchListWatchlistItems}
+     */
+    WatchListWatchlistItems,
 
     /**
     * The AccountsApi service constructor.
@@ -522,8 +827,32 @@ export {
     PriceHistoryApi,
 
     /**
+    * The QuotesApi service constructor.
+    * @property {module:api/QuotesApi}
+    */
+    QuotesApi,
+
+    /**
     * The SavedOrdersApi service constructor.
     * @property {module:api/SavedOrdersApi}
     */
-    SavedOrdersApi
+    SavedOrdersApi,
+
+    /**
+    * The TransactionsApi service constructor.
+    * @property {module:api/TransactionsApi}
+    */
+    TransactionsApi,
+
+    /**
+    * The UserInfoPreferencesApi service constructor.
+    * @property {module:api/UserInfoPreferencesApi}
+    */
+    UserInfoPreferencesApi,
+
+    /**
+    * The WatchlistApi service constructor.
+    * @property {module:api/WatchlistApi}
+    */
+    WatchlistApi
 };

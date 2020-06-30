@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ErrorObject', 'model/OptionChain'], factory);
+    define(['ApiClient', 'model/ErrorObject', 'model/GetOptionChainResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ErrorObject'), require('../model/OptionChain'));
+    module.exports = factory(require('../ApiClient'), require('../model/ErrorObject'), require('../model/GetOptionChainResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.OptionChainsApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.ErrorObject, root.GitChrisQueen_TDA_JS.OptionChain);
+    root.GitChrisQueen_TDA_JS.OptionChainsApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.ErrorObject, root.GitChrisQueen_TDA_JS.GetOptionChainResponse);
   }
-}(this, function(ApiClient, ErrorObject, OptionChain) {
+}(this, function(ApiClient, ErrorObject, GetOptionChainResponse) {
   'use strict';
 
   /**
@@ -69,7 +69,7 @@
      * @param {Number} opts.daysToExpiration Days to expiration to use in calculations. Applies only to ANALYTICAL strategy chains (see strategy param)
      * @param {String} opts.expMonth Return only options expiring in the specified month. Month is given in the three character format. Example: JAN Default is ALL. (default to ALL)
      * @param {String} opts.optionType Type of contracts to return. Possible values are: S: Standard contract NS: Non-standard contract ALL: All contracts Default is ALL. (default to ALL)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OptionChain} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetOptionChainResponse} and HTTP response
      */
     this.marketdataChainsGETWithHttpInfo = function(opts) {
       opts = opts || {};
@@ -107,7 +107,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = OptionChain;
+      var returnType = GetOptionChainResponse;
 
       return this.apiClient.callApi(
         '/marketdata/chains', 'GET',
@@ -137,7 +137,7 @@
      * @param {Number} opts.daysToExpiration Days to expiration to use in calculations. Applies only to ANALYTICAL strategy chains (see strategy param)
      * @param {String} opts.expMonth Return only options expiring in the specified month. Month is given in the three character format. Example: JAN Default is ALL. (default to ALL)
      * @param {String} opts.optionType Type of contracts to return. Possible values are: S: Standard contract NS: Non-standard contract ALL: All contracts Default is ALL. (default to ALL)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OptionChain}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetOptionChainResponse}
      */
     this.marketdataChainsGET = function(opts) {
       return this.marketdataChainsGETWithHttpInfo(opts)

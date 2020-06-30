@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="marketdataChainsGET"></a>
 # **marketdataChainsGET**
-> OptionChain marketdataChainsGET(opts)
+> GetOptionChainResponse marketdataChainsGET(opts)
 
 Get Option Chain
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OptionChain**](OptionChain.md)
+[**GetOptionChainResponse**](GetOptionChainResponse.md)
 
 ### Authorization
 

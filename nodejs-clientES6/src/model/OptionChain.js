@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import OptionChainStrategy from './OptionChainStrategy';
+import OptionChainUnderlying from './OptionChainUnderlying';
 
 /**
 * The OptionChain model module.
@@ -49,6 +51,39 @@ export default class OptionChain {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('underlying')) {
+                obj['underlying'] = OptionChainUnderlying.constructFromObject(data['underlying']);
+            }
+            if (data.hasOwnProperty('strategy')) {
+                obj['strategy'] = OptionChainStrategy.constructFromObject(data['strategy']);
+            }
+            if (data.hasOwnProperty('interval')) {
+                obj['interval'] = ApiClient.convertToType(data['interval'], 'Number');
+            }
+            if (data.hasOwnProperty('isDelayed')) {
+                obj['isDelayed'] = ApiClient.convertToType(data['isDelayed'], 'Boolean');
+            }
+            if (data.hasOwnProperty('isIndex')) {
+                obj['isIndex'] = ApiClient.convertToType(data['isIndex'], 'Boolean');
+            }
+            if (data.hasOwnProperty('daysToExpiration')) {
+                obj['daysToExpiration'] = ApiClient.convertToType(data['daysToExpiration'], 'Number');
+            }
+            if (data.hasOwnProperty('interestRate')) {
+                obj['interestRate'] = ApiClient.convertToType(data['interestRate'], 'Number');
+            }
+            if (data.hasOwnProperty('underlyingPrice')) {
+                obj['underlyingPrice'] = ApiClient.convertToType(data['underlyingPrice'], 'Number');
+            }
+            if (data.hasOwnProperty('volatility')) {
+                obj['volatility'] = ApiClient.convertToType(data['volatility'], 'Number');
+            }
+            if (data.hasOwnProperty('callExpDateMap')) {
+                obj['callExpDateMap'] = ApiClient.convertToType(data['callExpDateMap'], {'String': Object});
+            }
+            if (data.hasOwnProperty('putExpDateMap')) {
+                obj['putExpDateMap'] = ApiClient.convertToType(data['putExpDateMap'], {'String': Object});
+            }
         }
         return obj;
     }
@@ -61,6 +96,50 @@ export default class OptionChain {
     * @member {String} status
     */
     'status' = undefined;
+    /**
+    * @member {module:model/OptionChainUnderlying} underlying
+    */
+    'underlying' = undefined;
+    /**
+    * @member {module:model/OptionChainStrategy} strategy
+    */
+    'strategy' = undefined;
+    /**
+    * @member {Number} interval
+    */
+    'interval' = undefined;
+    /**
+    * @member {Boolean} isDelayed
+    */
+    'isDelayed' = undefined;
+    /**
+    * @member {Boolean} isIndex
+    */
+    'isIndex' = undefined;
+    /**
+    * @member {Number} daysToExpiration
+    */
+    'daysToExpiration' = undefined;
+    /**
+    * @member {Number} interestRate
+    */
+    'interestRate' = undefined;
+    /**
+    * @member {Number} underlyingPrice
+    */
+    'underlyingPrice' = undefined;
+    /**
+    * @member {Number} volatility
+    */
+    'volatility' = undefined;
+    /**
+    * @member {Object.<String, Object>} callExpDateMap
+    */
+    'callExpDateMap' = undefined;
+    /**
+    * @member {Object.<String, Object>} putExpDateMap
+    */
+    'putExpDateMap' = undefined;
 
 
 

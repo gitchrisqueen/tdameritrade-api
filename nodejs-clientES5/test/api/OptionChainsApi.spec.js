@@ -60,11 +60,7 @@
 
           instance.marketdataChainsGET(opts).then(function(data) {
             // TODO: update response assertions
-            expect(data).to.be.a(GitChrisQueen_TDA_JS.OptionChain);
-            expect(data.status).to.be.a('string');
-            expect(data.status).to.be("");
-            expect(data.symbol).to.be.a('string');
-            expect(data.symbol).to.be("");
+            expect(data).to.be.a(GitChrisQueen_TDA_JS.GetOptionChainResponse);
 
             done();
           }, function(error) {

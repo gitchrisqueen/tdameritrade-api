@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CandleList', 'model/EASObject'], factory);
+    define(['ApiClient', 'model/CandleList', 'model/ErrorObject'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CandleList'), require('../model/EASObject'));
+    module.exports = factory(require('../ApiClient'), require('../model/CandleList'), require('../model/ErrorObject'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.PriceHistoryApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.CandleList, root.GitChrisQueen_TDA_JS.EASObject);
+    root.GitChrisQueen_TDA_JS.PriceHistoryApi = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.CandleList, root.GitChrisQueen_TDA_JS.ErrorObject);
   }
-}(this, function(ApiClient, CandleList, EASObject) {
+}(this, function(ApiClient, CandleList, ErrorObject) {
   'use strict';
 
   /**

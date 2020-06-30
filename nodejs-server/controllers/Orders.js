@@ -33,8 +33,8 @@ module.exports.accountsAccountIdOrdersOrderIdGET = function accountsAccountIdOrd
     });
 };
 
-module.exports.accountsAccountIdOrdersOrderIdPUT = function accountsAccountIdOrdersOrderIdPUT (req, res, next, accountId, orderId) {
-  Orders.accountsAccountIdOrdersOrderIdPUT(accountId, orderId)
+module.exports.accountsAccountIdOrdersOrderIdPUT = function accountsAccountIdOrdersOrderIdPUT (req, res, next, body, accountId, orderId) {
+  Orders.accountsAccountIdOrdersOrderIdPUT(body, accountId, orderId)
     .then(function (response) {
       utils.writeJson(res, response);
     })

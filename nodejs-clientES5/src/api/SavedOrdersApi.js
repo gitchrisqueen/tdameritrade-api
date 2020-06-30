@@ -288,7 +288,7 @@
      * @param {Number} savedOrderId 
      * @param {Object} opts Optional parameters
      * @param {module:model/OrderGet} opts.body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderGet} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.accountsAccountIdSavedordersSavedOrderIdPUTWithHttpInfo = function(accountId, savedOrderId, opts) {
       opts = opts || {};
@@ -319,9 +319,9 @@
       };
 
       var authNames = ['bearerAuth'];
-      var contentTypes = ['application/Json'];
+      var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = OrderGet;
+      var returnType = null;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/savedorders/{savedOrderId}', 'PUT',
@@ -337,7 +337,7 @@
      * @param {Number} savedOrderId 
      * @param {Object} opts Optional parameters
      * @param {module:model/OrderGet} opts.body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderGet}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.accountsAccountIdSavedordersSavedOrderIdPUT = function(accountId, savedOrderId, opts) {
       return this.accountsAccountIdSavedordersSavedOrderIdPUTWithHttpInfo(accountId, savedOrderId, opts)

@@ -176,10 +176,12 @@ export default class OrdersApi {
     /**
      * Replace Order
      * Replace an existing order for an account. The existing order will be replaced by the new order. Once replaced, the old order will be canceled and a new order will be created. See our Place Order Samples Guide - https://developer.tdameritrade.com/content/place-order-samples.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderGet} and HTTP response
+     * @param {Object} opts Optional parameters
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId) {
-      let postBody = null;
+    accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId, opts) {
+      opts = opts || {};
+      let postBody = opts['body'];
 
       let pathParams = {
         'accountId': accountId,
@@ -193,9 +195,9 @@ export default class OrdersApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = OrderGet;
+      let returnType = null;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/orders/{orderId}', 'PUT',
@@ -207,10 +209,11 @@ export default class OrdersApi {
     /**
      * Replace Order
      * Replace an existing order for an account. The existing order will be replaced by the new order. Once replaced, the old order will be canceled and a new order will be created. See our Place Order Samples Guide - https://developer.tdameritrade.com/content/place-order-samples.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderGet}
+     * @param {Object} opts Optional parameters
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    accountsAccountIdOrdersOrderIdPUT(accountId, orderId) {
-      return this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId)
+    accountsAccountIdOrdersOrderIdPUT(accountId, orderId, opts) {
+      return this.accountsAccountIdOrdersOrderIdPUTWithHttpInfo(accountId, orderId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

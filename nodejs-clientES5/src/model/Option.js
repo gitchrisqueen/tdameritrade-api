@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/EquityAssetType', 'model/OptionOptionDeliverables'], factory);
+    define(['ApiClient', 'model/EquityAssetType', 'model/OptionChainOptionOptionDeliverablesList', 'model/OptionChainOptionPutCall'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./EquityAssetType'), require('./OptionOptionDeliverables'));
+    module.exports = factory(require('../ApiClient'), require('./EquityAssetType'), require('./OptionChainOptionOptionDeliverablesList'), require('./OptionChainOptionPutCall'));
   } else {
     // Browser globals (root is window)
     if (!root.GitChrisQueen_TDA_JS) {
       root.GitChrisQueen_TDA_JS = {};
     }
-    root.GitChrisQueen_TDA_JS.Option = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EquityAssetType, root.GitChrisQueen_TDA_JS.OptionOptionDeliverables);
+    root.GitChrisQueen_TDA_JS.Option = factory(root.GitChrisQueen_TDA_JS.ApiClient, root.GitChrisQueen_TDA_JS.EquityAssetType, root.GitChrisQueen_TDA_JS.OptionChainOptionOptionDeliverablesList, root.GitChrisQueen_TDA_JS.OptionChainOptionPutCall);
   }
-}(this, function(ApiClient, EquityAssetType, OptionOptionDeliverables) {
+}(this, function(ApiClient, EquityAssetType, OptionChainOptionOptionDeliverablesList, OptionChainOptionPutCall) {
   'use strict';
 
   /**
@@ -61,11 +61,11 @@
       if (data.hasOwnProperty('description'))
         obj.description = ApiClient.convertToType(data['description'], 'String');
       if (data.hasOwnProperty('optionDeliverables'))
-        obj.optionDeliverables = ApiClient.convertToType(data['optionDeliverables'], [OptionOptionDeliverables]);
+        obj.optionDeliverables = OptionChainOptionOptionDeliverablesList.constructFromObject(data['optionDeliverables']);
       if (data.hasOwnProperty('optionMultiplier'))
         obj.optionMultiplier = ApiClient.convertToType(data['optionMultiplier'], 'Number');
       if (data.hasOwnProperty('putCall'))
-        obj.putCall = ApiClient.convertToType(data['putCall'], 'String');
+        obj.putCall = OptionChainOptionPutCall.constructFromObject(data['putCall']);
       if (data.hasOwnProperty('symbol'))
         obj.symbol = ApiClient.convertToType(data['symbol'], 'String');
       if (data.hasOwnProperty('type'))
@@ -92,7 +92,7 @@
   exports.prototype.description = undefined;
 
   /**
-   * @member {Array.<module:model/OptionOptionDeliverables>} optionDeliverables
+   * @member {module:model/OptionChainOptionOptionDeliverablesList} optionDeliverables
    */
   exports.prototype.optionDeliverables = undefined;
 
@@ -102,7 +102,7 @@
   exports.prototype.optionMultiplier = undefined;
 
   /**
-   * @member {module:model/Option.PutCallEnum} putCall
+   * @member {module:model/OptionChainOptionPutCall} putCall
    */
   exports.prototype.putCall = undefined;
 
@@ -120,26 +120,6 @@
    * @member {String} underlyingSymbol
    */
   exports.prototype.underlyingSymbol = undefined;
-
-
-  /**
-   * Allowed values for the <code>putCall</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.PutCallEnum = {
-    /**
-     * value: "PUT"
-     * @const
-     */
-    PUT: "PUT",
-
-    /**
-     * value: "CALL"
-     * @const
-     */
-    CALL: "CALL"
-  };
 
 
   /**

@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **symbol** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
-**putCall** | **String** |  | [optional] 
+**putCall** | [**OptionChainOptionPutCall**](OptionChainOptionPutCall.md) |  | [optional] 
 **underlyingSymbol** | **String** |  | [optional] 
 **optionMultiplier** | **Number** |  | [optional] 
-**optionDeliverables** | [**[OptionOptionDeliverables]**](OptionOptionDeliverables.md) |  | [optional] 
+**optionDeliverables** | [**OptionChainOptionOptionDeliverablesList**](OptionChainOptionOptionDeliverablesList.md) |  | [optional] 
 
 <a name="TypeEnum"></a>
 ## Enum: TypeEnum
@@ -19,11 +19,4 @@ Name | Type | Description | Notes
 * `VANILLA` (value: `"VANILLA"`)
 * `BINARY` (value: `"BINARY"`)
 * `BARRIER` (value: `"BARRIER"`)
-
-
-<a name="PutCallEnum"></a>
-## Enum: PutCallEnum
-
-* `PUT` (value: `"PUT"`)
-* `CALL` (value: `"CALL"`)
 

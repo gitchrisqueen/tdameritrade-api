@@ -107,11 +107,25 @@ Class | Method | HTTP request | Description
 *GitChrisQueen_TDA_JS.OrdersApi* | [**ordersGET**](docs/OrdersApi.md#ordersGET) | **GET** /orders | Get Orders By Query
 *GitChrisQueen_TDA_JS.OrdersApi* | [**ordersPOST**](docs/OrdersApi.md#ordersPOST) | **POST** /orders | Place Order
 *GitChrisQueen_TDA_JS.PriceHistoryApi* | [**marketdataSymbolPricehistoryGET**](docs/PriceHistoryApi.md#marketdataSymbolPricehistoryGET) | **GET** /marketdata/{symbol}/pricehistory | Get price history for a symbol
+*GitChrisQueen_TDA_JS.QuotesApi* | [**marketdataQuotesGET**](docs/QuotesApi.md#marketdataQuotesGET) | **GET** /marketdata/quotes | Get Quotes
+*GitChrisQueen_TDA_JS.QuotesApi* | [**marketdataSymbolQuotesGET**](docs/QuotesApi.md#marketdataSymbolQuotesGET) | **GET** /marketdata/{symbol}/quotes | Get Quote
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersGET**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersGET) | **GET** /accounts/{accountId}/savedorders | Get Saved Orders by Path
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersPOST**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersPOST) | **POST** /accounts/{accountId}/savedorders | Create Saved Orders
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdDELETE**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdDELETE) | **DELETE** /accounts/{accountId}/savedorders/{savedOrderId} | Delete Saved Orders
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdGET**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdGET) | **GET** /accounts/{accountId}/savedorders/{savedOrderId} | Get Saved Orders
 *GitChrisQueen_TDA_JS.SavedOrdersApi* | [**accountsAccountIdSavedordersSavedOrderIdPUT**](docs/SavedOrdersApi.md#accountsAccountIdSavedordersSavedOrderIdPUT) | **PUT** /accounts/{accountId}/savedorders/{savedOrderId} | Replace Saved Orders
+*GitChrisQueen_TDA_JS.TransactionsApi* | [**accountsAccountIdTransactionsGET**](docs/TransactionsApi.md#accountsAccountIdTransactionsGET) | **GET** /accounts/{accountId}/transactions | Get Transactions
+*GitChrisQueen_TDA_JS.TransactionsApi* | [**accountsAccountIdTransactionsTransactionIdGET**](docs/TransactionsApi.md#accountsAccountIdTransactionsTransactionIdGET) | **GET** /accounts/{accountId}/transactions/{transactionId} | Get Transaction
+*GitChrisQueen_TDA_JS.UserInfoPreferencesApi* | [**accountsAccountIdPreferencesGET**](docs/UserInfoPreferencesApi.md#accountsAccountIdPreferencesGET) | **GET** /accounts/{accountId}/preferences | Get Preferences
+*GitChrisQueen_TDA_JS.UserInfoPreferencesApi* | [**accountsAccountIdPreferencesPUT**](docs/UserInfoPreferencesApi.md#accountsAccountIdPreferencesPUT) | **PUT** /accounts/{accountId}/preferences | Update Preferences
+*GitChrisQueen_TDA_JS.UserInfoPreferencesApi* | [**userprincipalsGET**](docs/UserInfoPreferencesApi.md#userprincipalsGET) | **GET** /userprincipals | Get User Principals
+*GitChrisQueen_TDA_JS.UserInfoPreferencesApi* | [**userprincipalsStreamersubscriptionkeysGET**](docs/UserInfoPreferencesApi.md#userprincipalsStreamersubscriptionkeysGET) | **GET** /userprincipals/streamersubscriptionkeys | Get Streamer Subscription Keys
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsAccountIdWatchlistsGET**](docs/WatchlistApi.md#accountsAccountIdWatchlistsGET) | **GET** /accounts/{accountId}/watchlists | Get Watchlists for Single Account
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsAccountIdWatchlistsPOST**](docs/WatchlistApi.md#accountsAccountIdWatchlistsPOST) | **POST** /accounts/{accountId}/watchlists | Create Watchlist
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsAccountIdWatchlistsWatchlistIdGET**](docs/WatchlistApi.md#accountsAccountIdWatchlistsWatchlistIdGET) | **GET** /accounts/{accountId}/watchlists/{watchlistId} | Get Watchlists
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsAccountIdWatchlistsWatchlistIdPATCH**](docs/WatchlistApi.md#accountsAccountIdWatchlistsWatchlistIdPATCH) | **PATCH** /accounts/{accountId}/watchlists/{watchlistId} | Update Watchlist
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsAccountIdWatchlistsWatchlistIdPUT**](docs/WatchlistApi.md#accountsAccountIdWatchlistsWatchlistIdPUT) | **PUT** /accounts/{accountId}/watchlists/{watchlistId} | Replace Watchlist
+*GitChrisQueen_TDA_JS.WatchlistApi* | [**accountsWatchlistsGET**](docs/WatchlistApi.md#accountsWatchlistsGET) | **GET** /accounts/watchlists | Get Watchlists for Multiple Accounts
 
 ## Documentation for Models
 
@@ -128,19 +142,29 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.CashEquivalent](docs/CashEquivalent.md)
  - [GitChrisQueen_TDA_JS.Duration](docs/Duration.md)
  - [GitChrisQueen_TDA_JS.EASObject](docs/EASObject.md)
+ - [GitChrisQueen_TDA_JS.ETFQuote](docs/ETFQuote.md)
  - [GitChrisQueen_TDA_JS.Equity](docs/Equity.md)
  - [GitChrisQueen_TDA_JS.EquityAssetType](docs/EquityAssetType.md)
+ - [GitChrisQueen_TDA_JS.EquityQuote](docs/EquityQuote.md)
  - [GitChrisQueen_TDA_JS.ErrorObject](docs/ErrorObject.md)
  - [GitChrisQueen_TDA_JS.Execution](docs/Execution.md)
  - [GitChrisQueen_TDA_JS.ExecutionExecutionLegs](docs/ExecutionExecutionLegs.md)
+ - [GitChrisQueen_TDA_JS.ExpirationDate](docs/ExpirationDate.md)
  - [GitChrisQueen_TDA_JS.FixedIncome](docs/FixedIncome.md)
+ - [GitChrisQueen_TDA_JS.ForexQuote](docs/ForexQuote.md)
  - [GitChrisQueen_TDA_JS.FrequencyType](docs/FrequencyType.md)
  - [GitChrisQueen_TDA_JS.Fundamental](docs/Fundamental.md)
  - [GitChrisQueen_TDA_JS.FundamentalData](docs/FundamentalData.md)
  - [GitChrisQueen_TDA_JS.FundamentalFundamental](docs/FundamentalFundamental.md)
+ - [GitChrisQueen_TDA_JS.FutureOptionsQuote](docs/FutureOptionsQuote.md)
+ - [GitChrisQueen_TDA_JS.FutureQuote](docs/FutureQuote.md)
+ - [GitChrisQueen_TDA_JS.GetOptionChainResponse](docs/GetOptionChainResponse.md)
+ - [GitChrisQueen_TDA_JS.GetQuoteResponse](docs/GetQuoteResponse.md)
  - [GitChrisQueen_TDA_JS.Hours](docs/Hours.md)
  - [GitChrisQueen_TDA_JS.HoursSessionHours](docs/HoursSessionHours.md)
+ - [GitChrisQueen_TDA_JS.IndexQuote](docs/IndexQuote.md)
  - [GitChrisQueen_TDA_JS.Instrument](docs/Instrument.md)
+ - [GitChrisQueen_TDA_JS.LotMethod](docs/LotMethod.md)
  - [GitChrisQueen_TDA_JS.MarginAccount](docs/MarginAccount.md)
  - [GitChrisQueen_TDA_JS.MarginAccountBalances](docs/MarginAccountBalances.md)
  - [GitChrisQueen_TDA_JS.MarginAccountCurrentBalances](docs/MarginAccountCurrentBalances.md)
@@ -149,11 +173,20 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.MarginAccountPositions](docs/MarginAccountPositions.md)
  - [GitChrisQueen_TDA_JS.Mover](docs/Mover.md)
  - [GitChrisQueen_TDA_JS.MutualFund](docs/MutualFund.md)
+ - [GitChrisQueen_TDA_JS.MutualFundQuote](docs/MutualFundQuote.md)
  - [GitChrisQueen_TDA_JS.OneOfInstrumentSchema](docs/OneOfInstrumentSchema.md)
  - [GitChrisQueen_TDA_JS.OneOfSecuritiesAccountSchema](docs/OneOfSecuritiesAccountSchema.md)
  - [GitChrisQueen_TDA_JS.Option](docs/Option.md)
  - [GitChrisQueen_TDA_JS.OptionChain](docs/OptionChain.md)
- - [GitChrisQueen_TDA_JS.OptionOptionDeliverables](docs/OptionOptionDeliverables.md)
+ - [GitChrisQueen_TDA_JS.OptionChainOption](docs/OptionChainOption.md)
+ - [GitChrisQueen_TDA_JS.OptionChainOptionOptionDeliverablesList](docs/OptionChainOptionOptionDeliverablesList.md)
+ - [GitChrisQueen_TDA_JS.OptionChainOptionPutCall](docs/OptionChainOptionPutCall.md)
+ - [GitChrisQueen_TDA_JS.OptionChainStrategy](docs/OptionChainStrategy.md)
+ - [GitChrisQueen_TDA_JS.OptionChainUnderlying](docs/OptionChainUnderlying.md)
+ - [GitChrisQueen_TDA_JS.OptionDeliverable](docs/OptionDeliverable.md)
+ - [GitChrisQueen_TDA_JS.OptionDeliverableInner](docs/OptionDeliverableInner.md)
+ - [GitChrisQueen_TDA_JS.OptionDeliverableInnerAssetType](docs/OptionDeliverableInnerAssetType.md)
+ - [GitChrisQueen_TDA_JS.OptionQuote](docs/OptionQuote.md)
  - [GitChrisQueen_TDA_JS.OrderActivity](docs/OrderActivity.md)
  - [GitChrisQueen_TDA_JS.OrderGet](docs/OrderGet.md)
  - [GitChrisQueen_TDA_JS.OrderGetCancelTime](docs/OrderGetCancelTime.md)
@@ -169,11 +202,35 @@ Class | Method | HTTP request | Description
  - [GitChrisQueen_TDA_JS.PositionsInner](docs/PositionsInner.md)
  - [GitChrisQueen_TDA_JS.PositionsInnerInstrument](docs/PositionsInnerInstrument.md)
  - [GitChrisQueen_TDA_JS.PostAccessBody](docs/PostAccessBody.md)
+ - [GitChrisQueen_TDA_JS.Preferences](docs/Preferences.md)
+ - [GitChrisQueen_TDA_JS.PutCall](docs/PutCall.md)
  - [GitChrisQueen_TDA_JS.SearchInstrument](docs/SearchInstrument.md)
  - [GitChrisQueen_TDA_JS.SearchInstrumentResponse](docs/SearchInstrumentResponse.md)
  - [GitChrisQueen_TDA_JS.SecuritiesAccount](docs/SecuritiesAccount.md)
  - [GitChrisQueen_TDA_JS.Session](docs/Session.md)
  - [GitChrisQueen_TDA_JS.Strategy](docs/Strategy.md)
+ - [GitChrisQueen_TDA_JS.StrikePriceMap](docs/StrikePriceMap.md)
+ - [GitChrisQueen_TDA_JS.SubscriptionKey](docs/SubscriptionKey.md)
+ - [GitChrisQueen_TDA_JS.SubscriptionKeyKeys](docs/SubscriptionKeyKeys.md)
+ - [GitChrisQueen_TDA_JS.Transaction](docs/Transaction.md)
+ - [GitChrisQueen_TDA_JS.TransactionTransactionItem](docs/TransactionTransactionItem.md)
+ - [GitChrisQueen_TDA_JS.TransactionTransactionItemInstrument](docs/TransactionTransactionItemInstrument.md)
+ - [GitChrisQueen_TDA_JS.Underlying](docs/Underlying.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipal](docs/UserPrincipal.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalAccounts](docs/UserPrincipalAccounts.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalAuthorizations](docs/UserPrincipalAuthorizations.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalPreferences](docs/UserPrincipalPreferences.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalPreferencesMutualFundTaxLotMethod](docs/UserPrincipalPreferencesMutualFundTaxLotMethod.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalQuotes](docs/UserPrincipalQuotes.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalStreamerInfo](docs/UserPrincipalStreamerInfo.md)
+ - [GitChrisQueen_TDA_JS.UserPrincipalStreamerSubscriptionKeys](docs/UserPrincipalStreamerSubscriptionKeys.md)
+ - [GitChrisQueen_TDA_JS.WatchList](docs/WatchList.md)
+ - [GitChrisQueen_TDA_JS.WatchListInstrument](docs/WatchListInstrument.md)
+ - [GitChrisQueen_TDA_JS.WatchListRequest](docs/WatchListRequest.md)
+ - [GitChrisQueen_TDA_JS.WatchListRequestInstrument](docs/WatchListRequestInstrument.md)
+ - [GitChrisQueen_TDA_JS.WatchListRequestWatchlistItems](docs/WatchListRequestWatchlistItems.md)
+ - [GitChrisQueen_TDA_JS.WatchListResponse](docs/WatchListResponse.md)
+ - [GitChrisQueen_TDA_JS.WatchListWatchlistItems](docs/WatchListWatchlistItems.md)
 
 ## Documentation for Authorization
 

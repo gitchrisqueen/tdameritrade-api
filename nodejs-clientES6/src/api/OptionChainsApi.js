@@ -13,7 +13,7 @@
 
 import ApiClient from "../ApiClient";
 import ErrorObject from '../model/ErrorObject';
-import OptionChain from '../model/OptionChain';
+import GetOptionChainResponse from '../model/GetOptionChainResponse';
 import Strategy from '../model/Strategy';
 
 /**
@@ -40,7 +40,7 @@ export default class OptionChainsApi {
      * Get Option Chain
      * Get option chain for an optionable Symbol
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OptionChain} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/GetOptionChainResponse} and HTTP response
      */
     marketdataChainsGETWithHttpInfo(opts) {
       opts = opts || {};
@@ -75,7 +75,7 @@ export default class OptionChainsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = OptionChain;
+      let returnType = GetOptionChainResponse;
 
       return this.apiClient.callApi(
         '/marketdata/chains', 'GET',
@@ -88,7 +88,7 @@ export default class OptionChainsApi {
      * Get Option Chain
      * Get option chain for an optionable Symbol
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OptionChain}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetOptionChainResponse}
      */
     marketdataChainsGET(opts) {
       return this.marketdataChainsGETWithHttpInfo(opts)

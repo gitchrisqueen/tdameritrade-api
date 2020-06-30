@@ -217,7 +217,7 @@ export default class SavedOrdersApi {
      * Replace Saved Orders
      * Replace an existing saved order for an account. The existing saved order will be replaced by the new order. see our Place Order Samples Guide - Click here.
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderGet} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     accountsAccountIdSavedordersSavedOrderIdPUTWithHttpInfo(accountId, savedOrderId, opts) {
       opts = opts || {};
@@ -235,9 +235,9 @@ export default class SavedOrdersApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['application/Json'];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = OrderGet;
+      let returnType = null;
 
       return this.apiClient.callApi(
         '/accounts/{accountId}/savedorders/{savedOrderId}', 'PUT',
@@ -250,7 +250,7 @@ export default class SavedOrdersApi {
      * Replace Saved Orders
      * Replace an existing saved order for an account. The existing saved order will be replaced by the new order. see our Place Order Samples Guide - Click here.
      * @param {Object} opts Optional parameters
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderGet}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     accountsAccountIdSavedordersSavedOrderIdPUT(accountId, savedOrderId, opts) {
       return this.accountsAccountIdSavedordersSavedOrderIdPUTWithHttpInfo(accountId, savedOrderId, opts)

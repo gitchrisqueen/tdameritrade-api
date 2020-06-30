@@ -13,7 +13,7 @@
 
 import ApiClient from "../ApiClient";
 import CandleList from '../model/CandleList';
-import EASObject from '../model/EASObject';
+import ErrorObject from '../model/ErrorObject';
 import FrequencyType from '../model/FrequencyType';
 import PeriodType from '../model/PeriodType';
 

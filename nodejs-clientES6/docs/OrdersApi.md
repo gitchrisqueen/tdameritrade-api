@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 <a name="accountsAccountIdOrdersOrderIdPUT"></a>
 # **accountsAccountIdOrdersOrderIdPUT**
-> OrderGet accountsAccountIdOrdersOrderIdPUT(accountId, orderId)
+> accountsAccountIdOrdersOrderIdPUT(accountIdorderId, opts)
 
 Replace Order
 
@@ -173,9 +173,11 @@ let defaultClient = GitChrisQueen_TDA_JS.ApiClient.instance;
 let apiInstance = new GitChrisQueen_TDA_JS.OrdersApi();
 let accountId = 56; // Number | 
 let orderId = 56; // Number | 
-
-apiInstance.accountsAccountIdOrdersOrderIdPUT(accountId, orderId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
+let opts = { 
+  'body': new GitChrisQueen_TDA_JS.OrderGet() // OrderGet | 
+};
+apiInstance.accountsAccountIdOrdersOrderIdPUT(accountIdorderId, opts).then(() => {
+  console.log('API called successfully.');
 }, (error) => {
   console.error(error);
 });
@@ -188,10 +190,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | **Number**|  | 
  **orderId** | **Number**|  | 
+ **body** | [**OrderGet**](OrderGet.md)|  | [optional] 
 
 ### Return type
 
-[**OrderGet**](OrderGet.md)
+null (empty response body)
 
 ### Authorization
 
@@ -199,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="ordersGET"></a>

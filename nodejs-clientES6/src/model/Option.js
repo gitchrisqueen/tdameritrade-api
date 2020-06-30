@@ -13,7 +13,8 @@
 
 import ApiClient from '../ApiClient';
 import EquityAssetType from './EquityAssetType';
-import OptionOptionDeliverables from './OptionOptionDeliverables';
+import OptionChainOptionOptionDeliverablesList from './OptionChainOptionOptionDeliverablesList';
+import OptionChainOptionPutCall from './OptionChainOptionPutCall';
 
 /**
 * The Option model module.
@@ -61,7 +62,7 @@ export default class Option {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
             if (data.hasOwnProperty('putCall')) {
-                obj['putCall'] = ApiClient.convertToType(data['putCall'], 'String');
+                obj['putCall'] = OptionChainOptionPutCall.constructFromObject(data['putCall']);
             }
             if (data.hasOwnProperty('underlyingSymbol')) {
                 obj['underlyingSymbol'] = ApiClient.convertToType(data['underlyingSymbol'], 'String');
@@ -70,7 +71,7 @@ export default class Option {
                 obj['optionMultiplier'] = ApiClient.convertToType(data['optionMultiplier'], 'Number');
             }
             if (data.hasOwnProperty('optionDeliverables')) {
-                obj['optionDeliverables'] = ApiClient.convertToType(data['optionDeliverables'], [OptionOptionDeliverables]);
+                obj['optionDeliverables'] = OptionChainOptionOptionDeliverablesList.constructFromObject(data['optionDeliverables']);
             }
         }
         return obj;
@@ -97,7 +98,7 @@ export default class Option {
     */
     'type' = undefined;
     /**
-    * @member {module:model/Option.PutCallEnum} putCall
+    * @member {module:model/OptionChainOptionPutCall} putCall
     */
     'putCall' = undefined;
     /**
@@ -109,7 +110,7 @@ export default class Option {
     */
     'optionMultiplier' = undefined;
     /**
-    * @member {Array.<module:model/OptionOptionDeliverables>} optionDeliverables
+    * @member {module:model/OptionChainOptionOptionDeliverablesList} optionDeliverables
     */
     'optionDeliverables' = undefined;
 
@@ -137,21 +138,5 @@ export default class Option {
          * @const
          */
         "BARRIER": "BARRIER"    };
-    /**
-    * Allowed values for the <code>putCall</code> property.
-    * @enum {String}
-    * @readonly
-    */
-    static PutCallEnum = {
-        /**
-         * value: "PUT"
-         * @const
-         */
-        "PUT": "PUT",
-        /**
-         * value: "CALL"
-         * @const
-         */
-        "CALL": "CALL"    };
 
 }
