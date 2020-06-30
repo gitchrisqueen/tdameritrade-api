@@ -12,7 +12,9 @@
 exports.instrumentsGET = function(symbol,projection,apikey) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "schema" : ""
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

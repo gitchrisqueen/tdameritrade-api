@@ -2430,11 +2430,18 @@ components:
           - OPTION
           - UNKNOWN
     inline_response_200:
-      oneOf:
-      - $ref: '#/components/schemas/SearchInstrument'
-      - $ref: '#/components/schemas/Bond'
-      - $ref: '#/components/schemas/FundamentalData'
-      - $ref: '#/components/schemas/Fundamental'
+      type: object
+      properties:
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/SearchInstrument'
+          - $ref: '#/components/schemas/Bond'
+          - $ref: '#/components/schemas/FundamentalData'
+          - $ref: '#/components/schemas/Fundamental'
+      example:
+        schema: ""
+      discriminator:
+        propertyName: symbol
     Hours_sessionHours:
       type: object
       properties:
