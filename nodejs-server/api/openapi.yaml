@@ -1259,6 +1259,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
+              examples:
+                Instrument:
+                  $ref: '#/components/examples/instrumentExample'
+                Bond:
+                  $ref: '#/components/examples/bondExample'
+                FundamentalData:
+                  $ref: '#/components/examples/fundamentalDataExample'
+                Fundamental:
+                  $ref: '#/components/examples/fundamentalExample'
         "400":
           description: An error message indicating the caller must pass a non null
             value in the parameter.
@@ -1385,13 +1394,16 @@ components:
       type: object
       properties:
         schema:
+          discriminator:
+            propertyName: type
+            mapping:
+              MARGIN: '#/components/schemas/MarginAccount'
+              CASH: '#/components/schemas/CashAccount'
           oneOf:
           - $ref: '#/components/schemas/MarginAccount'
           - $ref: '#/components/schemas/CashAccount'
       example:
         schema: ""
-      discriminator:
-        propertyName: type
     MarginAccount:
       type: object
       properties:
@@ -1860,42 +1872,40 @@ components:
         stopPriceOffset: 5.63737665663332876420099637471139430999755859375
         stopPriceLinkType: VALUE
         orderActivityCollection:
-        - activityType:
+        - schema:
             schema:
-              schema:
-                quantity: 7.3862819483858839220147274318151175975799560546875
-                executionType: FILL
-                orderRamainingQuantity: 1.231513536777255612975068288506008684635162353515625
-                activityType: EXECUTION
-                executionLegs:
-                - quantity: 1.489415909854170383397331534069962799549102783203125
-                  price: 7.4577447736837658709418974467553198337554931640625
-                  legId: 1
-                  mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                  time: 2000-01-23T04:56:07.000+00:00
-                - quantity: 1.489415909854170383397331534069962799549102783203125
-                  price: 7.4577447736837658709418974467553198337554931640625
-                  legId: 1
-                  mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                  time: 2000-01-23T04:56:07.000+00:00
-        - activityType:
+              quantity: 7.3862819483858839220147274318151175975799560546875
+              executionType: FILL
+              orderRamainingQuantity: 1.231513536777255612975068288506008684635162353515625
+              activityType: EXECUTION
+              executionLegs:
+              - quantity: 1.489415909854170383397331534069962799549102783203125
+                price: 7.4577447736837658709418974467553198337554931640625
+                legId: 1
+                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
+                time: 2000-01-23T04:56:07.000+00:00
+              - quantity: 1.489415909854170383397331534069962799549102783203125
+                price: 7.4577447736837658709418974467553198337554931640625
+                legId: 1
+                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
+                time: 2000-01-23T04:56:07.000+00:00
+        - schema:
             schema:
-              schema:
-                quantity: 7.3862819483858839220147274318151175975799560546875
-                executionType: FILL
-                orderRamainingQuantity: 1.231513536777255612975068288506008684635162353515625
-                activityType: EXECUTION
-                executionLegs:
-                - quantity: 1.489415909854170383397331534069962799549102783203125
-                  price: 7.4577447736837658709418974467553198337554931640625
-                  legId: 1
-                  mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                  time: 2000-01-23T04:56:07.000+00:00
-                - quantity: 1.489415909854170383397331534069962799549102783203125
-                  price: 7.4577447736837658709418974467553198337554931640625
-                  legId: 1
-                  mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                  time: 2000-01-23T04:56:07.000+00:00
+              quantity: 7.3862819483858839220147274318151175975799560546875
+              executionType: FILL
+              orderRamainingQuantity: 1.231513536777255612975068288506008684635162353515625
+              activityType: EXECUTION
+              executionLegs:
+              - quantity: 1.489415909854170383397331534069962799549102783203125
+                price: 7.4577447736837658709418974467553198337554931640625
+                legId: 1
+                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
+                time: 2000-01-23T04:56:07.000+00:00
+              - quantity: 1.489415909854170383397331534069962799549102783203125
+                price: 7.4577447736837658709418974467553198337554931640625
+                legId: 1
+                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
+                time: 2000-01-23T04:56:07.000+00:00
         filledQuantity: 6.02745618307040320615897144307382404804229736328125
         enteredTime: 2000-01-23T04:56:07.000+00:00
         closedTime: 2000-01-23T04:56:07.000+00:00
@@ -1961,6 +1971,14 @@ components:
       type: object
       properties:
         schema:
+          discriminator:
+            propertyName: assetType
+            mapping:
+              EQUITY: '#/components/schemas/Equity'
+              FIXED_INCOME: '#/components/schemas/FixedIncome'
+              MUTUAL_FUND: '#/components/schemas/MutualFund'
+              CASH_EQUIVALENT: '#/components/schemas/CashEquivalent'
+              OPTION: '#/components/schemas/Option'
           oneOf:
           - $ref: '#/components/schemas/Equity'
           - $ref: '#/components/schemas/FixedIncome'
@@ -1969,8 +1987,6 @@ components:
           - $ref: '#/components/schemas/Option'
       example:
         schema: ""
-      discriminator:
-        propertyName: assetType
     OrderActivity:
       type: object
       properties:
@@ -2433,6 +2449,10 @@ components:
       type: object
       properties:
         schema:
+          discriminator:
+            propertyName: assetType
+            mapping:
+              BOND: '#/components/schemas/Bond'
           oneOf:
           - $ref: '#/components/schemas/SearchInstrument'
           - $ref: '#/components/schemas/Bond'
@@ -2440,8 +2460,6 @@ components:
           - $ref: '#/components/schemas/Fundamental'
       example:
         schema: ""
-      discriminator:
-        propertyName: symbol
     Hours_sessionHours:
       type: object
       properties:
@@ -2757,7 +2775,8 @@ components:
           schema:
             schema: ""
         positionEffect: OPENING
-    OrderGet_activityType:
+    OrderGet_orderActivityCollection:
+      type: object
       properties:
         schema:
           $ref: '#/components/schemas/OrderActivity'
@@ -2779,30 +2798,6 @@ components:
               legId: 1
               mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
               time: 2000-01-23T04:56:07.000+00:00
-    OrderGet_orderActivityCollection:
-      type: object
-      properties:
-        activityType:
-          $ref: '#/components/schemas/OrderGet_activityType'
-      example:
-        activityType:
-          schema:
-            schema:
-              quantity: 7.3862819483858839220147274318151175975799560546875
-              executionType: FILL
-              orderRamainingQuantity: 1.231513536777255612975068288506008684635162353515625
-              activityType: EXECUTION
-              executionLegs:
-              - quantity: 1.489415909854170383397331534069962799549102783203125
-                price: 7.4577447736837658709418974467553198337554931640625
-                legId: 1
-                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                time: 2000-01-23T04:56:07.000+00:00
-              - quantity: 1.489415909854170383397331534069962799549102783203125
-                price: 7.4577447736837658709418974467553198337554931640625
-                legId: 1
-                mismarkedQuantity: 6.8468526983526398765889098285697400569915771484375
-                time: 2000-01-23T04:56:07.000+00:00
     Equity_assetType:
       properties:
         schema:
@@ -2887,7 +2882,7 @@ components:
         schema:
           $ref: '#/components/schemas/FundamentalData'
   examples:
-    bondObject:
+    bondExample:
       value:
         bondPrice: 11
         cusip: christopherqueen
@@ -2895,14 +2890,14 @@ components:
         descriptions: Chris Queen Madeup Bond
         exchange: CDQ
         assetType: BOND
-    instrumentObject:
+    instrumentExample:
       value:
         cusip: 66987E206
         symbol: NG
         description: Novagold Resources Inc.
         exchange: AMEX
         assetType: EQUITY
-    fundamentalDataObject:
+    fundamentalDataExample:
       value:
         symbol: NG
         high52: 12.845
@@ -2949,7 +2944,7 @@ components:
         vol1DayAvg: 3357300
         vol10DayAvg: 3357303
         vol3MonthAvg: 77925210
-    fundamentalObject:
+    fundamentalExample:
       value:
         NG:
           fundamental:

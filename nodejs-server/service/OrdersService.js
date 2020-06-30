@@ -30,51 +30,47 @@ exports.accountsAccountIdOrdersGET = function(accountId,maxResults,fromEnteredTi
   "stopPriceOffset" : 5.637376656633329,
   "stopPriceLinkType" : "VALUE",
   "orderActivityCollection" : [ {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   }, {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   } ],
@@ -197,51 +193,47 @@ exports.accountsAccountIdOrdersOrderIdGET = function(accountId,orderId) {
   "stopPriceOffset" : 5.637376656633329,
   "stopPriceLinkType" : "VALUE",
   "orderActivityCollection" : [ {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   }, {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   } ],
@@ -336,51 +328,47 @@ exports.accountsAccountIdOrdersOrderIdPUT = function(accountId,orderId) {
   "stopPriceOffset" : 5.637376656633329,
   "stopPriceLinkType" : "VALUE",
   "orderActivityCollection" : [ {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   }, {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   } ],
@@ -478,51 +466,47 @@ exports.ordersGET = function(accountId,maxResults,fromEnteredTime,toEnteredTime,
   "stopPriceOffset" : 5.637376656633329,
   "stopPriceLinkType" : "VALUE",
   "orderActivityCollection" : [ {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   }, {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   } ],
@@ -617,51 +601,47 @@ exports.ordersPOST = function(body,accountId) {
   "stopPriceOffset" : 5.637376656633329,
   "stopPriceLinkType" : "VALUE",
   "orderActivityCollection" : [ {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   }, {
-    "activityType" : {
+    "schema" : {
       "schema" : {
-        "schema" : {
-          "quantity" : 7.386281948385884,
-          "executionType" : "FILL",
-          "orderRamainingQuantity" : 1.2315135367772556,
-          "activityType" : "EXECUTION",
-          "executionLegs" : [ {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          }, {
-            "quantity" : 1.4894159098541704,
-            "price" : 7.457744773683766,
-            "legId" : 1,
-            "mismarkedQuantity" : 6.84685269835264,
-            "time" : "2000-01-23T04:56:07.000+00:00"
-          } ]
-        }
+        "quantity" : 7.386281948385884,
+        "executionType" : "FILL",
+        "orderRamainingQuantity" : 1.2315135367772556,
+        "activityType" : "EXECUTION",
+        "executionLegs" : [ {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        }, {
+          "quantity" : 1.4894159098541704,
+          "price" : 7.457744773683766,
+          "legId" : 1,
+          "mismarkedQuantity" : 6.84685269835264,
+          "time" : "2000-01-23T04:56:07.000+00:00"
+        } ]
       }
     }
   } ],
