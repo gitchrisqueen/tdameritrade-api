@@ -22,14 +22,15 @@
  * daysToExpiration Integer Days to expiration to use in calculations. Applies only to ANALYTICAL strategy chains (see strategy param) (optional)
  * expMonth String Return only options expiring in the specified month. Month is given in the three character format. Example: JAN Default is ALL. (optional)
  * optionType String Type of contracts to return. Possible values are: S: Standard contract NS: Non-standard contract ALL: All contracts Default is ALL. (optional)
- * returns OptionChain
+ * returns GetOptionChainResponse
  **/
 exports.marketdataChainsGET = function(apikey,symbol,contractType,strikeCount,includeQuotes,strategy,interval,strike,range,fromDate,toDate,volatility,underlyingPrice,interestRate,daysToExpiration,expMonth,optionType) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "symbol" : "symbol",
-  "status" : "status"
+  "key" : {
+    "schemas" : ""
+  }
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
