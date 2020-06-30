@@ -53,13 +53,23 @@ jobs:
                     -o /local/nodejs-clientES6 \
                     --git-user-id $GITHUB_ACTOR \
                     --git-repo-id https://github.com/$GITHUB_REPOSITORY
-      - name: Commit changes to master branch
+      - name: Remove previous nodejs-client* folders from master branch
         uses: EndBug/add-and-commit@master
         with:
           ref: 'master'
           author_name: Christopher Queen
           author_email: christopher.queen@gmail.com
-          message: "Swagger Client code auto generated"
-          add: "*"
+          message: "Remove previous Swagger Client code auto generated"
+          remove: "-r nodejs-client*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit changes to master branch
+          uses: EndBug/add-and-commit@master
+          with:
+            ref: 'master'
+            author_name: Christopher Queen
+            author_email: christopher.queen@gmail.com
+            message: "Swagger Client code auto generated"
+            add: "*"
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
