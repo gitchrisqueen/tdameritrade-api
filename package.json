@@ -5,7 +5,8 @@
   "main": "nodejs-clientES5/src/index.js",
   "scripts": {
     "test": "echo 'No test specified'",
-    "convertopenapi3toswagger2": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml ./nodejs-server/api/openapi.yaml > ./nodejs-server/api/swagger2.yaml"
+    "convertopenapi3toswagger2": "api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml ./nodejs-server/api/openapi.yaml > ./nodejs-server/api/swagger2.yaml",
+    "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
   },
   "publishConfig": {
     "access": "public"
@@ -21,6 +22,16 @@
     "contents": "nodejs-client",
     "releaseDraft": true
   },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/chris-queen-consulting"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/christopherqueenconsulting"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gitchrisqueen/tdameritrade-api.git"
@@ -30,19 +41,22 @@
   "bugs": {
     "url": "https://github.com/gitchrisqueen/tdameritrade-api/issues"
   },
-  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api/tree/master/nodejs-client#readme",
+  "homepage": "https://github.com/gitchrisqueen/tdameritrade-api/tree/master/nodejs-clientES5#readme",
   "keywords": [
     "tdameritrade",
     "thinkorswim",
     "javascript",
     "api",
     "node",
-    "js"
+    "js",
+    "ES5",
+    "ES6"
   ],
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
-    "superagent": "3.7.0"
+    "superagent": "3.7.0",
+    "chalk": "^4.1.0"
   },
   "devDependencies": {
     "api-spec-converter": "^2.11.0",
