@@ -1,6 +1,6 @@
 {
   "name": "@gitchrisqueen/tdameritrade-api-js-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TD Ameritrade API integration for node.js",
   "main": "nodejs-clientES5/src/index.js",
   "scripts": {
